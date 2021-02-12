@@ -4,4 +4,4 @@ how to:
 
 12:02:2021: Y   trying to make some changes to push to github
 12:02:2021: Y   Made this document and created github and started shared files.
-12:02:2021: C   HALLO
+12:02:2021: C   HALLO 		Y hoi terug
