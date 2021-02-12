@@ -2,4 +2,5 @@ A place where we can keep track of who worked on what when. (so that we can all 
 how to:
 
 
+12:02:2021: Y   trying to make some changes to push to github
 12:02:2021: Y   Made this document and created github and started shared files.
