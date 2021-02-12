@@ -6,3 +6,4 @@ how to:
 12:02:2021: Y   Made this document and created github and started shared files.
 12:02:2021: C   HALLO 		Y hoi terug
 12:02:2021: L   B--)
+12:02:2021: R   HOLA
