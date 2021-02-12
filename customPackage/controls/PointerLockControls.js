@@ -100,7 +100,7 @@ var PointerLockControls = function (camera, cannonBody) {
       case 104: // hide
         hideHud = !hideHud
         //console.log("hide hud is "+hideHud);
-        if (hideHud==true) {
+     if (hideHud==true) {
           //js: document.getElementById("cursor").style.visibility = "visible";
           js: document.getElementById("map2").style.left = "-20%";
           js: document.getElementById("map").style.right = "-20%";
@@ -110,6 +110,14 @@ var PointerLockControls = function (camera, cannonBody) {
           js: document.getElementById("mapw3").style.right = "-20%";
           js: document.getElementById("map2w4").style.left = "-20%";
           js: document.getElementById("mapw4").style.right = "-20%";
+          js: document.getElementById("world4critteroverlay").style.right = "-20%";
+          js: document.getElementById("world3critteroverlay").style.right = "-20%";
+          js: document.getElementById("world2critteroverlay").style.right = "-20%";
+          js: document.getElementById("world1critteroverlay").style.right = "-20%";
+          js: document.getElementById("world1crittercounter").style.right = "-20%";
+          js: document.getElementById("world2crittercounter").style.right = "-20%";
+          js: document.getElementById("world3crittercounter").style.right = "-20%";
+          js: document.getElementById("world4crittercounter").style.right = "-20%";
         }else {
           js: document.getElementById("map2").style.left = "0%";
           js: document.getElementById("map").style.right = "0%";
@@ -119,6 +127,15 @@ var PointerLockControls = function (camera, cannonBody) {
           js: document.getElementById("mapw3").style.right = "0%";
           js: document.getElementById("map2w4").style.left = "0%";
           js: document.getElementById("mapw4").style.right = "0%";
+          js: document.getElementById("world4critteroverlay").style.right = "0%";
+          js: document.getElementById("world3critteroverlay").style.right = "0%";
+          js: document.getElementById("world2critteroverlay").style.right = "0%";
+          js: document.getElementById("world1critteroverlay").style.right = "0%";
+          js: document.getElementById("world1crittercounter").style.right = "0%";
+          js: document.getElementById("world2crittercounter").style.right = "0%";
+          js: document.getElementById("world3crittercounter").style.right = "0%";
+          js: document.getElementById("world4crittercounter").style.right = "0%";
+
         }
         break
     }

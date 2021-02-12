@@ -5,7 +5,6 @@
     box-sizing: border-box;
     transition: 1s;
 }
-
 body { margin: 0; background: black;}
 			canvas {
             width: 100%;
@@ -13,25 +12,22 @@ body { margin: 0; background: black;}
             display: flex;
             align-items: center;
             }
-
 #title{
-z-index: 0;
-max-width: 12%;
-position: absolute;
-padding-left: 12px;
-margin-left: 100px;
-top: 1.2em;
-}
-
+  z-index: 0;
+  max-width: 12%;
+  position: absolute;
+  padding-left: 12px;
+  margin-left: 100px;
+  top: 1.2em;
+  }
 #title-2{
-z-index: 0;
-max-width: 12%;
-position: absolute;
-padding-left: 12px;
-margin-left: 12px;
-top: 1.2em;
-}
-
+  z-index: 0;
+  max-width: 12%;
+  position: absolute;
+  padding-left: 12px;
+  margin-left: 12px;
+  top: 1.2em;
+  }
 #seriestitle{
   max-height: 20em;
   z-index: 0;
@@ -42,7 +38,6 @@ top: 1.2em;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
 #centertop{
   z-index: 2;
   position: fixed;
@@ -51,7 +46,6 @@ top: 1.2em;
   transform: translate(-50%, -50%);
   max-width: 90%;
 }
-
 #centermiddle{
   z-index: 1;
   position: fixed;
@@ -79,13 +73,10 @@ top: 1.2em;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
 #cursor:hover{
     opacity:0.5;
     max-width:23vh;
-
   }
-
 #centermiddle:hover {
   z-index: 1;
   position: fixed;
@@ -95,13 +86,11 @@ top: 1.2em;
   max-width: 30%;
   border-radius: 50%;
   color:#fff;
--moz-transition: all 0.2s ease-in;
--o-transition: all 0.2s ease-in;
--webkit-transition: all 0.2s ease-in;
-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
 }
-
-
 #centerback{
   z-index: 0;
   position: fixed;
@@ -109,10 +98,7 @@ transition: all 0.2s ease-in;
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 50%;
-
 }
-
-
 #mission{
   max-height: 100em;
   z-index: 1;
@@ -124,7 +110,6 @@ transition: all 0.2s ease-in;
   transform: translate(-50%, -50%);
   max-width: 60%;
 }
-
 #mission2{
   max-height: 100em;
   z-index: 1;
@@ -135,9 +120,7 @@ transition: all 0.2s ease-in;
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 45%;
-
 }
-
 #hud{
   max-height: 100em;
   z-index: 1;
@@ -150,33 +133,6 @@ transition: all 0.2s ease-in;
   max-width: 85%;
 
 }
-
-
-.buttons {
-    z-index: 5;
-    text-align: horizontal;
-    margin-right: 4em;
-    position: fixed;
-    bottom:1em;
-    left:10px;
-    padding-top:10em;
-}
-
-.buttons:hover {
-    z-index: 5;
-    text-align: horizontal;
-    margin-right: 4em;
-    position: fixed;
-    bottom:1em;
-    left:10px;
-    padding-top:10em;
-    color:#fff;
-  -moz-transition: all 0.2s ease-in;
-  -o-transition: all 0.2s ease-in;
-  -webkit-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
-}
-
 #buttonrightbottom {
     z-index: 0;
     text-align: horizontal;
@@ -186,7 +142,6 @@ transition: all 0.2s ease-in;
     max-width: 7%;
     opacity: 0.9;
 }
-
 #buttonleftbottom {
   z-index: 1;
   text-align: horizontal;
@@ -194,11 +149,9 @@ transition: all 0.2s ease-in;
   position: fixed;
   top:0em;
   left:0px;
-max-width: 7%;
+  max-width: 7%;
   opacity: 0.9;
-
 }
-
 #map {
   z-index: 1;
   text-align: horizontal;
@@ -210,8 +163,29 @@ max-width: 7%;
   opacity: 0.9;
 
 }
+#world1critteroverlay {
+  z-index: 1;
+  text-align: horizontal;
+  margin-right: -1em;
+  position: fixed;
+  top:10%;
+  right:0px;
+  max-height: 85%;
+  opacity: 0.9;
 
-#map-1 {
+}
+#world1crittercounter {
+  z-index: 1;
+  text-align: horizontal;
+  margin-right: -1em;
+  position: fixed;
+  top:10%;
+  right:0px;
+  max-height: 85%;
+  opacity: 0.9;
+
+}
+#world2critteroverlay {
   z-index: 1;
   text-align: horizontal;
   margin-right: 0em;
@@ -222,7 +196,71 @@ max-width: 7%;
   opacity: 0.9;
 
 }
+#world2crittercounter {
+  z-index: 1;
+  text-align: horizontal;
+  margin-right: 0em;
+  position: fixed;
+  top:10%;
+  right:0px;
+  max-height: 85%;
+  opacity: 0.9;
+}
+#world3critteroverlay {
+  z-index: 1;
+  text-align: horizontal;
+  margin-right: -0.7em;
+  position: fixed;
+  top:10%;
+  right:0px;
+  max-height: 85%;
+  opacity: 0.9;
 
+}
+#world3crittercounter {
+  z-index: 1;
+  text-align: horizontal;
+  margin-right: -0.7em;
+  position: fixed;
+  top:10%;
+  right:0px;
+  max-height: 85%;
+  opacity: 0.9;
+
+}
+#map-2 {
+  z-index: 1;
+  text-align: horizontal;
+  margin-right: 0em;
+  position: fixed;
+  top:10%;
+  right:0px;
+  max-height: 85%;
+  opacity: 0.9;
+
+}
+#world4critteroverlay {
+  z-index: 1;
+  text-align: horizontal;
+  margin-right: 0em;
+  position: fixed;
+  top:10%;
+  right:0px;
+  max-height: 85%;
+  opacity: 0.9;
+
+}
+#world4crittercounter {
+  z-index: 1;
+  text-align: horizontal;
+  margin-right: 0em;
+  position: fixed;
+  top:10%;
+  right:0px;
+  max-height: 85%;
+  opacity: 0.9;
+
+}
 #map2 {
   z-index: 1;
   text-align: horizontal;
@@ -244,7 +282,6 @@ max-width: 7%;
   max-height: 85%;
   opacity: 0.9;
 }
-
 #blocker {
   z-index: 2;
   position: absolute;
@@ -252,9 +289,6 @@ max-width: 7%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
 }
-
-
-
 #map2w2 {
   z-index: 1;
   text-align: horizontal;
@@ -275,7 +309,6 @@ max-width: 7%;
   max-height: 85%;
   opacity: 0.9;
 }
-
 #map2w3 {
   z-index: 1;
   text-align: horizontal;
@@ -296,7 +329,6 @@ max-width: 7%;
   max-height: 85%;
   opacity: 0.9;
 }
-
 #map2w4 {
   z-index: 1;
   text-align: horizontal;
@@ -307,11 +339,9 @@ max-width: 7%;
   max-height: 85%;
   opacity: 0.9;
 }
-
 #world4 {
   visibility: hidden;
 }
-
 #world3{
   visibility: hidden;
 }
@@ -321,11 +351,9 @@ max-width: 7%;
 #world1{
   visibility: hidden;
 }
-
 #instructions4 {
   visibility: hidden;
 }
-
 #instructions3{
   visibility: hidden;
 }
@@ -335,8 +363,6 @@ max-width: 7%;
 #instructions1{
   visibility: hidden;
 }
-
-
 #buttonrightoverlay {
     z-index: 0;
     text-align: horizontal;
@@ -346,8 +372,6 @@ max-width: 7%;
     max-width: 50%;
     opacity: 0.9;
 }
-
-
 #found {
   z-index: 1;
   position: fixed;
@@ -355,6 +379,14 @@ max-width: 7%;
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 95%;
+}
+#encyclo4 {
+  z-index: 1;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
 }
 
 #found2 {
@@ -365,7 +397,6 @@ max-width: 7%;
   transform: translate(-50%, -50%);
   max-width: 100%;
 }
-
 #welcome {
   z-index: 2;
   position: fixed;
@@ -374,8 +405,6 @@ max-width: 7%;
   transform: translate(-50%, -50%);
   max-width: 100;
 }
-
-
 #about {
   z-index: 1;
   text-align: horizontal;
@@ -387,11 +416,33 @@ max-width: 7%;
   max-width: 80px;
 
 }
+#critter {
+    z-index: 4;
+  padding-left: 5px;
+    padding-right: 5px;
+  padding-bottom: 3em;
+  max-width: 6em;
+  text-align: right;
+  position: absolute;
+  padding-bottom: 5px;
+  padding-top: 15px;
+  z-index: 0;
+  float: right, top;
+  margin-top:2em;
+  margin-bottom: 5em;
+  margin-right: 5px;
+  align-items: center;
 
+  //filter: brightness(0) invert(1) blur(4px);
+  //-webkit-filter: brightness(0) invert(1) blur(-2px);
+}
+#assets{
+  visibility: hidden;
+}
 .button{
-height: 2em;
-width: 10em;
-border-radius: 30%;
+  height: 2em;
+  width: 10em;
+  border-radius: 30%;
   z-index: 4;
   text-align: horizontal;
   margin-right: 4em;
@@ -400,73 +451,61 @@ border-radius: 30%;
   left:10px;
   max-width: 8%;
 }
-
-
-
 .trailer{
-position: fixed;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-width: 100%;
-height: 100%;
-display: flex;
-align-items: center;
-justify-content: center;
-background: rgba(10,30,20,0.4);
-z-index: 10;
-visibility: hidden;
-opacity: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10,30,20,0.4);
+  z-index: 10;
+  visibility: hidden;
+  opacity: 0;
 }
-
-
 .info{
-position: fixed;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-width: 100%;
-height: 100%;
-display: flex;
-align-items: center;
-justify-content: center;
-background: rgba(10,30,20,0.4);
-z-index: 10;
-visibility: hidden;
-opacity: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10,30,20,0.4);
+  z-index: 10;
+  visibility: hidden;
+  opacity: 0;
 }
-
-
 .trailer video{
-max-width: 900px;
-outline: none;
-position: relative;
-
+  max-width: 900px;
+  outline: none;
+  position: relative;
 }
-
 .trailer2{
-position: fixed;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-width: 100%;
-height: 100%;
-display: flex;
-align-items: center;
-justify-content: center;
-background: rgba(230,0,20,0.7);
-z-index: 10;
-visibility: hidden;
-opacity: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(230,0,20,0.7);
+  z-index: 10;
+  visibility: hidden;
+  opacity: 0;
 }
-
 .trailer2 video{
-max-width: 900px;
-outline: none;
-position: relative;
-
+  max-width: 900px;
+  outline: none;
+  position: relative;
 }
-
 .close2{
   position: absolute;
   top:30px;
@@ -476,7 +515,6 @@ position: relative;
   cursor: pointer;
   z-index: 4;
 }
-
 .close{
   position: absolute;
   top:30px;
@@ -485,16 +523,35 @@ position: relative;
   font-size: 42px;
   cursor: pointer;
 }
-
+.buttons {
+    z-index: 5;
+    text-align: horizontal;
+    margin-right: 4em;
+    position: fixed;
+    bottom:1em;
+    left:10px;
+    padding-top:10em;
+}
+.buttons:hover {
+    z-index: 5;
+    text-align: horizontal;
+    margin-right: 4em;
+    position: fixed;
+    bottom:1em;
+    left:10px;
+    padding-top:10em;
+    color:#fff;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
 @media (max-width: 901px){
   .trailer video{
     max-width: 90%;
-
   }
 }
-
 .coins {
-
   text-align: right;
   position: absolute;
   padding-right: 5px;
@@ -503,31 +560,25 @@ position: relative;
   float: right, top;
 
   margin-right: 5px;
-align-items: center;
-max-width: 20px;
+  align-items: center;
+  max-width: 20px;
 }
-
 .coin {
   z-index: 4;
-padding-left: 5px;
-  padding-right: 5px;
-  visibility: hidden;
-  opacity: 0;
-max-width: 20px;
-}
-
-.coin3 {
-
-  z-index: 4;
-padding-left: 5px;
+  padding-left: 5px;
   padding-right: 5px;
   visibility: hidden;
   opacity: 0;
   max-width: 20px;
-
 }
-
-
+.coin3 {
+  z-index: 4;
+  padding-left: 5px;
+  padding-right: 5px;
+  visibility: hidden;
+  opacity: 0;
+  max-width: 20px;
+}
 .coins2 {
 
   text-align: right;
@@ -539,46 +590,14 @@ padding-left: 5px;
   padding-left: 5px;
   padding-right: 5px;
   max-width: 20px;
-
 }
-
-
-
 .coin2 {
   z-index: 4;
-padding-left: 5px;
+  padding-left: 5px;
   padding-right: 5px;
-padding-bottom: 3em;
-max-width: 6em;
+  padding-bottom: 3em;
+  max-width: 6em;
 
-//filter: brightness(0) invert(1) blur(4px);
-//-webkit-filter: brightness(0) invert(1) blur(-2px);
-
-}
-
-#critter {
-  z-index: 4;
-padding-left: 5px;
-  padding-right: 5px;
-padding-bottom: 3em;
-max-width: 6em;
-text-align: right;
-position: absolute;
-padding-bottom: 5px;
-padding-top: 15px;
-z-index: 0;
-float: right, top;
-margin-top:2em;
-margin-bottom: 5em;
-margin-right: 5px;
-align-items: center;
-
-
-//filter: brightness(0) invert(1) blur(4px);
-//-webkit-filter: brightness(0) invert(1) blur(-2px);
-
-}
-
-#assets{
-  visibility: hidden;
+  //filter: brightness(0) invert(1) blur(4px);
+  //-webkit-filter: brightness(0) invert(1) blur(-2px);
 }
