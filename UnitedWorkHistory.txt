@@ -7,3 +7,4 @@ how to:
 12:02:2021: C   HALLO 		Y hoi terug
 12:02:2021: L   B--)
 12:02:2021: R   HOLA
+12:02:2021: C   Interface updated, with working pointerlock control, critter counter + encyclopedia for world 4 <3
