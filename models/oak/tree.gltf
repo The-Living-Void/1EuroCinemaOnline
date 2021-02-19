@@ -1,0 +1,421 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 24048,
+      "max": [
+        31.121099472045898,
+        27.509719848632812,
+        60.775089263916016
+      ],
+      "min": [
+        -23.807130813598633,
+        -22.727279663085938,
+        -0.31703001260757446
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 288576,
+      "componentType": 5126,
+      "count": 24048,
+      "max": [
+        0.99984085559844971,
+        0.99991798400878906,
+        0.99971288442611694
+      ],
+      "min": [
+        -0.9999840259552002,
+        -0.99998509883880615,
+        -0.9999772310256958
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 24048,
+      "max": [
+        0.9999726414680481,
+        0.9999992847442627,
+        0.99999445676803589,
+        1
+      ],
+      "min": [
+        -0.99994218349456787,
+        -0.99995076656341553,
+        -0.99999243021011353,
+        -1
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 24048,
+      "max": [
+        0.76147001981735229,
+        1.6916199922561646
+      ],
+      "min": [
+        -0.00279000005684793,
+        -0.4697900116443634
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 36072,
+      "max": [
+        24047
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 577152,
+      "componentType": 5126,
+      "count": 3456,
+      "max": [
+        6.7176399230957031,
+        7.4395699501037598,
+        7.6882600784301758
+      ],
+      "min": [
+        -5.2221097946166992,
+        -10.000829696655273,
+        -7.533599853515625
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 618624,
+      "componentType": 5126,
+      "count": 3456,
+      "max": [
+        0.99841070175170898,
+        0.99454700946807861,
+        0.99965965747833252
+      ],
+      "min": [
+        -0.99978584051132202,
+        -0.99935322999954224,
+        -0.99774688482284546
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 384768,
+      "componentType": 5126,
+      "count": 3456,
+      "max": [
+        0.99571406841278076,
+        0.99999600648880005,
+        0.99992531538009644,
+        1
+      ],
+      "min": [
+        -0.99112898111343384,
+        -0.99600201845169067,
+        -0.99518656730651855,
+        1
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 192384,
+      "componentType": 5126,
+      "count": 3456,
+      "max": [
+        2.0006899833679199,
+        1.99767005443573
+      ],
+      "min": [
+        -0.99918001890182495,
+        -0.99766999483108521
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 144288,
+      "componentType": 5125,
+      "count": 5184,
+      "max": [
+        3455
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "rhcreations (https://sketchfab.com/rhcreations)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/oak-tree-8cab2b42f2844cb1b0a66d51839a150c",
+      "title": "Oak Tree"
+    },
+    "generator": "Sketchfab-6.84.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 165024,
+      "byteOffset": 0,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 220032,
+      "byteOffset": 165024,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 660096,
+      "byteOffset": 385056,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 440064,
+      "byteOffset": 1045152,
+      "byteStride": 16,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 1485216,
+      "uri": "scene.bin"
+    }
+  ],
+  "extensionsRequired": [
+    "KHR_materials_pbrSpecularGlossiness"
+  ],
+  "extensionsUsed": [
+    "KHR_materials_pbrSpecularGlossiness"
+  ],
+  "images": [
+    {
+      "uri": "textures/Oak_LTree_Material_diffuse.jpeg"
+    },
+    {
+      "uri": "textures/Buddleia_Shrub_Material.001_diffuse.png"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_pbrSpecularGlossiness": {
+          "diffuseFactor": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "diffuseTexture": {
+            "index": 0,
+            "texCoord": 0
+          },
+          "glossinessFactor": 1,
+          "specularFactor": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "name": "Oak_LTree_Material"
+    },
+    {
+      "alphaMode": "BLEND",
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_pbrSpecularGlossiness": {
+          "diffuseFactor": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "diffuseTexture": {
+            "index": 1,
+            "texCoord": 0
+          },
+          "glossinessFactor": 1,
+          "specularFactor": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "name": "Buddleia_Shrub_Material.001"
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Oak Tree_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Oak Leaves_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 6,
+            "POSITION": 5,
+            "TANGENT": 7,
+            "TEXCOORD_0": 8
+          },
+          "indices": 9,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "name": "RootNode (gltf orientation matrix)",
+      "rotation": [
+        -0.70710678118654746,
+        -0,
+        -0,
+        0.70710678118654757
+      ]
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "RootNode (model correction matrix)"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "Root"
+    },
+    {
+      "children": [
+        4,
+        5
+      ],
+      "matrix": [
+        0.15024000000000004,
+        0,
+        0,
+        0,
+        0,
+        0.15024000000000004,
+        0,
+        0,
+        0,
+        0,
+        0.15024000000000004,
+        0,
+        -0.0091100000000000018,
+        -0.071210000000000009,
+        -0.23875000000000002,
+        1
+      ],
+      "name": "Oak Tree"
+    },
+    {
+      "mesh": 0,
+      "name": "Oak Tree_0"
+    },
+    {
+      "children": [
+        6
+      ],
+      "matrix": [
+        -3.1978900000000001,
+        0.40345000000000003,
+        -4.8674999999999988,
+        0,
+        -2.9502599999999997,
+        1.0626199999999999,
+        2.0263599999999999,
+        0,
+        1.0263500000000001,
+        3.5709999999999997,
+        -0.37831000000000009,
+        0,
+        4.5802500000000004,
+        -0.68545000000000011,
+        32.502140000000004,
+        1
+      ],
+      "name": "Oak Leaves"
+    },
+    {
+      "mesh": 1,
+      "name": "Oak Leaves_0"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "OSG_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    }
+  ]
+}
+
