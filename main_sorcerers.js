@@ -7,8 +7,8 @@ import { threeToCannon } from './node_modules/three-to-cannon/index.js';
 
 var debug=false;
 var checkObjId=false;
-var worldId = 2; //1= socerers 2=lighthouse 3=forest 4= cave
-var objectName = 'Dino2.glb';
+var worldId = 4; //1= socerers 2=lighthouse 3=forest 4= cave
+var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 //var imgHeightWorld = new Array();
 
@@ -841,11 +841,87 @@ function modelLoader(){
 function addCharacters(){
 
 	const loader = new GLTFLoader()
-  		loader.load('models/AnimationModels/'+objectName, (gltf)  => {
+
+
+  loader.load('models/critters/spider-core.glb', (gltf)  => {
+    gltf.scene.traverse( function( object ) {
+    object.frustumCulled = false;
+    
+    
+    } );
+    gltf.scene.position.set(1,0.5,1);
+    scene.add(gltf.scene);
+  
+  }
+  );
+  
+  
+  const myMaterial = new THREE.MeshNormalMaterial( { color: 0xffee00, refractionRatio: 0.95 }  );
+  
+  loader.load('models/critters/spider.glb', (gltf)  => {
+  
+    
+    mixer = new THREE.AnimationMixer( gltf.scene );
+    jumpAction =  mixer.clipAction( gltf.animations[ 0 ] )
+    gltf.scene.traverse( function( object ) {
+    object.frustumCulled = false;
+    } );
+    gltf.scene.position.set(1,0.5,1);
+   
+    scene.add(gltf.scene);
+    jumpAction.play();
+  }
+  );
+  loader.load('models/critters/spider-anim2.glb', (gltf)  => {
+  
+    
+    mixer = new THREE.AnimationMixer( gltf.scene );
+    jumpAction =  mixer.clipAction( gltf.animations[ 0 ] )
+    gltf.scene.traverse( function( object ) {
+    object.frustumCulled = false;
+    } );
+    gltf.scene.position.set(3,1,4);
+    gltf.scene.scale.set(0.1,0.1,0.1);
+    scene.add(gltf.scene);
+    jumpAction.play();
+  }
+  );
+  
+  loader.load('models/critters/spider-anim2.glb', (gltf)  => {
+  
+    
+    mixer = new THREE.AnimationMixer( gltf.scene );
+    jumpAction =  mixer.clipAction( gltf.animations[ 0 ] )
+    gltf.scene.traverse( function( object ) {
+    object.frustumCulled = false;
+    } );
+    gltf.scene.position.set(10,1,2);
+    gltf.scene.scale.set(0.1,0.1,0.1);
+    scene.add(gltf.scene);
+    jumpAction.play();
+  }
+  );
+  
+  loader.load('models/critters/spider-anim3.glb', (gltf)  => {
+  
+    
+    mixer = new THREE.AnimationMixer( gltf.scene );
+    jumpAction =  mixer.clipAction( gltf.animations[ 0 ] )
+    gltf.scene.traverse( function( object ) {
+    object.frustumCulled = false;
+    } );
+    gltf.scene.position.set(-10,1,3);
+    gltf.scene.scale.set(0.1,0.1,0.1);
+    scene.add(gltf.scene);
+    jumpAction.play();
+  }
+  );
+
+  		loader.load('models/critters/'+objectName, (gltf)  => {
       mixer = new THREE.AnimationMixer( gltf.scene );
       //gltf.animations;
       //idleAction = mixer.clipAction( gltf.animations[ 1 ] )
-      jumpAction =  mixer.clipAction( gltf.animations[ 0 ] )
+      jumpAction =  mixer.clipAction( gltf.animations[ 1 ] )
 
       gltf.scene.traverse( function( object ) {
         object.frustumCulled = false;
