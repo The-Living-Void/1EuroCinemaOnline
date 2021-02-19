@@ -1,0 +1,444 @@
+{
+  "accessors": [
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 72,
+      "max": [
+        209.97047424316406,
+        6.90228271484375,
+        35.043487548828125
+      ],
+      "min": [
+        -110.64154815673828,
+        -519.34326171875,
+        -35.04345703125
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 864,
+      "componentType": 5126,
+      "count": 72,
+      "max": [
+        0.86593538522720337,
+        0.76285761594772339,
+        1
+      ],
+      "min": [
+        -0.86593538522720337,
+        -0.74242508411407471,
+        -1
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 72,
+      "max": [
+        1,
+        0.86464673280715942,
+        0.87386918067932129,
+        1
+      ],
+      "min": [
+        -1,
+        -0.86464673280715942,
+        -0.872292160987854,
+        1
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 108,
+      "max": [
+        71
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 1728,
+      "componentType": 5126,
+      "count": 96,
+      "max": [
+        206.83924865722656,
+        519.34326171875,
+        296.07864379882812
+      ],
+      "min": [
+        -389.1827392578125,
+        -144.73776245117188,
+        -296.07861328125
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 2880,
+      "componentType": 5126,
+      "count": 96,
+      "max": [
+        0.95595777034759521,
+        0.88649046421051025,
+        0.96924751996994019
+      ],
+      "min": [
+        -0.95595771074295044,
+        -0.88649046421051025,
+        -0.96924751996994019
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 1152,
+      "componentType": 5126,
+      "count": 96,
+      "max": [
+        0.9153292179107666,
+        0.88044506311416626,
+        0.78150337934494019,
+        1
+      ],
+      "min": [
+        -0.77100509405136108,
+        -0.88044524192810059,
+        -0.93271005153656006,
+        1
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 432,
+      "componentType": 5125,
+      "count": 144,
+      "max": [
+        95
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 4032,
+      "componentType": 5126,
+      "count": 96,
+      "max": [
+        389.1827392578125,
+        297.58233642578125,
+        177.57235717773438
+      ],
+      "min": [
+        34.44354248046875,
+        -48.34698486328125,
+        -177.57232666015625
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 5184,
+      "componentType": 5126,
+      "count": 96,
+      "max": [
+        0.95726293325424194,
+        0.98336315155029297,
+        0.94365674257278442
+      ],
+      "min": [
+        -0.95726293325424194,
+        -0.98336303234100342,
+        -0.94365662336349487
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 2688,
+      "componentType": 5126,
+      "count": 96,
+      "max": [
+        0.99433445930480957,
+        0.99723356962203979,
+        0.51268815994262695,
+        1
+      ],
+      "min": [
+        -0.5644676685333252,
+        -0.99723368883132935,
+        -0.51268810033798218,
+        1
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 1008,
+      "componentType": 5125,
+      "count": 144,
+      "max": [
+        95
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "BlackSpire (https://sketchfab.com/blackspire)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/models/0805628fe5444043881448953e193a0a",
+      "title": "Nature_Tree_06"
+    },
+    "generator": "Sketchfab-3.18.7",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 1584,
+      "byteOffset": 0,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 6336,
+      "byteOffset": 1584,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 4224,
+      "byteOffset": 7920,
+      "byteStride": 16,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 12144,
+      "uri": "scene.bin"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "name": "Legno01_Mat",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.23799999999999999,
+          0.157776,
+          0.09758,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 1
+      }
+    },
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "name": "Albero01_Mat",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.65700000000000003,
+          0.272204,
+          0.101178,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 1
+      }
+    },
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "name": "Albero02_Mat1",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.45600000000000002,
+          0.13536400000000001,
+          0.122664,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 1
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "pCylinder359_Legno01_Mat_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TANGENT": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "pCylinder359_Albero01_Mat_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 5,
+            "POSITION": 4,
+            "TANGENT": 6
+          },
+          "indices": 7,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "pCylinder359_Albero02_Mat1_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 9,
+            "POSITION": 8,
+            "TANGENT": 10
+          },
+          "indices": 11,
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "name": "RootNode (gltf orientation matrix)",
+      "rotation": [
+        -0.70710678118654746,
+        -0,
+        -0,
+        0.70710678118654757
+      ]
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "RootNode (model correction matrix)"
+    },
+    {
+      "children": [
+        3
+      ],
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "name": "6d8cd10b573b4597b7130a54fd9236bb.fbx"
+    },
+    {
+      "children": [
+        4
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        5,
+        6,
+        7
+      ],
+      "matrix": [
+        0.0099999997764825821,
+        0,
+        0,
+        0,
+        0,
+        0.0099999997764825821,
+        0,
+        0,
+        0,
+        0,
+        0.0099999997764825821,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "name": "pCylinder359"
+    },
+    {
+      "mesh": 0,
+      "name": "pCylinder359_Legno01_Mat_0"
+    },
+    {
+      "mesh": 1,
+      "name": "pCylinder359_Albero01_Mat_0"
+    },
+    {
+      "mesh": 2,
+      "name": "pCylinder359_Albero02_Mat1_0"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "OSG_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}
+
