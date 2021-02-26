@@ -903,10 +903,13 @@ function addCharacters(){
     const roughnessMipmapper = new RoughnessMipmapper( renderer );
 
     const loader = new GLTFLoader().setPath( 'models/critters/' );
-    loader.load( 'lara.glb', function ( gltf ) {
-
+    loader.load( 'adam-gloss.glb', function ( gltf ) {
+      mixer = new THREE.AnimationMixer( gltf.scene );
+      gltf.animations;
+      jumpAction = mixer.clipAction( gltf.animations[ 0 ] )
+     
       gltf.scene.traverse( function ( child ) {
-
+      
         if ( child.isMesh ) {
 
           // TOFIX RoughnessMipmapper seems to be broken with WebGL 2.0
@@ -916,8 +919,9 @@ function addCharacters(){
 
       } );
       gltf.scene.position.set(1,0.5,1);
+      
       scene.add( gltf.scene );
-
+      jumpAction.play();
       roughnessMipmapper.dispose();
 
       render();
