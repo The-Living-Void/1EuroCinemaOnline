@@ -9,7 +9,7 @@ import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js'
 
 var debug=false;
 var checkObjId=false;
-var worldId = 1; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 3; //1= socerers 2=lighthouse 3=forest 4= cave
 var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 //var imgHeightWorld = new Array();
@@ -132,7 +132,7 @@ function initCannon(){
 
       if (worldId == 1) {
 
-        
+
 
       // Create a plane
       // var groundShape = new CANNON.Plane();
@@ -425,11 +425,11 @@ function init() {
 
 
    renderer.setPixelRatio( window.devicePixelRatio );
-  
+
    renderer.toneMapping = THREE.ACESFilmicToneMapping;
    renderer.toneMappingExposure = 1;
    renderer.outputEncoding = THREE.sRGBEncoding;
-   
+
 
 }
 
@@ -859,32 +859,32 @@ function addCharacters(){
   loader.load('models/critters/spider.glb', (gltf)  => {
     gltf.scene.traverse( function( object ) {
     object.frustumCulled = false;
-    
-    
+
+
     } );
     gltf.scene.position.set(1,3,1);
     scene.add(gltf.scene);
-  
+
   }
   );
 
   loader.load('models/critters/spider-core.glb', (gltf)  => {
     gltf.scene.traverse( function( object ) {
     object.frustumCulled = false;
-    
-    
+
+
     } );
     gltf.scene.position.set(1,0.5,1);
     scene.add(gltf.scene);
-  
+
   }
   );
-  
+
   new RGBELoader()
   .setDataType( THREE.UnsignedByteType )
   .setPath( 'textures/equirectangular/' )
   .load( 'venice_sunset_1k.hdr', function ( texture ) {
-    
+
     const pmremGenerator = new THREE.PMREMGenerator( renderer );
     pmremGenerator.compileEquirectangularShader();
     const envMap = pmremGenerator.fromEquirectangular( texture ).texture;
@@ -907,9 +907,9 @@ function addCharacters(){
       mixer = new THREE.AnimationMixer( gltf.scene );
       gltf.animations;
       jumpAction = mixer.clipAction( gltf.animations[ 0 ] )
-     
+
       gltf.scene.traverse( function ( child ) {
-      
+
         if ( child.isMesh ) {
 
           // TOFIX RoughnessMipmapper seems to be broken with WebGL 2.0
@@ -919,7 +919,7 @@ function addCharacters(){
 
       } );
       gltf.scene.position.set(1,0.5,1);
-      
+
       scene.add( gltf.scene );
       jumpAction.play();
       roughnessMipmapper.dispose();
@@ -936,24 +936,24 @@ function addCharacters(){
 
 
   const myMaterial = new THREE.MeshNormalMaterial( { color: 0xffee00, refractionRatio: 0.95 }  );
-  
+
   loader.load('models/critters/spider.glb', (gltf)  => {
-  
-    
+
+
     mixer = new THREE.AnimationMixer( gltf.scene );
     jumpAction =  mixer.clipAction( gltf.animations[ 0 ] )
     gltf.scene.traverse( function( object ) {
     object.frustumCulled = false;
     } );
     gltf.scene.position.set(1,0.5,1);
-   
+
     scene.add(gltf.scene);
     jumpAction.play();
   }
   );
   loader.load('models/critters/spider-anim2.glb', (gltf)  => {
-  
-    
+
+
     mixer = new THREE.AnimationMixer( gltf.scene );
     jumpAction =  mixer.clipAction( gltf.animations[ 0 ] )
     gltf.scene.traverse( function( object ) {
@@ -965,10 +965,10 @@ function addCharacters(){
     jumpAction.play();
   }
   );
-  
+
   loader.load('models/critters/spider-anim3.glb', (gltf)  => {
-  
-    
+
+
     mixer = new THREE.AnimationMixer( gltf.scene );
     jumpAction =  mixer.clipAction( gltf.animations[ 0 ] )
     gltf.scene.traverse( function( object ) {
@@ -980,10 +980,10 @@ function addCharacters(){
     jumpAction.play();
   }
   );
-  
+
   loader.load('models/critters/spider-anim3.glb', (gltf)  => {
-  
-    
+
+
     mixer = new THREE.AnimationMixer( gltf.scene );
     jumpAction =  mixer.clipAction( gltf.animations[ 0 ] )
     gltf.scene.traverse( function( object ) {

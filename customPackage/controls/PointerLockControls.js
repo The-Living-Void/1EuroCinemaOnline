@@ -147,18 +147,19 @@ var PointerLockControls = function (camera, cannonBody) {
           hideHud = !hideHud
           //console.log("hide hud is "+hideHud);
           if (hideHud==true) {
-            //js: document.getElementById("cursor").style.visibility = "visible";
+            // js: document.getElementById("encyclo-4").style.visibility = "visible";
+            js: document.getElementById("encyclo3").style.visibility = "visible";
             js: document.getElementById("encyclo1").style.top = "-100%";
-            js: document.getElementById("encyclo-4").style.top = "-100%";
+            js: document.getElementById("encyclo-4").style.top = "0%";
             js: document.getElementById("encyclo2").style.top = "-100%";
-            js: document.getElementById("encyclo3").style.top = "-100%";
+            js: document.getElementById("encyclo3").style.top = "0%";
 
           }else {
 
             js: document.getElementById("encyclo1").style.top = "0%";
-            js: document.getElementById("encyclo-4").style.top = "0%";
+            js: document.getElementById("encyclo-4").style.top = "-100%";
             js: document.getElementById("encyclo2").style.top = "0%";
-            js: document.getElementById("encyclo3").style.top = "0%";
+            js: document.getElementById("encyclo3").style.top = "-100%";
           }
           break
     }

@@ -388,6 +388,7 @@ body { margin: 0; background: black;}
   margin-left: 10em;
   position: fixed;
   max-width: 98%;
+  visibility: hidden;
 }
 
 #encyclo2 {
@@ -398,6 +399,7 @@ body { margin: 0; background: black;}
   margin-left: 10em;
   position: fixed;
   max-width: 98%;
+  visibility: hidden;
 }
 
 #encyclo3 {
@@ -408,6 +410,7 @@ body { margin: 0; background: black;}
   margin-left: 10em;
   position: fixed;
   max-width: 98%;
+  visibility: hidden;
 }
 
 #encyclo-4 {
@@ -418,6 +421,7 @@ body { margin: 0; background: black;}
   margin-left: 10em;
   position: fixed;
   max-width: 98%;
+  visibility: hidden;
 }
 
 #found2 {
