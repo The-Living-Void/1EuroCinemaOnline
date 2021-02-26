@@ -4,10 +4,12 @@ import { PointerLockControls } from './customPackage/controls/PointerLockControl
 import CannonDebugRenderer from './customPackage/CannonDebugRenderer.js';
 import {GLTFLoader} from './customPackage/loader/GLTFLoader.js'
 import { threeToCannon } from './node_modules/three-to-cannon/index.js';
+import { RGBELoader } from './customPackage/loader/RGBELoader.js';
+import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js';
 
 var debug=false;
 var checkObjId=false;
-var worldId = 4; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 1; //1= socerers 2=lighthouse 3=forest 4= cave
 var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 //var imgHeightWorld = new Array();
@@ -63,6 +65,7 @@ for (var i = 0; i < imagesTiles.length; i++) {
 
 initCannon();
 init();
+render();
 addFlatGround();
 
 for (var i = 1; i < 10; i++) {
@@ -128,6 +131,9 @@ function initCannon(){
       //sphereChickShape.quaternion.set(n1, 0, 0, 0);
 
       if (worldId == 1) {
+
+        
+
       // Create a plane
       // var groundShape = new CANNON.Plane();
       // groundBody = new CANNON.Body({ mass: 0, material: physicsMaterial });
@@ -416,6 +422,14 @@ function init() {
    renderer = new THREE.WebGLRenderer( { antialias: true } );
    renderer.setSize( window.innerWidth, window.innerHeight );
    document.body.appendChild( renderer.domElement );
+
+
+   renderer.setPixelRatio( window.devicePixelRatio );
+  
+   renderer.toneMapping = THREE.ACESFilmicToneMapping;
+   renderer.toneMappingExposure = 1;
+   renderer.outputEncoding = THREE.sRGBEncoding;
+   
 
 }
 
@@ -842,6 +856,17 @@ function addCharacters(){
 
 	const loader = new GLTFLoader()
 
+  loader.load('models/critters/spider.glb', (gltf)  => {
+    gltf.scene.traverse( function( object ) {
+    object.frustumCulled = false;
+    
+    
+    } );
+    gltf.scene.position.set(1,3,1);
+    scene.add(gltf.scene);
+  
+  }
+  );
 
   loader.load('models/critters/spider-core.glb', (gltf)  => {
     gltf.scene.traverse( function( object ) {
@@ -855,7 +880,57 @@ function addCharacters(){
   }
   );
   
-  
+  new RGBELoader()
+  .setDataType( THREE.UnsignedByteType )
+  .setPath( 'textures/equirectangular/' )
+  .load( 'venice_sunset_1k.hdr', function ( texture ) {
+    
+    const pmremGenerator = new THREE.PMREMGenerator( renderer );
+    pmremGenerator.compileEquirectangularShader();
+    const envMap = pmremGenerator.fromEquirectangular( texture ).texture;
+
+    scene.background = envMap;
+    scene.environment = envMap;
+
+    texture.dispose();
+    pmremGenerator.dispose();
+
+    render();
+
+    // model
+
+    // use of RoughnessMipmapper is optional
+    const roughnessMipmapper = new RoughnessMipmapper( renderer );
+
+    const loader = new GLTFLoader().setPath( 'models/critters/' );
+    loader.load( 'lara.glb', function ( gltf ) {
+
+      gltf.scene.traverse( function ( child ) {
+
+        if ( child.isMesh ) {
+
+          // TOFIX RoughnessMipmapper seems to be broken with WebGL 2.0
+          // roughnessMipmapper.generateMipmaps( child.material );
+
+        }
+
+      } );
+      gltf.scene.position.set(1,0.5,1);
+      scene.add( gltf.scene );
+
+      roughnessMipmapper.dispose();
+
+      render();
+
+    } );
+
+  } );
+
+
+
+
+
+
   const myMaterial = new THREE.MeshNormalMaterial( { color: 0xffee00, refractionRatio: 0.95 }  );
   
   loader.load('models/critters/spider.glb', (gltf)  => {
@@ -887,7 +962,7 @@ function addCharacters(){
   }
   );
   
-  loader.load('models/critters/spider-anim2.glb', (gltf)  => {
+  loader.load('models/critters/spider-anim3.glb', (gltf)  => {
   
     
     mixer = new THREE.AnimationMixer( gltf.scene );
@@ -896,7 +971,7 @@ function addCharacters(){
     object.frustumCulled = false;
     } );
     gltf.scene.position.set(10,1,2);
-    gltf.scene.scale.set(0.1,0.1,0.1);
+    gltf.scene.scale.set(1,1,1);
     scene.add(gltf.scene);
     jumpAction.play();
   }
@@ -1339,5 +1414,11 @@ function fromImage ( image, width, depth, minHeight, maxHeight ) {
     }
 
     return matrix;
+
+  }
+
+  function render() {
+
+    renderer.render( scene, camera );
 
   }
