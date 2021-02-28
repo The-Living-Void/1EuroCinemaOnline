@@ -9,7 +9,7 @@ import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js'
 
 var debug=false;
 var checkObjId=false;
-var worldId = 4; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 1; //1= socerers 2=lighthouse 3=forest 4= cave
 var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 //var imgHeightWorld = new Array();
@@ -528,7 +528,7 @@ function modelLoader(){
 
     if (worldId==1) {
 
-      var ambient = new THREE.AmbientLight(0xe3dee1, 0.9);
+      var ambient = new THREE.AmbientLight(0xe3dee1, 0.4);
       scene.add(ambient);
 
     let model1, model2, model3, model4,model5, model6, model7, model8;
@@ -604,7 +604,7 @@ function modelLoader(){
     }
 		if (worldId==2) {
 
-       var ambient = new THREE.AmbientLight(0xb85a07, 0.5);
+       var ambient = new THREE.AmbientLight(0x4f5682, 0.2);
        scene.add(ambient);
 
        const light = new THREE.PointLight( 0xc4f5682, 0.2, 10 );
@@ -810,12 +810,12 @@ function modelLoader(){
     }
     if (worldId==4){
 
-      var ambient = new THREE.AmbientLight(0xffffff, 0.2);
+      var ambient = new THREE.AmbientLight(0xc9c1bb, 0.3);
       scene.add(ambient);
 
-      // const light = new THREE.PointLight( 0xc9c1bb, 0.2, 100 );
-      // light.position.set( 20, 10, 50 );
-      // scene.add( light );
+      const light = new THREE.PointLight( 0xc9c1bb, 0.2, 100 );
+      light.position.set( 20, 10, 50 );
+      scene.add( light );
 
       let model1, model2, model3, model4,model5, model6;
 

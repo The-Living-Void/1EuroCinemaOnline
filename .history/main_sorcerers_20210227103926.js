@@ -9,7 +9,7 @@ import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js'
 
 var debug=false;
 var checkObjId=false;
-var worldId = 4; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 3; //1= socerers 2=lighthouse 3=forest 4= cave
 var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 //var imgHeightWorld = new Array();
@@ -384,8 +384,8 @@ function init() {
    scene.background = new THREE.Color(white);
    raycaster = new THREE.Raycaster();
 
-  //  var ambient = new THREE.AmbientLight(0xffffff, 0.7);
-  //  scene.add(ambient);
+   var ambient = new THREE.AmbientLight(0xffffff, 0.7);
+   scene.add(ambient);
 
    //louisa's code: onclick (window is placeholder for what should be clicked) makes it appear:
    //if (boolcrittercaught = false){
@@ -443,26 +443,26 @@ let texture_rt;
 let texture_lf;
 
   if (worldId==1) {
-  texture_ft = new THREE.TextureLoader().load('skybox/blizzard4_ft.png');
-  texture_bk = new THREE.TextureLoader().load('skybox/blizzard4_bk.png');
-  texture_up = new THREE.TextureLoader().load('skybox/blizzard4_up.png');
-  texture_dn = new THREE.TextureLoader().load('skybox/blizzard4_dn.png');
-  texture_rt = new THREE.TextureLoader().load('skybox/blizzard4_rt.png');
-  texture_lf = new THREE.TextureLoader().load('skybox/blizzard4_lf.png');
+  texture_ft = new THREE.TextureLoader().load('skybox/blizzard4_ft.jpg');
+  texture_bk = new THREE.TextureLoader().load('skybox/blizzard4_bk.jpg');
+  texture_up = new THREE.TextureLoader().load('skybox/blizzard4_up.jpg');
+  texture_dn = new THREE.TextureLoader().load('skybox/blizzard4_dn.jpg');
+  texture_rt = new THREE.TextureLoader().load('skybox/blizzard4_rt.jpg');
+  texture_lf = new THREE.TextureLoader().load('skybox/blizzard4_lf.jpg');
   }else if (worldId==2) {
-  texture_ft = new THREE.TextureLoader().load('skybox/blizzard2_ft.png');
-  texture_bk = new THREE.TextureLoader().load('skybox/blizzard2_bk.png');
-  texture_up = new THREE.TextureLoader().load('skybox/blizzard2_up.png');
-  texture_dn = new THREE.TextureLoader().load('skybox/blizzard2_dn.png');
-  texture_rt = new THREE.TextureLoader().load('skybox/blizzard2_rt.png');
-  texture_lf = new THREE.TextureLoader().load('skybox/blizzard2_lf.png');
+  texture_ft = new THREE.TextureLoader().load('skybox/blizzard2_ft.jpg');
+  texture_bk = new THREE.TextureLoader().load('skybox/blizzard2_bk.jpg');
+  texture_up = new THREE.TextureLoader().load('skybox/blizzard2_up.jpg');
+  texture_dn = new THREE.TextureLoader().load('skybox/blizzard2_dn.jpg');
+  texture_rt = new THREE.TextureLoader().load('skybox/blizzard2_rt.jpg');
+  texture_lf = new THREE.TextureLoader().load('skybox/blizzard2_lf.jpg');
   }else if (worldId==3) {
-  texture_ft = new THREE.TextureLoader().load('skybox/blizzard3_ft.png');
-  texture_bk = new THREE.TextureLoader().load('skybox/blizzard3_bk.png');
-  texture_up = new THREE.TextureLoader().load('skybox/blizzard3_up.png');
-  texture_dn = new THREE.TextureLoader().load('skybox/blizzard3_dn.png');
-  texture_rt = new THREE.TextureLoader().load('skybox/blizzard3_rt.png');
-  texture_lf = new THREE.TextureLoader().load('skybox/blizzard3_lf.png');
+  texture_ft = new THREE.TextureLoader().load('skybox/blizzard3_ft.jpg');
+  texture_bk = new THREE.TextureLoader().load('skybox/blizzard3_bk.jpg');
+  texture_up = new THREE.TextureLoader().load('skybox/blizzard3_up.jpg');
+  texture_dn = new THREE.TextureLoader().load('skybox/blizzard3_dn.jpg');
+  texture_rt = new THREE.TextureLoader().load('skybox/blizzard3_rt.jpg');
+  texture_lf = new THREE.TextureLoader().load('skybox/blizzard3_lf.jpg');
   }else if (worldId==4) {
   texture_ft = new THREE.TextureLoader().load('skybox/blizzard_ft.jpg');
   texture_bk = new THREE.TextureLoader().load('skybox/blizzard_bk.jpg');
@@ -527,10 +527,6 @@ function objectLoader(){
 function modelLoader(){
 
     if (worldId==1) {
-
-      var ambient = new THREE.AmbientLight(0xe3dee1, 0.9);
-      scene.add(ambient);
-
     let model1, model2, model3, model4,model5, model6, model7, model8;
     //add names and locations of models here #SUUS
     let p1 = loadModel('models/druid-winter-scene/winter.gltf').then(result => {  model1 = result.scene.children[0]; });
@@ -603,14 +599,6 @@ function modelLoader(){
     );
     }
 		if (worldId==2) {
-
-       var ambient = new THREE.AmbientLight(0xb85a07, 0.5);
-       scene.add(ambient);
-
-       const light = new THREE.PointLight( 0xc4f5682, 0.2, 10 );
-       light.position.set( 20, 10, 10 );
-       scene.add( light );
-
       let model1, model2, model3, model4,model5, model6, model7, model8, model9, model10;
 
       //add names and locations of models here #SUUS
@@ -723,10 +711,6 @@ function modelLoader(){
 
     }
     if (worldId==3) {
-
-      var ambient = new THREE.AmbientLight(0x477a79, 0.2);
-      scene.add(ambient);
-
 			let model1, model2, model3, model4,model5, model6, model7;
 
       //add names and locations of models here #SUUS
@@ -809,14 +793,6 @@ function modelLoader(){
       });
     }
     if (worldId==4){
-
-      var ambient = new THREE.AmbientLight(0xffffff, 0.2);
-      scene.add(ambient);
-
-      // const light = new THREE.PointLight( 0xc9c1bb, 0.2, 100 );
-      // light.position.set( 20, 10, 50 );
-      // scene.add( light );
-
       let model1, model2, model3, model4,model5, model6;
 
       //add names and locations of models here #SUUS

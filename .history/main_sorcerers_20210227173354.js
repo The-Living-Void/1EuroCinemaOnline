@@ -9,7 +9,7 @@ import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js'
 
 var debug=false;
 var checkObjId=false;
-var worldId = 4; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 3; //1= socerers 2=lighthouse 3=forest 4= cave
 var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 //var imgHeightWorld = new Array();
@@ -457,12 +457,12 @@ let texture_lf;
   texture_rt = new THREE.TextureLoader().load('skybox/blizzard2_rt.png');
   texture_lf = new THREE.TextureLoader().load('skybox/blizzard2_lf.png');
   }else if (worldId==3) {
-  texture_ft = new THREE.TextureLoader().load('skybox/blizzard3_ft.png');
-  texture_bk = new THREE.TextureLoader().load('skybox/blizzard3_bk.png');
-  texture_up = new THREE.TextureLoader().load('skybox/blizzard3_up.png');
-  texture_dn = new THREE.TextureLoader().load('skybox/blizzard3_dn.png');
-  texture_rt = new THREE.TextureLoader().load('skybox/blizzard3_rt.png');
-  texture_lf = new THREE.TextureLoader().load('skybox/blizzard3_lf.png');
+  texture_ft = new THREE.TextureLoader().load('skybox/blizzard3_ft.jpg');
+  texture_bk = new THREE.TextureLoader().load('skybox/blizzard3_bk.jpg');
+  texture_up = new THREE.TextureLoader().load('skybox/blizzard3_up.jpg');
+  texture_dn = new THREE.TextureLoader().load('skybox/blizzard3_dn.jpg');
+  texture_rt = new THREE.TextureLoader().load('skybox/blizzard3_rt.jpg');
+  texture_lf = new THREE.TextureLoader().load('skybox/blizzard3_lf.jpg');
   }else if (worldId==4) {
   texture_ft = new THREE.TextureLoader().load('skybox/blizzard_ft.jpg');
   texture_bk = new THREE.TextureLoader().load('skybox/blizzard_bk.jpg');
@@ -528,7 +528,7 @@ function modelLoader(){
 
     if (worldId==1) {
 
-      var ambient = new THREE.AmbientLight(0xe3dee1, 0.9);
+      var ambient = new THREE.AmbientLight(0xe3dee1, 0.4);
       scene.add(ambient);
 
     let model1, model2, model3, model4,model5, model6, model7, model8;
@@ -604,7 +604,7 @@ function modelLoader(){
     }
 		if (worldId==2) {
 
-       var ambient = new THREE.AmbientLight(0xb85a07, 0.5);
+       var ambient = new THREE.AmbientLight(0x4f5682, 0.2);
        scene.add(ambient);
 
        const light = new THREE.PointLight( 0xc4f5682, 0.2, 10 );
@@ -724,7 +724,7 @@ function modelLoader(){
     }
     if (worldId==3) {
 
-      var ambient = new THREE.AmbientLight(0x477a79, 0.2);
+      var ambient = new THREE.AmbientLight(0xe9f2f2, 0.4);
       scene.add(ambient);
 
 			let model1, model2, model3, model4,model5, model6, model7;
@@ -810,12 +810,12 @@ function modelLoader(){
     }
     if (worldId==4){
 
-      var ambient = new THREE.AmbientLight(0xffffff, 0.2);
+      var ambient = new THREE.AmbientLight(0xc9c1bb, 0.3);
       scene.add(ambient);
 
-      // const light = new THREE.PointLight( 0xc9c1bb, 0.2, 100 );
-      // light.position.set( 20, 10, 50 );
-      // scene.add( light );
+      const light = new THREE.PointLight( 0xc9c1bb, 0.2, 100 );
+      light.position.set( 20, 10, 50 );
+      scene.add( light );
 
       let model1, model2, model3, model4,model5, model6;
 

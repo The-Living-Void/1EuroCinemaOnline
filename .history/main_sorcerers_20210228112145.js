@@ -810,12 +810,12 @@ function modelLoader(){
     }
     if (worldId==4){
 
-      var ambient = new THREE.AmbientLight(0xffffff, 0.2);
+      var ambient = new THREE.AmbientLight(0xf7f7f7, 0.2);
       scene.add(ambient);
 
-      // const light = new THREE.PointLight( 0xc9c1bb, 0.2, 100 );
-      // light.position.set( 20, 10, 50 );
-      // scene.add( light );
+      const light = new THREE.PointLight( 0xc9c1bb, 0.2, 100 );
+      light.position.set( 20, 10, 50 );
+      scene.add( light );
 
       let model1, model2, model3, model4,model5, model6;
 
