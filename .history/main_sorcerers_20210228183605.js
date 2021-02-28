@@ -612,7 +612,7 @@ function modelLoader(){
     }
 		if (worldId==2) {
 
-      var ambient = new THREE.AmbientLight(0xb5580d, 0.7);
+      var ambient = new THREE.AmbientLight(0xb5580d, 0.9);
       scene.add(ambient);
 
       const light = new THREE.PointLight( 0xb5580d, 0.5, 100 );

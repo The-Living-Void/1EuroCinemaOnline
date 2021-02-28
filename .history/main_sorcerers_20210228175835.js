@@ -528,16 +528,8 @@ function modelLoader(){
 
     if (worldId==1) {
 
-      var ambient = new THREE.AmbientLight(0xd5c3e8, 0.7);
+      var ambient = new THREE.AmbientLight(0xe3dee1, 0.9);
       scene.add(ambient);
-
-      const directionalLight = new THREE.DirectionalLight( 0xd5c3e8, 0.3 );
-      scene.add( directionalLight );
-
-      const color = 0xd5c3e8;  // purple
-      const near = 500;
-      const far = 6000;
-      scene.fog = new THREE.Fog(color, near, far);
 
     let model1, model2, model3, model4,model5, model6, model7, model8;
     //add names and locations of models here #SUUS
@@ -612,20 +604,17 @@ function modelLoader(){
     }
 		if (worldId==2) {
 
-      var ambient = new THREE.AmbientLight(0xb5580d, 0.7);
-      scene.add(ambient);
+       var ambient = new THREE.AmbientLight(0xb85a07, 0.5);
+       scene.add(ambient);
 
-      const light = new THREE.PointLight( 0xb5580d, 0.5, 100 );
-      light.position.set( 50, 50, 50 );
-      scene.add( light );
+       const light = new THREE.PointLight( 0xc4f5682, 0.2, 10 );
+       light.position.set( 20, 10, 10 );
+       scene.add( light );
 
-      const directionalLight = new THREE.DirectionalLight( 0x2261ab, 0.3 );
-      scene.add( directionalLight );
-
-      const color = 0x2261ab;  // blue
-      const near = 10;
-      const far = 3000;
-      scene.fog = new THREE.Fog(color, near, far);
+       const color = 0xa14902;  // orange
+       const near = 50;
+       const far = 500;
+       scene.fog = new THREE.Fog(color, near, far);
 
       let model1, model2, model3, model4,model5, model6, model7, model8, model9, model10;
 
@@ -836,20 +825,12 @@ function modelLoader(){
     }
     if (worldId==4){
 
-      var ambient = new THREE.AmbientLight(0xffffff, 0.4);
+      var ambient = new THREE.AmbientLight(0xffffff, 0.2);
       scene.add(ambient);
 
-      // const light = new THREE.PointLight( 0x400318, 1, 100 );
-      // light.position.set( 20, 10, 50 );
-      // scene.add( light );
-
-      const directionalLight = new THREE.DirectionalLight( 0x400318, 0.3 );
-      scene.add( directionalLight );
-
-      const color = 0x400318;  // dark-red
-      const near = 10;
-      const far = 3000;
-      scene.fog = new THREE.Fog(color, near, far);
+      const light = new THREE.PointLight( 0xffffff, 1, 100 );
+      light.position.set( 20, 10, 50 );
+      scene.add( light );
 
       let model1, model2, model3, model4,model5, model6;
 

@@ -9,7 +9,7 @@ import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js'
 
 var debug=false;
 var checkObjId=false;
-var worldId = 2; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 1; //1= socerers 2=lighthouse 3=forest 4= cave
 var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 //var imgHeightWorld = new Array();
@@ -612,19 +612,19 @@ function modelLoader(){
     }
 		if (worldId==2) {
 
-      var ambient = new THREE.AmbientLight(0xb5580d, 0.7);
+      var ambient = new THREE.AmbientLight(0xa86218, 0.2);
       scene.add(ambient);
 
-      const light = new THREE.PointLight( 0xb5580d, 0.5, 100 );
+      const light = new THREE.PointLight( 0xe8dfc3, 0.5, 100 );
       light.position.set( 50, 50, 50 );
       scene.add( light );
 
-      const directionalLight = new THREE.DirectionalLight( 0x2261ab, 0.3 );
+      const directionalLight = new THREE.DirectionalLight( 0xa86218, 0.3 );
       scene.add( directionalLight );
 
-      const color = 0x2261ab;  // blue
-      const near = 10;
-      const far = 3000;
+      const color = 0xf2e6ce;  // orange
+      const near = 500;
+      const far = 6000;
       scene.fog = new THREE.Fog(color, near, far);
 
       let model1, model2, model3, model4,model5, model6, model7, model8, model9, model10;
@@ -836,20 +836,12 @@ function modelLoader(){
     }
     if (worldId==4){
 
-      var ambient = new THREE.AmbientLight(0xffffff, 0.4);
+      var ambient = new THREE.AmbientLight(0xffffff, 0.2);
       scene.add(ambient);
 
-      // const light = new THREE.PointLight( 0x400318, 1, 100 );
-      // light.position.set( 20, 10, 50 );
-      // scene.add( light );
-
-      const directionalLight = new THREE.DirectionalLight( 0x400318, 0.3 );
-      scene.add( directionalLight );
-
-      const color = 0x400318;  // dark-red
-      const near = 10;
-      const far = 3000;
-      scene.fog = new THREE.Fog(color, near, far);
+      const light = new THREE.PointLight( 0xffffff, 1, 100 );
+      light.position.set( 20, 10, 50 );
+      scene.add( light );
 
       let model1, model2, model3, model4,model5, model6;
 

@@ -612,19 +612,19 @@ function modelLoader(){
     }
 		if (worldId==2) {
 
-      var ambient = new THREE.AmbientLight(0xb5580d, 0.7);
+      var ambient = new THREE.AmbientLight(0xa86218, 0.2);
       scene.add(ambient);
 
-      const light = new THREE.PointLight( 0xb5580d, 0.5, 100 );
+      const light = new THREE.PointLight( 0xe8dfc3, 0.5, 100 );
       light.position.set( 50, 50, 50 );
       scene.add( light );
 
-      const directionalLight = new THREE.DirectionalLight( 0x2261ab, 0.3 );
+      const directionalLight = new THREE.DirectionalLight( 0xa86218, 0.3 );
       scene.add( directionalLight );
 
-      const color = 0x2261ab;  // blue
+      const color = 0x415d91;  // blue
       const near = 10;
-      const far = 3000;
+      const far = 5000;
       scene.fog = new THREE.Fog(color, near, far);
 
       let model1, model2, model3, model4,model5, model6, model7, model8, model9, model10;
