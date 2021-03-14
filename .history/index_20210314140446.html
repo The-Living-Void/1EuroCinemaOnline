@@ -64,7 +64,24 @@
 </head>
 
 <body>
-	
+	<script src="./postprocessing/EffectComposer.js"></script>
+	<script src="./postprocessing/RenderPass.js"></script>
+	<script src="./postprocessing/UnrealBloomPass.js"></script>
+
+	<script>
+
+		//COMPOSER
+
+		var composer = new THREE.EffectComposer(renderer);
+
+		var renderPass = new THREE.RenderPass(scene, camera);
+		composer.addPass(renderPass);
+
+		var unrealbloomPass = new THREE.UnrealBloomPass(THREE.unrealbloomPass);
+		composer.addPass(unrealbloomPass);
+
+	</script>
+
 <!--icons-->
 <!--	<div class="coins">
 <img src="" class="coin"> <img src="" class="coin3">

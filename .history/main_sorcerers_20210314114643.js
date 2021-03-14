@@ -11,7 +11,7 @@ import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js'
 // import { UnrealBloomPass } from './postprocessing/UnrealBloomPass.js';
 
 
-var debug=false;
+var debug=true;
 var checkObjId=false;
 var worldId = 1; //1= socerers 2=lighthouse 3=forest 4= cave
 var objectName = 'spider-anim2.glb';
@@ -562,6 +562,20 @@ let texture_lf;
   scene.add(skybox);
   }
 
+        //postprocessing
+
+        document.body.appendChild(renderer.domElement);
+
+        if (runPost ==true) {
+        composer = new POSTPROCESSING.EffectComposer(renderer);
+        composer.addPass(new POSTPROCESSING.RenderPass(scene,camera));
+        const effectPass = new POSTPROCESSING.EffectPass(
+        camera,
+        new POSTPROCESSING.BloomEffect()
+        );
+        effectPass.renderToScreen = true;
+        composer.addPass(effectPass);
+        }
 function objectLoader(){
 
 // var geometry = new THREE.PlaneGeometry(10, 10, 10);
@@ -686,7 +700,6 @@ function modelLoader(){
     }
 		if (worldId==2) {
 
-
       var ambient = new THREE.AmbientLight(0xb5580d, 0.7);
       scene.add(ambient);
 
@@ -702,7 +715,6 @@ function modelLoader(){
       const far = 3000;
       scene.fog = new THREE.Fog(color, near, far);
 
-      
       let model1, model2, model3, model4,model5, model6, model7, model8, model9, model10;
 
       //add names and locations of models here #SUUS
@@ -1063,6 +1075,10 @@ function addCharacters(){
     } );
 
   } );
+
+
+
+
 
 
   const myMaterial = new THREE.MeshNormalMaterial( { color: 0xffee00, refractionRatio: 0.95 }  );
@@ -1488,7 +1504,6 @@ function addHeightMapAll(squareNo){
 	}
 
 }
-        
 
 function addFlatGround(){
 
@@ -1551,7 +1566,6 @@ function fromImage ( image, width, depth, minHeight, maxHeight ) {
     return matrix;
 
   }
-
 
   function render() {
 

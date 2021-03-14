@@ -6,12 +6,13 @@ import {GLTFLoader} from './customPackage/loader/GLTFLoader.js'
 import { threeToCannon } from './node_modules/three-to-cannon/index.js';
 import { RGBELoader } from './customPackage/loader/RGBELoader.js';
 import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js';
-// import { EffectComposer } from './postprocessing/EffectComposer.js';
-// import { RenderPass } from './postprocessing/RenderPass';
-// import { UnrealBloomPass } from './postprocessing/UnrealBloomPass.js';
+import { EffectComposer } from './postprocessing/EffectComposer.js';
+import { RenderPass } from './postprocessing/RenderPass';
+import { UnrealBloomPass } from './postprocessing/UnrealBloomPass.js';
 
 
-var debug=false;
+
+var debug=true;
 var checkObjId=false;
 var worldId = 1; //1= socerers 2=lighthouse 3=forest 4= cave
 var objectName = 'spider-anim2.glb';
@@ -562,6 +563,7 @@ let texture_lf;
   scene.add(skybox);
   }
 
+
 function objectLoader(){
 
 // var geometry = new THREE.PlaneGeometry(10, 10, 10);
@@ -599,7 +601,6 @@ function objectLoader(){
 
 function modelLoader(){
 
-
     if (worldId==1) {
 
       var ambient = new THREE.AmbientLight(0xd5c3e8, 0.7);
@@ -612,6 +613,26 @@ function modelLoader(){
       const near = 500;
       const far = 6000;
       scene.fog = new THREE.Fog(color, near, far);
+
+
+      // postprocessing
+
+				composer = new EffectComposer( renderer );
+				composer.addPass( new RenderPass( scene, camera ) );
+
+
+      const effect1 = new UnrealBloomPass( new THREE.Vector2( window.innerWidth, window.innerHeight ), 1.5, 0.4, 0.85 );
+      effect1.uniforms[ 'scale' ].value = 4;
+      composer.addPass( effect1 );
+      bloomPass.threshold = params.bloomThreshold;
+      bloomPass.strength = params.bloomStrength;
+      bloomPass.radius = params.bloomRadius;
+
+
+				window.addEventListener( 'resize', onWindowResize );
+
+
+
 
     let model1, model2, model3, model4,model5, model6, model7, model8;
     //add names and locations of models here #SUUS
@@ -686,7 +707,6 @@ function modelLoader(){
     }
 		if (worldId==2) {
 
-
       var ambient = new THREE.AmbientLight(0xb5580d, 0.7);
       scene.add(ambient);
 
@@ -702,7 +722,6 @@ function modelLoader(){
       const far = 3000;
       scene.fog = new THREE.Fog(color, near, far);
 
-      
       let model1, model2, model3, model4,model5, model6, model7, model8, model9, model10;
 
       //add names and locations of models here #SUUS
@@ -1063,6 +1082,10 @@ function addCharacters(){
     } );
 
   } );
+
+
+
+
 
 
   const myMaterial = new THREE.MeshNormalMaterial( { color: 0xffee00, refractionRatio: 0.95 }  );
@@ -1488,7 +1511,6 @@ function addHeightMapAll(squareNo){
 	}
 
 }
-        
 
 function addFlatGround(){
 
@@ -1551,7 +1573,6 @@ function fromImage ( image, width, depth, minHeight, maxHeight ) {
     return matrix;
 
   }
-
 
   function render() {
 

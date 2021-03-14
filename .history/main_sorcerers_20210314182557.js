@@ -11,7 +11,7 @@ import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js'
 // import { UnrealBloomPass } from './postprocessing/UnrealBloomPass.js';
 
 
-var debug=false;
+var debug=true;
 var checkObjId=false;
 var worldId = 1; //1= socerers 2=lighthouse 3=forest 4= cave
 var objectName = 'spider-anim2.glb';

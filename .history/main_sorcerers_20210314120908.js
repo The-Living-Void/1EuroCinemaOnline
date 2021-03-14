@@ -11,9 +11,9 @@ import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js'
 // import { UnrealBloomPass } from './postprocessing/UnrealBloomPass.js';
 
 
-var debug=false;
+var debug=true;
 var checkObjId=false;
-var worldId = 1; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 2; //1= socerers 2=lighthouse 3=forest 4= cave
 var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 //var imgHeightWorld = new Array();
@@ -133,6 +133,7 @@ function initCannon(){
       world.addBody(chickCircleBody);
       //var quatChick = new CANNON.Quaternion(0, 0, 0, 0);
       //sphereChickShape.quaternion.set(n1, 0, 0, 0);
+
 
       if (worldId == 1) {
       // Create a plane

@@ -11,9 +11,9 @@ import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js'
 // import { UnrealBloomPass } from './postprocessing/UnrealBloomPass.js';
 
 
-var debug=false;
+var debug=true;
 var checkObjId=false;
-var worldId = 1; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 2; //1= socerers 2=lighthouse 3=forest 4= cave
 var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 //var imgHeightWorld = new Array();
@@ -133,6 +133,7 @@ function initCannon(){
       world.addBody(chickCircleBody);
       //var quatChick = new CANNON.Quaternion(0, 0, 0, 0);
       //sphereChickShape.quaternion.set(n1, 0, 0, 0);
+
 
       if (worldId == 1) {
       // Create a plane
@@ -451,6 +452,7 @@ function init() {
    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000)
    camera.position.z = 1;
 
+
    //var game = this;
    var white = "rgb(255,255,255)";
    scene = new THREE.Scene(white);
@@ -503,9 +505,10 @@ function init() {
    renderer.toneMapping = THREE.ACESFilmicToneMapping;
    renderer.toneMappingExposure = 1;
    renderer.outputEncoding = THREE.sRGBEncoding;
-
-
+   
 }
+
+
 
 function skybox(){
 let materialArray = [];
@@ -596,9 +599,6 @@ function objectLoader(){
     // }
 
 }
-
-function modelLoader(){
-
 
     if (worldId==1) {
 
@@ -1556,5 +1556,6 @@ function fromImage ( image, width, depth, minHeight, maxHeight ) {
   function render() {
 
     renderer.render( scene, camera );
+
 
   }

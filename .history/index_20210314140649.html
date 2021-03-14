@@ -64,7 +64,68 @@
 </head>
 
 <body>
-	
+	<!-- <script src="./postprocessing/EffectComposer.js"></script>
+	<script src="./postprocessing/RenderPass.js"></script>
+	<script src="./postprocessing/UnrealBloomPass.js"></script>
+
+	<script> -->
+
+		//COMPOSER
+
+	// 	var composer = new THREE.EffectComposer(renderer);
+
+	// 	var renderPass = new THREE.RenderPass(scene, camera);
+	// 	composer.addPass(renderPass);
+
+	// 	var unrealbloomPass = new THREE.UnrealBloomPass(THREE.unrealbloomPass);
+	// 	composer.addPass(unrealbloomPass);
+
+	// 	    //custom shader pass
+	// 		var myEffect = {
+    //     uniforms: {
+    //         "tDiffuse": { value: null },
+    //         "amount":   { value: 1.0 }
+    //     },
+    //     vertexShader: [
+    //         "varying vec2 vUv;",
+    //         "void main() {",
+    //             "vUv = uv;",
+    //             "gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
+    //         "}"
+    //     ].join( "\n" ),
+    //     fragmentShader: [
+    //         "uniform float amount;",
+    //         "uniform sampler2D tDiffuse;",
+    //         "varying vec2 vUv;",
+    //         "void main() {",
+    //             "vec4 color = texture2D( tDiffuse, vUv );",
+    //             "vec3 c = color.rgb;",
+    //             "color.r = c.r * 2.0;",
+    //             "color.g = c.g / 1.2;",
+    //             "color.b = c.b;",
+    //             "gl_FragColor = vec4( color.rgb , color.a );",
+    //         "}"
+    //     ].join( "\n" )
+    // }
+    
+    // var customPass = new THREE.ShaderPass(myEffect);
+    // customPass.renderToScreen = true;
+    // composer.addPass(customPass);
+
+    // //RENDER LOOP
+    // render();
+
+
+    // function render() {
+
+    //     // renderer.render(scene, camera);
+    //     composer.render();
+
+    // 	requestAnimationFrame(render);
+    // }
+
+	<!-- // </script> -->
+
 <!--icons-->
 <!--	<div class="coins">
 <img src="" class="coin"> <img src="" class="coin3">

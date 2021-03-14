@@ -6,14 +6,14 @@ import {GLTFLoader} from './customPackage/loader/GLTFLoader.js'
 import { threeToCannon } from './node_modules/three-to-cannon/index.js';
 import { RGBELoader } from './customPackage/loader/RGBELoader.js';
 import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js';
-// import { EffectComposer } from './postprocessing/EffectComposer.js';
-// import { RenderPass } from './postprocessing/RenderPass';
-// import { UnrealBloomPass } from './postprocessing/UnrealBloomPass.js';
+import { EffectComposer } from './postprocessing/EffectComposer.js';
+import { RenderPass } from './postprocessing/RenderPass.js';
+import { UnrealBloomPass } from './postprocessing/UnrealBloomPass.js';
 
 
 var debug=false;
 var checkObjId=false;
-var worldId = 1; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 3; //1= socerers 2=lighthouse 3=forest 4= cave
 var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 //var imgHeightWorld = new Array();
@@ -135,6 +135,9 @@ function initCannon(){
       //sphereChickShape.quaternion.set(n1, 0, 0, 0);
 
       if (worldId == 1) {
+
+
+
       // Create a plane
       // var groundShape = new CANNON.Plane();
       // groundBody = new CANNON.Body({ mass: 0, material: physicsMaterial });
@@ -143,99 +146,26 @@ function initCannon(){
       // groundBody.position.set(0, 0, 0);
       // world.addBody(groundBody);
 
-      //CODE BOXES SUUS
-      // sphere shapes (tegen klok in):
-      var sphereChickShape1 = new CANNON.Sphere(50, 60, 50);
-      var chickCircleBody1 = new CANNON.Body({ mass: 0, material: physicsMaterial });
-      chickCircleBody1.addShape(sphereChickShape1);
-      chickCircleBody1.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-      chickCircleBody1.position.set(-140, 5, -30);
-      world.addBody(chickCircleBody1);
-
-      var sphereChickShape2 = new CANNON.Sphere(50, 60, 50);
-      var chickCircleBody2 = new CANNON.Body({ mass: 0, material: physicsMaterial });
-      chickCircleBody2.addShape(sphereChickShape2);
-      chickCircleBody2.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-      chickCircleBody2.position.set(-90, 5, 150);
-      world.addBody(chickCircleBody2);
-
-      var sphereChickShape3 = new CANNON.Sphere(50, 60, 50);
-      var chickCircleBody3 = new CANNON.Body({ mass: 0, material: physicsMaterial });
-      chickCircleBody3.addShape(sphereChickShape3);
-      chickCircleBody3.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-      chickCircleBody3.position.set(100, 5, 240);
-      world.addBody(chickCircleBody3);
-
-      var sphereChickShape4 = new CANNON.Sphere(50, 60, 50);
-      var chickCircleBody4 = new CANNON.Body({ mass: 0, material: physicsMaterial });
-      chickCircleBody4.addShape(sphereChickShape4);
-      chickCircleBody4.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-      chickCircleBody4.position.set(290, 5, 160);
-      world.addBody(chickCircleBody4);
-
-      var sphereChickShape5 = new CANNON.Sphere(50, 60, 50);
-      var chickCircleBody5 = new CANNON.Body({ mass: 0, material: physicsMaterial });
-      chickCircleBody5.addShape(sphereChickShape5);
-      chickCircleBody5.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-      chickCircleBody5.position.set(330, 5, -30);
-      world.addBody(chickCircleBody5);
-
-      var sphereChickShape6 = new CANNON.Sphere(50, 60, 50);
-      var chickCircleBody6 = new CANNON.Body({ mass: 0, material: physicsMaterial });
-      chickCircleBody6.addShape(sphereChickShape6);
-      chickCircleBody6.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-      chickCircleBody6.position.set(230, 5, -250);
-      world.addBody(chickCircleBody6);
-
-      var sphereChickShape7 = new CANNON.Sphere(50, 60, 50);
-      var chickCircleBody7 = new CANNON.Body({ mass: 0, material: physicsMaterial });
-      chickCircleBody7.addShape(sphereChickShape7);
-      chickCircleBody7.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-      chickCircleBody7.position.set(-68, 5, -250);
-      world.addBody(chickCircleBody7);
-      
-      // plane 
-      var chassisShape8 = new CANNON.Box(new CANNON.Vec3(20, 40, 10));
-      var chassisBody8 = new CANNON.Body({mass: 0});
-      chassisBody8.addShape(chassisShape8);
+      //box shapes:
+      var chassisShape = new CANNON.Box(new CANNON.Vec3(1, 1, 3.2));
+      var chassisBody = new CANNON.Body({mass: 0});
+      chassisBody.addShape(chassisShape);
       //chassisBody.position.set(0, 0, 0);
-      chassisBody8.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-      chassisBody8.position.set(95, 5, -15);
-      chassisBody8.angularVelocity.set(0, 0, 0); // initial velocity
-      world.addBody(chassisBody8);
+      chassisBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+      chassisBody.position.set(20, 4, -40);
+      chassisBody.angularVelocity.set(0, 0, 0); // initial velocity
+      world.addBody(chassisBody);
 
-      //crystal
-      var sphereChickShape9 = new CANNON.Sphere(40, 50, 40);
-      var chickCircleBody9 = new CANNON.Body({ mass: 0, material: physicsMaterial });
-      chickCircleBody9.addShape(sphereChickShape9);
-      chickCircleBody9.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-      chickCircleBody9.position.set(100, 10, 5);
-      world.addBody(chickCircleBody9);
-      
-      // pillars next to crystal:
-      var sphereChickShape10 = new CANNON.Sphere(10);
-      var chickCircleBody10 = new CANNON.Body({ mass: 0, material: physicsMaterial });
-      chickCircleBody10.addShape(sphereChickShape10);
-      chickCircleBody10.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-      chickCircleBody10.position.set(100, 30, -15);
-      world.addBody(chickCircleBody10);
-
-      var sphereChickShape11 = new CANNON.Sphere(10);
-      var chickCircleBody11 = new CANNON.Body({ mass: 0, material: physicsMaterial });
-      chickCircleBody11.addShape(sphereChickShape11);
-      chickCircleBody11.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-      chickCircleBody11.position.set(80, 25, -40);
-      world.addBody(chickCircleBody11);
-
-      var sphereChickShape12 = new CANNON.Sphere(10);
-      var chickCircleBody12 = new CANNON.Body({ mass: 0, material: physicsMaterial });
-      chickCircleBody12.addShape(sphereChickShape12);
-      chickCircleBody12.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-      chickCircleBody12.position.set(115, 25, -38);
-      world.addBody(chickCircleBody12);
+      var chickShape = new CANNON.Box(new CANNON.Vec3(3, 1, 4));
+      var chickBody = new CANNON.Body({mass: 0});
+      chickBody.addShape(chickShape);
+      //chickBody.addShape(sphereChickShape);
+      chickBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+      chickBody.position.set(85, 23.5, 5);
+      chickBody.angularVelocity.set(0, 0, 0); // initial velocity
+      world.addBody(chickBody);
 
       }
-
 			if (worldId == 2) {
 
         //box shapes:
@@ -562,6 +492,7 @@ let texture_lf;
   scene.add(skybox);
   }
 
+
 function objectLoader(){
 
 // var geometry = new THREE.PlaneGeometry(10, 10, 10);
@@ -599,7 +530,6 @@ function objectLoader(){
 
 function modelLoader(){
 
-
     if (worldId==1) {
 
       var ambient = new THREE.AmbientLight(0xd5c3e8, 0.7);
@@ -612,6 +542,20 @@ function modelLoader(){
       const near = 500;
       const far = 6000;
       scene.fog = new THREE.Fog(color, near, far);
+
+      //postprocessing
+      const renderScene = new RenderPass( scene, camera );
+
+				const bloomPass = new UnrealBloomPass( new THREE.Vector2( window.innerWidth, window.innerHeight ), 1.5, 0.4, 0.85 );
+				bloomPass.threshold = params.bloomThreshold;
+				bloomPass.strength = params.bloomStrength;
+				bloomPass.radius = params.bloomRadius;
+
+				composer = new EffectComposer( renderer );
+				composer.addPass( renderScene );
+				composer.addPass( bloomPass );
+
+
 
     let model1, model2, model3, model4,model5, model6, model7, model8;
     //add names and locations of models here #SUUS
@@ -686,7 +630,6 @@ function modelLoader(){
     }
 		if (worldId==2) {
 
-
       var ambient = new THREE.AmbientLight(0xb5580d, 0.7);
       scene.add(ambient);
 
@@ -702,7 +645,6 @@ function modelLoader(){
       const far = 3000;
       scene.fog = new THREE.Fog(color, near, far);
 
-      
       let model1, model2, model3, model4,model5, model6, model7, model8, model9, model10;
 
       //add names and locations of models here #SUUS
@@ -1063,6 +1005,10 @@ function addCharacters(){
     } );
 
   } );
+
+
+
+
 
 
   const myMaterial = new THREE.MeshNormalMaterial( { color: 0xffee00, refractionRatio: 0.95 }  );
@@ -1488,7 +1434,6 @@ function addHeightMapAll(squareNo){
 	}
 
 }
-        
 
 function addFlatGround(){
 
@@ -1551,7 +1496,6 @@ function fromImage ( image, width, depth, minHeight, maxHeight ) {
     return matrix;
 
   }
-
 
   function render() {
 

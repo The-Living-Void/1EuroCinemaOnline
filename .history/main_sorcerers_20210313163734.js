@@ -7,11 +7,11 @@ import { threeToCannon } from './node_modules/three-to-cannon/index.js';
 import { RGBELoader } from './customPackage/loader/RGBELoader.js';
 import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js';
 // import { EffectComposer } from './postprocessing/EffectComposer.js';
-// import { RenderPass } from './postprocessing/RenderPass';
+// import { RenderPass } from './postprocessing/RenderPass.js';
 // import { UnrealBloomPass } from './postprocessing/UnrealBloomPass.js';
 
 
-var debug=false;
+var debug=true;
 var checkObjId=false;
 var worldId = 1; //1= socerers 2=lighthouse 3=forest 4= cave
 var objectName = 'spider-anim2.glb';
@@ -143,6 +143,8 @@ function initCannon(){
       // groundBody.position.set(0, 0, 0);
       // world.addBody(groundBody);
 
+
+
       //CODE BOXES SUUS
       // sphere shapes (tegen klok in):
       var sphereChickShape1 = new CANNON.Sphere(50, 60, 50);
@@ -234,6 +236,24 @@ function initCannon(){
       chickCircleBody12.position.set(115, 25, -38);
       world.addBody(chickCircleBody12);
 
+      //box shapes:
+      // var chassisShape = new CANNON.Box(new CANNON.Vec3(1, 1, 3.2));
+      // var chassisBody = new CANNON.Body({mass: 0});
+      // chassisBody.addShape(chassisShape);
+      // //chassisBody.position.set(0, 0, 0);
+      // chassisBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+      // chassisBody.position.set(20, 4, -40);
+      // chassisBody.angularVelocity.set(0, 0, 0); // initial velocity
+      // world.addBody(chassisBody);
+
+      // var chickShape = new CANNON.Box(new CANNON.Vec3(3, 1, 4));
+      // var chickBody = new CANNON.Body({mass: 0});
+      // chickBody.addShape(chickShape);
+      // //chickBody.addShape(sphereChickShape);
+      // chickBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+      // chickBody.position.set(85, 23.5, 5);
+      // chickBody.angularVelocity.set(0, 0, 0); // initial velocity
+      // world.addBody(chickBody);
       }
 
 			if (worldId == 2) {
@@ -562,6 +582,7 @@ let texture_lf;
   scene.add(skybox);
   }
 
+
 function objectLoader(){
 
 // var geometry = new THREE.PlaneGeometry(10, 10, 10);
@@ -599,7 +620,6 @@ function objectLoader(){
 
 function modelLoader(){
 
-
     if (worldId==1) {
 
       var ambient = new THREE.AmbientLight(0xd5c3e8, 0.7);
@@ -612,6 +632,19 @@ function modelLoader(){
       const near = 500;
       const far = 6000;
       scene.fog = new THREE.Fog(color, near, far);
+
+            //postprocessing
+            // const renderScene = new RenderPass( scene, camera );
+
+            // const bloomPass = new UnrealBloomPass( new THREE.Vector2( window.innerWidth, window.innerHeight ), 1.5, 0.4, 0.85 );
+            // bloomPass.threshold = params.bloomThreshold;
+            // bloomPass.strength = params.bloomStrength;
+            // bloomPass.radius = params.bloomRadius;
+      
+            // composer = new EffectComposer( renderer );
+            // composer.addPass( renderScene );
+            // composer.addPass( bloomPass );
+            
 
     let model1, model2, model3, model4,model5, model6, model7, model8;
     //add names and locations of models here #SUUS
@@ -686,7 +719,6 @@ function modelLoader(){
     }
 		if (worldId==2) {
 
-
       var ambient = new THREE.AmbientLight(0xb5580d, 0.7);
       scene.add(ambient);
 
@@ -702,7 +734,6 @@ function modelLoader(){
       const far = 3000;
       scene.fog = new THREE.Fog(color, near, far);
 
-      
       let model1, model2, model3, model4,model5, model6, model7, model8, model9, model10;
 
       //add names and locations of models here #SUUS
@@ -1063,6 +1094,10 @@ function addCharacters(){
     } );
 
   } );
+
+
+
+
 
 
   const myMaterial = new THREE.MeshNormalMaterial( { color: 0xffee00, refractionRatio: 0.95 }  );
@@ -1488,7 +1523,6 @@ function addHeightMapAll(squareNo){
 	}
 
 }
-        
 
 function addFlatGround(){
 
@@ -1551,7 +1585,6 @@ function fromImage ( image, width, depth, minHeight, maxHeight ) {
     return matrix;
 
   }
-
 
   function render() {
 

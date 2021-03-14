@@ -11,9 +11,9 @@ import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js'
 // import { UnrealBloomPass } from './postprocessing/UnrealBloomPass.js';
 
 
-var debug=false;
+var debug=true;
 var checkObjId=false;
-var worldId = 1; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 2; //1= socerers 2=lighthouse 3=forest 4= cave
 var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 //var imgHeightWorld = new Array();
@@ -596,6 +596,29 @@ function objectLoader(){
     // }
 
 }
+
+  /** COMPOSER */
+  renderScene = new THREE.RenderPass( scene, camera )
+	
+  effectFXAA = new THREE.ShaderPass( THREE.FXAAShader )
+  effectFXAA.uniforms.resolution.value.set( 1 / window.innerWidth, 1 / window.innerHeight )
+    
+  bloomPass = new THREE.UnrealBloomPass( new THREE.Vector2( window.innerWidth, window.innerHeight ), 1.5, 0.4, 0.85 )
+  bloomPass.threshold = 0.21
+  bloomPass.strength = 1.2
+  bloomPass.radius = 0.55
+  bloomPass.renderToScreen = true
+    
+  composer = new THREE.EffectComposer( renderer )
+  composer.setSize( window.innerWidth, window.innerHeight )
+    
+  composer.addPass( renderScene )
+  composer.addPass( effectFXAA )
+  composer.addPass( bloomPass )
+    
+  renderer.gammaInput = true
+  renderer.gammaOutput = true
+  renderer.toneMappingExposure = Math.pow( 0.9, 4.0 ) 
 
 function modelLoader(){
 
