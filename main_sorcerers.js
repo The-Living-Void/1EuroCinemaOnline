@@ -121,7 +121,8 @@ function initCannon(){
       sphereShape = new CANNON.Sphere(radius);
       sphereBody = new CANNON.Body({ mass: mass, material: physicsMaterial });
       sphereBody.addShape(sphereShape);
-      sphereBody.position.set(nx * sx * 0.5, ny * sy + radius * 2, nz * sz * 0.5);
+      // sphereBody.position.set(nx * sx * 0.5, ny * sy + radius * 2, nz * sz * 0.5);
+			sphereBody.position.set(0,150,-100);
       sphereBody.linearDamping = 0.9;
       world.addBody(sphereBody);
 
@@ -193,8 +194,8 @@ function initCannon(){
       chickCircleBody7.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
       chickCircleBody7.position.set(-68, 5, -250);
       world.addBody(chickCircleBody7);
-      
-      // plane 
+
+      // plane
       var chassisShape8 = new CANNON.Box(new CANNON.Vec3(20, 40, 10));
       var chassisBody8 = new CANNON.Body({mass: 0});
       chassisBody8.addShape(chassisShape8);
@@ -211,7 +212,7 @@ function initCannon(){
       chickCircleBody9.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
       chickCircleBody9.position.set(100, 10, 5);
       world.addBody(chickCircleBody9);
-      
+
       // pillars next to crystal:
       var sphereChickShape10 = new CANNON.Sphere(10);
       var chickCircleBody10 = new CANNON.Body({ mass: 0, material: physicsMaterial });
@@ -287,6 +288,10 @@ function initCannon(){
 				treefree2Body.position.set(103, 15, 11);
 				treefree2Body.angularVelocity.set(0, 0, 0);
 				world.addBody(treefree2Body);
+
+				const waterGeometry = new THREE.PlaneGeometry( 10000, 10000 );
+
+
 
       }
       if (worldId==3) {
@@ -702,8 +707,8 @@ function modelLoader(){
       const far = 3000;
       scene.fog = new THREE.Fog(color, near, far);
 
-      
-      let model1, model2, model3, model4,model5, model6, model7, model8, model9, model10;
+
+      let model1, model2, model3, model4,model5, model6, model7, model8, model9, model10, model11, model12, model13, model14;
 
       //add names and locations of models here #SUUS
       let p1 = loadModel('models/nature-tree3/scene.gltf').then(result => {  model1 = result.scene.children[0]; });
@@ -716,6 +721,10 @@ function modelLoader(){
       let p8 = loadModel('models/fishing-boat/fishing.gltf').then(result => {  model8 = result.scene.children[0]; });
       let p9 = loadModel('models/hut/hut.gltf').then(result => {  model9 = result.scene.children[0]; });
       let p10 = loadModel('models/nature-tree3/scene.gltf').then(result => {  model10 = result.scene.children[0]; });
+			let p11 = loadModel('models/cartoon_boardwalk_large_t/scene.gltf').then(result => {  model11 = result.scene.children[0]; });
+			let p12 = loadModel('models/nature-tree3/scene.gltf').then(result => {  model12 = result.scene.children[0]; });
+			let p13 = loadModel('models/low_poly_tree/scene.gltf').then(result => {  model13 = result.scene.children[0]; });
+			let p14 = loadModel('models/low_poly_tree/scene.gltf').then(result => {  model14 = result.scene.children[0]; });
 
 
       function loadModel(url) {
@@ -724,25 +733,7 @@ function modelLoader(){
           });
       }
 
-      Promise.all([p1,p2,p3,p4,p5, p6, p7, p8,p9,p10]).then(() => {
-           //do something to the model1
-          //  model1.position.set(60,0.1,-100);
-          //  var scaleSizeModel1 = 3;
-          //  model1.scale.set(scaleSizeModel1,scaleSizeModel1,scaleSizeModel1);
-          //    var textureLoader = new THREE.TextureLoader();
-          //    var texture = textureLoader.load('textures/godzilla.jpg');
-          //    var normTexture = textureLoader.load('textures/godzilla_normalmap.png');
-          //    var material = new THREE.MeshBasicMaterial();
-          //    //bot = gltf.scene.children[0];
-          //    material.metalness = 0;
-          //    material.map = texture;
-          //    material.bumpMap = normTexture;
-          //    //model1.castShadow = true;
-          //    model1.traverse( function ( model1 ) {
-          //      if ( model1 instanceof THREE.Mesh ) {
-          //           model1.material = material;
-          //      }
-          //    } );
+      Promise.all([p1,p2,p3,p4,p5, p6, p7, p8,p9,p10,p11, p12, p13, p14]).then(() => {
 
 					let theResult = model2.getObjectByName("Plane", true);
 										theResult.visible = false;
@@ -750,66 +741,86 @@ function modelLoader(){
 					let theResult2 = model2.getObjectByName("water", true);
 										theResult2.visible = false;
 
+					let theResult3 = model2.getObjectByName("Cube011_rocks_0", true);
+										theResult3.visible = false;
+
+					let theResult4 = model2.getObjectByName("Cube007_rocks_0", true);
+										theResult4.visible = false;
+
 
           var scaleSizeModel1 = 5;
           model1.scale.set(scaleSizeModel1,scaleSizeModel1,scaleSizeModel1);
-          model1.position.set(10,8-adjustHeigth,-30);
+          model1.position.set(180,32,-50);
           //model1.rotation.x = Math.PI/2;
 
           var scaleSizeModel2 = 1;
           model2.scale.set(scaleSizeModel2,scaleSizeModel2,scaleSizeModel2);
-          model2.position.set(200,-78-adjustHeigth,0);
-          //model2.rotation.x = Math.PI/2;
+          model2.position.set(165,-68,85);
+          model2.rotation.z = -0.4;
 
           var scaleSizeModel3 = 5;
           model3.scale.set(scaleSizeModel3,scaleSizeModel3,scaleSizeModel3);
-          model3.position.set(100,15-adjustHeigth,10);
+          model3.position.set(100,44,10);
           //model3.rotation.x = Math.PI/2;
 
-          var scaleSizeModel4 = 10;
-          model4.scale.set(scaleSizeModel4,scaleSizeModel4,scaleSizeModel4);
-          model4.position.set(100,-10-adjustHeigth,0);
-          model4.rotation.x = Math.PI/2;
-          //add amount of model mods here here #SUUS
-          //model3.position.set(0,50,0);
-          //add model to the scene
-
-          var scaleSizeModel6 = 50;
+          var scaleSizeModel6 = 40;
           model6.scale.set(scaleSizeModel6,scaleSizeModel6,scaleSizeModel6);
-          model6.position.set(50, 12-adjustHeigth,-50);
-          //model6.rotation.x = Math.PI/2;
+          model6.position.set(50, 25,-40);
+          model6.rotation.z = 10;
 
           var scaleSizeModel7 = 10;
           model7.scale.set(scaleSizeModel7,scaleSizeModel7,scaleSizeModel7);
           model7.position.set(50, 70-adjustHeigth,-50);
           //model6.rotation.x = Math.PI/2;
 
-          var scaleSizeModel8 = 1;
+          var scaleSizeModel8 = 0.1;
           model8.scale.set(scaleSizeModel8,scaleSizeModel8,scaleSizeModel8);
-          model8.position.set(-2000, 10-adjustHeigth,10);
-          //model6.rotation.x = Math.PI/2;
+          model8.position.set(-50, 0, 65);
+          model8.rotation.z = 80;
 
-          var scaleSizeModel9 = 0.1;
+          var scaleSizeModel9 = 0.06;
           model9.scale.set(scaleSizeModel9,scaleSizeModel9,scaleSizeModel9);
-          model9.position.set(40, 10-adjustHeigth, -30);
-          //model6.rotation.x = Math.PI/2;
+          model9.position.set(160, 6, -75);
+          model9.rotation.z = -170;
 
           var scaleSizeModel10 = 5;
           model10.scale.set(scaleSizeModel10,scaleSizeModel10,scaleSizeModel10);
-          model10.position.set(50, 7-adjustHeigth, 60);
+          model10.position.set(50, 38, 60);
           //model6.rotation.x = Math.PI/2;
+
+					var scaleSizeModel11 = 1;
+          model11.scale.set(scaleSizeModel11,scaleSizeModel11,scaleSizeModel11);
+          model11.position.set(-30, 0, 40);
+
+					var scaleSizeModel12 = 4;
+					model12.scale.set(scaleSizeModel12,scaleSizeModel12,scaleSizeModel12);
+					model12.position.set(-65, 28, -195);
+					model12.rotation.z = 50;
+
+					var scaleSizeModel13 = 8;
+          model13.scale.set(scaleSizeModel13,scaleSizeModel13,scaleSizeModel13);
+          model13.position.set(35, 0, 5);
+					model13.rotation.z = 50;
+
+					var scaleSizeModel14 = 8;
+          model14.scale.set(scaleSizeModel14,scaleSizeModel14,scaleSizeModel14);
+          model14.position.set(100, 0, 100);
+
 
           //add models 2 scene here #SUUS
           scene.add(model1);
           scene.add(model2);
           scene.add(model3);
-          scene.add(model4);
           scene.add(model5);
           scene.add(model6);
           scene.add(model7);
           scene.add(model8);
           scene.add(model9);
           scene.add(model10);
+					scene.add(model11);
+					scene.add(model12);
+					scene.add(model13);
+					scene.add(model14);
           //continue the process
       });
 
@@ -1488,7 +1499,7 @@ function addHeightMapAll(squareNo){
 	}
 
 }
-        
+
 
 function addFlatGround(){
 
