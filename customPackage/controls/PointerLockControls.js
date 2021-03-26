@@ -7,6 +7,7 @@ import * as CANNON from '/node_modules/cannon-es/dist/cannon-es.js'
  */
 
 var hideHud
+// var worldId
 
 var PointerLockControls = function (camera, cannonBody) {
   var eyeYPos = 2 // eyes are 2 meters above the ground
@@ -103,6 +104,7 @@ var PointerLockControls = function (camera, cannonBody) {
         if (hideHud==true) {
           //js: document.getElementById("cursor").style.visibility = "visible";
           js: document.getElementById("map2").style.left = "-20%";
+          js: document.getElementById("map2-2").style.left = "-20%";
           js: document.getElementById("map").style.right = "-20%";
           js: document.getElementById("map2w2").style.left = "-20%";
           js: document.getElementById("mapw2").style.right = "-20%";
@@ -122,6 +124,7 @@ var PointerLockControls = function (camera, cannonBody) {
 
         }else {
           js: document.getElementById("map2").style.left = "0%";
+          js: document.getElementById("map2-2").style.left = "0%";
           js: document.getElementById("map").style.right = "0%";
           js: document.getElementById("map2w2").style.left = "0%";
           js: document.getElementById("mapw2").style.right = "0%";
@@ -144,24 +147,53 @@ var PointerLockControls = function (camera, cannonBody) {
         break
 
         case 69: // hide
-          hideHud = !hideHud
+          hideHud = !hideHud;
           //console.log("hide hud is "+hideHud);
           if (hideHud==true) {
             // js: document.getElementById("encyclo-4").style.visibility = "visible";
-            js: document.getElementById("encyclo3").style.visibility = "visible";
-            js: document.getElementById("encyclo1").style.top = "-100%";
+            js: document.getElementById("encyclo1").style.visibility = "visible";
+            js: document.getElementById("encyclo1").style.top = "-0%";
+            js: document.getElementById("encyclo-4").style.visibility = "visible";
             js: document.getElementById("encyclo-4").style.top = "0%";
-            js: document.getElementById("encyclo2").style.top = "-100%";
+            js: document.getElementById("encyclo2").style.visibility = "visible";
+            js: document.getElementById("encyclo2").style.top = "0%";
+            js: document.getElementById("encyclo4").style.visibility = "visible";
             js: document.getElementById("encyclo3").style.top = "0%";
 
           }else {
 
-            js: document.getElementById("encyclo1").style.top = "0%";
+            js: document.getElementById("encyclo1").style.top = "-100%";
             js: document.getElementById("encyclo-4").style.top = "-100%";
-            js: document.getElementById("encyclo2").style.top = "0%";
+            js: document.getElementById("encyclo2").style.top = "-100%";
             js: document.getElementById("encyclo3").style.top = "-100%";
           }
           break
+
+
+          case 73: // hide
+            hideHud = !hideHud
+            //console.log("hide hud is "+hideHud);
+            if (hideHud==true) {
+              // js: document.getElementById("encyclo-4").style.visibility = "visible";
+              js: document.getElementById("info1").style.visibility = "visible";
+              js: document.getElementById("info1").style.top = "15%";
+              js: document.getElementById("info2").style.visibility = "visible";
+              js: document.getElementById("info2").style.top = "15%";
+              js: document.getElementById("info3").style.visibility = "visible";
+              js: document.getElementById("info3").style.top = "15%";
+              js: document.getElementById("info4").style.visibility = "visible";
+              js: document.getElementById("info4").style.top = "15%";
+
+
+            }else {
+
+              js: document.getElementById("info1").style.top = "-75%";
+              js: document.getElementById("info2").style.top = "-75%";
+              js: document.getElementById("info3").style.top = "-75%";
+              js: document.getElementById("info4").style.top = "-75%";
+
+            }
+            break
     }
   }
 

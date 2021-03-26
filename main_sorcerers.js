@@ -13,7 +13,7 @@ import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js'
 
 var debug=false;
 var checkObjId=false;
-var worldId = 4; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 1; //1= socerers 2=lighthouse 3=forest 4= cave
 var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 //var imgHeightWorld = new Array();
@@ -417,10 +417,13 @@ function init() {
 				js: document.getElementById("world3").style.visibility = "hidden";
 				js: document.getElementById("world4").style.visibility = "hidden";
 
+
 				js: document.getElementById("instructions1").style.visibility = "visible";
 				js: document.getElementById("instructions2").style.visibility = "hidden";
 				js: document.getElementById("instructions3").style.visibility = "hidden";
 				js: document.getElementById("instructions4").style.visibility = "hidden";
+
+
 			}else if (worldId==2) {
 				js: document.getElementById("world1").style.visibility = "hidden";
 				js: document.getElementById("world2").style.visibility = "visible";
