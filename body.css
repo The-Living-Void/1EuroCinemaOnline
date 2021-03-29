@@ -131,8 +131,16 @@ body { margin: 0; background: black;}
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 85%;
-
+  /* animation: helloworld 40s linear forwards; */
 }
+
+/* @keyframes helloworld {
+  0%   {opacity: 0;
+  40%  {opacity: 0;}
+  80   {opacity: 1;}
+  100% {opacity: 1;}
+
+} */
 #buttonrightbottom {
     z-index: 0;
     text-align: horizontal;
@@ -149,6 +157,17 @@ body { margin: 0; background: black;}
   position: fixed;
   top:0em;
   left:0px;
+  max-width: 7%;
+  opacity: 0.9;
+}
+
+#buttonleftbottom2 {
+  z-index: 1;
+  text-align: horizontal;
+  margin-right: 4em;
+  position: fixed;
+  bottom:2%;
+  left:1%;
   max-width: 7%;
   opacity: 0.9;
 }
@@ -272,6 +291,19 @@ body { margin: 0; background: black;}
   opacity: 0.9;
 
 }
+
+#map2-2 {
+  z-index: 1;
+  text-align: horizontal;
+  margin-right: 1em;
+  position: fixed;
+  top:10%;
+  left:-20px;
+  max-height: 85%;
+  opacity: 0.9;
+
+}
+
 #mapw2 {
   z-index: 1;
   text-align: horizontal;
@@ -371,7 +403,21 @@ body { margin: 0; background: black;}
     right:100px;
     max-width: 50%;
     opacity: 0.9;
+    animation: fadein 50s linear forwards;
 }
+
+@keyframes fadein {
+    0%   {opacity: 0;}
+    10%  {opacity: 0;}
+    20%  {opacity: 0;}
+    35%  {opacity:1;}
+    40%  {opacity: 1;}
+    80   {opacity: 1;}
+    90% {opacity: 1;}
+    95% {opacity: 0;}
+    100% {opacity: 0;}
+}
+
 #found {
   z-index: 1;
   position: fixed;
@@ -380,12 +426,46 @@ body { margin: 0; background: black;}
   transform: translate(-50%, -50%);
   max-width: 95%;
 }
+
+#info1 {
+  z-index: 1;
+  top: 15%;
+  left: 40%;
+  position: fixed;
+  max-width: 98%;
+  visibility: hidden;
+}
+#info2 {
+  z-index: 1;
+  top: 15%;
+  left: 40%;
+  position: fixed;
+  max-width: 98%;
+  visibility: hidden;
+}
+#info3 {
+  z-index: 1;
+  top: 15%;
+  left: 40%;
+  position: fixed;
+  max-width: 98%;
+  visibility: hidden;
+}
+#info4 {
+  z-index: 1;
+  top: 15%;
+  left: 40%;
+  position: fixed;
+  max-width: 98%;
+  visibility: hidden;
+}
+
 #encyclo1 {
   z-index: 1;
-  margin-right: 10em;
-  margin-top: 10em;
-  margin-bottom: 10em;
-  margin-left: 10em;
+  margin-right: 5%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 5%;
   position: fixed;
   max-width: 98%;
   visibility: hidden;
@@ -393,10 +473,10 @@ body { margin: 0; background: black;}
 
 #encyclo2 {
   z-index: 1;
-  margin-right: 10em;
-  margin-top: 10em;
-  margin-bottom: 10em;
-  margin-left: 10em;
+  margin-right: 5%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 5%;
   position: fixed;
   max-width: 98%;
   visibility: hidden;
@@ -404,10 +484,10 @@ body { margin: 0; background: black;}
 
 #encyclo3 {
   z-index: 1;
-  margin-right: 10em;
-  margin-top: 10em;
-  margin-bottom: 10em;
-  margin-left: 10em;
+  margin-right: 5%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 5%;
   position: fixed;
   max-width: 98%;
   visibility: hidden;
@@ -415,10 +495,10 @@ body { margin: 0; background: black;}
 
 #encyclo-4 {
   z-index: 1;
-  margin-right: 10em;
-  margin-top: 10em;
-  margin-bottom: 10em;
-  margin-left: 10em;
+  margin-right: 5%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 5%;
   position: fixed;
   max-width: 98%;
   visibility: hidden;
@@ -432,6 +512,7 @@ body { margin: 0; background: black;}
   transform: translate(-50%, -50%);
   max-width: 100%;
 }
+
 #welcome {
   z-index: 2;
   position: fixed;
@@ -439,7 +520,17 @@ body { margin: 0; background: black;}
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 100;
+  animation: mymove 15s linear forwards;
 }
+
+@keyframes mymove {
+    0%   {opacity: 1;}
+    70%  {opacity: 1;}
+    90% {opacity: 0;}
+    100% {opacity: 0;}
+    100% {visibility: hidden;}
+}
+
 #about {
   z-index: 1;
   text-align: horizontal;
