@@ -13,7 +13,7 @@ import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js'
 
 var debug=false;
 var checkObjId=false;
-var worldId = 4; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 1; //1= socerers 2=lighthouse 3=forest 4= cave
 var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 //var imgHeightWorld = new Array();
@@ -122,16 +122,16 @@ function initCannon(){
       sphereBody = new CANNON.Body({ mass: mass, material: physicsMaterial });
       sphereBody.addShape(sphereShape);
       // sphereBody.position.set(nx * sx * 0.5, ny * sy + radius * 2, nz * sz * 0.5);
-			sphereBody.position.set(0,150,-100);
+			sphereBody.position.set(0,60,0);
       sphereBody.linearDamping = 0.9;
       world.addBody(sphereBody);
 
-      var sphereChickShape = new CANNON.Sphere(5);
-      var chickCircleBody = new CANNON.Body({ mass: 0, material: physicsMaterial });
-      chickCircleBody.addShape(sphereChickShape);
-      chickCircleBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-      chickCircleBody.position.set(85, 32, 5);
-      world.addBody(chickCircleBody);
+      // var sphereChickShape = new CANNON.Sphere(5);
+      // var chickCircleBody = new CANNON.Body({ mass: 0, material: physicsMaterial });
+      // chickCircleBody.addShape(sphereChickShape);
+      // chickCircleBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+      // chickCircleBody.position.set(85, 32, 5);
+      // world.addBody(chickCircleBody);
       //var quatChick = new CANNON.Quaternion(0, 0, 0, 0);
       //sphereChickShape.quaternion.set(n1, 0, 0, 0);
 
@@ -235,43 +235,216 @@ function initCannon(){
       chickCircleBody12.position.set(115, 25, -38);
       world.addBody(chickCircleBody12);
 
+			// Roos add
+			//Platform
+			var platform1Shape = new CANNON.Box(new CANNON.Vec3(40, 30, 23));
+			var platform1Body = new CANNON.Body({mass: 0, material: physicsMaterial});
+			platform1Body.addShape(platform1Shape);
+			platform1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 0.3, 0), -Math.PI / 2);
+			platform1Body.position.set(87, 0, -27);
+			platform1Body.angularVelocity.set(0, 0, 0);
+			world.addBody(platform1Body);
+
       }
 
 			if (worldId == 2) {
 
-        //box shapes:
-        var chassisShape = new CANNON.Box(new CANNON.Vec3(1, 1, 3.2));
+				var world2wall1Shape = new CANNON.Box(new CANNON.Vec3(400, 200, 1));
+				var world2wall1Body = new CANNON.Body({mass: 0});
+				world2wall1Body.addShape(world2wall1Shape);
+				world2wall1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
+				world2wall1Body.position.set(330, 0, 0);
+				world.addBody(world2wall1Body);
+
+				var world2wall2Shape = new CANNON.Box(new CANNON.Vec3(400, 200, 1));
+				var world2wall2Body = new CANNON.Body({mass: 0});
+				world2wall2Body.addShape(world2wall2Shape);
+				world2wall2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
+				world2wall2Body.position.set(-150, 0, 0);
+				world.addBody(world2wall2Body);
+
+				var world2wall3Shape = new CANNON.Box(new CANNON.Vec3(1, 200, 400));
+				var world2wall3Body = new CANNON.Body({mass: 0});
+				world2wall3Body.addShape(world2wall3Shape);
+				world2wall3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
+				world2wall3Body.position.set(0, 0, -240);
+				world.addBody(world2wall3Body);
+
+				var world2wall4Shape = new CANNON.Box(new CANNON.Vec3(1, 200, 400));
+				var world2wall4Body = new CANNON.Body({mass: 0});
+				world2wall4Body.addShape(world2wall4Shape);
+				world2wall4Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
+				world2wall4Body.position.set(0, 0, 250);
+				world.addBody(world2wall4Body);
+
+				var vuurtorenShape = new CANNON.Box(new CANNON.Vec3(20, 20, 12));
+				var vuurtorenBody = new CANNON.Body({mass: 0});
+				vuurtorenBody.addShape(vuurtorenShape);
+				vuurtorenBody.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 20);
+				vuurtorenBody.position.set(145, 15, 110);
+				world.addBody(vuurtorenBody);
+
+				var vuurtoren2Shape = new CANNON.Sphere(19.5);
+				var vuurtoren2Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+				vuurtoren2Body.addShape(vuurtoren2Shape);
+				vuurtoren2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+				vuurtoren2Body.position.set(135, 11, 136);
+				world.addBody(vuurtoren2Body);
+
+				var hutShape = new CANNON.Box(new CANNON.Vec3(9, 5, 9));
+				var hutBody = new CANNON.Body({mass: 0});
+				hutBody.addShape(hutShape);
+				hutBody.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -170);
+				hutBody.position.set(160, 4, -75);
+				world.addBody(hutBody);
+
+				var hutwall1Shape = new CANNON.Box(new CANNON.Vec3(0.5, 11, 9));
+				var hutwall1Body = new CANNON.Body({mass: 0});
+				hutwall1Body.addShape(hutwall1Shape);
+				hutwall1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -170);
+				hutwall1Body.position.set(152, 8, -78);
+				world.addBody(hutwall1Body);
+
+				var hutwall2Shape = new CANNON.Box(new CANNON.Vec3(0.5, 11, 9));
+				var hutwall2Body = new CANNON.Body({mass: 0});
+				hutwall2Body.addShape(hutwall2Shape);
+				hutwall2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -170);
+				hutwall2Body.position.set(168, 8, -72);
+				world.addBody(hutwall2Body);
+
+				var hutwall3Shape = new CANNON.Box(new CANNON.Vec3(8, 11, 0.5));
+				var hutwall3Body = new CANNON.Body({mass: 0});
+				hutwall3Body.addShape(hutwall3Shape);
+				hutwall3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -170);
+				hutwall3Body.position.set(162, 8, -83);
+				world.addBody(hutwall3Body);
+
+				var hutwall4Shape = new CANNON.Box(new CANNON.Vec3(4, 11, 0.5));
+				var hutwall4Body = new CANNON.Body({mass: 0});
+				hutwall4Body.addShape(hutwall4Shape);
+				hutwall4Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -170);
+				hutwall4Body.position.set(161, 8, -66);
+				world.addBody(hutwall4Body);
+
+				var hutwall5Shape = new CANNON.Box(new CANNON.Vec3(2, 11, 0.5));
+				var hutwall5Body = new CANNON.Body({mass: 0});
+				hutwall5Body.addShape(hutwall5Shape);
+				hutwall5Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -170);
+				hutwall5Body.position.set(151, 8, -69);
+				world.addBody(hutwall5Body);
+
+				var huttreeShape = new CANNON.Box(new CANNON.Vec3(1, 1, 16));
+				var huttreeBody = new CANNON.Body({mass: 0});
+				huttreeBody.addShape(huttreeShape);
+				huttreeBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+				huttreeBody.position.set(176, 8, -50);
+				world.addBody(huttreeBody);
+
+				var keien1Shape = new CANNON.Sphere(25);
+				var keien1Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+				keien1Body.addShape(keien1Shape);
+				keien1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+				keien1Body.position.set(252, -14, -15);
+				world.addBody(keien1Body);
+
+				var keien2Shape = new CANNON.Sphere(10);
+				var keien2Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+				keien2Body.addShape(keien2Shape);
+				keien2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+				keien2Body.position.set(242, 7, -16);
+				world.addBody(keien2Body);
+
+				var keien3Shape = new CANNON.Sphere(11);
+				var keien3Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+				keien3Body.addShape(keien3Shape);
+				keien3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+				keien3Body.position.set(232, 12, -27);
+				world.addBody(keien3Body);
+
+				var bigrockShape = new CANNON.Sphere(21.6);
+				var bigrockBody = new CANNON.Body({ mass: 0, material: physicsMaterial });
+				bigrockBody.addShape(bigrockShape);
+				bigrockBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+				bigrockBody.position.set(62, 11, -43);
+				world.addBody(bigrockBody);
+
+				var bigrock1Shape = new CANNON.Sphere(21);
+				var bigrock1Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+				bigrock1Body.addShape(bigrock1Shape);
+				bigrock1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+				bigrock1Body.position.set(58, 25, -48);
+				world.addBody(bigrock1Body);
+
+				var bigrock2Shape = new CANNON.Sphere(17);
+				var bigrock2Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+				bigrock2Body.addShape(bigrock2Shape);
+				bigrock2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+				bigrock2Body.position.set(31, 10, -56);
+				world.addBody(bigrock2Body);
+
+				var bigrock3Shape = new CANNON.Sphere(17);
+				var bigrock3Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+				bigrock3Body.addShape(bigrock3Shape);
+				bigrock3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+				bigrock3Body.position.set(45, -3, -20);
+				world.addBody(bigrock3Body);
+
+				var bigrock4Shape = new CANNON.Sphere(12);
+				var bigrock4Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+				bigrock4Body.addShape(bigrock4Shape);
+				bigrock4Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+				bigrock4Body.position.set(60, 1, -15);
+				world.addBody(bigrock4Body);
+
+				var chassisShape = new CANNON.Box(new CANNON.Vec3(4, 5, 3.2));
         var chassisBody = new CANNON.Body({mass: 0});
         chassisBody.addShape(chassisShape);
-        //chassisBody.position.set(0, 0, 0);
-
-        chassisBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-        chassisBody.position.set(20, 4, -40);
+        chassisBody.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -70);
+        chassisBody.position.set(41, 4, -41);
         chassisBody.angularVelocity.set(0, 0, 0); // initial velocity
         world.addBody(chassisBody);
 
-				var cyanneShape = new CANNON.Box(new CANNON.Vec3(1.8, 1.8, 16));
-				var cyanneBody = new CANNON.Body({mass: 0});
-				cyanneBody.addShape(cyanneShape);
-				cyanneBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-				cyanneBody.position.set(6, 15, -30);
-				cyanneBody.angularVelocity.set(0, 0, 0);
-				world.addBody(cyanneBody);
+				var boardwalkShape = new CANNON.Box(new CANNON.Vec3(45, 5, 5));
+				var boardwalkBody = new CANNON.Body({mass: 0});
+				boardwalkBody.addShape(boardwalkShape);
+				boardwalkBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+				boardwalkBody.position.set(-48, -1, 37);
+				world.addBody(boardwalkBody);
 
-				var superrock1Shape = new CANNON.Box(new CANNON.Vec3(20, 20, 16));
-				var superrock1Body = new CANNON.Body({mass: 0});
-				superrock1Body.addShape(superrock1Shape);
-				superrock1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-				superrock1Body.position.set(40, 15, -57);
-				superrock1Body.angularVelocity.set(0, 0, 0);
-				world.addBody(superrock1Body);
+				var boardwalk2Shape = new CANNON.Box(new CANNON.Vec3(5, 30, 5));
+				var boardwalk2Body = new CANNON.Body({mass: 0});
+				boardwalk2Body.addShape(boardwalk2Shape);
+				boardwalk2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+				boardwalk2Body.position.set(-88, -1, 37);
+				world.addBody(boardwalk2Body);
 
-				var keien1Shape = new CANNON.Sphere(3);
-				var keien1Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
-				keien1Body.addShape(keien1Shape);
-				keien1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(2, 0, 2), -Math.PI / 2);
-				keien1Body.position.set(200, 36, 100);
-				world.addBody(keien1Body);
+				var boatShape = new CANNON.Box(new CANNON.Vec3(15, 25, 9));
+				var boatBody = new CANNON.Body({mass: 0});
+				boatBody.addShape(boatShape);
+				boatBody.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -0.1);
+				boatBody.position.set(-45, 0, 66);
+				world.addBody(boatBody);
+
+				var boat2Shape = new CANNON.Box(new CANNON.Vec3(6, 25, 6));
+				var boat2Body = new CANNON.Body({mass: 0});
+				boat2Body.addShape(boat2Shape);
+				boat2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -0.9);
+				boat2Body.position.set(-28, 0, 67);
+				world.addBody(boat2Body);
+
+				var boat3Shape = new CANNON.Box(new CANNON.Vec3(5, 25, 5));
+				var boat3Body = new CANNON.Body({mass: 0});
+				boat3Body.addShape(boat3Shape);
+				boat3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -0.95);
+				boat3Body.position.set(-70, 0, 63);
+				world.addBody(boat3Body);
+
+				var boat4Shape = new CANNON.Box(new CANNON.Vec3(9, 25, 7.5));
+				var boat4Body = new CANNON.Body({mass: 0});
+				boat4Body.addShape(boat4Shape);
+				boat4Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -0.1);
+				boat4Body.position.set(-61, 0, 64);
+				world.addBody(boat4Body);
 
 				var treefree1Shape = new CANNON.Box(new CANNON.Vec3(1.2, 1.2, 16));
 				var treefree1Body = new CANNON.Body({mass: 0});
@@ -288,6 +461,30 @@ function initCannon(){
 				treefree2Body.position.set(103, 15, 11);
 				treefree2Body.angularVelocity.set(0, 0, 0);
 				world.addBody(treefree2Body);
+
+				var treespiderislandShape = new CANNON.Box(new CANNON.Vec3(1, 1, 16));
+				var treespiderislandBody = new CANNON.Body({mass: 0});
+				treespiderislandBody.addShape(treespiderislandShape);
+				treespiderislandBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+				treespiderislandBody.position.set(-68, 15, -195);
+				treespiderislandBody.angularVelocity.set(0, 0, 0);
+				world.addBody(treespiderislandBody);
+
+				var treeemeraldShape = new CANNON.Box(new CANNON.Vec3(1, 1, 16));
+				var treeemeraldBody = new CANNON.Body({mass: 0});
+				treeemeraldBody.addShape(treeemeraldShape);
+				treeemeraldBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+				treeemeraldBody.position.set(32, 15, 5);
+				treeemeraldBody.angularVelocity.set(0, 0, 0);
+				world.addBody(treeemeraldBody);
+
+				var treeemerald2Shape = new CANNON.Box(new CANNON.Vec3(1, 1, 16));
+				var treeemerald2Body = new CANNON.Body({mass: 0});
+				treeemerald2Body.addShape(treeemerald2Shape);
+				treeemerald2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+				treeemerald2Body.position.set(97, 15, 101);
+				treeemerald2Body.angularVelocity.set(0, 0, 0);
+				world.addBody(treeemerald2Body);
 
 				const waterGeometry = new THREE.PlaneGeometry( 10000, 10000 );
 
@@ -607,14 +804,14 @@ function modelLoader(){
 
     if (worldId==1) {
 
-      var ambient = new THREE.AmbientLight(0xd5c3e8, 0.7);
+      var ambient = new THREE.AmbientLight(0xd5c3e8, 0.2);
       scene.add(ambient);
 
       const directionalLight = new THREE.DirectionalLight( 0xd5c3e8, 0.3 );
       scene.add( directionalLight );
 
       const color = 0xd5c3e8;  // purple
-      const near = 500;
+      const near = 10;
       const far = 6000;
       scene.fog = new THREE.Fog(color, near, far);
 
@@ -703,8 +900,8 @@ function modelLoader(){
       scene.add( directionalLight );
 
       const color = 0x2261ab;  // blue
-      const near = 10;
-      const far = 3000;
+      const near = 40;
+      const far = 350;
       scene.fog = new THREE.Fog(color, near, far);
 
 
