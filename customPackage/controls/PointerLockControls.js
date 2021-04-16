@@ -6,7 +6,7 @@ import * as CANNON from '/node_modules/cannon-es/dist/cannon-es.js'
  * @author schteppe / https://github.com/schteppe
  */
 
-var hideHud
+var hideHud, hideHudi,hideHude;
 // var worldId
 
 var PointerLockControls = function (camera, cannonBody) {
@@ -97,102 +97,20 @@ var PointerLockControls = function (camera, cannonBody) {
         canJump = false
         break
 
-      case 72: // hide
-      case 104: // hide
-        hideHud = !hideHud
+        //case 104: // hide
+      case 72: // hide      "h"
+        hideHud = !hideHud;
         //console.log("hide hud is "+hideHud);
-        if (hideHud==true) {
-          //js: document.getElementById("cursor").style.visibility = "visible";
-          js: document.getElementById("map2").style.left = "-20%";
-          js: document.getElementById("map2-2").style.left = "-20%";
-          js: document.getElementById("map").style.right = "-20%";
-          js: document.getElementById("map2w2").style.left = "-20%";
-          js: document.getElementById("mapw2").style.right = "-20%";
-          js: document.getElementById("map2w3").style.left = "-20%";
-          js: document.getElementById("mapw3").style.right = "-20%";
-          js: document.getElementById("map2w4").style.left = "-20%";
-          js: document.getElementById("mapw4").style.right = "-20%";
-          js: document.getElementById("world4critteroverlay").style.right = "-20%";
-          js: document.getElementById("world3critteroverlay").style.right = "-20%";
-          js: document.getElementById("world2critteroverlay").style.right = "-20%";
-          js: document.getElementById("world1critteroverlay").style.right = "-20%";
-          js: document.getElementById("world1crittercounter").style.right = "-20%";
-          js: document.getElementById("world2crittercounter").style.right = "-20%";
-          js: document.getElementById("world3crittercounter").style.right = "-20%";
-          js: document.getElementById("world4crittercounter").style.right = "-20%";
-          js: document.getElementById("encyclo4").style.right = "-20%";
-
-        }else {
-          js: document.getElementById("map2").style.left = "0%";
-          js: document.getElementById("map2-2").style.left = "0%";
-          js: document.getElementById("map").style.right = "0%";
-          js: document.getElementById("map2w2").style.left = "0%";
-          js: document.getElementById("mapw2").style.right = "0%";
-          js: document.getElementById("map2w3").style.left = "0%";
-          js: document.getElementById("mapw3").style.right = "0%";
-          js: document.getElementById("map2w4").style.left = "0%";
-          js: document.getElementById("mapw4").style.right = "0%";
-          js: document.getElementById("world4critteroverlay").style.right = "0%";
-          js: document.getElementById("world3critteroverlay").style.right = "0%";
-          js: document.getElementById("world2critteroverlay").style.right = "0%";
-          js: document.getElementById("world1critteroverlay").style.right = "0%";
-          js: document.getElementById("world1crittercounter").style.right = "0%";
-          js: document.getElementById("world2crittercounter").style.right = "0%";
-          js: document.getElementById("world3crittercounter").style.right = "0%";
-          js: document.getElementById("world4crittercounter").style.right = "0%";
-          js: document.getElementById("encyclo4").style.right = "0%";
-
-
-        }
         break
 
-        case 69: // hide
-          hideHud = !hideHud;
-          //console.log("hide hud is "+hideHud);
-          if (hideHud==true) {
-            // js: document.getElementById("encyclo-4").style.visibility = "visible";
-            js: document.getElementById("encyclo1").style.visibility = "visible";
-            js: document.getElementById("encyclo1").style.top = "-0%";
-            js: document.getElementById("encyclo-4").style.visibility = "visible";
-            js: document.getElementById("encyclo-4").style.top = "0%";
-            js: document.getElementById("encyclo2").style.visibility = "visible";
-            js: document.getElementById("encyclo2").style.top = "0%";
-            js: document.getElementById("encyclo4").style.visibility = "visible";
-            js: document.getElementById("encyclo3").style.top = "0%";
-
-          }else {
-
-            js: document.getElementById("encyclo1").style.top = "-100%";
-            js: document.getElementById("encyclo-4").style.top = "-100%";
-            js: document.getElementById("encyclo2").style.top = "-100%";
-            js: document.getElementById("encyclo3").style.top = "-100%";
-          }
+        case 69: // hide this is e
+          hideHude = !hideHude;
           break
 
 
-          case 73: // hide
-            hideHud = !hideHud
+          case 73: // hide "i"
+            hideHudi = !hideHudi;
             //console.log("hide hud is "+hideHud);
-            if (hideHud==true) {
-              // js: document.getElementById("encyclo-4").style.visibility = "visible";
-              js: document.getElementById("info1").style.visibility = "visible";
-              js: document.getElementById("info1").style.top = "15%";
-              js: document.getElementById("info2").style.visibility = "visible";
-              js: document.getElementById("info2").style.top = "15%";
-              js: document.getElementById("info3").style.visibility = "visible";
-              js: document.getElementById("info3").style.top = "15%";
-              js: document.getElementById("info4").style.visibility = "visible";
-              js: document.getElementById("info4").style.top = "15%";
-
-
-            }else {
-
-              js: document.getElementById("info1").style.top = "-75%";
-              js: document.getElementById("info2").style.top = "-75%";
-              js: document.getElementById("info3").style.top = "-75%";
-              js: document.getElementById("info4").style.top = "-75%";
-
-            }
             break
     }
   }
@@ -236,8 +154,6 @@ var PointerLockControls = function (camera, cannonBody) {
     quat.multiplyVector3(targetVec)
   }
 
-
-
   // Moves the camera to the Cannon.js object position and adds velocity to the object if the run key is down
   var inputVelocity = new THREE.Vector3()
   var euler = new THREE.Euler()
@@ -260,6 +176,81 @@ var PointerLockControls = function (camera, cannonBody) {
     }
     if (moveRight) {
       inputVelocity.x = velocityFactor * delta
+    }
+
+    //do all if statements here?
+    if (hideHudi==true) {
+      // js: document.getElementById("encyclo-4").style.visibility = "visible";
+      //js: document.getElementById("info1").style.visibility = "visible";
+      js: document.getElementById("info1").style.top = "15%";
+      //js: document.getElementById("info2").style.visibility = "visible";
+      js: document.getElementById("info2").style.top = "15%";
+      //js: document.getElementById("info3").style.visibility = "visible";
+      js: document.getElementById("info3").style.top = "15%";
+      //js: document.getElementById("info4").style.visibility = "visible";
+      js: document.getElementById("info4").style.top = "15%";
+    }else {
+      js: document.getElementById("info1").style.top = "-120%";
+      js: document.getElementById("info2").style.top = "-120%";
+      js: document.getElementById("info3").style.top = "-120%";
+      js: document.getElementById("info4").style.top = "-120%";
+    }
+
+    if (hideHude==true) {
+      //js: document.getElementById("encyclo1").style.visibility = "visible";
+      js: document.getElementById("encyclo1").style.top = "175%";
+      //js: document.getElementById("encyclo-4").style.visibility = "visible";
+      js: document.getElementById("encyclo-4").style.top = "175%";
+      //js: document.getElementById("encyclo2").style.visibility = "visible";
+      js: document.getElementById("encyclo2").style.top = "175%";
+      //js: document.getElementById("encyclo4").style.visibility = "visible";
+      js: document.getElementById("encyclo3").style.top = "175%";
+    }else {
+      js: document.getElementById("encyclo1").style.top = "0%";
+      js: document.getElementById("encyclo-4").style.top = "0%";
+      js: document.getElementById("encyclo2").style.top = "0%";
+      js: document.getElementById("encyclo3").style.top = "0%";
+    }
+
+    if (hideHud==true) {
+      //js: document.getElementById("cursor").style.visibility = "visible";
+      js: document.getElementById("map2").style.left = "-20%";
+      js: document.getElementById("map2-2").style.left = "-20%";
+      js: document.getElementById("map").style.right = "-20%";
+      js: document.getElementById("map2w2").style.left = "-20%";
+      js: document.getElementById("mapw2").style.right = "-20%";
+      js: document.getElementById("map2w3").style.left = "-20%";
+      js: document.getElementById("mapw3").style.right = "-20%";
+      js: document.getElementById("map2w4").style.left = "-20%";
+      js: document.getElementById("mapw4").style.right = "-20%";
+      js: document.getElementById("world4critteroverlay").style.right = "-20%";
+      js: document.getElementById("world3critteroverlay").style.right = "-20%";
+      js: document.getElementById("world2critteroverlay").style.right = "-20%";
+      js: document.getElementById("world1critteroverlay").style.right = "-20%";
+      js: document.getElementById("world1crittercounter").style.right = "-20%";
+      js: document.getElementById("world2crittercounter").style.right = "-20%";
+      js: document.getElementById("world3crittercounter").style.right = "-20%";
+      js: document.getElementById("world4crittercounter").style.right = "-20%";
+
+    }else {
+      js: document.getElementById("map2").style.left = "0%";
+      js: document.getElementById("map2-2").style.left = "0%";
+      js: document.getElementById("map").style.right = "0%";
+      js: document.getElementById("map2w2").style.left = "0%";
+      js: document.getElementById("mapw2").style.right = "0%";
+      js: document.getElementById("map2w3").style.left = "0%";
+      js: document.getElementById("mapw3").style.right = "0%";
+      js: document.getElementById("map2w4").style.left = "0%";
+      js: document.getElementById("mapw4").style.right = "0%";
+      js: document.getElementById("world4critteroverlay").style.right = "0%";
+      js: document.getElementById("world3critteroverlay").style.right = "0%";
+      js: document.getElementById("world2critteroverlay").style.right = "0%";
+      js: document.getElementById("world1critteroverlay").style.right = "0%";
+      js: document.getElementById("world1crittercounter").style.right = "0%";
+      js: document.getElementById("world2crittercounter").style.right = "0%";
+      js: document.getElementById("world3crittercounter").style.right = "0%";
+      js: document.getElementById("world4crittercounter").style.right = "0%";
+
     }
 
     // Convert velocity to world coordinates

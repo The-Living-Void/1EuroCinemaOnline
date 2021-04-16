@@ -429,7 +429,7 @@ body { margin: 0; background: black;}
 
 #info1 {
   z-index: 1;
-  top: 15%;
+  top: -120%;
   left: 40%;
   position: fixed;
   max-width: 98%;
@@ -437,7 +437,7 @@ body { margin: 0; background: black;}
 }
 #info2 {
   z-index: 1;
-  top: 15%;
+  top: -120%;
   left: 40%;
   position: fixed;
   max-width: 98%;
@@ -445,7 +445,7 @@ body { margin: 0; background: black;}
 }
 #info3 {
   z-index: 1;
-  top: 15%;
+  top: -120%;
   left: 40%;
   position: fixed;
   max-width: 98%;
@@ -453,7 +453,7 @@ body { margin: 0; background: black;}
 }
 #info4 {
   z-index: 1;
-  top: 15%;
+  top: -120%;
   left: 40%;
   position: fixed;
   max-width: 98%;
@@ -463,7 +463,7 @@ body { margin: 0; background: black;}
 #encyclo1 {
   z-index: 1;
   margin-right: 5%;
-  margin-top: 5%;
+  margin-top: -100%;
   margin-bottom: 5%;
   margin-left: 5%;
   position: fixed;
@@ -474,7 +474,7 @@ body { margin: 0; background: black;}
 #encyclo2 {
   z-index: 1;
   margin-right: 5%;
-  margin-top: 5%;
+  margin-top: -100%;
   margin-bottom: 5%;
   margin-left: 5%;
   position: fixed;
@@ -485,7 +485,7 @@ body { margin: 0; background: black;}
 #encyclo3 {
   z-index: 1;
   margin-right: 5%;
-  margin-top: 5%;
+  margin-top: -100%;
   margin-bottom: 5%;
   margin-left: 5%;
   position: fixed;
@@ -496,7 +496,7 @@ body { margin: 0; background: black;}
 #encyclo-4 {
   z-index: 1;
   margin-right: 5%;
-  margin-top: 5%;
+  margin-top: -100%;
   margin-bottom: 5%;
   margin-left: 5%;
   position: fixed;

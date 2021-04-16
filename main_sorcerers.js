@@ -13,7 +13,7 @@ import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js'
 
 var debug=false;
 var checkObjId=false;
-var worldId = 2; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 3; //1= socerers 2=lighthouse 3=forest 4= cave
 var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 //var imgHeightWorld = new Array();
@@ -614,12 +614,20 @@ function init() {
 				js: document.getElementById("world3").style.visibility = "hidden";
 				js: document.getElementById("world4").style.visibility = "hidden";
 
-
 				js: document.getElementById("instructions1").style.visibility = "visible";
 				js: document.getElementById("instructions2").style.visibility = "hidden";
 				js: document.getElementById("instructions3").style.visibility = "hidden";
 				js: document.getElementById("instructions4").style.visibility = "hidden";
 
+				js: document.getElementById("encyclo1").style.visibility = "visible";
+				js: document.getElementById("encyclo2").style.visibility = "hidden";
+				js: document.getElementById("encyclo3").style.visibility = "hidden";
+				js: document.getElementById("encyclo-4").style.visibility = "hidden";
+
+				js: document.getElementById("info1").style.visibility = "visible";
+				js: document.getElementById("info2").style.visibility = "hidden";
+				js: document.getElementById("info3").style.visibility = "hidden";
+				js: document.getElementById("info4").style.visibility = "hidden";
 
 			}else if (worldId==2) {
 				js: document.getElementById("world1").style.visibility = "hidden";
@@ -631,6 +639,17 @@ function init() {
 				js: document.getElementById("instructions2").style.visibility = "visible";
 				js: document.getElementById("instructions3").style.visibility = "hidden";
 				js: document.getElementById("instructions4").style.visibility = "hidden";
+
+				js: document.getElementById("encyclo1").style.visibility = "hidden";
+				js: document.getElementById("encyclo2").style.visibility = "visible";
+				js: document.getElementById("encyclo3").style.visibility = "hidden";
+				js: document.getElementById("encyclo-4").style.visibility = "hidden";
+
+				js: document.getElementById("info1").style.visibility = "hidden";
+				js: document.getElementById("info2").style.visibility = "visible";
+				js: document.getElementById("info3").style.visibility = "hidden";
+				js: document.getElementById("info4").style.visibility = "hidden";
+
 			}else if (worldId==3) {
 				js: document.getElementById("world1").style.visibility = "hidden";
 				js: document.getElementById("world2").style.visibility = "hidden";
@@ -641,6 +660,16 @@ function init() {
 				js: document.getElementById("instructions2").style.visibility = "hidden";
 				js: document.getElementById("instructions3").style.visibility = "visible";
 				js: document.getElementById("instructions4").style.visibility = "hidden";
+
+				js: document.getElementById("encyclo1").style.visibility = "hidden";
+				js: document.getElementById("encyclo2").style.visibility = "hidden";
+				js: document.getElementById("encyclo3").style.visibility = "visible";
+				js: document.getElementById("encyclo-4").style.visibility = "hidden";
+
+				js: document.getElementById("info1").style.visibility = "hidden";
+				js: document.getElementById("info2").style.visibility = "hidden";
+				js: document.getElementById("info3").style.visibility = "visible";
+				js: document.getElementById("info4").style.visibility = "hidden";
 			}else if (worldId==4) {
 				js: document.getElementById("world1").style.visibility = "hidden";
 				js: document.getElementById("world2").style.visibility = "hidden";
@@ -651,6 +680,16 @@ function init() {
 				js: document.getElementById("instructions2").style.visibility = "hidden";
 				js: document.getElementById("instructions3").style.visibility = "hidden";
 				js: document.getElementById("instructions4").style.visibility = "visible";
+
+				js: document.getElementById("encyclo1").style.visibility = "hidden";
+				js: document.getElementById("encyclo2").style.visibility = "hidden";
+				js: document.getElementById("encyclo3").style.visibility = "hidden";
+				js: document.getElementById("encyclo-4").style.visibility = "visible";
+
+				js: document.getElementById("info1").style.visibility = "hidden";
+				js: document.getElementById("info2").style.visibility = "hidden";
+				js: document.getElementById("info3").style.visibility = "hidden";
+				js: document.getElementById("info4").style.visibility = "visible";
 			}
 
    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000)
@@ -1275,9 +1314,9 @@ function addCharacters(){
 
   } );
 
-
-  const myMaterial = new THREE.MeshNormalMaterial( { color: 0xffee00, refractionRatio: 0.95 }  );
-
+	//this gives an error:
+  //const myMaterial = new THREE.MeshNormalMaterial( { color: 0xffee00, refractionRatio: 0.95 }  );
+	const myMaterial = new THREE.MeshNormalMaterial();
   loader.load('models/critters/spider.glb', (gltf)  => {
 
 
@@ -1323,9 +1362,7 @@ function addCharacters(){
   );
 
   loader.load('models/critters/spider-anim3.glb', (gltf)  => {
-
-
-    mixer = new THREE.AnimationMixer( gltf.scene );
+		mixer = new THREE.AnimationMixer( gltf.scene );
     jumpAction =  mixer.clipAction( gltf.animations[ 0 ] )
     gltf.scene.traverse( function( object ) {
     object.frustumCulled = false;
@@ -1341,7 +1378,7 @@ function addCharacters(){
       mixer = new THREE.AnimationMixer( gltf.scene );
       //gltf.animations;
       //idleAction = mixer.clipAction( gltf.animations[ 1 ] )
-      jumpAction =  mixer.clipAction( gltf.animations[ 1 ] )
+      jumpAction =  mixer.clipAction( gltf.animations[ 0 ] )
 
       gltf.scene.traverse( function( object ) {
         object.frustumCulled = false;
