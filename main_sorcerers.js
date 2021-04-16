@@ -12,11 +12,12 @@ import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js'
 
 
 var debug=false;
-var checkObjId=false;
+var checkObjId=true;
 var worldId = 3; //1= socerers 2=lighthouse 3=forest 4= cave
 var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 //var imgHeightWorld = new Array();
+var boolMushroom;
 
 const listener = new THREE.AudioListener();
 const sound = new THREE.Audio( listener );
@@ -608,89 +609,8 @@ function initCannon(){
 
 function init() {
 
-			if (worldId==1) {
-				js: document.getElementById("world1").style.visibility = "visible";
-				js: document.getElementById("world2").style.visibility = "hidden";
-				js: document.getElementById("world3").style.visibility = "hidden";
-				js: document.getElementById("world4").style.visibility = "hidden";
+			cssSteps();
 
-				js: document.getElementById("instructions1").style.visibility = "visible";
-				js: document.getElementById("instructions2").style.visibility = "hidden";
-				js: document.getElementById("instructions3").style.visibility = "hidden";
-				js: document.getElementById("instructions4").style.visibility = "hidden";
-
-				js: document.getElementById("encyclo1").style.visibility = "visible";
-				js: document.getElementById("encyclo2").style.visibility = "hidden";
-				js: document.getElementById("encyclo3").style.visibility = "hidden";
-				js: document.getElementById("encyclo-4").style.visibility = "hidden";
-
-				js: document.getElementById("info1").style.visibility = "visible";
-				js: document.getElementById("info2").style.visibility = "hidden";
-				js: document.getElementById("info3").style.visibility = "hidden";
-				js: document.getElementById("info4").style.visibility = "hidden";
-
-			}else if (worldId==2) {
-				js: document.getElementById("world1").style.visibility = "hidden";
-				js: document.getElementById("world2").style.visibility = "visible";
-				js: document.getElementById("world3").style.visibility = "hidden";
-				js: document.getElementById("world4").style.visibility = "hidden";
-
-				js: document.getElementById("instructions1").style.visibility = "hidden";
-				js: document.getElementById("instructions2").style.visibility = "visible";
-				js: document.getElementById("instructions3").style.visibility = "hidden";
-				js: document.getElementById("instructions4").style.visibility = "hidden";
-
-				js: document.getElementById("encyclo1").style.visibility = "hidden";
-				js: document.getElementById("encyclo2").style.visibility = "visible";
-				js: document.getElementById("encyclo3").style.visibility = "hidden";
-				js: document.getElementById("encyclo-4").style.visibility = "hidden";
-
-				js: document.getElementById("info1").style.visibility = "hidden";
-				js: document.getElementById("info2").style.visibility = "visible";
-				js: document.getElementById("info3").style.visibility = "hidden";
-				js: document.getElementById("info4").style.visibility = "hidden";
-
-			}else if (worldId==3) {
-				js: document.getElementById("world1").style.visibility = "hidden";
-				js: document.getElementById("world2").style.visibility = "hidden";
-				js: document.getElementById("world3").style.visibility = "visible";
-				js: document.getElementById("world4").style.visibility = "hidden";
-
-				js: document.getElementById("instructions1").style.visibility = "hidden";
-				js: document.getElementById("instructions2").style.visibility = "hidden";
-				js: document.getElementById("instructions3").style.visibility = "visible";
-				js: document.getElementById("instructions4").style.visibility = "hidden";
-
-				js: document.getElementById("encyclo1").style.visibility = "hidden";
-				js: document.getElementById("encyclo2").style.visibility = "hidden";
-				js: document.getElementById("encyclo3").style.visibility = "visible";
-				js: document.getElementById("encyclo-4").style.visibility = "hidden";
-
-				js: document.getElementById("info1").style.visibility = "hidden";
-				js: document.getElementById("info2").style.visibility = "hidden";
-				js: document.getElementById("info3").style.visibility = "visible";
-				js: document.getElementById("info4").style.visibility = "hidden";
-			}else if (worldId==4) {
-				js: document.getElementById("world1").style.visibility = "hidden";
-				js: document.getElementById("world2").style.visibility = "hidden";
-				js: document.getElementById("world3").style.visibility = "hidden";
-				js: document.getElementById("world4").style.visibility = "visible";
-
-				js: document.getElementById("instructions1").style.visibility = "hidden";
-				js: document.getElementById("instructions2").style.visibility = "hidden";
-				js: document.getElementById("instructions3").style.visibility = "hidden";
-				js: document.getElementById("instructions4").style.visibility = "visible";
-
-				js: document.getElementById("encyclo1").style.visibility = "hidden";
-				js: document.getElementById("encyclo2").style.visibility = "hidden";
-				js: document.getElementById("encyclo3").style.visibility = "hidden";
-				js: document.getElementById("encyclo-4").style.visibility = "visible";
-
-				js: document.getElementById("info1").style.visibility = "hidden";
-				js: document.getElementById("info2").style.visibility = "hidden";
-				js: document.getElementById("info3").style.visibility = "hidden";
-				js: document.getElementById("info4").style.visibility = "visible";
-			}
 
    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000)
    camera.position.z = 1;
@@ -1453,6 +1373,7 @@ function animate() {
   const numObjects = 14;
   const idToObject = {};
 
+	cssStepsWalk();
   cursorCheck();
 
   if (debug ==true) {
@@ -1499,7 +1420,15 @@ function cursorCheck(){
       //material.color = new THREE.Color( Math.random(), Math.random(), Math.random());
       //console.log(model2.userData.STRING);
       if (checkObjId==true) {
-      console.log('intersect!'+id);
+
+				if (id==3155||id==3157) {
+					//console.log('mushroom!');
+					boolMushroom = true;
+				}else {
+					boolMushroom = false;
+				}
+
+      	// console.log('intersect!'+id);
       }
 
       material.needsUpdate = true;
@@ -1545,6 +1474,110 @@ function cursorCheck(){
   if (boolMouseClick== true) {
   boolMouseClick = false;
   }
+}
+
+function cssStepsWalk(){
+		if (worldId==3) {
+			if (boolMushroom==true) {
+				js: document.getElementById("found").style.visibility = "visible";
+				//console.log("hii mushroompi");
+			}else {
+				js: document.getElementById("found").style.visibility = "hidden";
+			}
+		}
+}
+
+function cssSteps(){
+	if (worldId==1) {
+		js: document.getElementById("world1").style.visibility = "visible";
+		js: document.getElementById("world2").style.visibility = "hidden";
+		js: document.getElementById("world3").style.visibility = "hidden";
+		js: document.getElementById("world4").style.visibility = "hidden";
+
+		js: document.getElementById("instructions1").style.visibility = "visible";
+		js: document.getElementById("instructions2").style.visibility = "hidden";
+		js: document.getElementById("instructions3").style.visibility = "hidden";
+		js: document.getElementById("instructions4").style.visibility = "hidden";
+
+		js: document.getElementById("encyclo1").style.visibility = "visible";
+		js: document.getElementById("encyclo2").style.visibility = "hidden";
+		js: document.getElementById("encyclo3").style.visibility = "hidden";
+		js: document.getElementById("encyclo-4").style.visibility = "hidden";
+
+		js: document.getElementById("info1").style.visibility = "visible";
+		js: document.getElementById("info2").style.visibility = "hidden";
+		js: document.getElementById("info3").style.visibility = "hidden";
+		js: document.getElementById("info4").style.visibility = "hidden";
+
+	}else if (worldId==2) {
+		js: document.getElementById("world1").style.visibility = "hidden";
+		js: document.getElementById("world2").style.visibility = "visible";
+		js: document.getElementById("world3").style.visibility = "hidden";
+		js: document.getElementById("world4").style.visibility = "hidden";
+
+		js: document.getElementById("instructions1").style.visibility = "hidden";
+		js: document.getElementById("instructions2").style.visibility = "visible";
+		js: document.getElementById("instructions3").style.visibility = "hidden";
+		js: document.getElementById("instructions4").style.visibility = "hidden";
+
+		js: document.getElementById("encyclo1").style.visibility = "hidden";
+		js: document.getElementById("encyclo2").style.visibility = "visible";
+		js: document.getElementById("encyclo3").style.visibility = "hidden";
+		js: document.getElementById("encyclo-4").style.visibility = "hidden";
+
+		js: document.getElementById("info1").style.visibility = "hidden";
+		js: document.getElementById("info2").style.visibility = "visible";
+		js: document.getElementById("info3").style.visibility = "hidden";
+		js: document.getElementById("info4").style.visibility = "hidden";
+
+	}else if (worldId==3) {
+		js: document.getElementById("world1").style.visibility = "hidden";
+		js: document.getElementById("world2").style.visibility = "hidden";
+		js: document.getElementById("world3").style.visibility = "visible";
+		js: document.getElementById("world4").style.visibility = "hidden";
+
+		js: document.getElementById("instructions1").style.visibility = "hidden";
+		js: document.getElementById("instructions2").style.visibility = "hidden";
+		js: document.getElementById("instructions3").style.visibility = "visible";
+		js: document.getElementById("instructions4").style.visibility = "hidden";
+
+		js: document.getElementById("encyclo1").style.visibility = "hidden";
+		js: document.getElementById("encyclo2").style.visibility = "hidden";
+		js: document.getElementById("encyclo3").style.visibility = "visible";
+		js: document.getElementById("encyclo-4").style.visibility = "hidden";
+
+		js: document.getElementById("info1").style.visibility = "hidden";
+		js: document.getElementById("info2").style.visibility = "hidden";
+		js: document.getElementById("info3").style.visibility = "visible";
+		js: document.getElementById("info4").style.visibility = "hidden";
+
+
+		//js: document.getElementById("found").style.visibility = "visible";
+
+
+
+	}else if (worldId==4) {
+		js: document.getElementById("world1").style.visibility = "hidden";
+		js: document.getElementById("world2").style.visibility = "hidden";
+		js: document.getElementById("world3").style.visibility = "hidden";
+		js: document.getElementById("world4").style.visibility = "visible";
+
+		js: document.getElementById("instructions1").style.visibility = "hidden";
+		js: document.getElementById("instructions2").style.visibility = "hidden";
+		js: document.getElementById("instructions3").style.visibility = "hidden";
+		js: document.getElementById("instructions4").style.visibility = "visible";
+
+		js: document.getElementById("encyclo1").style.visibility = "hidden";
+		js: document.getElementById("encyclo2").style.visibility = "hidden";
+		js: document.getElementById("encyclo3").style.visibility = "hidden";
+		js: document.getElementById("encyclo-4").style.visibility = "visible";
+
+		js: document.getElementById("info1").style.visibility = "hidden";
+		js: document.getElementById("info2").style.visibility = "hidden";
+		js: document.getElementById("info3").style.visibility = "hidden";
+		js: document.getElementById("info4").style.visibility = "visible";
+	}
+
 }
 
 function pointerLock(){
