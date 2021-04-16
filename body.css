@@ -425,6 +425,7 @@ body { margin: 0; background: black;}
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 95%;
+  visibility: hidden;
 }
 
 #info1 {
