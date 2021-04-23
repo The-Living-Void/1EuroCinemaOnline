@@ -1421,14 +1421,14 @@ function cursorCheck(){
       //console.log(model2.userData.STRING);
       if (checkObjId==true) {
 
-				if (id==3155||id==3157) {
+				if (id==24||id==3157) {
 					//console.log('mushroom!');
 					boolMushroom = true;
 				}else {
 					boolMushroom = false;
 				}
 
-      	// console.log('intersect!'+id);
+      	console.log('intersect!'+id);
       }
 
       material.needsUpdate = true;
@@ -1480,6 +1480,8 @@ function cssStepsWalk(){
 		if (worldId==3) {
 			if (boolMushroom==true) {
 				js: document.getElementById("found").style.visibility = "visible";
+				js: document.getElementById("hintsfade3").style.visibility = "hidden";
+				js: document.getElementById("hintsfade3-2").style.visibility = "visible";
 				//console.log("hii mushroompi");
 			}else {
 				js: document.getElementById("found").style.visibility = "hidden";
@@ -1535,6 +1537,8 @@ function cssSteps(){
 		js: document.getElementById("world2").style.visibility = "hidden";
 		js: document.getElementById("world3").style.visibility = "visible";
 		js: document.getElementById("world4").style.visibility = "hidden";
+		js: document.getElementById("hintsfade3").style.visibility = "visible";
+
 
 		js: document.getElementById("instructions1").style.visibility = "hidden";
 		js: document.getElementById("instructions2").style.visibility = "hidden";

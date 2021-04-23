@@ -247,6 +247,30 @@ body { margin: 0; background: black;}
   opacity: 0.9;
 
 }
+
+#world3critteroverlay2 {
+  z-index: 1;
+  text-align: horizontal;
+  margin-right: -0.7em;
+  position: fixed;
+  top:10%;
+  right:0px;
+  max-height: 85%;
+  opacity: 0.9;
+
+}
+#world3crittercounter2 {
+  z-index: 1;
+  text-align: horizontal;
+  margin-right: -0.7em;
+  position: fixed;
+  top:10%;
+  right:0px;
+  max-height: 85%;
+  opacity: 0.9;
+
+}
+
 #map-2 {
   z-index: 1;
   text-align: horizontal;
@@ -522,6 +546,167 @@ body { margin: 0; background: black;}
   transform: translate(-50%, -50%);
   max-width: 100;
   animation: mymove 15s linear forwards;
+}
+#hintsfade {
+  max-height: 100em;
+  position: absolute;
+  max-width: 60em;
+  text-align: horizontal;
+  top: 4em;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 45%;
+  visibility: hidden;
+}
+
+.A {
+animation: animA 20s infinite alternate;
+}
+
+.B {
+animation: animB 20s infinite alternate;
+}
+
+@keyframes animA {
+  0%, 25% {
+    opacity: 0;
+    z-index: 2;
+  }
+  50% {
+    opacity: .5;
+  }
+
+  100% {
+    opacity: 1;
+    z-index: 3;
+  }
+}
+
+@keyframes animB {
+  0%,25% {
+    opacity: 1;
+    z-index: 3;
+  }
+  50% {
+    opacity: .5;
+  }
+ 100% {
+    opacity: 0;
+    z-index: 2;
+  }
+}
+
+@keyframes mymove {
+    0%   {opacity: 1;}
+    70%  {opacity: 1;}
+    90% {opacity: 0;}
+    100% {opacity: 0;}
+    100% {visibility: hidden;}
+}
+#hintsfade3 {
+  max-height: 100em;
+  position: absolute;
+  max-width: 60em;
+  text-align: horizontal;
+  top: 4em;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 45%;
+  visibility: hidden;
+}
+
+.A {
+animation: animA 20s infinite alternate;
+}
+
+.B {
+animation: animB 20s infinite alternate;
+}
+
+@keyframes animA {
+  0%, 25% {
+    opacity: 0;
+    z-index: 2;
+  }
+  50% {
+    opacity: .5;
+  }
+
+  100% {
+    opacity: 1;
+    z-index: 3;
+  }
+}
+
+@keyframes animB {
+  0%,25% {
+    opacity: 1;
+    z-index: 3;
+  }
+  50% {
+    opacity: .5;
+  }
+ 100% {
+    opacity: 0;
+    z-index: 2;
+  }
+}
+
+@keyframes mymove {
+    0%   {opacity: 1;}
+    70%  {opacity: 1;}
+    90% {opacity: 0;}
+    100% {opacity: 0;}
+    100% {visibility: hidden;}
+}
+
+#hintsfade3-2 {
+  max-height: 100em;
+  position: absolute;
+  max-width: 60em;
+  text-align: horizontal;
+  top: 4em;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 45%;
+  visibility: hidden;
+}
+
+.A {
+animation: animA 20s infinite alternate;
+}
+
+.B {
+animation: animB 20s infinite alternate;
+}
+
+@keyframes animA {
+  0%, 25% {
+    opacity: 0;
+    z-index: 2;
+  }
+  50% {
+    opacity: .5;
+  }
+
+  100% {
+    opacity: 1;
+    z-index: 3;
+  }
+}
+
+@keyframes animB {
+  0%,25% {
+    opacity: 1;
+    z-index: 3;
+  }
+  50% {
+    opacity: .5;
+  }
+ 100% {
+    opacity: 0;
+    z-index: 2;
+  }
 }
 
 @keyframes mymove {
