@@ -11,13 +11,14 @@ import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js'
 // import { UnrealBloomPass } from './postprocessing/UnrealBloomPass.js';
 
 
-var debug=true;
-var checkObjId=false;
-var worldId = 3; //1= socerers 2=lighthouse 3=forest 4= cave
+var debug=false;
+var checkObjId=true;
+var worldId = 4; //1= socerers 2=lighthouse 3=forest 4= cave
 var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 //var imgHeightWorld = new Array();
 var boolMushroom;
+var boolCross;
 
 const listener = new THREE.AudioListener();
 const sound = new THREE.Audio( listener );
@@ -123,7 +124,7 @@ function initCannon(){
       sphereBody = new CANNON.Body({ mass: mass, material: physicsMaterial });
       sphereBody.addShape(sphereShape);
       // sphereBody.position.set(nx * sx * 0.5, ny * sy + radius * 2, nz * sz * 0.5);
-			sphereBody.position.set(60,80,-80);
+			sphereBody.position.set(0,60,0);
       sphereBody.linearDamping = 0.9;
       world.addBody(sphereBody);
 
@@ -494,36 +495,6 @@ function initCannon(){
       }
       if (worldId==3) {
 
-				var world3wall1Shape = new CANNON.Box(new CANNON.Vec3(400, 200, 1));
-				var world3wall1Body = new CANNON.Body({mass: 0});
-				world3wall1Body.addShape(world3wall1Shape);
-				world3wall1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
-				world3wall1Body.position.set(348, 0, 0);
-				world.addBody(world3wall1Body);
-
-				var world3wall2Shape = new CANNON.Box(new CANNON.Vec3(400, 200, 1));
-				var world3wall2Body = new CANNON.Body({mass: 0});
-				world3wall2Body.addShape(world3wall2Shape);
-				world3wall2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
-				world3wall2Body.position.set(-145, 0, 0);
-				world.addBody(world3wall2Body);
-
-				//west wall
-				var world3wall3Shape = new CANNON.Box(new CANNON.Vec3(1, 200, 400));
-				var world3wall3Body = new CANNON.Body({mass: 0});
-				world3wall3Body.addShape(world3wall3Shape);
-				world3wall3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
-				world3wall3Body.position.set(0, 0, -260);
-				world.addBody(world3wall3Body);
-
-				// east wall
-				var world3wall4Shape = new CANNON.Box(new CANNON.Vec3(1, 200, 400));
-				var world3wall4Body = new CANNON.Body({mass: 0});
-				world3wall4Body.addShape(world3wall4Shape);
-				world3wall4Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
-				world3wall4Body.position.set(0, 0, 245);
-				world.addBody(world3wall4Body);
-
 				var mushroom2943Shape = new CANNON.Box(new CANNON.Vec3(0.7, 0.7, 6));
 				var mushroom2943Body = new CANNON.Body({mass: 0, material: physicsMaterial});
 				mushroom2943Body.addShape(mushroom2943Shape);
@@ -561,150 +532,13 @@ function initCannon(){
 				eikBody.position.set(105, 10, -200);
 				world.addBody(eikBody);
 
-				var cliff1Shape = new CANNON.Box(new CANNON.Vec3(10, 4, 19));
-				var cliff1Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff1Body.addShape(cliff1Shape);
-				cliff1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -0.55);
-				cliff1Body.position.set(103, 18, -19);
-				cliff1Body.angularVelocity.set(0, 0, 0);
-				world.addBody(cliff1Body);
-
-				var cliff1aShape = new CANNON.Box(new CANNON.Vec3(9, 4, 9));
-				var cliff1aBody = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff1aBody.addShape(cliff1aShape);
-				cliff1aBody.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -0.55);
-				cliff1aBody.position.set(98, 19.7, -8);
-				cliff1aBody.angularVelocity.set(0, 0, 0);
-				world.addBody(cliff1aBody);
-
-				var cliff2Shape = new CANNON.Box(new CANNON.Vec3(4, 6, 5));
-				var cliff2Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff2Body.addShape(cliff2Shape);
-				cliff2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 0.3);
-				cliff2Body.position.set(98, 15, -4);
-				cliff2Body.angularVelocity.set(0, 0, 0);
-				world.addBody(cliff2Body);
-
-				var cliff3Shape = new CANNON.Box(new CANNON.Vec3(4, 4, 4));
-				var cliff3Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff3Body.addShape(cliff3Shape);
-				cliff3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -0.55);
-				cliff3Body.position.set(114, 18.5, -23);
-				cliff3Body.angularVelocity.set(0, 0, 0);
-				world.addBody(cliff3Body);
-
-				var cliff4Shape = new CANNON.Box(new CANNON.Vec3(3, 4, 4));
-				var cliff4Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff4Body.addShape(cliff4Shape);
-				cliff4Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -0.55);
-				cliff4Body.position.set(117, 14, -19);
-				world.addBody(cliff4Body);
-
-				var cliff5Shape = new CANNON.Box(new CANNON.Vec3(11, 10, 11));
-				var cliff5Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff5Body.addShape(cliff5Shape);
-				cliff5Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 0);
-				cliff5Body.position.set(75, 16, -47);
-				world.addBody(cliff5Body);
-
-				var cliff6Shape = new CANNON.Box(new CANNON.Vec3(2, 10, 11));
-				var cliff6Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff6Body.addShape(cliff6Shape);
-				cliff6Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -1.4);
-				cliff6Body.position.set(80, 15, -34);
-				world.addBody(cliff6Body);
-
-				var cliff7Shape = new CANNON.Box(new CANNON.Vec3(3.5, 10, 4));
-				var cliff7Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff7Body.addShape(cliff7Shape);
-				cliff7Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 0.55);
-				cliff7Body.position.set(103, 14, -41);
-				world.addBody(cliff7Body);
-
-				var cliff8Shape = new CANNON.Box(new CANNON.Vec3(5, 10, 5));
-				var cliff8Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff8Body.addShape(cliff8Shape);
-				cliff8Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 0.55);
-				cliff8Body.position.set(99, 16, -50);
-				world.addBody(cliff8Body);
-
-				var cliff9Shape = new CANNON.Box(new CANNON.Vec3(10, 10, 5));
-				var cliff9Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff9Body.addShape(cliff9Shape);
-				cliff9Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 0.1);
-				cliff9Body.position.set(89, 16, -49);
-				world.addBody(cliff9Body);
-
-				var cliff10Shape = new CANNON.Box(new CANNON.Vec3(5, 10, 4));
-				var cliff10Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff10Body.addShape(cliff10Shape);
-				cliff10Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 0.1);
-				cliff10Body.position.set(85, 16, -40);
-				world.addBody(cliff10Body);
-
-				var cliff11Shape = new CANNON.Box(new CANNON.Vec3(2.5, 10, 3.5));
-				var cliff11Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff11Body.addShape(cliff11Shape);
-				cliff11Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 0.55);
-				cliff11Body.position.set(104, 16, -51);
-				world.addBody(cliff11Body);
-
-				var cliff12Shape = new CANNON.Box(new CANNON.Vec3(3, 10, 7.5));
-				var cliff12Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff12Body.addShape(cliff12Shape);
-				cliff12Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 0.55);
-				cliff12Body.position.set(115, 11, -27);
-				world.addBody(cliff12Body);
-
-
-				var cliff13Shape = new CANNON.Box(new CANNON.Vec3(2, 16, 6));
-				var cliff13Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff13Body.addShape(cliff13Shape);
-				cliff13Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 0, 1), -0.5);
-				cliff13Body.position.set(59, 9, -57);
-				world.addBody(cliff13Body);
-
-				// var cliff14Shape = new CANNON.Box(new CANNON.Vec3(4, 18, 5));
-				// var cliff14Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				// cliff14Body.addShape(cliff14Shape);
-				// cliff14Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 1, 1), -0.5);
-				// cliff14Body.position.set(50, 9, -27);
-				// world.addBody(cliff14Body);
-
-				var cliff15Shape = new CANNON.Box(new CANNON.Vec3(4, 16, 6));
-				var cliff15Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff15Body.addShape(cliff15Shape);
-				cliff15Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 0, 1), -0.6);
-				cliff15Body.position.set(53, 10, -29);
-				world.addBody(cliff15Body);
-
-				var cliffrockShape = new CANNON.Sphere(2);
-				var cliffrockBody = new CANNON.Body({ mass: 0, material: physicsMaterial });
-				cliffrockBody.addShape(cliffrockShape);
-				cliffrockBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-				cliffrockBody.position.set(70, 26, -37);
-				world.addBody(cliffrockBody);
-
-				var cliffrock2Shape = new CANNON.Sphere(7);
-				var cliffrock2Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
-				cliffrock2Body.addShape(cliffrock2Shape);
-				cliffrock2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-				cliffrock2Body.position.set(89, 24, -30);
-				world.addBody(cliffrock2Body);
-
-				var cliffrock3Shape = new CANNON.Sphere(2.5);
-				var cliffrock3Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
-				cliffrock3Body.addShape(cliffrock3Shape);
-				cliffrock3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-				cliffrock3Body.position.set(95, 24, -26);
-				world.addBody(cliffrock3Body);
-
-				var cliffrock4Shape = new CANNON.Sphere(23);
-				var cliffrock4Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
-				cliffrock4Body.addShape(cliffrock4Shape);
-				cliffrock4Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-				cliffrock4Body.position.set(62, 0, -26);
-				world.addBody(cliffrock4Body);
+				var mushroomgroot2Shape = new CANNON.Box(new CANNON.Vec3(10, 10, 10));
+				var mushroomgroot2Body = new CANNON.Body({mass: 0, material: physicsMaterial});
+				mushroomgroot2Body.addShape(mushroomgroot2Shape);
+				mushroomgroot2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1.05, -0.4, -0.3), -Math.PI / 2);
+				mushroomgroot2Body.position.set(94, 12, -10);
+				mushroomgroot2Body.angularVelocity.set(0, 0, 0);
+				world.addBody(mushroomgroot2Body);
 
 				var boomShape = new CANNON.Box(new CANNON.Vec3(3.8, 3.8, 16));
 				var boomBody = new CANNON.Body({mass: 0});
@@ -1595,6 +1429,13 @@ function cursorCheck(){
 					boolMushroom = false;
 				}
 
+					if (id==387) {
+						//console.log('mushroom!');
+						boolCross = true;
+					}else {
+						boolCross = false;
+					}
+
       	console.log('intersect!'+id);
       }
 
@@ -1646,12 +1487,24 @@ function cursorCheck(){
 function cssStepsWalk(){
 		if (worldId==3) {
 			if (boolMushroom==true) {
-				js: document.getElementById("found").style.visibility = "visible";
-				js: document.getElementById("hintsfade3").style.visibility = "hidden";
+				js: document.getElementById("range3").style.visibility = "visible";
+				js: document.getElementById("found3").style.visibility = "visible";
 				js: document.getElementById("hintsfade3-2").style.visibility = "visible";
 				//console.log("hii mushroompi");
 			}else {
-				js: document.getElementById("found").style.visibility = "hidden";
+				js: document.getElementById("found3").style.visibility = "hidden";
+				js: document.getElementById("range3").style.visibility = "hidden";
+
+			}
+		}
+
+		if (worldId==1) {
+			if (boolCross==true) {
+				js: document.getElementById("found1").style.visibility = "visible";
+				//console.log("hii mushroompi");
+			}else {
+				js: document.getElementById("found1").style.visibility = "hidden";
+
 			}
 		}
 }
@@ -1662,6 +1515,8 @@ function cssSteps(){
 		js: document.getElementById("world2").style.visibility = "hidden";
 		js: document.getElementById("world3").style.visibility = "hidden";
 		js: document.getElementById("world4").style.visibility = "hidden";
+		js: document.getElementById("hintsfade1-1").style.visibility = "visible";
+		js: document.getElementById("hintsfade1-2").style.visibility = "visible";
 
 		js: document.getElementById("instructions1").style.visibility = "visible";
 		js: document.getElementById("instructions2").style.visibility = "hidden";
@@ -1683,6 +1538,8 @@ function cssSteps(){
 		js: document.getElementById("world2").style.visibility = "visible";
 		js: document.getElementById("world3").style.visibility = "hidden";
 		js: document.getElementById("world4").style.visibility = "hidden";
+		js: document.getElementById("hintsfade2-1").style.visibility = "visible";
+		js: document.getElementById("hintsfade2-2").style.visibility = "visible";
 
 		js: document.getElementById("instructions1").style.visibility = "hidden";
 		js: document.getElementById("instructions2").style.visibility = "visible";
@@ -1704,7 +1561,8 @@ function cssSteps(){
 		js: document.getElementById("world2").style.visibility = "hidden";
 		js: document.getElementById("world3").style.visibility = "visible";
 		js: document.getElementById("world4").style.visibility = "hidden";
-		js: document.getElementById("hintsfade3").style.visibility = "visible";
+		js: document.getElementById("hintsfade3-2").style.visibility = "visible";
+		js: document.getElementById("hintsfade3-3").style.visibility = "visible";
 
 
 		js: document.getElementById("instructions1").style.visibility = "hidden";
@@ -1725,13 +1583,13 @@ function cssSteps(){
 
 		//js: document.getElementById("found").style.visibility = "visible";
 
-
-
 	}else if (worldId==4) {
 		js: document.getElementById("world1").style.visibility = "hidden";
 		js: document.getElementById("world2").style.visibility = "hidden";
 		js: document.getElementById("world3").style.visibility = "hidden";
 		js: document.getElementById("world4").style.visibility = "visible";
+		js: document.getElementById("hintsfade4-1").style.visibility = "visible";
+		js: document.getElementById("hintsfade4-2").style.visibility = "visible";
 
 		js: document.getElementById("instructions1").style.visibility = "hidden";
 		js: document.getElementById("instructions2").style.visibility = "hidden";
