@@ -1214,8 +1214,9 @@ function modelLoader(){
 				gltf.scene.rotation.set(0,7,0);
 				scene.add(gltf.scene);
 			}
-			);
+		);
 
+			// Queen critter
 			loader.load('models/critters/lara.glb', (gltf)  => {
 				gltf.scene.traverse( function( object ) {
 				object.frustumCulled = false;
@@ -1244,6 +1245,7 @@ function modelLoader(){
 
 
 			// Inwoo apples
+			// queen Critter
 			loader.load('models/critters/inwoo.glb', (gltf)  => {
 				gltf.scene.traverse( function( object ) {
 				object.frustumCulled = false;
