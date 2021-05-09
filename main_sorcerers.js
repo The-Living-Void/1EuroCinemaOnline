@@ -13,7 +13,7 @@ import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js'
 
 var debug=false;
 var checkObjId=false;
-var worldId = 3; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 4; //1= socerers 2=lighthouse 3=forest 4= cave
 var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 //var imgHeightWorld = new Array();
@@ -961,6 +961,89 @@ function modelLoader(){
         });
     }
 
+    
+    const loader = new GLTFLoader()
+
+    loader.load('models/critters/world1/pleunhand.glb', (gltf)  => {
+      gltf.scene.traverse( function( object ) {
+      object.frustumCulled = false;
+  
+  
+      } );
+      gltf.scene.position.set(300,10,50);
+      gltf.scene.scale.set(3,3,3);
+      scene.add(gltf.scene);
+  
+    }
+    );
+
+    loader.load('models/critters/world1/pleunleg.glb', (gltf)  => {
+      gltf.scene.traverse( function( object ) {
+      object.frustumCulled = false;
+  
+  
+      } );
+      gltf.scene.position.set(-30,-2,-120);
+      gltf.scene.scale.set(3,3,3);
+      scene.add(gltf.scene);
+  
+    }
+    );
+
+    loader.load('models/critters/world1/levi.glb', (gltf)  => {
+      gltf.scene.traverse( function( object ) {
+      object.frustumCulled = false;
+  
+  
+      } );
+      gltf.scene.position.set(80,20,-20);
+      gltf.scene.scale.set(3,3,3);
+      gltf.scene.rotation.set(0,255,0);
+      scene.add(gltf.scene);
+  
+    }
+    );
+
+    loader.load('models/critters/world1/vanessa.glb', (gltf)  => {
+      gltf.scene.traverse( function( object ) {
+      object.frustumCulled = false;
+  
+  
+      } );
+      gltf.scene.position.set(100,2,320);
+      gltf.scene.scale.set(6,6,6);
+      scene.add(gltf.scene);
+  
+    }
+    );
+
+    loader.load('models/critters/world1/pien-bouquet.glb', (gltf)  => {
+      gltf.scene.traverse( function( object ) {
+      object.frustumCulled = false;
+  
+  
+      } );
+      gltf.scene.position.set(-96,4,0);
+      gltf.scene.scale.set(1,1,1);
+      scene.add(gltf.scene);
+  
+    }
+    );
+
+    loader.load('models/critters/world1/carmen-phone-new.glb', (gltf)  => {
+      gltf.scene.traverse( function( object ) {
+      object.frustumCulled = false;
+  
+  
+      } );
+      gltf.scene.position.set(50,15,-200);
+      gltf.scene.scale.set(2,2,2);
+      gltf.scene.rotation.set(45,0,0);
+      scene.add(gltf.scene);
+  
+    }
+    );
+
     Promise.all([p1,p2,p3,p4,p5, p6, p7,p8]).then(() => {
 
         var scaleSizeModel1 = 1;
@@ -1058,6 +1141,7 @@ function modelLoader(){
           new GLTFLoader(manager).load(url, resolve);
           });
       }
+
 
       Promise.all([p1,p2,p3,p4,p5, p6, p7, p8,p9,p10,p11, p12, p13, p14]).then(() => {
 
@@ -1519,6 +1603,21 @@ function modelLoader(){
           new GLTFLoader(manager).load(url, resolve);
           });
       }
+
+      const loader = new GLTFLoader()
+      
+      loader.load('models/critters/world4/yifan.glb', (gltf)  => {
+        gltf.scene.traverse( function( object ) {
+        object.frustumCulled = false;
+    
+    
+        } );
+        gltf.scene.position.set(100,10,0);
+        gltf.scene.scale.set(10,10,10);
+        scene.add(gltf.scene);
+    
+      }
+      );
 
       Promise.all([p1,p2,p3,p4,p5, p6]).then(() => {
         var scaleSizeModel1 = 2;
