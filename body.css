@@ -260,7 +260,8 @@ body { margin: 0; background: black;}
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-#world4, #world3, #world2, #world1, #instructions4, #instructions3, #instructions2, #instructions1 {
+#world4, #world3, #world2, #world1, #instructions4, #instructions3, #instructions2, #instructions1, #carmenroca, #vanessabosch, #levivangelder, #pleungremmen, #pienkars, #world1foundfilm, #world1welcome, #adamcentko, #karinferrari, #louisbraddock, #wouterstroet, #valerievanzuijlen, #world2foundfilm, #world2welcome, #world3welcome, #larabruggeman, #nathaliegolde,
+#alondracastellanos, #stanwiersma, #world3inrange, #world3found, #world4welcome, #emilyanderson, #minhongyu, #benjaminhall, #valentinelangeard, #yifanhe {
   visibility: hidden;
 }
 
@@ -337,7 +338,10 @@ body { margin: 0; background: black;}
   animation: mymove 15s linear forwards;
 }
 
-#hintsfade, #hintsfade3, #hintsfade3-2, #hintsfade3-3, #hintsfade1-1, #hintsfade1-2, #hintsfade2-1, #hintsfade2-2, #hintsfade4-1, #hintsfade4-2 {
+#hintsfade, #hintsfade3, #hintsfade3-2, #hintsfade3-3, #hintsfade1-1, #hintsfade1-2, #hintsfade2-1, #hintsfade2-2, #hintsfade2-3, #hintsfade2-4, #hintsfade2-5, #hintsfade2-6, #hintsfade2-7, #hintsfade2-8, #hintsfade2-9,
+#hintsfade2-10, #hintsfade4-1, #hintsfade4-2, #hintsfade1-3, #hintsfade1-4, #hintsfade1-5, #hintsfade1-6, #hintsfade1-7, #hintsfade1-8, #hintsfade1-9,
+#hintsfade1-10, #hintsfade3-1, #hintsfade3-4, #hintsfade3-5, #hintsfade3-6, #hintsfade3-7, #hintsfade3-8, #hintsfade3-9, #hintsfade3-10, #hintsfade4-3, #hintsfade4-4, #hintsfade4-5, #hintsfade4-6, #hintsfade4-7, #hintsfade4-8,
+#hintsfade4-9, #hintsfade4-10 {
   max-height: 100em;
   position: absolute;
   max-width: 60em;
@@ -346,7 +350,6 @@ body { margin: 0; background: black;}
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 45%;
-  visibility: hidden;
 }
 .A {
 animation: animA 20s infinite alternate;
