@@ -795,86 +795,86 @@ function modelLoader(){
         });
     }
 
-    
+
     const loader = new GLTFLoader()
 
     loader.load('models/critters/world1/pleunhand.glb', (gltf)  => {
       gltf.scene.traverse( function( object ) {
       object.frustumCulled = false;
-  
-  
+
+
       } );
       gltf.scene.position.set(300,10,50);
       gltf.scene.scale.set(3,3,3);
       scene.add(gltf.scene);
-  
+
     }
     );
 
     loader.load('models/critters/world1/pleunleg.glb', (gltf)  => {
       gltf.scene.traverse( function( object ) {
       object.frustumCulled = false;
-  
-  
+
+
       } );
       gltf.scene.position.set(-30,-2,-120);
       gltf.scene.scale.set(3,3,3);
       scene.add(gltf.scene);
-  
+
     }
     );
 
     loader.load('models/critters/world1/levi.glb', (gltf)  => {
       gltf.scene.traverse( function( object ) {
       object.frustumCulled = false;
-  
-  
+
+
       } );
       gltf.scene.position.set(80,20,-20);
       gltf.scene.scale.set(3,3,3);
       gltf.scene.rotation.set(0,255,0);
       scene.add(gltf.scene);
-  
+
     }
     );
 
     loader.load('models/critters/world1/vanessa.glb', (gltf)  => {
       gltf.scene.traverse( function( object ) {
       object.frustumCulled = false;
-  
-  
+
+
       } );
       gltf.scene.position.set(100,2,320);
       gltf.scene.scale.set(6,6,6);
       scene.add(gltf.scene);
-  
+
     }
     );
 
     loader.load('models/critters/world1/pien-bouquet.glb', (gltf)  => {
       gltf.scene.traverse( function( object ) {
       object.frustumCulled = false;
-  
-  
+
+
       } );
       gltf.scene.position.set(-96,4,0);
       gltf.scene.scale.set(1,1,1);
       scene.add(gltf.scene);
-  
+
     }
     );
 
     loader.load('models/critters/world1/carmen-phone-new.glb', (gltf)  => {
       gltf.scene.traverse( function( object ) {
       object.frustumCulled = false;
-  
-  
+
+
       } );
       gltf.scene.position.set(50,15,-200);
       gltf.scene.scale.set(2,2,2);
       gltf.scene.rotation.set(45,0,0);
       scene.add(gltf.scene);
-  
+
     }
     );
 
@@ -1439,17 +1439,17 @@ function modelLoader(){
       }
 
       const loader = new GLTFLoader()
-      
+
       loader.load('models/critters/world4/yifan.glb', (gltf)  => {
         gltf.scene.traverse( function( object ) {
         object.frustumCulled = false;
-    
-    
+
+
         } );
         gltf.scene.position.set(100,10,0);
         gltf.scene.scale.set(10,10,10);
         scene.add(gltf.scene);
-    
+
       }
       );
 
@@ -1850,11 +1850,11 @@ function cssStepsWalk(){
 function cssSteps(){
 	if (worldId==1) {
 		js: document.getElementById("world1").style.visibility = "visible";
+		js: document.getElementById("world1welcome").style.visibility = "visible";
 		js: document.getElementById("world2").style.visibility = "hidden";
 		js: document.getElementById("world3").style.visibility = "hidden";
 		js: document.getElementById("world4").style.visibility = "hidden";
-		js: document.getElementById("hintsfade1-1").style.visibility = "visible";
-		js: document.getElementById("hintsfade1-2").style.visibility = "visible";
+		js: document.getElementById("carmenroca").style.visibility = "visible";
 
 		js: document.getElementById("instructions1").style.visibility = "visible";
 		js: document.getElementById("instructions2").style.visibility = "hidden";
@@ -1874,10 +1874,10 @@ function cssSteps(){
 	}else if (worldId==2) {
 		js: document.getElementById("world1").style.visibility = "hidden";
 		js: document.getElementById("world2").style.visibility = "visible";
+		js: document.getElementById("world2welcome").style.visibility = "visible";
 		js: document.getElementById("world3").style.visibility = "hidden";
 		js: document.getElementById("world4").style.visibility = "hidden";
-		js: document.getElementById("hintsfade2-1").style.visibility = "visible";
-		js: document.getElementById("hintsfade2-2").style.visibility = "visible";
+		js: document.getElementById("adamcentko").style.visibility = "visible";
 
 		js: document.getElementById("instructions1").style.visibility = "hidden";
 		js: document.getElementById("instructions2").style.visibility = "visible";
@@ -1898,10 +1898,9 @@ function cssSteps(){
 		js: document.getElementById("world1").style.visibility = "hidden";
 		js: document.getElementById("world2").style.visibility = "hidden";
 		js: document.getElementById("world3").style.visibility = "visible";
+		js: document.getElementById("world3welcome").style.visibility = "visible";
 		js: document.getElementById("world4").style.visibility = "hidden";
-		js: document.getElementById("hintsfade3-2").style.visibility = "visible";
-		js: document.getElementById("hintsfade3-3").style.visibility = "visible";
-
+		js: document.getElementById("alondracastellanos").style.visibility = "visible";
 
 		js: document.getElementById("instructions1").style.visibility = "hidden";
 		js: document.getElementById("instructions2").style.visibility = "hidden";
@@ -1926,8 +1925,8 @@ function cssSteps(){
 		js: document.getElementById("world2").style.visibility = "hidden";
 		js: document.getElementById("world3").style.visibility = "hidden";
 		js: document.getElementById("world4").style.visibility = "visible";
-		js: document.getElementById("hintsfade4-1").style.visibility = "visible";
-		js: document.getElementById("hintsfade4-2").style.visibility = "visible";
+		js: document.getElementById("world4welcome").style.visibility = "visible";
+		js: document.getElementById("benjaminhall").style.visibility = "visible";
 
 		js: document.getElementById("instructions1").style.visibility = "hidden";
 		js: document.getElementById("instructions2").style.visibility = "hidden";
