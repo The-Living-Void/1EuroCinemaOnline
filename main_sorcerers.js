@@ -1970,7 +1970,7 @@ function cssSteps(){
 		js: document.getElementById("world2welcome").style.visibility = "visible";
 		js: document.getElementById("world3").style.visibility = "hidden";
 		js: document.getElementById("world4").style.visibility = "hidden";
-		js: document.getElementById("adamcentko").style.visibility = "visible";
+		js: document.getElementById("louisbraddock").style.visibility = "visible";
 
 		js: document.getElementById("instructions1").style.visibility = "hidden";
 		js: document.getElementById("instructions2").style.visibility = "visible";
