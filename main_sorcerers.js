@@ -13,8 +13,8 @@ import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js'
 
 var debug=false;
 var checkObjId=false;
-var worldId = 4; //1= socerers 2=lighthouse 3=forest 4= cave
-var objectName = 'spider-anim2.glb';
+var worldId = 2; //1= socerers 2=lighthouse 3=forest 4= cave
+// var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 //var imgHeightWorld = new Array();
 var boolMushroom;
@@ -124,7 +124,7 @@ function initCannon(){
       sphereBody = new CANNON.Body({ mass: mass, material: physicsMaterial });
       sphereBody.addShape(sphereShape);
       // sphereBody.position.set(nx * sx * 0.5, ny * sy + radius * 2, nz * sz * 0.5);
-			sphereBody.position.set(190,30,0);
+			sphereBody.position.set(40,20,-20);
       sphereBody.linearDamping = 0.9;
       world.addBody(sphereBody);
 
@@ -970,11 +970,162 @@ function modelLoader(){
 			let p14 = loadModel('models/low_poly_tree/scene.gltf').then(result => {  model14 = result.scene.children[0]; });
 
 
+			const loader = new GLTFLoader()
+
+// adam centko man
+		loader.load('models/critters/world2/adam-gloss.glb', (gltf)  => {
+		    mixer = new THREE.AnimationMixer( gltf.scene );
+		    jumpAction =  mixer.clipAction( gltf.animations[ 0 ] )
+		    gltf.scene.traverse( function( object ) {
+		    object.frustumCulled = false;
+		    } );
+						gltf.scene.position.set(144,9.3,88.7);
+						gltf.scene.rotation.set(0,2.83,0);
+		    scene.add(gltf.scene);
+		    jumpAction.play();
+		  }
+		  );
+
+// karin spider
+			loader.load('models/critters/world2/karin-spider-anim2.glb', (gltf)  => {
+					mixer = new THREE.AnimationMixer( gltf.scene );
+					jumpAction =  mixer.clipAction( gltf.animations[ 0 ] )
+					gltf.scene.traverse( function( object ) {
+					object.frustumCulled = false;
+					} );
+							gltf.scene.position.set(160,9,-75);
+							gltf.scene.rotation.set(0,-0.5,0);
+							gltf.scene.scale.set(5.5,5.5,5.5);
+					scene.add(gltf.scene);
+					jumpAction.play();
+				}
+				);
+
+				loader.load('models/critters/world2/karin-spider-core.glb', (gltf)  => {
+					gltf.scene.traverse( function( object ) {
+					object.frustumCulled = false;
+				} );
+				gltf.scene.position.set(160,9,-75);
+				gltf.scene.rotation.set(0,-0.5,0);
+				gltf.scene.scale.set(5.5,5.5,5.5);
+					scene.add(gltf.scene);
+				}
+				);
+
+	// wouter it's britney bitch
+				loader.load('models/critters/world2/wouter.glb', (gltf)  => {
+					gltf.scene.traverse( function( object ) {
+					object.frustumCulled = false;
+				} );
+					gltf.scene.position.set(-40,5,60);
+					gltf.scene.scale.set(1,1,1);
+					gltf.scene.rotation.set(0,3,0);
+					scene.add(gltf.scene);
+				}
+				);
+
+
+				// valerie tea pots
+							loader.load('models/critters/world2/valerie.glb', (gltf)  => {
+								gltf.scene.traverse( function( object ) {
+								object.frustumCulled = false;
+							} );
+								gltf.scene.position.set(40.3, 15, -34);
+								gltf.scene.scale.set(0.1,0.1,0.1);
+								gltf.scene.rotation.set(0,1.5,0.5);
+								scene.add(gltf.scene);
+							}
+							);
+
+
+							loader.load('models/critters/world2/valerie.glb', (gltf)  => {
+								gltf.scene.traverse( function( object ) {
+								object.frustumCulled = false;
+							} );
+								gltf.scene.position.set(43, 14, -30.1);
+								gltf.scene.scale.set(0.1,0.1,0.1);
+								gltf.scene.rotation.set(2,1,0.7);
+								scene.add(gltf.scene);
+							}
+							);
+
+
+							loader.load('models/critters/world2/valerie.glb', (gltf)  => {
+								gltf.scene.traverse( function( object ) {
+								object.frustumCulled = false;
+							} );
+								gltf.scene.position.set(41, 13, -32.6);
+								gltf.scene.scale.set(0.05,0.05,0.05);
+								gltf.scene.rotation.set(1.3,3,-0.6);
+								scene.add(gltf.scene);
+							}
+							);
+
+							loader.load('models/critters/world2/valerie.glb', (gltf)  => {
+								gltf.scene.traverse( function( object ) {
+								object.frustumCulled = false;
+							} );
+								gltf.scene.position.set(41.3, 14.8, -32.3);
+								gltf.scene.scale.set(0.03,0.03,0.03);
+								gltf.scene.rotation.set(0.2,1,-1);
+								scene.add(gltf.scene);
+							}
+							);
+
+
+							loader.load('models/critters/world2/valerie.glb', (gltf)  => {
+								gltf.scene.traverse( function( object ) {
+								object.frustumCulled = false;
+							} );
+								gltf.scene.position.set(40.7, 17.8, -33.4);
+								gltf.scene.scale.set(0.04,0.04,0.04);
+								gltf.scene.rotation.set(-2,1.3,0);
+								scene.add(gltf.scene);
+							}
+							);
+
+							loader.load('models/critters/world2/valerie.glb', (gltf)  => {
+								gltf.scene.traverse( function( object ) {
+								object.frustumCulled = false;
+							} );
+								gltf.scene.position.set(42, 17, -32);
+								gltf.scene.scale.set(0.07,0.07,0.07);
+								gltf.scene.rotation.set(2,1.2,0);
+								scene.add(gltf.scene);
+							}
+							);
+
+							loader.load('models/critters/world2/valerie.glb', (gltf)  => {
+								gltf.scene.traverse( function( object ) {
+								object.frustumCulled = false;
+							} );
+								gltf.scene.position.set(37, 11.3, -22);
+								gltf.scene.scale.set(0.1,0.1,0.1);
+								gltf.scene.rotation.set(0,0,0.4);
+								scene.add(gltf.scene);
+							}
+							);
+
+							loader.load('models/critters/world2/valerie.glb', (gltf)  => {
+								gltf.scene.traverse( function( object ) {
+								object.frustumCulled = false;
+							} );
+								gltf.scene.position.set(38, 11.8, -19);
+								gltf.scene.scale.set(0.05,0.05,0.05);
+								gltf.scene.rotation.set(0.2,2,-0.2);
+								scene.add(gltf.scene);
+							}
+							);
+
+
+
+
       function loadModel(url) {
       return new Promise(resolve => {
           new GLTFLoader(manager).load(url, resolve);
           });
       }
+
 
 
       Promise.all([p1,p2,p3,p4,p5, p6, p7, p8,p9,p10,p11, p12, p13, p14]).then(() => {
@@ -1101,7 +1252,7 @@ function modelLoader(){
 			loader.load('models/critters/world3/alondra.glb', (gltf)  => {
 				gltf.scene.traverse( function( object ) {
 				object.frustumCulled = false;
-			} );1
+			} );
 				gltf.scene.position.set(240,0.2,-50);
 				gltf.scene.scale.set(3,3,3);
 				gltf.scene.rotation.set(0,0.6,0);
@@ -1198,7 +1349,7 @@ function modelLoader(){
 			);
 
 			// Lara cloth ghosts
-			loader.load('models/critters/lara.glb', (gltf)  => {
+			loader.load('models/critters/world3/lara.glb', (gltf)  => {
 				gltf.scene.traverse( function( object ) {
 				object.frustumCulled = false;
 				} );
@@ -1210,7 +1361,7 @@ function modelLoader(){
 			}
 			);
 
-			loader.load('models/critters/lara.glb', (gltf)  => {
+			loader.load('models/critters/world3/lara.glb', (gltf)  => {
 				gltf.scene.traverse( function( object ) {
 				object.frustumCulled = false;
 				} );
@@ -1222,7 +1373,7 @@ function modelLoader(){
 			}
 			);
 
-			loader.load('models/critters/lara.glb', (gltf)  => {
+			loader.load('models/critters/world3/lara.glb', (gltf)  => {
 				gltf.scene.traverse( function( object ) {
 				object.frustumCulled = false;
 				} );
@@ -1234,7 +1385,7 @@ function modelLoader(){
 			}
 			);
 
-			loader.load('models/critters/lara.glb', (gltf)  => {
+			loader.load('models/critters/world3/lara.glb', (gltf)  => {
 				gltf.scene.traverse( function( object ) {
 				object.frustumCulled = false;
 				} );
@@ -1246,7 +1397,7 @@ function modelLoader(){
 			}
 			);
 
-			loader.load('models/critters/lara.glb', (gltf)  => {
+			loader.load('models/critters/world3/lara.glb', (gltf)  => {
 				gltf.scene.traverse( function( object ) {
 				object.frustumCulled = false;
 				} );
@@ -1262,7 +1413,7 @@ function modelLoader(){
 
 
 			// Inwoo apples
-			loader.load('models/critters/inwoo.glb', (gltf)  => {
+			loader.load('models/critters/world3/inwoo.glb', (gltf)  => {
 				gltf.scene.traverse( function( object ) {
 				object.frustumCulled = false;
 				} );
@@ -1274,7 +1425,7 @@ function modelLoader(){
 			}
 			);
 
-			loader.load('models/critters/inwoo.glb', (gltf)  => {
+			loader.load('models/critters/world3/inwoo.glb', (gltf)  => {
 				gltf.scene.traverse( function( object ) {
 				object.frustumCulled = false;
 				} );
@@ -1286,7 +1437,7 @@ function modelLoader(){
 			}
 			);
 
-			loader.load('models/critters/inwoo.glb', (gltf)  => {
+			loader.load('models/critters/world3/inwoo.glb', (gltf)  => {
 				gltf.scene.traverse( function( object ) {
 				object.frustumCulled = false;
 				} );
@@ -1298,7 +1449,7 @@ function modelLoader(){
 			}
 			);
 
-			loader.load('models/critters/inwoo.glb', (gltf)  => {
+			loader.load('models/critters/world3/inwoo.glb', (gltf)  => {
 				gltf.scene.traverse( function( object ) {
 				object.frustumCulled = false;
 				} );
@@ -1310,7 +1461,7 @@ function modelLoader(){
 			}
 			);
 
-			loader.load('models/critters/inwoo.glb', (gltf)  => {
+			loader.load('models/critters/world3/inwoo.glb', (gltf)  => {
 				gltf.scene.traverse( function( object ) {
 				object.frustumCulled = false;
 				} );
@@ -1322,7 +1473,7 @@ function modelLoader(){
 			}
 			);
 
-			loader.load('models/critters/inwoo.glb', (gltf)  => {
+			loader.load('models/critters/world3/inwoo.glb', (gltf)  => {
 				gltf.scene.traverse( function( object ) {
 				object.frustumCulled = false;
 				} );
@@ -1456,39 +1607,39 @@ function modelLoader(){
       loader.load('models/critters/world4/valentine.glb', (gltf)  => {
         gltf.scene.traverse( function( object ) {
         object.frustumCulled = false;
-    
-    
+
+
         } );
         gltf.scene.position.set(245,5,0);
         gltf.scene.scale.set(0.7,0.7,0.7);
         scene.add(gltf.scene);
-    
+
       }
       );
 
       loader.load('models/critters/world4/minhong.glb', (gltf)  => {
         gltf.scene.traverse( function( object ) {
         object.frustumCulled = false;
-    
-    
+
+
         } );
         gltf.scene.position.set(0,0,100);
         gltf.scene.scale.set(3.5,3.5,3.5);
         scene.add(gltf.scene);
-    
+
       }
       );
 
       loader.load('models/critters/world4/emily.glb', (gltf)  => {
         gltf.scene.traverse( function( object ) {
         object.frustumCulled = false;
-    
-    
+
+
         } );
         gltf.scene.position.set(-180,30,-200);
         gltf.scene.scale.set(5,5,5);
         scene.add(gltf.scene);
-    
+
       }
       );
 
@@ -1550,29 +1701,7 @@ function addCharacters(){
 
 	const loader = new GLTFLoader()
 
-  loader.load('models/critters/spider.glb', (gltf)  => {
-    gltf.scene.traverse( function( object ) {
-    object.frustumCulled = false;
 
-
-    } );
-    gltf.scene.position.set(1,3,1);
-    scene.add(gltf.scene);
-
-  }
-  );
-
-  loader.load('models/critters/spider-core.glb', (gltf)  => {
-    gltf.scene.traverse( function( object ) {
-    object.frustumCulled = false;
-
-
-    } );
-    gltf.scene.position.set(1,0.5,1);
-    scene.add(gltf.scene);
-
-  }
-  );
 
   new RGBELoader()
   .setDataType( THREE.UnsignedByteType )
@@ -1591,127 +1720,40 @@ function addCharacters(){
 
     render();
 
-    // model
-
-    // use of RoughnessMipmapper is optional
-    const roughnessMipmapper = new RoughnessMipmapper( renderer );
-
-    const loader = new GLTFLoader().setPath( 'models/critters/' );
-    loader.load( 'adam-gloss.glb', function ( gltf ) {
-      mixer = new THREE.AnimationMixer( gltf.scene );
-      gltf.animations;
-      jumpAction = mixer.clipAction( gltf.animations[ 0 ] )
-
-      gltf.scene.traverse( function ( child ) {
-
-        if ( child.isMesh ) {
-
-          // TOFIX RoughnessMipmapper seems to be broken with WebGL 2.0
-          // roughnessMipmapper.generateMipmaps( child.material );
-
-        }
-
-      } );
-      gltf.scene.position.set(1,0.5,1);
-
-      scene.add( gltf.scene );
-      jumpAction.play();
-      roughnessMipmapper.dispose();
-
-      render();
-
-    } );
-
-  } );
-
-	//this gives an error:
-  //const myMaterial = new THREE.MeshNormalMaterial( { color: 0xffee00, refractionRatio: 0.95 }  );
-	const myMaterial = new THREE.MeshNormalMaterial();
-  loader.load('models/critters/spider.glb', (gltf)  => {
 
 
-    mixer = new THREE.AnimationMixer( gltf.scene );
-    jumpAction =  mixer.clipAction( gltf.animations[ 0 ] )
-    gltf.scene.traverse( function( object ) {
-    object.frustumCulled = false;
-    } );
-    gltf.scene.position.set(1,0.5,1);
-
-    scene.add(gltf.scene);
-    jumpAction.play();
-  }
-  );
-  loader.load('models/critters/spider-anim2.glb', (gltf)  => {
+} );
 
 
-    mixer = new THREE.AnimationMixer( gltf.scene );
-    jumpAction =  mixer.clipAction( gltf.animations[ 0 ] )
-    gltf.scene.traverse( function( object ) {
-    object.frustumCulled = false;
-    } );
-    gltf.scene.position.set(3,1,4);
-    gltf.scene.scale.set(0.1,0.1,0.1);
-    scene.add(gltf.scene);
-    jumpAction.play();
-  }
-  );
 
-  loader.load('models/critters/spider-anim3.glb', (gltf)  => {
-
-
-    mixer = new THREE.AnimationMixer( gltf.scene );
-    jumpAction =  mixer.clipAction( gltf.animations[ 0 ] )
-    gltf.scene.traverse( function( object ) {
-    object.frustumCulled = false;
-    } );
-    gltf.scene.position.set(10,1,2);
-    gltf.scene.scale.set(1,1,1);
-    scene.add(gltf.scene);
-    jumpAction.play();
-  }
-  );
-
-  loader.load('models/critters/spider-anim3.glb', (gltf)  => {
-		mixer = new THREE.AnimationMixer( gltf.scene );
-    jumpAction =  mixer.clipAction( gltf.animations[ 0 ] )
-    gltf.scene.traverse( function( object ) {
-    object.frustumCulled = false;
-    } );
-    gltf.scene.position.set(-10,1,3);
-    gltf.scene.scale.set(0.1,0.1,0.1);
-    scene.add(gltf.scene);
-    jumpAction.play();
-  }
-  );
-
-  		loader.load('models/critters/'+objectName, (gltf)  => {
-      mixer = new THREE.AnimationMixer( gltf.scene );
-      //gltf.animations;
-      //idleAction = mixer.clipAction( gltf.animations[ 1 ] )
-      jumpAction =  mixer.clipAction( gltf.animations[ 0 ] )
-
-      gltf.scene.traverse( function( object ) {
-        object.frustumCulled = false;
-      } );
-      // gltf.scene.traverse((o) => {
-	    //   if (o.isMesh) {
-	    //     o.material.emissive = new THREE.Color( "rgb(194, 85, 226)" );
-	    //   }
-      // });
-      scene.add(gltf.scene);
-      // starts idle animation
-      jumpAction.play();
-    }, function ( xhr ) {
-      if (xhr.loaded/xhr.total * 100 == 100) {
-      console.log("finished loading characters!")
-      }
-  		//console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-  	},
-  	// called when loading has errors
-  	function ( error ) {
-  		console.log( 'An error happened' );
-  	}
-  );
+  // 		loader.load('models/critters/'+objectName, (gltf)  => {
+  //     mixer = new THREE.AnimationMixer( gltf.scene );
+  //     //gltf.animations;
+  //     //idleAction = mixer.clipAction( gltf.animations[ 1 ] )
+  //     jumpAction =  mixer.clipAction( gltf.animations[ 0 ] )
+	//
+  //     gltf.scene.traverse( function( object ) {
+  //       object.frustumCulled = false;
+  //     } );
+  //     // gltf.scene.traverse((o) => {
+	//     //   if (o.isMesh) {
+	//     //     o.material.emissive = new THREE.Color( "rgb(194, 85, 226)" );
+	//     //   }
+  //     // });
+  //     scene.add(gltf.scene);
+  //     // starts idle animation
+  //     jumpAction.play();
+  //   }, function ( xhr ) {
+  //     if (xhr.loaded/xhr.total * 100 == 100) {
+  //     console.log("finished loading characters!")
+  //     }
+  // 		//console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+  // 	},
+  // 	// called when loading has errors
+  // 	function ( error ) {
+  // 		console.log( 'An error happened' );
+  // 	}
+  // );
 }
 
 function soundGo(){
