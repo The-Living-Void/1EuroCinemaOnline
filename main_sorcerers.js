@@ -13,11 +13,12 @@ import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js'
 
 var debug=false;
 var checkObjId=false;
-var worldId = 3; //1= socerers 2=lighthouse 3=forest 4= cave
-var objectName = 'spider-anim2.glb';
+var worldId = 2; //1= socerers 2=lighthouse 3=forest 4= cave
+// var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 //var imgHeightWorld = new Array();
 var boolMushroom;
+var boolCross;
 
 const listener = new THREE.AudioListener();
 const sound = new THREE.Audio( listener );
@@ -123,7 +124,7 @@ function initCannon(){
       sphereBody = new CANNON.Body({ mass: mass, material: physicsMaterial });
       sphereBody.addShape(sphereShape);
       // sphereBody.position.set(nx * sx * 0.5, ny * sy + radius * 2, nz * sz * 0.5);
-			sphereBody.position.set(190,30,0);
+			sphereBody.position.set(40,20,-20);
       sphereBody.linearDamping = 0.9;
       world.addBody(sphereBody);
 
@@ -494,36 +495,6 @@ function initCannon(){
       }
       if (worldId==3) {
 
-				var world3wall1Shape = new CANNON.Box(new CANNON.Vec3(400, 200, 1));
-				var world3wall1Body = new CANNON.Body({mass: 0});
-				world3wall1Body.addShape(world3wall1Shape);
-				world3wall1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
-				world3wall1Body.position.set(348, 0, 0);
-				world.addBody(world3wall1Body);
-
-				var world3wall2Shape = new CANNON.Box(new CANNON.Vec3(400, 200, 1));
-				var world3wall2Body = new CANNON.Body({mass: 0});
-				world3wall2Body.addShape(world3wall2Shape);
-				world3wall2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
-				world3wall2Body.position.set(-145, 0, 0);
-				world.addBody(world3wall2Body);
-
-				//west wall
-				var world3wall3Shape = new CANNON.Box(new CANNON.Vec3(1, 200, 400));
-				var world3wall3Body = new CANNON.Body({mass: 0});
-				world3wall3Body.addShape(world3wall3Shape);
-				world3wall3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
-				world3wall3Body.position.set(0, 0, -260);
-				world.addBody(world3wall3Body);
-
-				// east wall
-				var world3wall4Shape = new CANNON.Box(new CANNON.Vec3(1, 200, 400));
-				var world3wall4Body = new CANNON.Body({mass: 0});
-				world3wall4Body.addShape(world3wall4Shape);
-				world3wall4Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
-				world3wall4Body.position.set(0, 0, 245);
-				world.addBody(world3wall4Body);
-
 				var mushroom2943Shape = new CANNON.Box(new CANNON.Vec3(0.7, 0.7, 6));
 				var mushroom2943Body = new CANNON.Body({mass: 0, material: physicsMaterial});
 				mushroom2943Body.addShape(mushroom2943Shape);
@@ -561,150 +532,13 @@ function initCannon(){
 				eikBody.position.set(105, 10, -200);
 				world.addBody(eikBody);
 
-				var cliff1Shape = new CANNON.Box(new CANNON.Vec3(10, 4, 19));
-				var cliff1Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff1Body.addShape(cliff1Shape);
-				cliff1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -0.55);
-				cliff1Body.position.set(103, 18, -19);
-				cliff1Body.angularVelocity.set(0, 0, 0);
-				world.addBody(cliff1Body);
-
-				var cliff1aShape = new CANNON.Box(new CANNON.Vec3(9, 4, 9));
-				var cliff1aBody = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff1aBody.addShape(cliff1aShape);
-				cliff1aBody.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -0.55);
-				cliff1aBody.position.set(98, 19.7, -8);
-				cliff1aBody.angularVelocity.set(0, 0, 0);
-				world.addBody(cliff1aBody);
-
-				var cliff2Shape = new CANNON.Box(new CANNON.Vec3(4, 6, 5));
-				var cliff2Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff2Body.addShape(cliff2Shape);
-				cliff2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 0.3);
-				cliff2Body.position.set(98, 15, -4);
-				cliff2Body.angularVelocity.set(0, 0, 0);
-				world.addBody(cliff2Body);
-
-				var cliff3Shape = new CANNON.Box(new CANNON.Vec3(4, 4, 4));
-				var cliff3Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff3Body.addShape(cliff3Shape);
-				cliff3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -0.55);
-				cliff3Body.position.set(114, 18.5, -23);
-				cliff3Body.angularVelocity.set(0, 0, 0);
-				world.addBody(cliff3Body);
-
-				var cliff4Shape = new CANNON.Box(new CANNON.Vec3(3, 4, 4));
-				var cliff4Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff4Body.addShape(cliff4Shape);
-				cliff4Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -0.55);
-				cliff4Body.position.set(117, 14, -19);
-				world.addBody(cliff4Body);
-
-				var cliff5Shape = new CANNON.Box(new CANNON.Vec3(11, 10, 11));
-				var cliff5Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff5Body.addShape(cliff5Shape);
-				cliff5Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 0);
-				cliff5Body.position.set(75, 16, -47);
-				world.addBody(cliff5Body);
-
-				var cliff6Shape = new CANNON.Box(new CANNON.Vec3(2, 10, 11));
-				var cliff6Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff6Body.addShape(cliff6Shape);
-				cliff6Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -1.4);
-				cliff6Body.position.set(80, 15, -34);
-				world.addBody(cliff6Body);
-
-				var cliff7Shape = new CANNON.Box(new CANNON.Vec3(3.5, 10, 4));
-				var cliff7Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff7Body.addShape(cliff7Shape);
-				cliff7Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 0.55);
-				cliff7Body.position.set(103, 14, -41);
-				world.addBody(cliff7Body);
-
-				var cliff8Shape = new CANNON.Box(new CANNON.Vec3(5, 10, 5));
-				var cliff8Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff8Body.addShape(cliff8Shape);
-				cliff8Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 0.55);
-				cliff8Body.position.set(99, 16, -50);
-				world.addBody(cliff8Body);
-
-				var cliff9Shape = new CANNON.Box(new CANNON.Vec3(10, 10, 5));
-				var cliff9Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff9Body.addShape(cliff9Shape);
-				cliff9Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 0.1);
-				cliff9Body.position.set(89, 16, -49);
-				world.addBody(cliff9Body);
-
-				var cliff10Shape = new CANNON.Box(new CANNON.Vec3(5, 10, 4));
-				var cliff10Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff10Body.addShape(cliff10Shape);
-				cliff10Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 0.1);
-				cliff10Body.position.set(85, 16, -40);
-				world.addBody(cliff10Body);
-
-				var cliff11Shape = new CANNON.Box(new CANNON.Vec3(2.5, 10, 3.5));
-				var cliff11Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff11Body.addShape(cliff11Shape);
-				cliff11Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 0.55);
-				cliff11Body.position.set(104, 16, -51);
-				world.addBody(cliff11Body);
-
-				var cliff12Shape = new CANNON.Box(new CANNON.Vec3(3, 10, 7.5));
-				var cliff12Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff12Body.addShape(cliff12Shape);
-				cliff12Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 0.55);
-				cliff12Body.position.set(115, 11, -27);
-				world.addBody(cliff12Body);
-
-
-				var cliff13Shape = new CANNON.Box(new CANNON.Vec3(2, 16, 6));
-				var cliff13Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff13Body.addShape(cliff13Shape);
-				cliff13Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 0, 1), -0.5);
-				cliff13Body.position.set(59, 9, -57);
-				world.addBody(cliff13Body);
-
-				// var cliff14Shape = new CANNON.Box(new CANNON.Vec3(4, 18, 5));
-				// var cliff14Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				// cliff14Body.addShape(cliff14Shape);
-				// cliff14Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 1, 1), -0.5);
-				// cliff14Body.position.set(50, 9, -27);
-				// world.addBody(cliff14Body);
-
-				var cliff15Shape = new CANNON.Box(new CANNON.Vec3(4, 16, 6));
-				var cliff15Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-				cliff15Body.addShape(cliff15Shape);
-				cliff15Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 0, 1), -0.6);
-				cliff15Body.position.set(53, 10, -29);
-				world.addBody(cliff15Body);
-
-				var cliffrockShape = new CANNON.Sphere(2);
-				var cliffrockBody = new CANNON.Body({ mass: 0, material: physicsMaterial });
-				cliffrockBody.addShape(cliffrockShape);
-				cliffrockBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-				cliffrockBody.position.set(70, 26, -37);
-				world.addBody(cliffrockBody);
-
-				var cliffrock2Shape = new CANNON.Sphere(7);
-				var cliffrock2Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
-				cliffrock2Body.addShape(cliffrock2Shape);
-				cliffrock2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-				cliffrock2Body.position.set(89, 24, -30);
-				world.addBody(cliffrock2Body);
-
-				var cliffrock3Shape = new CANNON.Sphere(2.5);
-				var cliffrock3Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
-				cliffrock3Body.addShape(cliffrock3Shape);
-				cliffrock3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-				cliffrock3Body.position.set(95, 24, -26);
-				world.addBody(cliffrock3Body);
-
-				var cliffrock4Shape = new CANNON.Sphere(23);
-				var cliffrock4Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
-				cliffrock4Body.addShape(cliffrock4Shape);
-				cliffrock4Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-				cliffrock4Body.position.set(62, 0, -26);
-				world.addBody(cliffrock4Body);
+				var mushroomgroot2Shape = new CANNON.Box(new CANNON.Vec3(10, 10, 10));
+				var mushroomgroot2Body = new CANNON.Body({mass: 0, material: physicsMaterial});
+				mushroomgroot2Body.addShape(mushroomgroot2Shape);
+				mushroomgroot2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1.05, -0.4, -0.3), -Math.PI / 2);
+				mushroomgroot2Body.position.set(94, 12, -10);
+				mushroomgroot2Body.angularVelocity.set(0, 0, 0);
+				world.addBody(mushroomgroot2Body);
 
 				var boomShape = new CANNON.Box(new CANNON.Vec3(3.8, 3.8, 16));
 				var boomBody = new CANNON.Body({mass: 0});
@@ -961,6 +795,89 @@ function modelLoader(){
         });
     }
 
+
+    const loader = new GLTFLoader()
+
+    loader.load('models/critters/world1/pleunhand.glb', (gltf)  => {
+      gltf.scene.traverse( function( object ) {
+      object.frustumCulled = false;
+
+
+      } );
+      gltf.scene.position.set(300,10,50);
+      gltf.scene.scale.set(3,3,3);
+      scene.add(gltf.scene);
+
+    }
+    );
+
+    loader.load('models/critters/world1/pleunleg.glb', (gltf)  => {
+      gltf.scene.traverse( function( object ) {
+      object.frustumCulled = false;
+
+
+      } );
+      gltf.scene.position.set(-30,-2,-120);
+      gltf.scene.scale.set(3,3,3);
+      scene.add(gltf.scene);
+
+    }
+    );
+
+    loader.load('models/critters/world1/levi.glb', (gltf)  => {
+      gltf.scene.traverse( function( object ) {
+      object.frustumCulled = false;
+
+
+      } );
+      gltf.scene.position.set(80,20,-20);
+      gltf.scene.scale.set(3,3,3);
+      gltf.scene.rotation.set(0,255,0);
+      scene.add(gltf.scene);
+
+    }
+    );
+
+    loader.load('models/critters/world1/vanessa.glb', (gltf)  => {
+      gltf.scene.traverse( function( object ) {
+      object.frustumCulled = false;
+
+
+      } );
+      gltf.scene.position.set(100,2,320);
+      gltf.scene.scale.set(6,6,6);
+      scene.add(gltf.scene);
+
+    }
+    );
+
+    loader.load('models/critters/world1/pien-bouquet.glb', (gltf)  => {
+      gltf.scene.traverse( function( object ) {
+      object.frustumCulled = false;
+
+
+      } );
+      gltf.scene.position.set(-96,4,0);
+      gltf.scene.scale.set(1,1,1);
+      scene.add(gltf.scene);
+
+    }
+    );
+
+    loader.load('models/critters/world1/carmen-phone-new.glb', (gltf)  => {
+      gltf.scene.traverse( function( object ) {
+      object.frustumCulled = false;
+
+
+      } );
+      gltf.scene.position.set(50,15,-200);
+      gltf.scene.scale.set(2,2,2);
+      gltf.scene.rotation.set(45,0,0);
+      scene.add(gltf.scene);
+
+    }
+    );
+
     Promise.all([p1,p2,p3,p4,p5, p6, p7,p8]).then(() => {
 
         var scaleSizeModel1 = 1;
@@ -1053,11 +970,163 @@ function modelLoader(){
 			let p14 = loadModel('models/low_poly_tree/scene.gltf').then(result => {  model14 = result.scene.children[0]; });
 
 
+			const loader = new GLTFLoader()
+
+// adam centko man
+		loader.load('models/critters/world2/adam-gloss.glb', (gltf)  => {
+		    mixer = new THREE.AnimationMixer( gltf.scene );
+		    jumpAction =  mixer.clipAction( gltf.animations[ 0 ] )
+		    gltf.scene.traverse( function( object ) {
+		    object.frustumCulled = false;
+		    } );
+						gltf.scene.position.set(144,9.3,88.7);
+						gltf.scene.rotation.set(0,2.83,0);
+		    scene.add(gltf.scene);
+		    jumpAction.play();
+		  }
+		  );
+
+// karin spider
+			loader.load('models/critters/world2/karin-spider-anim2.glb', (gltf)  => {
+					mixer = new THREE.AnimationMixer( gltf.scene );
+					jumpAction =  mixer.clipAction( gltf.animations[ 0 ] )
+					gltf.scene.traverse( function( object ) {
+					object.frustumCulled = false;
+					} );
+							gltf.scene.position.set(160,9,-75);
+							gltf.scene.rotation.set(0,-0.5,0);
+							gltf.scene.scale.set(5.5,5.5,5.5);
+					scene.add(gltf.scene);
+					jumpAction.play();
+				}
+				);
+
+				loader.load('models/critters/world2/karin-spider-core.glb', (gltf)  => {
+					gltf.scene.traverse( function( object ) {
+					object.frustumCulled = false;
+				} );
+				gltf.scene.position.set(160,9,-75);
+				gltf.scene.rotation.set(0,-0.5,0);
+				gltf.scene.scale.set(5.5,5.5,5.5);
+					scene.add(gltf.scene);
+				}
+				);
+
+	// wouter it's britney bitch
+				loader.load('models/critters/world2/wouter.glb', (gltf)  => {
+					gltf.scene.traverse( function( object ) {
+					object.frustumCulled = false;
+				} );
+					gltf.scene.position.set(-40,5,60);
+					gltf.scene.scale.set(1,1,1);
+					gltf.scene.rotation.set(0,3,0);
+					scene.add(gltf.scene);
+				}
+				);
+
+
+				// valerie tea pots
+							loader.load('models/critters/world2/valerie.glb', (gltf)  => {
+								gltf.scene.traverse( function( object ) {
+								object.frustumCulled = false;
+							} );
+								gltf.scene.position.set(40.3, 15, -34);
+								gltf.scene.scale.set(0.1,0.1,0.1);
+								gltf.scene.rotation.set(0,1.5,0.5);
+								scene.add(gltf.scene);
+							}
+							);
+
+
+							loader.load('models/critters/world2/valerie.glb', (gltf)  => {
+								gltf.scene.traverse( function( object ) {
+								object.frustumCulled = false;
+							} );
+								gltf.scene.position.set(43, 14, -30.1);
+								gltf.scene.scale.set(0.1,0.1,0.1);
+								gltf.scene.rotation.set(2,1,0.7);
+								scene.add(gltf.scene);
+							}
+							);
+
+
+							loader.load('models/critters/world2/valerie.glb', (gltf)  => {
+								gltf.scene.traverse( function( object ) {
+								object.frustumCulled = false;
+							} );
+								gltf.scene.position.set(41, 13, -32.6);
+								gltf.scene.scale.set(0.05,0.05,0.05);
+								gltf.scene.rotation.set(1.3,3,-0.6);
+								scene.add(gltf.scene);
+							}
+							);
+
+							loader.load('models/critters/world2/valerie.glb', (gltf)  => {
+								gltf.scene.traverse( function( object ) {
+								object.frustumCulled = false;
+							} );
+								gltf.scene.position.set(41.3, 14.8, -32.3);
+								gltf.scene.scale.set(0.03,0.03,0.03);
+								gltf.scene.rotation.set(0.2,1,-1);
+								scene.add(gltf.scene);
+							}
+							);
+
+
+							loader.load('models/critters/world2/valerie.glb', (gltf)  => {
+								gltf.scene.traverse( function( object ) {
+								object.frustumCulled = false;
+							} );
+								gltf.scene.position.set(40.7, 17.8, -33.4);
+								gltf.scene.scale.set(0.04,0.04,0.04);
+								gltf.scene.rotation.set(-2,1.3,0);
+								scene.add(gltf.scene);
+							}
+							);
+
+							loader.load('models/critters/world2/valerie.glb', (gltf)  => {
+								gltf.scene.traverse( function( object ) {
+								object.frustumCulled = false;
+							} );
+								gltf.scene.position.set(42, 17, -32);
+								gltf.scene.scale.set(0.07,0.07,0.07);
+								gltf.scene.rotation.set(2,1.2,0);
+								scene.add(gltf.scene);
+							}
+							);
+
+							loader.load('models/critters/world2/valerie.glb', (gltf)  => {
+								gltf.scene.traverse( function( object ) {
+								object.frustumCulled = false;
+							} );
+								gltf.scene.position.set(37, 11.3, -22);
+								gltf.scene.scale.set(0.1,0.1,0.1);
+								gltf.scene.rotation.set(0,0,0.4);
+								scene.add(gltf.scene);
+							}
+							);
+
+							loader.load('models/critters/world2/valerie.glb', (gltf)  => {
+								gltf.scene.traverse( function( object ) {
+								object.frustumCulled = false;
+							} );
+								gltf.scene.position.set(38, 11.8, -19);
+								gltf.scene.scale.set(0.05,0.05,0.05);
+								gltf.scene.rotation.set(0.2,2,-0.2);
+								scene.add(gltf.scene);
+							}
+							);
+
+
+
+
       function loadModel(url) {
       return new Promise(resolve => {
           new GLTFLoader(manager).load(url, resolve);
           });
       }
+
+
 
       Promise.all([p1,p2,p3,p4,p5, p6, p7, p8,p9,p10,p11, p12, p13, p14]).then(() => {
 
@@ -1183,7 +1252,7 @@ function modelLoader(){
 			loader.load('models/critters/world3/alondra.glb', (gltf)  => {
 				gltf.scene.traverse( function( object ) {
 				object.frustumCulled = false;
-			} );1
+			} );
 				gltf.scene.position.set(240,0.2,-50);
 				gltf.scene.scale.set(3,3,3);
 				gltf.scene.rotation.set(0,0.6,0);
@@ -1280,7 +1349,7 @@ function modelLoader(){
 			);
 
 			// Lara cloth ghosts
-			loader.load('models/critters/lara.glb', (gltf)  => {
+			loader.load('models/critters/world3/lara.glb', (gltf)  => {
 				gltf.scene.traverse( function( object ) {
 				object.frustumCulled = false;
 				} );
@@ -1292,7 +1361,7 @@ function modelLoader(){
 			}
 			);
 
-			loader.load('models/critters/lara.glb', (gltf)  => {
+			loader.load('models/critters/world3/lara.glb', (gltf)  => {
 				gltf.scene.traverse( function( object ) {
 				object.frustumCulled = false;
 				} );
@@ -1304,7 +1373,7 @@ function modelLoader(){
 			}
 			);
 
-			loader.load('models/critters/lara.glb', (gltf)  => {
+			loader.load('models/critters/world3/lara.glb', (gltf)  => {
 				gltf.scene.traverse( function( object ) {
 				object.frustumCulled = false;
 				} );
@@ -1316,8 +1385,7 @@ function modelLoader(){
 			}
 		);
 
-			// Queen critter
-			loader.load('models/critters/lara.glb', (gltf)  => {
+			loader.load('models/critters/world3/lara.glb', (gltf)  => {
 				gltf.scene.traverse( function( object ) {
 				object.frustumCulled = false;
 				} );
@@ -1329,7 +1397,7 @@ function modelLoader(){
 			}
 			);
 
-			loader.load('models/critters/lara.glb', (gltf)  => {
+			loader.load('models/critters/world3/lara.glb', (gltf)  => {
 				gltf.scene.traverse( function( object ) {
 				object.frustumCulled = false;
 				} );
@@ -1345,8 +1413,7 @@ function modelLoader(){
 
 
 			// Inwoo apples
-			// queen Critter
-			loader.load('models/critters/inwoo.glb', (gltf)  => {
+			loader.load('models/critters/world3/inwoo.glb', (gltf)  => {
 				gltf.scene.traverse( function( object ) {
 				object.frustumCulled = false;
 				} );
@@ -1358,7 +1425,7 @@ function modelLoader(){
 			}
 			);
 
-			loader.load('models/critters/inwoo.glb', (gltf)  => {
+			loader.load('models/critters/world3/inwoo.glb', (gltf)  => {
 				gltf.scene.traverse( function( object ) {
 				object.frustumCulled = false;
 				} );
@@ -1370,7 +1437,7 @@ function modelLoader(){
 			}
 			);
 
-			loader.load('models/critters/inwoo.glb', (gltf)  => {
+			loader.load('models/critters/world3/inwoo.glb', (gltf)  => {
 				gltf.scene.traverse( function( object ) {
 				object.frustumCulled = false;
 				} );
@@ -1382,7 +1449,7 @@ function modelLoader(){
 			}
 			);
 
-			loader.load('models/critters/inwoo.glb', (gltf)  => {
+			loader.load('models/critters/world3/inwoo.glb', (gltf)  => {
 				gltf.scene.traverse( function( object ) {
 				object.frustumCulled = false;
 				} );
@@ -1394,7 +1461,7 @@ function modelLoader(){
 			}
 			);
 
-			loader.load('models/critters/inwoo.glb', (gltf)  => {
+			loader.load('models/critters/world3/inwoo.glb', (gltf)  => {
 				gltf.scene.traverse( function( object ) {
 				object.frustumCulled = false;
 				} );
@@ -1406,7 +1473,7 @@ function modelLoader(){
 			}
 			);
 
-			loader.load('models/critters/inwoo.glb', (gltf)  => {
+			loader.load('models/critters/world3/inwoo.glb', (gltf)  => {
 				gltf.scene.traverse( function( object ) {
 				object.frustumCulled = false;
 				} );
@@ -1522,6 +1589,72 @@ function modelLoader(){
           });
       }
 
+      const loader = new GLTFLoader()
+
+      loader.load('models/critters/world4/yifan.glb', (gltf)  => {
+        gltf.scene.traverse( function( object ) {
+        object.frustumCulled = false;
+
+
+        } );
+        gltf.scene.position.set(10,30,0);
+        gltf.scene.scale.set(10,10,10);
+        scene.add(gltf.scene);
+
+      }
+      );
+
+      loader.load('models/critters/world4/valentine.glb', (gltf)  => {
+        gltf.scene.traverse( function( object ) {
+        object.frustumCulled = false;
+
+
+        } );
+        gltf.scene.position.set(245,5,0);
+        gltf.scene.scale.set(0.7,0.7,0.7);
+        scene.add(gltf.scene);
+
+      }
+      );
+
+      loader.load('models/critters/world4/minhong.glb', (gltf)  => {
+        gltf.scene.traverse( function( object ) {
+        object.frustumCulled = false;
+
+
+        } );
+        gltf.scene.position.set(0,0,100);
+        gltf.scene.scale.set(3.5,3.5,3.5);
+        scene.add(gltf.scene);
+
+      }
+      );
+
+      loader.load('models/critters/world4/emily.glb', (gltf)  => {
+        gltf.scene.traverse( function( object ) {
+        object.frustumCulled = false;
+
+
+        } );
+        gltf.scene.position.set(-180,30,-200);
+        gltf.scene.scale.set(5,5,5);
+        scene.add(gltf.scene);
+
+      }
+      );
+
+      loader.load('models/critters/world4/benjamin-anim.glb', (gltf)  => {
+
+        gltf.scene.traverse( function( object ) {
+        object.frustumCulled = false;
+        } );
+        gltf.scene.position.set(120,0,-200);
+        gltf.scene.scale.set(80,80,80);
+        scene.add(gltf.scene);
+
+      }
+      );
+
       Promise.all([p1,p2,p3,p4,p5, p6]).then(() => {
         var scaleSizeModel1 = 2;
         model1.scale.set(scaleSizeModel1,scaleSizeModel1,scaleSizeModel1);
@@ -1568,29 +1701,7 @@ function addCharacters(){
 
 	const loader = new GLTFLoader()
 
-  loader.load('models/critters/spider.glb', (gltf)  => {
-    gltf.scene.traverse( function( object ) {
-    object.frustumCulled = false;
 
-
-    } );
-    gltf.scene.position.set(1,3,1);
-    scene.add(gltf.scene);
-
-  }
-  );
-
-  loader.load('models/critters/spider-core.glb', (gltf)  => {
-    gltf.scene.traverse( function( object ) {
-    object.frustumCulled = false;
-
-
-    } );
-    gltf.scene.position.set(1,0.5,1);
-    scene.add(gltf.scene);
-
-  }
-  );
 
   new RGBELoader()
   .setDataType( THREE.UnsignedByteType )
@@ -1609,127 +1720,40 @@ function addCharacters(){
 
     render();
 
-    // model
-
-    // use of RoughnessMipmapper is optional
-    const roughnessMipmapper = new RoughnessMipmapper( renderer );
-
-    const loader = new GLTFLoader().setPath( 'models/critters/' );
-    loader.load( 'adam-gloss.glb', function ( gltf ) {
-      mixer = new THREE.AnimationMixer( gltf.scene );
-      gltf.animations;
-      jumpAction = mixer.clipAction( gltf.animations[ 0 ] )
-
-      gltf.scene.traverse( function ( child ) {
-
-        if ( child.isMesh ) {
-
-          // TOFIX RoughnessMipmapper seems to be broken with WebGL 2.0
-          // roughnessMipmapper.generateMipmaps( child.material );
-
-        }
-
-      } );
-      gltf.scene.position.set(1,0.5,1);
-
-      scene.add( gltf.scene );
-      jumpAction.play();
-      roughnessMipmapper.dispose();
-
-      render();
-
-    } );
-
-  } );
-
-	//this gives an error:
-  //const myMaterial = new THREE.MeshNormalMaterial( { color: 0xffee00, refractionRatio: 0.95 }  );
-	const myMaterial = new THREE.MeshNormalMaterial();
-  loader.load('models/critters/spider.glb', (gltf)  => {
 
 
-    mixer = new THREE.AnimationMixer( gltf.scene );
-    jumpAction =  mixer.clipAction( gltf.animations[ 0 ] )
-    gltf.scene.traverse( function( object ) {
-    object.frustumCulled = false;
-    } );
-    gltf.scene.position.set(1,0.5,1);
-
-    scene.add(gltf.scene);
-    jumpAction.play();
-  }
-  );
-  loader.load('models/critters/spider-anim2.glb', (gltf)  => {
+} );
 
 
-    mixer = new THREE.AnimationMixer( gltf.scene );
-    jumpAction =  mixer.clipAction( gltf.animations[ 0 ] )
-    gltf.scene.traverse( function( object ) {
-    object.frustumCulled = false;
-    } );
-    gltf.scene.position.set(3,1,4);
-    gltf.scene.scale.set(0.1,0.1,0.1);
-    scene.add(gltf.scene);
-    jumpAction.play();
-  }
-  );
 
-  loader.load('models/critters/spider-anim3.glb', (gltf)  => {
-
-
-    mixer = new THREE.AnimationMixer( gltf.scene );
-    jumpAction =  mixer.clipAction( gltf.animations[ 0 ] )
-    gltf.scene.traverse( function( object ) {
-    object.frustumCulled = false;
-    } );
-    gltf.scene.position.set(10,1,2);
-    gltf.scene.scale.set(1,1,1);
-    scene.add(gltf.scene);
-    jumpAction.play();
-  }
-  );
-
-  loader.load('models/critters/spider-anim3.glb', (gltf)  => {
-		mixer = new THREE.AnimationMixer( gltf.scene );
-    jumpAction =  mixer.clipAction( gltf.animations[ 0 ] )
-    gltf.scene.traverse( function( object ) {
-    object.frustumCulled = false;
-    } );
-    gltf.scene.position.set(-10,1,3);
-    gltf.scene.scale.set(0.1,0.1,0.1);
-    scene.add(gltf.scene);
-    jumpAction.play();
-  }
-  );
-
-  		loader.load('models/critters/'+objectName, (gltf)  => {
-      mixer = new THREE.AnimationMixer( gltf.scene );
-      //gltf.animations;
-      //idleAction = mixer.clipAction( gltf.animations[ 1 ] )
-      jumpAction =  mixer.clipAction( gltf.animations[ 0 ] )
-
-      gltf.scene.traverse( function( object ) {
-        object.frustumCulled = false;
-      } );
-      // gltf.scene.traverse((o) => {
-	    //   if (o.isMesh) {
-	    //     o.material.emissive = new THREE.Color( "rgb(194, 85, 226)" );
-	    //   }
-      // });
-      scene.add(gltf.scene);
-      // starts idle animation
-      jumpAction.play();
-    }, function ( xhr ) {
-      if (xhr.loaded/xhr.total * 100 == 100) {
-      console.log("finished loading characters!")
-      }
-  		//console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-  	},
-  	// called when loading has errors
-  	function ( error ) {
-  		console.log( 'An error happened' );
-  	}
-  );
+  // 		loader.load('models/critters/'+objectName, (gltf)  => {
+  //     mixer = new THREE.AnimationMixer( gltf.scene );
+  //     //gltf.animations;
+  //     //idleAction = mixer.clipAction( gltf.animations[ 1 ] )
+  //     jumpAction =  mixer.clipAction( gltf.animations[ 0 ] )
+	//
+  //     gltf.scene.traverse( function( object ) {
+  //       object.frustumCulled = false;
+  //     } );
+  //     // gltf.scene.traverse((o) => {
+	//     //   if (o.isMesh) {
+	//     //     o.material.emissive = new THREE.Color( "rgb(194, 85, 226)" );
+	//     //   }
+  //     // });
+  //     scene.add(gltf.scene);
+  //     // starts idle animation
+  //     jumpAction.play();
+  //   }, function ( xhr ) {
+  //     if (xhr.loaded/xhr.total * 100 == 100) {
+  //     console.log("finished loading characters!")
+  //     }
+  // 		//console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+  // 	},
+  // 	// called when loading has errors
+  // 	function ( error ) {
+  // 		console.log( 'An error happened' );
+  // 	}
+  // );
 }
 
 function soundGo(){
@@ -1836,6 +1860,13 @@ function cursorCheck(){
 					boolMushroom = false;
 				}
 
+					if (id==387) {
+						//console.log('mushroom!');
+						boolCross = true;
+					}else {
+						boolCross = false;
+					}
+
       	console.log('intersect!'+id);
       }
 
@@ -1887,12 +1918,24 @@ function cursorCheck(){
 function cssStepsWalk(){
 		if (worldId==3) {
 			if (boolMushroom==true) {
-				js: document.getElementById("found").style.visibility = "visible";
-				js: document.getElementById("hintsfade3").style.visibility = "hidden";
+				js: document.getElementById("range3").style.visibility = "visible";
+				js: document.getElementById("found3").style.visibility = "visible";
 				js: document.getElementById("hintsfade3-2").style.visibility = "visible";
 				//console.log("hii mushroompi");
 			}else {
-				js: document.getElementById("found").style.visibility = "hidden";
+				js: document.getElementById("found3").style.visibility = "hidden";
+				js: document.getElementById("range3").style.visibility = "hidden";
+
+			}
+		}
+
+		if (worldId==1) {
+			if (boolCross==true) {
+				js: document.getElementById("found1").style.visibility = "visible";
+				//console.log("hii mushroompi");
+			}else {
+				js: document.getElementById("found1").style.visibility = "hidden";
+
 			}
 		}
 }
@@ -1900,9 +1943,11 @@ function cssStepsWalk(){
 function cssSteps(){
 	if (worldId==1) {
 		js: document.getElementById("world1").style.visibility = "visible";
+		js: document.getElementById("world1welcome").style.visibility = "visible";
 		js: document.getElementById("world2").style.visibility = "hidden";
 		js: document.getElementById("world3").style.visibility = "hidden";
 		js: document.getElementById("world4").style.visibility = "hidden";
+		js: document.getElementById("carmenroca").style.visibility = "visible";
 
 		js: document.getElementById("instructions1").style.visibility = "visible";
 		js: document.getElementById("instructions2").style.visibility = "hidden";
@@ -1922,8 +1967,10 @@ function cssSteps(){
 	}else if (worldId==2) {
 		js: document.getElementById("world1").style.visibility = "hidden";
 		js: document.getElementById("world2").style.visibility = "visible";
+		js: document.getElementById("world2welcome").style.visibility = "visible";
 		js: document.getElementById("world3").style.visibility = "hidden";
 		js: document.getElementById("world4").style.visibility = "hidden";
+		js: document.getElementById("adamcentko").style.visibility = "visible";
 
 		js: document.getElementById("instructions1").style.visibility = "hidden";
 		js: document.getElementById("instructions2").style.visibility = "visible";
@@ -1944,9 +1991,9 @@ function cssSteps(){
 		js: document.getElementById("world1").style.visibility = "hidden";
 		js: document.getElementById("world2").style.visibility = "hidden";
 		js: document.getElementById("world3").style.visibility = "visible";
+		js: document.getElementById("world3welcome").style.visibility = "visible";
 		js: document.getElementById("world4").style.visibility = "hidden";
-		js: document.getElementById("hintsfade3").style.visibility = "visible";
-
+		js: document.getElementById("alondracastellanos").style.visibility = "visible";
 
 		js: document.getElementById("instructions1").style.visibility = "hidden";
 		js: document.getElementById("instructions2").style.visibility = "hidden";
@@ -1966,13 +2013,13 @@ function cssSteps(){
 
 		//js: document.getElementById("found").style.visibility = "visible";
 
-
-
 	}else if (worldId==4) {
 		js: document.getElementById("world1").style.visibility = "hidden";
 		js: document.getElementById("world2").style.visibility = "hidden";
 		js: document.getElementById("world3").style.visibility = "hidden";
 		js: document.getElementById("world4").style.visibility = "visible";
+		js: document.getElementById("world4welcome").style.visibility = "visible";
+		js: document.getElementById("benjaminhall").style.visibility = "visible";
 
 		js: document.getElementById("instructions1").style.visibility = "hidden";
 		js: document.getElementById("instructions2").style.visibility = "hidden";
