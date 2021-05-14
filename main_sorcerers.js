@@ -1612,10 +1612,61 @@ function modelLoader(){
     
     
         } );
-        gltf.scene.position.set(100,10,0);
+        gltf.scene.position.set(10,30,0);
         gltf.scene.scale.set(10,10,10);
         scene.add(gltf.scene);
     
+      }
+      );
+
+      loader.load('models/critters/world4/valentine.glb', (gltf)  => {
+        gltf.scene.traverse( function( object ) {
+        object.frustumCulled = false;
+    
+    
+        } );
+        gltf.scene.position.set(245,5,0);
+        gltf.scene.scale.set(0.7,0.7,0.7);
+        scene.add(gltf.scene);
+    
+      }
+      );
+
+      loader.load('models/critters/world4/minhong.glb', (gltf)  => {
+        gltf.scene.traverse( function( object ) {
+        object.frustumCulled = false;
+    
+    
+        } );
+        gltf.scene.position.set(0,0,100);
+        gltf.scene.scale.set(3.5,3.5,3.5);
+        scene.add(gltf.scene);
+    
+      }
+      );
+
+      loader.load('models/critters/world4/emily.glb', (gltf)  => {
+        gltf.scene.traverse( function( object ) {
+        object.frustumCulled = false;
+    
+    
+        } );
+        gltf.scene.position.set(-180,30,-200);
+        gltf.scene.scale.set(5,5,5);
+        scene.add(gltf.scene);
+    
+      }
+      );
+
+      loader.load('models/critters/world4/benjamin-anim.glb', (gltf)  => {
+
+        gltf.scene.traverse( function( object ) {
+        object.frustumCulled = false;
+        } );
+        gltf.scene.position.set(120,0,-200);
+        gltf.scene.scale.set(80,80,80);
+        scene.add(gltf.scene);
+
       }
       );
 
