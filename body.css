@@ -12,7 +12,8 @@ body { margin: 0; background: black;}
             display: flex;
             align-items: center;
             }
-#title{
+
+#title, #title-2{
   z-index: 0;
   max-width: 12%;
   position: absolute;
@@ -20,14 +21,7 @@ body { margin: 0; background: black;}
   margin-left: 100px;
   top: 1.2em;
   }
-#title-2{
-  z-index: 0;
-  max-width: 12%;
-  position: absolute;
-  padding-left: 12px;
-  margin-left: 12px;
-  top: 1.2em;
-  }
+
 #seriestitle{
   max-height: 20em;
   z-index: 0;
@@ -38,6 +32,7 @@ body { margin: 0; background: black;}
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 #centertop{
   z-index: 2;
   position: fixed;
@@ -46,6 +41,7 @@ body { margin: 0; background: black;}
   transform: translate(-50%, -50%);
   max-width: 90%;
 }
+
 #centermiddle{
   z-index: 1;
   position: fixed;
@@ -65,6 +61,7 @@ body { margin: 0; background: black;}
   -20px 0 80px #f0f,        /* outer left magenta */
   30px 0 80px #00f;    /* outer cyan */
 }
+
 #cursor{
   z-index: 1;
   position: fixed;
@@ -73,10 +70,12 @@ body { margin: 0; background: black;}
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 #cursor:hover{
     opacity:0.5;
     max-width:23vh;
   }
+
 #centermiddle:hover {
   z-index: 1;
   position: fixed;
@@ -99,6 +98,7 @@ body { margin: 0; background: black;}
   transform: translate(-50%, -50%);
   max-width: 50%;
 }
+
 #mission{
   max-height: 100em;
   z-index: 1;
@@ -110,6 +110,7 @@ body { margin: 0; background: black;}
   transform: translate(-50%, -50%);
   max-width: 60%;
 }
+
 #mission2{
   max-height: 100em;
   z-index: 1;
@@ -121,16 +122,17 @@ body { margin: 0; background: black;}
   transform: translate(-50%, -50%);
   max-width: 45%;
 }
+
 #hud{
   max-height: 100em;
   z-index: 1;
   text-align: horizontal;
   position: fixed;
-  max-width: 90em;
+  max-width: 60em;
   bottom: 0em;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 85%;
+  max-width: 65%;
   /* animation: helloworld 40s linear forwards; */
 }
 
@@ -150,6 +152,7 @@ body { margin: 0; background: black;}
     max-width: 7%;
     opacity: 0.9;
 }
+
 #buttonleftbottom {
   z-index: 1;
   text-align: horizontal;
@@ -164,25 +167,14 @@ body { margin: 0; background: black;}
 #buttonleftbottom2 {
   z-index: 1;
   text-align: horizontal;
-  margin-right: 4em;
+  margin-left: 1em;
   position: fixed;
-  bottom:2%;
-  left:1%;
-  max-width: 7%;
+  bottom: 1em;
+  max-width: 4%;
   opacity: 0.9;
 }
-#map {
-  z-index: 1;
-  text-align: horizontal;
-  margin-right: 0em;
-  position: fixed;
-  top:10%;
-  right:0px;
-  max-height: 85%;
-  opacity: 0.9;
 
-}
-#world1critteroverlay {
+#world1crittercounter, #world1critteroverlay {
   z-index: 1;
   text-align: horizontal;
   margin-right: -1em;
@@ -193,29 +185,7 @@ body { margin: 0; background: black;}
   opacity: 0.9;
 
 }
-#world1crittercounter {
-  z-index: 1;
-  text-align: horizontal;
-  margin-right: -1em;
-  position: fixed;
-  top:10%;
-  right:0px;
-  max-height: 85%;
-  opacity: 0.9;
-
-}
-#world2critteroverlay {
-  z-index: 1;
-  text-align: horizontal;
-  margin-right: 0em;
-  position: fixed;
-  top:10%;
-  right:0px;
-  max-height: 85%;
-  opacity: 0.9;
-
-}
-#world2crittercounter {
+#world2crittercounter, #world4crittercounter, #map-2 {
   z-index: 1;
   text-align: horizontal;
   margin-right: 0em;
@@ -225,7 +195,8 @@ body { margin: 0; background: black;}
   max-height: 85%;
   opacity: 0.9;
 }
-#world3critteroverlay {
+
+#world3critteroverlay, #world3critteroverlay2 {
   z-index: 1;
   text-align: horizontal;
   margin-right: -0.7em;
@@ -236,7 +207,7 @@ body { margin: 0; background: black;}
   opacity: 0.9;
 
 }
-#world3crittercounter {
+#world3crittercounter, #world3crittercounter2 {
   z-index: 1;
   text-align: horizontal;
   margin-right: -0.7em;
@@ -248,30 +219,7 @@ body { margin: 0; background: black;}
 
 }
 
-#world3critteroverlay2 {
-  z-index: 1;
-  text-align: horizontal;
-  margin-right: -0.7em;
-  position: fixed;
-  top:10%;
-  right:0px;
-  max-height: 85%;
-  opacity: 0.9;
-
-}
-#world3crittercounter2 {
-  z-index: 1;
-  text-align: horizontal;
-  margin-right: -0.7em;
-  position: fixed;
-  top:10%;
-  right:0px;
-  max-height: 85%;
-  opacity: 0.9;
-
-}
-
-#map-2 {
+#world4critteroverlay, #world2critteroverlay {
   z-index: 1;
   text-align: horizontal;
   margin-right: 0em;
@@ -280,31 +228,9 @@ body { margin: 0; background: black;}
   right:0px;
   max-height: 85%;
   opacity: 0.9;
-
 }
-#world4critteroverlay {
-  z-index: 1;
-  text-align: horizontal;
-  margin-right: 0em;
-  position: fixed;
-  top:10%;
-  right:0px;
-  max-height: 85%;
-  opacity: 0.9;
 
-}
-#world4crittercounter {
-  z-index: 1;
-  text-align: horizontal;
-  margin-right: 0em;
-  position: fixed;
-  top:10%;
-  right:0px;
-  max-height: 85%;
-  opacity: 0.9;
-
-}
-#map2 {
+#map2, #map2-2, #map2w2, #map2w3, #map2w4 {
   z-index: 1;
   text-align: horizontal;
   margin-right: 1em;
@@ -313,22 +239,9 @@ body { margin: 0; background: black;}
   left:-20px;
   max-height: 85%;
   opacity: 0.9;
-
 }
 
-#map2-2 {
-  z-index: 1;
-  text-align: horizontal;
-  margin-right: 1em;
-  position: fixed;
-  top:10%;
-  left:-20px;
-  max-height: 85%;
-  opacity: 0.9;
-
-}
-
-#mapw2 {
+#map, #mapw2, #mapw3, #mapw4 {
   z-index: 1;
   text-align: horizontal;
   margin-right: 0em;
@@ -338,6 +251,7 @@ body { margin: 0; background: black;}
   max-height: 85%;
   opacity: 0.9;
 }
+
 #blocker {
   z-index: 2;
   position: absolute;
@@ -345,80 +259,11 @@ body { margin: 0; background: black;}
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
 }
-#map2w2 {
-  z-index: 1;
-  text-align: horizontal;
-  margin-right: 1em;
-  position: fixed;
-  top:10%;
-  left:-20px;
-  max-height: 85%;
-  opacity: 0.9;
-}
-#mapw3 {
-  z-index: 1;
-  text-align: horizontal;
-  margin-right: 0em;
-  position: fixed;
-  top:10%;
-  right:0px;
-  max-height: 85%;
-  opacity: 0.9;
-}
-#map2w3 {
-  z-index: 1;
-  text-align: horizontal;
-  margin-right: 1em;
-  position: fixed;
-  top:10%;
-  left:-20px;
-  max-height: 85%;
-  opacity: 0.9;
-}
-#mapw4 {
-  z-index: 1;
-  text-align: horizontal;
-  margin-right: 0em;
-  position: fixed;
-  top:10%;
-  right:0px;
-  max-height: 85%;
-  opacity: 0.9;
-}
-#map2w4 {
-  z-index: 1;
-  text-align: horizontal;
-  margin-right: 1em;
-  position: fixed;
-  top:10%;
-  left:-20px;
-  max-height: 85%;
-  opacity: 0.9;
-}
-#world4 {
+
+#world4, #world3, #world2, #world1, #instructions4, #instructions3, #instructions2, #instructions1 {
   visibility: hidden;
 }
-#world3{
-  visibility: hidden;
-}
-#world2{
-  visibility: hidden;
-}
-#world1{
-  visibility: hidden;
-}
-#instructions4 {
-  visibility: hidden;
-}
-#instructions3{
-  visibility: hidden;
-}
-#instructions2{
-  visibility: hidden;
-}
-#instructions1{
-  visibility: hidden;
-}
+
 #buttonrightoverlay {
     z-index: 0;
     text-align: horizontal;
@@ -442,7 +287,7 @@ body { margin: 0; background: black;}
     100% {opacity: 0;}
 }
 
-#found {
+#found1, #found2, #found3, #found4 {
   z-index: 1;
   position: fixed;
   top: 50%;
@@ -452,90 +297,34 @@ body { margin: 0; background: black;}
   visibility: hidden;
 }
 
-#info1 {
-  z-index: 1;
-  top: -120%;
-  left: 40%;
-  position: fixed;
-  max-width: 98%;
-  visibility: hidden;
-}
-#info2 {
-  z-index: 1;
-  top: -120%;
-  left: 40%;
-  position: fixed;
-  max-width: 98%;
-  visibility: hidden;
-}
-#info3 {
-  z-index: 1;
-  top: -120%;
-  left: 40%;
-  position: fixed;
-  max-width: 98%;
-  visibility: hidden;
-}
-#info4 {
-  z-index: 1;
-  top: -120%;
-  left: 40%;
-  position: fixed;
-  max-width: 98%;
-  visibility: hidden;
-}
-
-#encyclo1 {
-  z-index: 1;
-  margin-right: 5%;
-  margin-top: -100%;
-  margin-bottom: 5%;
-  margin-left: 5%;
-  position: fixed;
-  max-width: 98%;
-  visibility: hidden;
-}
-
-#encyclo2 {
-  z-index: 1;
-  margin-right: 5%;
-  margin-top: -100%;
-  margin-bottom: 5%;
-  margin-left: 5%;
-  position: fixed;
-  max-width: 98%;
-  visibility: hidden;
-}
-
-#encyclo3 {
-  z-index: 1;
-  margin-right: 5%;
-  margin-top: -100%;
-  margin-bottom: 5%;
-  margin-left: 5%;
-  position: fixed;
-  max-width: 98%;
-  visibility: hidden;
-}
-
-#encyclo-4 {
-  z-index: 1;
-  margin-right: 5%;
-  margin-top: -100%;
-  margin-bottom: 5%;
-  margin-left: 5%;
-  position: fixed;
-  max-width: 98%;
-  visibility: hidden;
-}
-
-#found2 {
+#range1, #range2, #range3, #range4 {
   z-index: 1;
   position: fixed;
-  top: 45%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 100%;
+  max-width: 95%;
+  visibility: hidden;
+}
+
+#info1, #info2, #info3, #info4 {
+  z-index: 1;
+  top: -120%;
+  left: 40%;
+  position: fixed;
+  max-width: 98%;
+  visibility: hidden;
+}
+
+#encyclo1, #encyclo2, #encyclo3, #encyclo-4 {
+  z-index: 1;
+  margin-right: 5%;
+  margin-top: -100%;
+  margin-bottom: 5%;
+  margin-left: 5%;
+  position: fixed;
+  max-width: 98%;
+  visibility: hidden;
 }
 
 #welcome {
@@ -547,7 +336,8 @@ body { margin: 0; background: black;}
   max-width: 100;
   animation: mymove 15s linear forwards;
 }
-#hintsfade {
+
+#hintsfade, #hintsfade3, #hintsfade3-2, #hintsfade3-3, #hintsfade1-1, #hintsfade1-2, #hintsfade2-1, #hintsfade2-2, #hintsfade4-1, #hintsfade4-2 {
   max-height: 100em;
   position: absolute;
   max-width: 60em;
@@ -558,7 +348,6 @@ body { margin: 0; background: black;}
   max-width: 45%;
   visibility: hidden;
 }
-
 .A {
 animation: animA 20s infinite alternate;
 }
@@ -568,11 +357,11 @@ animation: animB 20s infinite alternate;
 }
 
 @keyframes animA {
-  0%, 25% {
+  0%, 75% {
     opacity: 0;
     z-index: 2;
   }
-  50% {
+  80% {
     opacity: .5;
   }
 
@@ -583,125 +372,12 @@ animation: animB 20s infinite alternate;
 }
 
 @keyframes animB {
-  0%,25% {
+  0%,60% {
     opacity: 1;
     z-index: 3;
   }
-  50% {
-    opacity: .5;
-  }
- 100% {
-    opacity: 0;
-    z-index: 2;
-  }
-}
-
-@keyframes mymove {
-    0%   {opacity: 1;}
-    70%  {opacity: 1;}
-    90% {opacity: 0;}
-    100% {opacity: 0;}
-    100% {visibility: hidden;}
-}
-#hintsfade3 {
-  max-height: 100em;
-  position: absolute;
-  max-width: 60em;
-  text-align: horizontal;
-  top: 4em;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 45%;
-  visibility: hidden;
-}
-
-.A {
-animation: animA 20s infinite alternate;
-}
-
-.B {
-animation: animB 20s infinite alternate;
-}
-
-@keyframes animA {
-  0%, 25% {
-    opacity: 0;
-    z-index: 2;
-  }
-  50% {
-    opacity: .5;
-  }
-
-  100% {
-    opacity: 1;
-    z-index: 3;
-  }
-}
-
-@keyframes animB {
-  0%,25% {
-    opacity: 1;
-    z-index: 3;
-  }
-  50% {
-    opacity: .5;
-  }
- 100% {
-    opacity: 0;
-    z-index: 2;
-  }
-}
-
-@keyframes mymove {
-    0%   {opacity: 1;}
-    70%  {opacity: 1;}
-    90% {opacity: 0;}
-    100% {opacity: 0;}
-    100% {visibility: hidden;}
-}
-
-#hintsfade3-2 {
-  max-height: 100em;
-  position: absolute;
-  max-width: 60em;
-  text-align: horizontal;
-  top: 4em;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 45%;
-  visibility: hidden;
-}
-
-.A {
-animation: animA 20s infinite alternate;
-}
-
-.B {
-animation: animB 20s infinite alternate;
-}
-
-@keyframes animA {
-  0%, 25% {
-    opacity: 0;
-    z-index: 2;
-  }
-  50% {
-    opacity: .5;
-  }
-
-  100% {
-    opacity: 1;
-    z-index: 3;
-  }
-}
-
-@keyframes animB {
-  0%,25% {
-    opacity: 1;
-    z-index: 3;
-  }
-  50% {
-    opacity: .5;
+  70% {
+    opacity: .1;
   }
  100% {
     opacity: 0;
@@ -726,8 +402,8 @@ animation: animB 20s infinite alternate;
   left:10px;
   padding-top:10em;
   max-width: 80px;
-
 }
+
 #critter {
     z-index: 4;
   padding-left: 5px;
@@ -748,9 +424,11 @@ animation: animB 20s infinite alternate;
   //filter: brightness(0) invert(1) blur(4px);
   //-webkit-filter: brightness(0) invert(1) blur(-2px);
 }
+
 #assets{
   visibility: hidden;
 }
+
 .button{
   height: 2em;
   width: 10em;
