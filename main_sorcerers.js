@@ -13,7 +13,7 @@ import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js'
 
 var debug=false;
 var checkObjId=false;
-var worldId = 2; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 1; //1= socerers 2=lighthouse 3=forest 4= cave
 // var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 //var imgHeightWorld = new Array();
@@ -816,7 +816,7 @@ function init() {
 
 
    skybox();
-   addCharacters();
+   //addCharacters();
    modelLoader();
 	 //soundGo();
 
@@ -955,15 +955,19 @@ function modelLoader(){
       scene.fog = new THREE.Fog(color, near, far);
 
     let model1, model2, model3, model4,model5, model6, model7, model8;
+		let charModel1;
     //add names and locations of models here #SUUS
     let p1 = loadModel('models/druid-winter-scene/winter.gltf').then(result => {  model1 = result.scene.children[0]; });
-    let p2 = loadModel('models/arbol/arbol.gltf').then(result => {  model2 = result.scene.children[0]; });
+    //let p2 = loadModel('models/arbol/arbol.gltf').then(result => {  model2 = result.scene.children[0]; });
     let p3 = loadModel('models/purple-crystal/purple-crystal.gltf').then(result => {  model3 = result.scene.children[0]; });
     let p4 = loadModel('models/island.glb').then(result => {  model4 = result.scene.children[0]; });
-    let p5 = loadModel('models/islandCollisionMap.glb').then(result => {  model5 = result.scene.children[0]; });
+    //let p5 = loadModel('models/islandCollisionMap.glb').then(result => {  model5 = result.scene.children[0]; });
     let p6 = loadModel('models/portal/portal.gltf').then(result => {  model6 = result.scene.children[0]; });
     let p7 = loadModel('models/stars/stars.gltf').then(result => {  model7 = result.scene.children[0]; });
-    let p8 = loadModel('models/AnimationModels/Robot.glb').then(result => {  model8 = result.scene.children[0]; });
+    //let p8 = loadModel('models/AnimationModels/Robot.glb').then(result => {  model8 = result.scene.children[0]; });
+
+		//models:
+		//let p9 =  loadModel('models/critters/world1/pleunhand.glb').then(result => {  charModel1 = result.scene.children[0]; });
 
     function loadModel(url) {
     return new Promise(resolve => {
@@ -977,9 +981,8 @@ function modelLoader(){
     loader.load('models/critters/world1/pleunhand.glb', (gltf)  => {
       gltf.scene.traverse( function( object ) {
       object.frustumCulled = false;
-
-
       } );
+
       gltf.scene.position.set(300,10,50);
       gltf.scene.scale.set(3,3,3);
       scene.add(gltf.scene);
@@ -1054,16 +1057,16 @@ function modelLoader(){
     }
     );
 
-    Promise.all([p1,p2,p3,p4,p5, p6, p7,p8]).then(() => {
+    Promise.all([p1,p3,p4, p6, p7]).then(() => {
 
         var scaleSizeModel1 = 1;
         model1.scale.set(scaleSizeModel1,scaleSizeModel1,scaleSizeModel1);
         model1.position.set(100,20,-20);
         //model1.rotation.x = Math.PI/2;
 
-        var scaleSizeModel2 = 400;
-        model2.scale.set(scaleSizeModel2,scaleSizeModel2,scaleSizeModel2);
-        model2.position.set(100,-200,0);
+        // var scaleSizeModel2 = 400;
+        // model2.scale.set(scaleSizeModel2,scaleSizeModel2,scaleSizeModel2);
+        // model2.position.set(100,-200,0);
         //model2.rotation.x = Math.PI/2;
 
         var scaleSizeModel3 = 100;
@@ -1088,11 +1091,20 @@ function modelLoader(){
         model7.scale.set(scaleSizeModel7,scaleSizeModel7,scaleSizeModel7);
         model7.position.set(50, 70,-50);
 
-        var scaleSizeModel8 = 2000;
-        model8.scale.set(scaleSizeModel8,scaleSizeModel8,scaleSizeModel8);
-        model8.position.set(150, -50, -10);
+        // var scaleSizeModel8 = 2000;
+        // model8.scale.set(scaleSizeModel8,scaleSizeModel8,scaleSizeModel8);
+        // model8.position.set(150, -50, -10);
         //model8
         //model6.rotation.x = Math.PI/2;
+
+				//charModel1.position.set(300,10,50);
+				//charModel1.scale.set(3,3,3);
+				// charModel1.scene.traverse( function( object ) {
+		    //   object.frustumCulled = false;
+		    //   } );
+		    //   gltf.scene.position.set(300,10,50);
+		    //   gltf.scene.scale.set(3,3,3);
+		    //   scene.add(gltf.scene);
 
         //add models 2 scene here #SUUS
         scene.add(model1);
@@ -1103,6 +1115,8 @@ function modelLoader(){
         //scene.add(model5);  //this one is obsolete
         scene.add(model6);
         scene.add(model7);
+
+				//scene.add(charModel1);
         //scene.add(model8);
         //continue the process
     }
@@ -2003,22 +2017,28 @@ function animate() {
   if (controls.enabled) {
     world.step(dt)
     // Update ball positions
-    for (var i = 0; i < balls.length; i++) {
-      ballMeshes[i].position.copy(balls[i].position)
-      ballMeshes[i].quaternion.copy(balls[i].quaternion)
-    }
+    // for (var i = 0; i < balls.length; i++) {
+    //   ballMeshes[i].position.copy(balls[i].position)
+    //   ballMeshes[i].quaternion.copy(balls[i].quaternion)
+    // }
   }
   dt2 = (Date.now()-lastframe)/1000;
   if(mixer){
       mixer.update(dt2)
   }
 
+	setTimeout( function() {
+				 requestAnimationFrame( animate );
+		 }, 1000 / 30 );
+
   controls.update(Date.now() - time);
   renderer.render(scene, camera);
   lastframe=Date.now();
   time = Date.now();
 
-  requestAnimationFrame(animate);
+
+		 // renderer.render(scene, camera);
+  //requestAnimationFrame(animate);
 }
 
 
