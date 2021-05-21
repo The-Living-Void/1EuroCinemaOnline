@@ -267,6 +267,30 @@ opacity: 0.9;
   opacity: 0.9;
 }
 
+.embed-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  z-index: 4;
+  align: center;
+  /* */
+}
+
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
+  position: absolute;
+  width: 95%;
+  height: 95%;
+  margin-right: 2.5%;
+ margin-top: 1%;
+ margin-bottom: 4%;
+ margin-left: 2.5%;
+
+}
+
 #blocker {
   z-index: 2;
   position: absolute;
