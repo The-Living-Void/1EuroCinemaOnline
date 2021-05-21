@@ -12,13 +12,19 @@ import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js'
 
 
 var debug=false;
-var checkObjId=false;
-var worldId = 2; //1= socerers 2=lighthouse 3=forest 4= cave
+var checkObjId=true;
+var worldId = 1; //1= socerers 2=lighthouse 3=forest 4= cave
 // var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 //var imgHeightWorld = new Array();
 var boolMushroom;
 var boolCross;
+
+//interactive stuff
+var critterLocation = new THREE.Vector3( );
+var boolInPerimeter = false;
+var currentScene = { id: " " }; //current critter that was found in perimeter gets injected here
+var scenes = [];
 
 const listener = new THREE.AudioListener();
 const sound = new THREE.Audio( listener );
@@ -73,6 +79,7 @@ initCannon();
 init();
 render();
 addFlatGround();
+getScenes();
 
 for (var i = 1; i < 10; i++) {
 addHeightMapAll(i);
@@ -807,7 +814,7 @@ function init() {
      window.addEventListener("mousedown", function(){
        //gltf.scene.visible = !gltf.scene.visible;
        //count+=1;
-       boolMouseClick = true;
+      // boolMouseClick = true;
        //document.getElementById("btn").innerHTML = count;
        //console.log( "mousedown Event" );
        //boolcrittercaught = true;
@@ -986,6 +993,12 @@ function modelLoader(){
 
     }
     );
+		//boxcritter 1_pleunhand_0_300_10_50
+			// const geometryPleunHand = new THREE.BoxGeometry();
+		  // const materialPleunHand = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+			// const cubePleunHand = new THREE.Mesh( geometryPleunHand, materialPleunHand );
+			// cubePleunHand.position.set(300,11,50);
+			// scene.add( cubePleunHand );
 
     loader.load('models/critters/world1/pleunleg.glb', (gltf)  => {
       gltf.scene.traverse( function( object ) {
@@ -1023,6 +1036,7 @@ function modelLoader(){
       gltf.scene.position.set(100,2,320);
       gltf.scene.scale.set(6,6,6);
       scene.add(gltf.scene);
+			console.log(dumpObject(gltf.scene).join('\n'));
 
     }
     );
@@ -1036,6 +1050,7 @@ function modelLoader(){
       gltf.scene.position.set(-96,4,0);
       gltf.scene.scale.set(1,1,1);
       scene.add(gltf.scene);
+			console.log(dumpObject(gltf.scene).join('\n'));
 
     }
     );
@@ -1043,16 +1058,28 @@ function modelLoader(){
     loader.load('models/critters/world1/carmen-phone-new.glb', (gltf)  => {
       gltf.scene.traverse( function( object ) {
       object.frustumCulled = false;
+			object.uuid = "Carmen";
+
 
 
       } );
       gltf.scene.position.set(50,15,-200);
       gltf.scene.scale.set(2,2,2);
       gltf.scene.rotation.set(45,0,0);
+			//gltf.scene.userData.name("Carmen");
+
       scene.add(gltf.scene);
+			//console.log(gltf.scene.getObjectByName("group_iphone6_plus"));
 
     }
     );
+
+		//boxcritter 1_carmen_0_50_15_
+			// const geometryCarmen = new THREE.BoxGeometry();
+			// const materialCarmen = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+			// const cubeCarmen = new THREE.Mesh( geometryCarmen, materialCarmen );
+			// cubeCarmen.position.set(50,15,-200);
+			// scene.add( cubeCarmen );
 
     Promise.all([p1,p2,p3,p4,p5, p6, p7,p8]).then(() => {
 
@@ -1161,7 +1188,6 @@ function modelLoader(){
 		    jumpAction.play();
 		  }
 		  );
-
 // karin spider
 			loader.load('models/critters/world2/karin-spider-anim2.glb', (gltf)  => {
 					mixer = new THREE.AnimationMixer( gltf.scene );
@@ -2023,8 +2049,15 @@ function animate() {
 
 
 function cursorCheck(){
+	var critterId;
+	var critterPosX;
+	var critterPosY;
+	var critterPosZ;
+	var critterLoc = new THREE.Vector3(0, 0, 0);
+
   raycaster.setFromCamera( mouse, camera );
   var intersects = raycaster.intersectObjects( scene.children,true);
+
   // If only interested in one intersection, you can use .intersectObject()
 
   if ( intersects.length > 0 ) {
@@ -2034,29 +2067,78 @@ function cursorCheck(){
       //console.log("hit this = "+INTERSECTED.userData.index);
       var object = intersects[0].object;
       var material = object.material;
-      var userD = object.userData;
+      var userD = object.userData.name;
+			var objectParent = object.parent;
+			var objectSiblings = objectParent.children;
+			var siblingNames = [];
+			var siblingBool = false;
       id = object.id;
+			critterLocation = object.position;
 
       //material.color = new THREE.Color( Math.random(), Math.random(), Math.random());
       //console.log(model2.userData.STRING);
       if (checkObjId==true) {
+				console.log(userD);
+				console.log(boolInPerimeter,"boolInPerimeter");
+				//console.log(dumpObject(object.parent).join('\n')); //looking at interesected objsts parent structure
+				var newScene;
+					scenes.forEach(item => {
+						critterLoc = new THREE.Vector3(item.posX, item.posY, item.posZ);
+						if (objectSiblings.length > 0){
+							objectSiblings.forEach ( function(child) {
+								siblingNames.push( child.name );
+								//console.log(siblingNames);
+							});
+							if(siblingNames.includes(item.worldId) == true) {
+								console.log("chidlren of it yes name");
+								 siblingBool = true;
+							} else {  siblingBool = false;}
+							// siblingNames.forEach(namevalue);
+							// function namevalue(nameValue) {
+							// 	console.log(nameValue, "nameValue");
+							// 	if(item.worldId == namevalue ) {
+							// 		console.log("chidlren of it yes name");
+							// 	}
+							// }
+						 }
+						//console.log(critterLoc,"critterLoc");
+						//console.log(critterLocation,"critterLocation");
+					//	if (critterLocation.equals(critterLoc) == true ) {
+					 if ((userD== item.worldId) || (siblingBool == true)) {
 
-				if (id==24||id==3157) {
-					//console.log('mushroom!');
-					boolMushroom = true;
-				}else {
-					boolMushroom = false;
-				}
+							newScene = item;
+							console.log("yes location same");
+							boolInPerimeter = true;
 
-					if (id==387) {
-						//console.log('mushroom!');
-						boolCross = true;
-					}else {
-						boolCross = false;
-					}
+							// look for click
+							window.addEventListener("click", clickedOnCritter);
+							function clickedOnCritter() {
+									console.log("wuu clicked");
+							}
 
-      	console.log('intersect!'+id);
-      }
+						}else {
+						boolInPerimeter = false;
+						}
+					});
+
+					if (newScene) {
+            console.log("newscene",newScene);
+            console.log("you made it to the", currentScene);
+						boolInPerimeter = true;
+          if (currentScene.id != newScene.id) {
+
+                 currentScene = newScene;
+                 critterId = currentScene.id;
+                 console.log("(currentScene.id != newScene.id)");
+							 }
+			 } else{
+				 console.log(" no");
+			 }
+			  console.log('intersect!'+userD);
+		 }
+
+
+
 
       material.needsUpdate = true;
       // this.pickedObject = intersectedObject;
@@ -2083,15 +2165,16 @@ function cursorCheck(){
   //louisa's code, trying to make the pop up happen onclick of an object
   if(boolMouseOn == true && boolMouseClick == true ){
       //console.log("its a hit!");
-      if (id == 192) {
-      console.log("Caught a Bird");
-      }
-      if (id == 200 || id == 199) {
-      console.log("Caught a Dino");
-      }
-      if (id == 209) {
-      console.log("Caught an Upside Down World!");
-      }
+			var currentSceneLoc = new THREE.Vector3(currentScene.posX, currentScene.posY, currentScene.posZ);
+		//	if(critterLocation.equals(critterLoc) == true ){
+	      if (userD == currentScene.worldId) {
+	       console.log("Clicked on critter");
+	       critterId = currentScene.id;
+	       critterPosX = currentScene.posX;
+	       critterPosY = currentScene.posY;
+	       critterPosZ = currentScene.posZ;
+				showFilm(critterId,critterPosX, critterPosY, critterPosZ);
+	      }
     // INTERSECTED.material.emissive.setHex( 0x0011ff )
     //video pop-up from html:
     //trailer.style.visibility = "visible";
@@ -2101,6 +2184,74 @@ function cursorCheck(){
   if (boolMouseClick== true) {
   boolMouseClick = false;
   }
+}
+
+function showFilm(critterId,critterPosX, critterPosY, critterPosZ){
+	//var idForFilm = id+"video";
+  let video, texture, mesh;
+  let mouse = new THREE.Vector2();
+	console.log("looking for film with id " + critterId);
+  var filmPath =  "video/" + critterId + "/" + "1.mp4";
+  var filmPathCont = document.getElementById('critterFilm');
+  filmPathCont.src = filmPath;
+	video = document.getElementById('critterFilm');
+	video.play();
+				// filmisplaying == true;
+				// video.addEventListener( 'play', function () {
+				//
+				// 	this.currentTime = 3;
+				//
+				// } );
+				//
+				// texture = new THREE.VideoTexture( video );
+				//
+				// var geometry = new THREE.PlaneGeometry( 7, 5, 2 );
+        // var material = new THREE.MeshBasicMaterial( { color: 0xffffff, map: texture} );
+        // planeWithFilm = new THREE.Mesh( geometry, material );
+				//
+        // // manual position
+				// planeWithFilm.position.set(critterPosX, critterPosY +2, critterPosZ);
+        // scene.add( planeWithFilm );
+				// render();
+				// renderPlaneLook();
+				// console.log(planeWithFilm.position);
+
+}
+
+function getScenes() {
+
+  //  structure of json: "world_id_worldId_posX_posY_posZ"
+  let fetchRes = fetch('customPackage/scenes/scenes-1.json');
+  //console.log(fetchRes)
+  fetchRes.then(res => res.json())
+    .then(d => {
+      scenes = d.map(
+        function (item) {
+          // console.log(item);
+          var parts = item.split('|');
+          return {
+            world: parseFloat(parts[0]),
+            id: parts[1],
+            worldId: parts[2],
+            posX: parseFloat(parts[3]),
+            posY: parseFloat(parts[4]),
+            posZ: parseFloat(parts[5]),
+          }
+        }
+      )
+      //console.log(d) // writes the array
+
+    })
+    .then(
+      function () {
+        //findNearest();
+        // here call the findnearest function
+        setTimeout(function () {
+          getScenes();
+
+        }, 30000);
+      }
+    )
 }
 
 function cssStepsWalk(){
@@ -2118,7 +2269,7 @@ function cssStepsWalk(){
 		}
 
 		if (worldId==1) {
-			if (boolCross==true) {
+			if (boolInPerimeter==true) {
 				js: document.getElementById("found1").style.visibility = "visible";
 				//console.log("hii mushroompi");
 			}else {
@@ -2147,7 +2298,7 @@ function cssSteps(){
 		js: document.getElementById("encyclo3").style.visibility = "hidden";
 		js: document.getElementById("encyclo-4").style.visibility = "hidden";
 
-		js: document.getElementById("info1").style.visibility = "visible";
+		js: document.getElementById("info1").style.visibility = "hidden"; //for development sake commnt out
 		js: document.getElementById("info2").style.visibility = "hidden";
 		js: document.getElementById("info3").style.visibility = "hidden";
 		js: document.getElementById("info4").style.visibility = "hidden";
@@ -2486,3 +2637,14 @@ function fromImage ( image, width, depth, minHeight, maxHeight ) {
     renderer.render( scene, camera );
 
   }
+	function dumpObject(obj, lines = [], isLast = true, prefix = '') {
+	const localPrefix = isLast ? '└─' : '├─';
+	lines.push(`${prefix}${prefix ? localPrefix : ''}${obj.name || '*no-name*'} [${obj.type}]`);
+	const newPrefix = prefix + (isLast ? '  ' : '│ ');
+	const lastNdx = obj.children.length - 1;
+	obj.children.forEach((child, ndx) => {
+		const isLast = ndx === lastNdx;
+		dumpObject(child, lines, isLast, newPrefix);
+	});
+	return lines;
+}
