@@ -2053,6 +2053,7 @@ function cursorCheck(){
 	var critterPosX;
 	var critterPosY;
 	var critterPosZ;
+	var critterFilmLink;
 	var critterLoc = new THREE.Vector3(0, 0, 0);
 
   raycaster.setFromCamera( mouse, camera );
@@ -2089,14 +2090,14 @@ function cursorCheck(){
 								siblingNames.push( child.name );
 								//console.log(siblingNames);
 							});
-							if(siblingNames.includes(item.worldId) == true) {
+							if(siblingNames.includes(item.idInWorld) == true) {
 								console.log("chidlren of it yes name");
 								 siblingBool = true;
 							} else {  siblingBool = false;}
 							// siblingNames.forEach(namevalue);
 							// function namevalue(nameValue) {
 							// 	console.log(nameValue, "nameValue");
-							// 	if(item.worldId == namevalue ) {
+							// 	if(item.idInWorld == namevalue ) {
 							// 		console.log("chidlren of it yes name");
 							// 	}
 							// }
@@ -2104,7 +2105,7 @@ function cursorCheck(){
 						//console.log(critterLoc,"critterLoc");
 						//console.log(critterLocation,"critterLocation");
 					//	if (critterLocation.equals(critterLoc) == true ) {
-					 if ((userD== item.worldId) || (siblingBool == true)) {
+					 if ((userD== item.idInWorld) || (siblingBool == true)) {
 
 							newScene = item;
 							console.log("yes location same");
@@ -2113,7 +2114,13 @@ function cursorCheck(){
 							// look for click
 							window.addEventListener("click", clickedOnCritter);
 							function clickedOnCritter() {
-									console.log("wuu clicked");
+									 console.log("wuu clicked");
+									 critterId = currentScene.id;
+					 	       critterPosX = currentScene.posX;
+					 	       critterPosY = currentScene.posY;
+					 	       critterPosZ = currentScene.posZ;
+									 critterFilmLink = currentScene.videoUrl;
+								   showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmLink);
 							}
 
 						}else {
@@ -2167,13 +2174,13 @@ function cursorCheck(){
       //console.log("its a hit!");
 			var currentSceneLoc = new THREE.Vector3(currentScene.posX, currentScene.posY, currentScene.posZ);
 		//	if(critterLocation.equals(critterLoc) == true ){
-	      if (userD == currentScene.worldId) {
+	      if (userD == currentScene.idInWorld) {
 	       console.log("Clicked on critter");
 	       critterId = currentScene.id;
 	       critterPosX = currentScene.posX;
 	       critterPosY = currentScene.posY;
 	       critterPosZ = currentScene.posZ;
-				showFilm(critterId,critterPosX, critterPosY, critterPosZ);
+				showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmLink);
 	      }
     // INTERSECTED.material.emissive.setHex( 0x0011ff )
     //video pop-up from html:
@@ -2186,16 +2193,19 @@ function cursorCheck(){
   }
 }
 
-function showFilm(critterId,critterPosX, critterPosY, critterPosZ){
+function showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmLink){
 	//var idForFilm = id+"video";
   let video, texture, mesh;
   let mouse = new THREE.Vector2();
 	console.log("looking for film with id " + critterId);
-  var filmPath =  "video/" + critterId + "/" + "1.mp4";
-  var filmPathCont = document.getElementById('critterFilm');
+  //var filmPath =  "video/" + critterId + "/" + "1.mp4";
+	var filmPath = critterFilmLink;
+  var filmPathCont = document.getElementById('embedContainerFilm-iframe1');
   filmPathCont.src = filmPath;
-	video = document.getElementById('critterFilm');
-	video.play();
+	document.getElementById("embedContainerFilm-1").style.visibility = "visible";
+	document.getElementById("embedContainerFilm-1").style.display = "block";
+	//video = document.getElementById('critterFilm');
+	//video.play();
 				// filmisplaying == true;
 				// video.addEventListener( 'play', function () {
 				//
@@ -2220,9 +2230,11 @@ function showFilm(critterId,critterPosX, critterPosY, critterPosZ){
 
 function getScenes() {
 
-  //  structure of json: "world_id_worldId_posX_posY_posZ"
-  let fetchRes = fetch('customPackage/scenes/scenes-1.json');
-  //console.log(fetchRes)
+  //  structure of json: "world-id | idInWorld | posX |posY | posZ | videoUrl"
+	var constructFetch =  "customPackage/scenes/scenes-" + worldId + ".json";
+  //let fetchRes = fetch('customPackage/scenes/scenes-1.json');
+	let fetchRes = fetch(constructFetch);
+  console.log(fetchRes);
   fetchRes.then(res => res.json())
     .then(d => {
       scenes = d.map(
@@ -2232,10 +2244,11 @@ function getScenes() {
           return {
             world: parseFloat(parts[0]),
             id: parts[1],
-            worldId: parts[2],
+            idInWorld: parts[2],
             posX: parseFloat(parts[3]),
             posY: parseFloat(parts[4]),
             posZ: parseFloat(parts[5]),
+						videoUrl: parts[6],
           }
         }
       )
@@ -2302,6 +2315,7 @@ function cssSteps(){
 		js: document.getElementById("info2").style.visibility = "hidden";
 		js: document.getElementById("info3").style.visibility = "hidden";
 		js: document.getElementById("info4").style.visibility = "hidden";
+
 
 	}else if (worldId==2) {
 		js: document.getElementById("world1").style.visibility = "hidden";

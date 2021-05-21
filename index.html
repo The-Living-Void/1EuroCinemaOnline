@@ -135,10 +135,10 @@ video.currentTime = 0;
 </script> -->
 
 		<div id="blocker">
-			<video id="critterFilm" loop crossOrigin="anonymous" playsinline style="display:none" src="video/2.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+			<!-- <video id="critterFilm" loop crossOrigin="anonymous" playsinline style="display:none" src="video/2.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'> -->
 					<!-- <source src="textures/sintel.ogv" type='video/ogg; codecs="theora, vorbis"'> -->
 					<!-- <source src="video/sintel.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'> -->
-			</video>
+			<!-- </video> -->
 			<div id="instructions1">
 				<br/>
 				<!-- <img id="centertop" src="Images/FLIP THE COIN.png"/> -->
@@ -246,7 +246,11 @@ video.currentTime = 0;
 			</div>
 
 			<!-- FILM iframe -->
-				<div class='embed-container'><iframe src="https://player.vimeo.com/video/412868812?title=0&byline=0&portrait=0" frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+				<div class='embed-container'id="embedContainerFilm-1">
+					<iframe id="embedContainerFilm-iframe1"src="https://player.vimeo.com/video/412868812?title=0&byline=0&portrait=0" frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen>
+					</iframe>
+					<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/AzpSu48PCJM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+				</div>
 
 		<div id="levivangelder">
 				<img src="Images/levivangelder.png" id="world1critteroverlay">
