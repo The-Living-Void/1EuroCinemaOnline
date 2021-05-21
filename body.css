@@ -296,7 +296,7 @@ opacity: 0.9;
  margin-left: 2.5%;
 
 }
-#embedContainerFilm-1{
+#embedContainerFilm-1, #embedContainerFilm-2, #embedContainerFilm-3, #embedContainerFilm-4{
   visibility: hidden;
   display: none;
 }
@@ -310,7 +310,7 @@ opacity: 0.9;
 }
 
 #world4, #world3, #world2, #world1, #instructions4, #instructions3, #instructions2, #instructions1, #carmenroca, #vanessabosch, #levivangelder, #pleungremmen, #pienkars, #world1foundfilm, #world1welcome, #adamcentko, #karinferrari, #louisbraddock, #wouterstroet, #valerievanzuijlen, #world2foundfilm, #world2welcome, #world3welcome, #larabruggeman, #nathaliegolde,
-#alondracastellanos, #stanwiersma, #world3inrange, #world3found, #world4welcome, #emilyanderson, #minhongyu, #benjaminhall, #valentinelangeard, #yifanhe {
+#alondracastellanos, #stanwiersma, #world3inrange, #world3found, #world4welcome, #emilyanderson, #minhongyu, #benjaminhall, #valentinelangeard, #yifanhe, #world2foundfilm, #world3foundfilm, #world4foundfilm {
   visibility: hidden;
 }
 
