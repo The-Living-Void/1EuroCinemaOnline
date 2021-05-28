@@ -2108,14 +2108,14 @@ function cursorCheck(){
 						//console.log(critterLocation,"critterLocation");
 					//	if (critterLocation.equals(critterLoc) == true ) {
 					 if ((userD== item.idInWorld) || (siblingBool == true)) {
-
+						 	boolMouseOn = true;
 							newScene = item;
 							console.log("yes location same");
 							boolInPerimeter = true;
 
 							// look for click
 
-							if( boolMouseOn == true){
+							//if( boolMouseOn == true){
 							 	window.addEventListener("click", clickedOnCritter, true);
 								function clickedOnCritter() {
 										 console.log("wuu clicked");
@@ -2125,8 +2125,9 @@ function cursorCheck(){
 						 	       critterPosZ = currentScene.posZ;
 										 critterFilmLink = currentScene.videoUrl;
 									   showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmLink);
+										 window.removeEventListener("click", clickedOnCritter, true);
 								}
-							}
+						//	}
 						}else {
 						boolInPerimeter = false;
 						}
@@ -2161,14 +2162,16 @@ function cursorCheck(){
       INTERSECTED = intersects[0].object;
       // INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
       //INTERSECTED.material.emissive.setHex( 0xff0000 );
-      boolMouseOn = true;
+
+    //  boolMouseOn = true; //THIS WAS USEFUL ONCE on 28.05
+
       //pop up on hover:
       //trailer.style.visibility = "visible";
       //trailer.style.opacity = 1;
     }
   } else {
     //if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-    boolMouseOn = false;
+  //  boolMouseOn = false; //THIS WAS USEFUL ONCE on 28.05
     INTERSECTED = null;
   }
 
@@ -2194,6 +2197,7 @@ function cursorCheck(){
 
 function showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmLink){
 	//var idForFilm = id+"video";
+	boolMouseOn = false;
   let video, texture, mesh;
   let mouse = new THREE.Vector2();
 	console.log("looking for film with id " + critterId);
