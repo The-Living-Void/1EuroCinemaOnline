@@ -266,12 +266,15 @@ opacity: 0.9;
   max-height: 85%;
   opacity: 0.9;
 }
-
-#world1videofound {
+.exitVideoButton{
   z-index: 5;
   text-align: right;
   right: 0px;
   top:2%;
+  position: absolute;
+}
+#world1videofound {
+
 }
 
 .embed-container {
@@ -296,6 +299,7 @@ opacity: 0.9;
  margin-left: 2.5%;
 
 }
+
 #embedContainerFilm-1{
   visibility: hidden;
   display: none;

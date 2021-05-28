@@ -16,6 +16,7 @@ var checkObjId=true;
 var worldId = 1; //1= socerers 2=lighthouse 3=forest 4= cave
 // var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
+
 //var imgHeightWorld = new Array();
 var boolMushroom;
 var boolCross;
@@ -25,6 +26,7 @@ var critterLocation = new THREE.Vector3( );
 var boolInPerimeter = false;
 var currentScene = { id: " " }; //current critter that was found in perimeter gets injected here
 var scenes = [];
+var constructFetch =  "customPackage/scenes/scenes-" + worldId + ".json";
 
 const listener = new THREE.AudioListener();
 const sound = new THREE.Audio( listener );
@@ -2112,17 +2114,19 @@ function cursorCheck(){
 							boolInPerimeter = true;
 
 							// look for click
-							window.addEventListener("click", clickedOnCritter);
-							function clickedOnCritter() {
-									 console.log("wuu clicked");
-									 critterId = currentScene.id;
-					 	       critterPosX = currentScene.posX;
-					 	       critterPosY = currentScene.posY;
-					 	       critterPosZ = currentScene.posZ;
-									 critterFilmLink = currentScene.videoUrl;
-								   showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmLink);
-							}
 
+							if( boolMouseOn == true){
+							 	window.addEventListener("click", clickedOnCritter, true);
+								function clickedOnCritter() {
+										 console.log("wuu clicked");
+										 critterId = currentScene.id;
+						 	       critterPosX = currentScene.posX;
+						 	       critterPosY = currentScene.posY;
+						 	       critterPosZ = currentScene.posZ;
+										 critterFilmLink = currentScene.videoUrl;
+									   showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmLink);
+								}
+							}
 						}else {
 						boolInPerimeter = false;
 						}
@@ -2170,23 +2174,18 @@ function cursorCheck(){
 
 
   //louisa's code, trying to make the pop up happen onclick of an object
-  if(boolMouseOn == true && boolMouseClick == true ){
-      //console.log("its a hit!");
-			var currentSceneLoc = new THREE.Vector3(currentScene.posX, currentScene.posY, currentScene.posZ);
-		//	if(critterLocation.equals(critterLoc) == true ){
-	      if (userD == currentScene.idInWorld) {
-	       console.log("Clicked on critter");
-	       critterId = currentScene.id;
-	       critterPosX = currentScene.posX;
-	       critterPosY = currentScene.posY;
-	       critterPosZ = currentScene.posZ;
-				showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmLink);
-	      }
-    // INTERSECTED.material.emissive.setHex( 0x0011ff )
-    //video pop-up from html:
-    //trailer.style.visibility = "visible";
-    //trailer.style.opacity = 1;
-  }
+  // if(boolMouseOn == true && boolMouseClick == true ){
+	//
+	// 		var currentSceneLoc = new THREE.Vector3(currentScene.posX, currentScene.posY, currentScene.posZ);
+	//       if (userD == currentScene.idInWorld) {
+	//        console.log("Clicked on critter");
+	//        critterId = currentScene.id;
+	//        critterPosX = currentScene.posX;
+	//        critterPosY = currentScene.posY;
+	//        critterPosZ = currentScene.posZ;
+	// 			showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmLink);
+	//       }
+  // }
   //turn off mouseclick after possible event
   if (boolMouseClick== true) {
   boolMouseClick = false;
@@ -2198,43 +2197,52 @@ function showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmL
   let video, texture, mesh;
   let mouse = new THREE.Vector2();
 	console.log("looking for film with id " + critterId);
+	// var element = document.body;
+	// element.requestPointerLock =
+	// 	element.requestPointerLock || element.mozRequestPointerLock || element.webkitRequestPointerLock
+
+	// window.dispatchEvent(new KeyboardEvent('keydown', {
+	//   'key': 'Escape'
+	// }));
   //var filmPath =  "video/" + critterId + "/" + "1.mp4";
 	var filmPath = critterFilmLink;
   var filmPathCont = document.getElementById('embedContainerFilm-iframe1');
   filmPathCont.src = filmPath;
 	document.getElementById("embedContainerFilm-1").style.visibility = "visible";
 	document.getElementById("embedContainerFilm-1").style.display = "block";
-	//video = document.getElementById('critterFilm');
-	//video.play();
-				// filmisplaying == true;
-				// video.addEventListener( 'play', function () {
-				//
-				// 	this.currentTime = 3;
-				//
-				// } );
-				//
-				// texture = new THREE.VideoTexture( video );
-				//
-				// var geometry = new THREE.PlaneGeometry( 7, 5, 2 );
-        // var material = new THREE.MeshBasicMaterial( { color: 0xffffff, map: texture} );
-        // planeWithFilm = new THREE.Mesh( geometry, material );
-				//
-        // // manual position
-				// planeWithFilm.position.set(critterPosX, critterPosY +2, critterPosZ);
-        // scene.add( planeWithFilm );
-				// render();
-				// renderPlaneLook();
-				// console.log(planeWithFilm.position);
+	//pointerLock();
+	document.getElementById("world1videofound").addEventListener("click", clickedOnExitVideo);
+
+	function clickedOnExitVideo(){
+		document.getElementById("embedContainerFilm-1").style.visibility = "hidden";
+		document.getElementById("embedContainerFilm-1").style.display = "none";
+		console.log("clicked exit button");
+		instructions.click();
+		var element = document.body;
+		element.requestPointerLock();
+	}
+
+	document.exitPointerLock = document.exitPointerLock ||
+			                             document.mozExitPointerLock ||
+			                             document.webkitExitPointerLock;
+  document.exitPointerLock();
+
+
+	//controls.unlock();
+
+	//controls.enabled = false;
+	//console.log(controls);
+
 
 }
 
 function getScenes() {
 
   //  structure of json: "world-id | idInWorld | posX |posY | posZ | videoUrl"
-	var constructFetch =  "customPackage/scenes/scenes-" + worldId + ".json";
+
   //let fetchRes = fetch('customPackage/scenes/scenes-1.json');
 	let fetchRes = fetch(constructFetch);
-  console.log(fetchRes);
+  //console.log(fetchRes);
   fetchRes.then(res => res.json())
     .then(d => {
       scenes = d.map(
@@ -2438,6 +2446,7 @@ function pointerLock(){
           instructions.style.display = 'none'
 
           // Ask the browser to lock the pointer
+
           element.requestPointerLock =
             element.requestPointerLock || element.mozRequestPointerLock || element.webkitRequestPointerLock
 
