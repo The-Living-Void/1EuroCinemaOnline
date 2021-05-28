@@ -978,31 +978,31 @@ function modelLoader(){
 
     const loader = new GLTFLoader()
 
-    loader.load('models/critters/world1/pleunhand.glb', (gltf)  => {
-      gltf.scene.traverse( function( object ) {
-      object.frustumCulled = false;
-      } );
-
-      gltf.scene.position.set(300,10,50);
-      gltf.scene.scale.set(3,3,3);
-      scene.add(gltf.scene);
-
-    }
-    );
-
-    loader.load('models/critters/world1/pleunleg.glb', (gltf)  => {
-      gltf.scene.traverse( function( object ) {
-      object.frustumCulled = false;
-
-
-      } );
-      gltf.scene.position.set(-30,-2,-120);
-      gltf.scene.scale.set(3,3,3);
-      scene.add(gltf.scene);
-
-    }
-    );
-
+    // loader.load('models/critters/world1/pleunhand.glb', (gltf)  => {
+    //   gltf.scene.traverse( function( object ) {
+    //   object.frustumCulled = false;
+    //   } );
+		//
+    //   gltf.scene.position.set(300,10,50);
+    //   gltf.scene.scale.set(3,3,3);
+    //   scene.add(gltf.scene);
+		//
+    // }
+    // );
+		//
+    // loader.load('models/critters/world1/pleunleg.glb', (gltf)  => {
+    //   gltf.scene.traverse( function( object ) {
+    //   object.frustumCulled = false;
+		//
+		//
+    //   } );
+    //   gltf.scene.position.set(-30,-2,-120);
+    //   gltf.scene.scale.set(3,3,3);
+    //   scene.add(gltf.scene);
+		//
+    // }
+    // );
+		//
     loader.load('models/critters/world1/levi.glb', (gltf)  => {
       gltf.scene.traverse( function( object ) {
       object.frustumCulled = false;
@@ -1030,18 +1030,18 @@ function modelLoader(){
     }
     );
 
-    loader.load('models/critters/world1/pien-bouquet.glb', (gltf)  => {
-      gltf.scene.traverse( function( object ) {
-      object.frustumCulled = false;
-
-
-      } );
-      gltf.scene.position.set(-96,4,0);
-      gltf.scene.scale.set(1,1,1);
-      scene.add(gltf.scene);
-
-    }
-    );
+    // loader.load('models/critters/world1/pien-bouquet.glb', (gltf)  => {
+    //   gltf.scene.traverse( function( object ) {
+    //   object.frustumCulled = false;
+		//
+		//
+    //   } );
+    //   gltf.scene.position.set(-96,4,0);
+    //   gltf.scene.scale.set(1,1,1);
+    //   scene.add(gltf.scene);
+		//
+    // }
+    // );
 
     loader.load('models/critters/world1/carmen-phone-new.glb', (gltf)  => {
       gltf.scene.traverse( function( object ) {
@@ -2287,10 +2287,13 @@ function pointerLock(){
       document.addEventListener('mozpointerlockerror', pointerlockerror, false)
       document.addEventListener('webkitpointerlockerror', pointerlockerror, false)
 
+
+
       instructions.addEventListener(
         'click',
         function (event) {
           instructions.style.display = 'none'
+
 
           // Ask the browser to lock the pointer
           element.requestPointerLock =
@@ -2307,6 +2310,7 @@ function pointerLock(){
                 document.removeEventListener('mozfullscreenchange', fullscreenchange)
 
                 element.requestPointerLock()
+
               }
             }
 
@@ -2320,6 +2324,7 @@ function pointerLock(){
             element.webkitRequestFullscreen
 
             element.requestFullscreen()
+
           } else {
             element.requestPointerLock()
           }

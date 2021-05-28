@@ -135,7 +135,10 @@ video.currentTime = 0;
 </script> -->
 
 		<div id="blocker">
-
+			<!-- <video id="critterFilm" loop crossOrigin="anonymous" playsinline style="display:none" src="video/2.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'> -->
+					<!-- <source src="textures/sintel.ogv" type='video/ogg; codecs="theora, vorbis"'> -->
+					<!-- <source src="video/sintel.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'> -->
+			<!-- </video> -->
 			<div id="instructions1">
 				<br/>
 				<!-- <img id="centertop" src="Images/FLIP THE COIN.png"/> -->
@@ -217,7 +220,7 @@ video.currentTime = 0;
 			<div id="world1welcome">
 				<!-- load world 1 sequence -->
 				<img src="Images/1-WELCOME.png" id="welcome">
-				<img src="Images/place of.png" id="buttonrightoverlay">
+				<!-- <img src="Images/place of.png" id="buttonrightoverlay"> -->
 			</div>
 
 			<div id="world1">
@@ -241,6 +244,15 @@ video.currentTime = 0;
 				<!-- FOUND A FILM -->
 				<img src="Images/found.png" id="found1">
 			</div>
+
+			<!-- FILM iframe -->
+				<div class='embed-container'id="embedContainerFilm-1">
+					<iframe id="embedContainerFilm-iframe1"src="https://player.vimeo.com/video/412868812?title=0&byline=0&portrait=0" frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen>
+					</iframe>
+					<img src="Images/1exitvideo.png" id="world1videofound">
+
+					<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/AzpSu48PCJM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+				</div>
 
 		<div id="levivangelder">
 				<img src="Images/levivangelder.png" id="world1critteroverlay">
@@ -363,6 +375,8 @@ video.currentTime = 0;
 				<!-- <img src="Images/valerie-3.png" id="mission2"> -->
 				<!-- <img src="Images/valerie-4.png" id="mission2"> -->
 		</div>
+
+
 
 		<div id="world3welcome">
 			<img src="Images/3-worldintro.png" id="welcome">
