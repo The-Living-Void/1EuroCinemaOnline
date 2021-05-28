@@ -12,7 +12,7 @@ import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js'
 
 
 var debug=false;
-var checkObjId=true;
+var checkObjId=false;
 var worldId = 1; //1= socerers 2=lighthouse 3=forest 4= cave
 // var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
@@ -21,6 +21,7 @@ var adjustHeigth = -20;
 var boolMushroom;
 var boolCross;
 
+<<<<<<< HEAD
 //interactive stuff
 var critterLocation = new THREE.Vector3( );
 var boolInPerimeter = false;
@@ -28,6 +29,8 @@ var currentScene = { id: " " }; //current critter that was found in perimeter ge
 var scenes = [];
 var constructFetch =  "customPackage/scenes/scenes-" + worldId + ".json";
 
+=======
+>>>>>>> 43f3a1422adfa0bb767c8161e3b0443bc86e4a08
 const listener = new THREE.AudioListener();
 const sound = new THREE.Audio( listener );
 
@@ -81,7 +84,6 @@ initCannon();
 init();
 render();
 addFlatGround();
-getScenes();
 
 for (var i = 1; i < 10; i++) {
 addHeightMapAll(i);
@@ -816,7 +818,7 @@ function init() {
      window.addEventListener("mousedown", function(){
        //gltf.scene.visible = !gltf.scene.visible;
        //count+=1;
-      // boolMouseClick = true;
+       boolMouseClick = true;
        //document.getElementById("btn").innerHTML = count;
        //console.log( "mousedown Event" );
        //boolcrittercaught = true;
@@ -825,7 +827,7 @@ function init() {
 
 
    skybox();
-   addCharacters();
+   //addCharacters();
    modelLoader();
 	 //soundGo();
 
@@ -964,15 +966,19 @@ function modelLoader(){
       scene.fog = new THREE.Fog(color, near, far);
 
     let model1, model2, model3, model4,model5, model6, model7, model8;
+		let charModel1;
     //add names and locations of models here #SUUS
     let p1 = loadModel('models/druid-winter-scene/winter.gltf').then(result => {  model1 = result.scene.children[0]; });
-    let p2 = loadModel('models/arbol/arbol.gltf').then(result => {  model2 = result.scene.children[0]; });
+    //let p2 = loadModel('models/arbol/arbol.gltf').then(result => {  model2 = result.scene.children[0]; });
     let p3 = loadModel('models/purple-crystal/purple-crystal.gltf').then(result => {  model3 = result.scene.children[0]; });
     let p4 = loadModel('models/island.glb').then(result => {  model4 = result.scene.children[0]; });
-    let p5 = loadModel('models/islandCollisionMap.glb').then(result => {  model5 = result.scene.children[0]; });
+    //let p5 = loadModel('models/islandCollisionMap.glb').then(result => {  model5 = result.scene.children[0]; });
     let p6 = loadModel('models/portal/portal.gltf').then(result => {  model6 = result.scene.children[0]; });
     let p7 = loadModel('models/stars/stars.gltf').then(result => {  model7 = result.scene.children[0]; });
-    let p8 = loadModel('models/AnimationModels/Robot.glb').then(result => {  model8 = result.scene.children[0]; });
+    //let p8 = loadModel('models/AnimationModels/Robot.glb').then(result => {  model8 = result.scene.children[0]; });
+
+		//models:
+		//let p9 =  loadModel('models/critters/world1/pleunhand.glb').then(result => {  charModel1 = result.scene.children[0]; });
 
     function loadModel(url) {
     return new Promise(resolve => {
@@ -983,38 +989,31 @@ function modelLoader(){
 
     const loader = new GLTFLoader()
 
-    loader.load('models/critters/world1/pleunhand.glb', (gltf)  => {
-      gltf.scene.traverse( function( object ) {
-      object.frustumCulled = false;
-
-
-      } );
-      gltf.scene.position.set(300,10,50);
-      gltf.scene.scale.set(3,3,3);
-      scene.add(gltf.scene);
-
-    }
-    );
-		//boxcritter 1_pleunhand_0_300_10_50
-			// const geometryPleunHand = new THREE.BoxGeometry();
-		  // const materialPleunHand = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-			// const cubePleunHand = new THREE.Mesh( geometryPleunHand, materialPleunHand );
-			// cubePleunHand.position.set(300,11,50);
-			// scene.add( cubePleunHand );
-
-    loader.load('models/critters/world1/pleunleg.glb', (gltf)  => {
-      gltf.scene.traverse( function( object ) {
-      object.frustumCulled = false;
-
-
-      } );
-      gltf.scene.position.set(-30,-2,-120);
-      gltf.scene.scale.set(3,3,3);
-      scene.add(gltf.scene);
-
-    }
-    );
-
+    // loader.load('models/critters/world1/pleunhand.glb', (gltf)  => {
+    //   gltf.scene.traverse( function( object ) {
+    //   object.frustumCulled = false;
+    //   } );
+		//
+    //   gltf.scene.position.set(300,10,50);
+    //   gltf.scene.scale.set(3,3,3);
+    //   scene.add(gltf.scene);
+		//
+    // }
+    // );
+		//
+    // loader.load('models/critters/world1/pleunleg.glb', (gltf)  => {
+    //   gltf.scene.traverse( function( object ) {
+    //   object.frustumCulled = false;
+		//
+		//
+    //   } );
+    //   gltf.scene.position.set(-30,-2,-120);
+    //   gltf.scene.scale.set(3,3,3);
+    //   scene.add(gltf.scene);
+		//
+    // }
+    // );
+		//
     loader.load('models/critters/world1/levi.glb', (gltf)  => {
       gltf.scene.traverse( function( object ) {
       object.frustumCulled = false;
@@ -1038,61 +1037,47 @@ function modelLoader(){
       gltf.scene.position.set(100,2,320);
       gltf.scene.scale.set(6,6,6);
       scene.add(gltf.scene);
-			console.log(dumpObject(gltf.scene).join('\n'));
 
     }
     );
 
-    loader.load('models/critters/world1/pien-bouquet.glb', (gltf)  => {
-      gltf.scene.traverse( function( object ) {
-      object.frustumCulled = false;
-
-
-      } );
-      gltf.scene.position.set(-96,4,0);
-      gltf.scene.scale.set(1,1,1);
-      scene.add(gltf.scene);
-			console.log(dumpObject(gltf.scene).join('\n'));
-
-    }
-    );
+    // loader.load('models/critters/world1/pien-bouquet.glb', (gltf)  => {
+    //   gltf.scene.traverse( function( object ) {
+    //   object.frustumCulled = false;
+		//
+		//
+    //   } );
+    //   gltf.scene.position.set(-96,4,0);
+    //   gltf.scene.scale.set(1,1,1);
+    //   scene.add(gltf.scene);
+		//
+    // }
+    // );
 
     loader.load('models/critters/world1/carmen-phone-new.glb', (gltf)  => {
       gltf.scene.traverse( function( object ) {
       object.frustumCulled = false;
-			object.uuid = "Carmen";
-
 
 
       } );
       gltf.scene.position.set(50,15,-200);
       gltf.scene.scale.set(2,2,2);
       gltf.scene.rotation.set(45,0,0);
-			//gltf.scene.userData.name("Carmen");
-
       scene.add(gltf.scene);
-			//console.log(gltf.scene.getObjectByName("group_iphone6_plus"));
 
     }
     );
 
-		//boxcritter 1_carmen_0_50_15_
-			// const geometryCarmen = new THREE.BoxGeometry();
-			// const materialCarmen = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-			// const cubeCarmen = new THREE.Mesh( geometryCarmen, materialCarmen );
-			// cubeCarmen.position.set(50,15,-200);
-			// scene.add( cubeCarmen );
-
-    Promise.all([p1,p2,p3,p4,p5, p6, p7,p8]).then(() => {
+    Promise.all([p1,p3,p4, p6, p7]).then(() => {
 
         var scaleSizeModel1 = 1;
         model1.scale.set(scaleSizeModel1,scaleSizeModel1,scaleSizeModel1);
         model1.position.set(100,20,-20);
         //model1.rotation.x = Math.PI/2;
 
-        var scaleSizeModel2 = 400;
-        model2.scale.set(scaleSizeModel2,scaleSizeModel2,scaleSizeModel2);
-        model2.position.set(100,-200,0);
+        // var scaleSizeModel2 = 400;
+        // model2.scale.set(scaleSizeModel2,scaleSizeModel2,scaleSizeModel2);
+        // model2.position.set(100,-200,0);
         //model2.rotation.x = Math.PI/2;
 
         var scaleSizeModel3 = 100;
@@ -1117,11 +1102,20 @@ function modelLoader(){
         model7.scale.set(scaleSizeModel7,scaleSizeModel7,scaleSizeModel7);
         model7.position.set(50, 70,-50);
 
-        var scaleSizeModel8 = 2000;
-        model8.scale.set(scaleSizeModel8,scaleSizeModel8,scaleSizeModel8);
-        model8.position.set(150, -50, -10);
+        // var scaleSizeModel8 = 2000;
+        // model8.scale.set(scaleSizeModel8,scaleSizeModel8,scaleSizeModel8);
+        // model8.position.set(150, -50, -10);
         //model8
         //model6.rotation.x = Math.PI/2;
+
+				//charModel1.position.set(300,10,50);
+				//charModel1.scale.set(3,3,3);
+				// charModel1.scene.traverse( function( object ) {
+		    //   object.frustumCulled = false;
+		    //   } );
+		    //   gltf.scene.position.set(300,10,50);
+		    //   gltf.scene.scale.set(3,3,3);
+		    //   scene.add(gltf.scene);
 
         //add models 2 scene here #SUUS
         scene.add(model1);
@@ -1132,6 +1126,8 @@ function modelLoader(){
         //scene.add(model5);  //this one is obsolete
         scene.add(model6);
         scene.add(model7);
+
+				//scene.add(charModel1);
         //scene.add(model8);
         //continue the process
     }
@@ -1190,6 +1186,7 @@ function modelLoader(){
 		    jumpAction.play();
 		  }
 		  );
+
 // karin spider
 			loader.load('models/critters/world2/karin-spider-anim2.glb', (gltf)  => {
 					mixer = new THREE.AnimationMixer( gltf.scene );
@@ -1599,7 +1596,7 @@ function modelLoader(){
 				gltf.scene.rotation.set(0,7,0);
 				scene.add(gltf.scene);
 			}
-		);
+			);
 
 			loader.load('models/critters/world3/lara.glb', (gltf)  => {
 				gltf.scene.traverse( function( object ) {
@@ -2031,36 +2028,34 @@ function animate() {
   if (controls.enabled) {
     world.step(dt)
     // Update ball positions
-    for (var i = 0; i < balls.length; i++) {
-      ballMeshes[i].position.copy(balls[i].position)
-      ballMeshes[i].quaternion.copy(balls[i].quaternion)
-    }
+    // for (var i = 0; i < balls.length; i++) {
+    //   ballMeshes[i].position.copy(balls[i].position)
+    //   ballMeshes[i].quaternion.copy(balls[i].quaternion)
+    // }
   }
   dt2 = (Date.now()-lastframe)/1000;
   if(mixer){
       mixer.update(dt2)
   }
 
+	setTimeout( function() {
+				 requestAnimationFrame( animate );
+				 renderer.render(scene, camera);
+		 }, 1000 / 30 );
+
   controls.update(Date.now() - time);
-  renderer.render(scene, camera);
   lastframe=Date.now();
   time = Date.now();
 
-  requestAnimationFrame(animate);
+
+		 // renderer.render(scene, camera);
+  //requestAnimationFrame(animate);
 }
 
 
 function cursorCheck(){
-	var critterId;
-	var critterPosX;
-	var critterPosY;
-	var critterPosZ;
-	var critterFilmLink;
-	var critterLoc = new THREE.Vector3(0, 0, 0);
-
   raycaster.setFromCamera( mouse, camera );
   var intersects = raycaster.intersectObjects( scene.children,true);
-
   // If only interested in one intersection, you can use .intersectObject()
 
   if ( intersects.length > 0 ) {
@@ -2070,17 +2065,13 @@ function cursorCheck(){
       //console.log("hit this = "+INTERSECTED.userData.index);
       var object = intersects[0].object;
       var material = object.material;
-      var userD = object.userData.name;
-			var objectParent = object.parent;
-			var objectSiblings = objectParent.children;
-			var siblingNames = [];
-			var siblingBool = false;
+      var userD = object.userData;
       id = object.id;
-			critterLocation = object.position;
 
       //material.color = new THREE.Color( Math.random(), Math.random(), Math.random());
       //console.log(model2.userData.STRING);
       if (checkObjId==true) {
+<<<<<<< HEAD
 				console.log(userD);
 				console.log(boolInPerimeter,"boolInPerimeter");
 				//console.log(dumpObject(object.parent).join('\n')); //looking at interesected objsts parent structure
@@ -2147,9 +2138,25 @@ function cursorCheck(){
 			 }
 			  console.log('intersect!'+userD);
 		 }
+=======
+>>>>>>> 43f3a1422adfa0bb767c8161e3b0443bc86e4a08
 
+				if (id==24||id==3157) {
+					//console.log('mushroom!');
+					boolMushroom = true;
+				}else {
+					boolMushroom = false;
+				}
 
+					if (id==387) {
+						//console.log('mushroom!');
+						boolCross = true;
+					}else {
+						boolCross = false;
+					}
 
+      	console.log('intersect!'+id);
+      }
 
       material.needsUpdate = true;
       // this.pickedObject = intersectedObject;
@@ -2174,6 +2181,7 @@ function cursorCheck(){
 
 
   //louisa's code, trying to make the pop up happen onclick of an object
+<<<<<<< HEAD
   // if(boolMouseOn == true && boolMouseClick == true ){
 	//
 	// 		var currentSceneLoc = new THREE.Vector3(currentScene.posX, currentScene.posY, currentScene.posZ);
@@ -2186,12 +2194,31 @@ function cursorCheck(){
 	// 			showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmLink);
 	//       }
   // }
+=======
+  if(boolMouseOn == true && boolMouseClick == true ){
+      //console.log("its a hit!");
+      if (id == 192) {
+      console.log("Caught a Bird");
+      }
+      if (id == 200 || id == 199) {
+      console.log("Caught a Dino");
+      }
+      if (id == 209) {
+      console.log("Caught an Upside Down World!");
+      }
+    // INTERSECTED.material.emissive.setHex( 0x0011ff )
+    //video pop-up from html:
+    //trailer.style.visibility = "visible";
+    //trailer.style.opacity = 1;
+  }
+>>>>>>> 43f3a1422adfa0bb767c8161e3b0443bc86e4a08
   //turn off mouseclick after possible event
   if (boolMouseClick== true) {
   boolMouseClick = false;
   }
 }
 
+<<<<<<< HEAD
 function showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmLink){
 	//var idForFilm = id+"video";
   let video, texture, mesh;
@@ -2275,6 +2302,8 @@ function getScenes() {
     )
 }
 
+=======
+>>>>>>> 43f3a1422adfa0bb767c8161e3b0443bc86e4a08
 function cssStepsWalk(){
 		if (worldId==3) {
 			if (boolMushroom==true) {
@@ -2290,7 +2319,7 @@ function cssStepsWalk(){
 		}
 
 		if (worldId==1) {
-			if (boolInPerimeter==true) {
+			if (boolCross==true) {
 				js: document.getElementById("found1").style.visibility = "visible";
 				//console.log("hii mushroompi");
 			}else {
@@ -2319,11 +2348,10 @@ function cssSteps(){
 		js: document.getElementById("encyclo3").style.visibility = "hidden";
 		js: document.getElementById("encyclo-4").style.visibility = "hidden";
 
-		js: document.getElementById("info1").style.visibility = "hidden"; //for development sake commnt out
+		js: document.getElementById("info1").style.visibility = "visible";
 		js: document.getElementById("info2").style.visibility = "hidden";
 		js: document.getElementById("info3").style.visibility = "hidden";
 		js: document.getElementById("info4").style.visibility = "hidden";
-
 
 	}else if (worldId==2) {
 		js: document.getElementById("world1").style.visibility = "hidden";
@@ -2440,10 +2468,13 @@ function pointerLock(){
       document.addEventListener('mozpointerlockerror', pointerlockerror, false)
       document.addEventListener('webkitpointerlockerror', pointerlockerror, false)
 
+
+
       instructions.addEventListener(
         'click',
         function (event) {
           instructions.style.display = 'none'
+
 
           // Ask the browser to lock the pointer
 
@@ -2461,6 +2492,7 @@ function pointerLock(){
                 document.removeEventListener('mozfullscreenchange', fullscreenchange)
 
                 element.requestPointerLock()
+
               }
             }
 
@@ -2474,6 +2506,7 @@ function pointerLock(){
             element.webkitRequestFullscreen
 
             element.requestFullscreen()
+
           } else {
             element.requestPointerLock()
           }
@@ -2660,14 +2693,3 @@ function fromImage ( image, width, depth, minHeight, maxHeight ) {
     renderer.render( scene, camera );
 
   }
-	function dumpObject(obj, lines = [], isLast = true, prefix = '') {
-	const localPrefix = isLast ? '└─' : '├─';
-	lines.push(`${prefix}${prefix ? localPrefix : ''}${obj.name || '*no-name*'} [${obj.type}]`);
-	const newPrefix = prefix + (isLast ? '  ' : '│ ');
-	const lastNdx = obj.children.length - 1;
-	obj.children.forEach((child, ndx) => {
-		const isLast = ndx === lastNdx;
-		dumpObject(child, lines, isLast, newPrefix);
-	});
-	return lines;
-}

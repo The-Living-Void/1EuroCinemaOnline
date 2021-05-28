@@ -300,11 +300,17 @@ opacity: 0.9;
 
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 #embedContainerFilm-1{
 =======
 #embedContainerFilm-1, #embedContainerFilm-2, #embedContainerFilm-3, #embedContainerFilm-4{
 >>>>>>> 5a2f559f46925122a6afd89196d131cb2c24186f
+=======
+
+#embedContainerFilm-1
+#embedContainerFilm-1, #embedContainerFilm-2, #embedContainerFilm-3, #embedContainerFilm-4{
+>>>>>>> 43f3a1422adfa0bb767c8161e3b0443bc86e4a08
   visibility: hidden;
   display: none;
 }
