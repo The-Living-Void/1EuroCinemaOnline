@@ -825,7 +825,7 @@ function init() {
 
 
    skybox();
-   addCharacters();
+   //addCharacters();
    modelLoader();
 	 //soundGo();
 
@@ -966,13 +966,13 @@ function modelLoader(){
     let model1, model2, model3, model4,model5, model6, model7, model8;
     //add names and locations of models here #SUUS
     let p1 = loadModel('models/druid-winter-scene/winter.gltf').then(result => {  model1 = result.scene.children[0]; });
-    let p2 = loadModel('models/arbol/arbol.gltf').then(result => {  model2 = result.scene.children[0]; });
+    //let p2 = loadModel('models/arbol/arbol.gltf').then(result => {  model2 = result.scene.children[0]; });
     let p3 = loadModel('models/purple-crystal/purple-crystal.gltf').then(result => {  model3 = result.scene.children[0]; });
     let p4 = loadModel('models/island.glb').then(result => {  model4 = result.scene.children[0]; });
-    let p5 = loadModel('models/islandCollisionMap.glb').then(result => {  model5 = result.scene.children[0]; });
+    //let p5 = loadModel('models/islandCollisionMap.glb').then(result => {  model5 = result.scene.children[0]; });
     let p6 = loadModel('models/portal/portal.gltf').then(result => {  model6 = result.scene.children[0]; });
     let p7 = loadModel('models/stars/stars.gltf').then(result => {  model7 = result.scene.children[0]; });
-    let p8 = loadModel('models/AnimationModels/Robot.glb').then(result => {  model8 = result.scene.children[0]; });
+    //let p8 = loadModel('models/AnimationModels/Robot.glb').then(result => {  model8 = result.scene.children[0]; });
 
     function loadModel(url) {
     return new Promise(resolve => {
@@ -983,37 +983,33 @@ function modelLoader(){
 
     const loader = new GLTFLoader()
 
-    loader.load('models/critters/world1/pleunhand.glb', (gltf)  => {
-      gltf.scene.traverse( function( object ) {
-      object.frustumCulled = false;
+    // loader.load('models/critters/world1/pleunhand.glb', (gltf)  => {
+    //   gltf.scene.traverse( function( object ) {
+    //   object.frustumCulled = false;
+		//
+		//
+    //   } );
+    //   gltf.scene.position.set(300,10,50);
+    //   gltf.scene.scale.set(3,3,3);
+    //   scene.add(gltf.scene);
+		//
+    // }
+
+    // );
 
 
-      } );
-      gltf.scene.position.set(300,10,50);
-      gltf.scene.scale.set(3,3,3);
-      scene.add(gltf.scene);
-
-    }
-    );
-		//boxcritter 1_pleunhand_0_300_10_50
-			// const geometryPleunHand = new THREE.BoxGeometry();
-		  // const materialPleunHand = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-			// const cubePleunHand = new THREE.Mesh( geometryPleunHand, materialPleunHand );
-			// cubePleunHand.position.set(300,11,50);
-			// scene.add( cubePleunHand );
-
-    loader.load('models/critters/world1/pleunleg.glb', (gltf)  => {
-      gltf.scene.traverse( function( object ) {
-      object.frustumCulled = false;
-
-
-      } );
-      gltf.scene.position.set(-30,-2,-120);
-      gltf.scene.scale.set(3,3,3);
-      scene.add(gltf.scene);
-
-    }
-    );
+    // loader.load('models/critters/world1/pleunleg.glb', (gltf)  => {
+    //   gltf.scene.traverse( function( object ) {
+    //   object.frustumCulled = false;
+		//
+		//
+    //   } );
+    //   gltf.scene.position.set(-30,-2,-120);
+    //   gltf.scene.scale.set(3,3,3);
+    //   scene.add(gltf.scene);
+		//
+    // }
+    // );
 
     loader.load('models/critters/world1/levi.glb', (gltf)  => {
       gltf.scene.traverse( function( object ) {
@@ -1043,19 +1039,19 @@ function modelLoader(){
     }
     );
 
-    loader.load('models/critters/world1/pien-bouquet.glb', (gltf)  => {
-      gltf.scene.traverse( function( object ) {
-      object.frustumCulled = false;
-
-
-      } );
-      gltf.scene.position.set(-96,4,0);
-      gltf.scene.scale.set(1,1,1);
-      scene.add(gltf.scene);
-			console.log(dumpObject(gltf.scene).join('\n'));
-
-    }
-    );
+    // loader.load('models/critters/world1/pien-bouquet.glb', (gltf)  => {
+    //   gltf.scene.traverse( function( object ) {
+    //   object.frustumCulled = false;
+		//
+		//
+    //   } );
+    //   gltf.scene.position.set(-96,4,0);
+    //   gltf.scene.scale.set(1,1,1);
+    //   scene.add(gltf.scene);
+		// 	console.log(dumpObject(gltf.scene).join('\n'));
+		//
+    // }
+    // );
 
     loader.load('models/critters/world1/carmen-phone-new.glb', (gltf)  => {
       gltf.scene.traverse( function( object ) {
@@ -1083,17 +1079,17 @@ function modelLoader(){
 			// cubeCarmen.position.set(50,15,-200);
 			// scene.add( cubeCarmen );
 
-    Promise.all([p1,p2,p3,p4,p5, p6, p7,p8]).then(() => {
+    Promise.all([p1,p3,p4, p6, p7]).then(() => {
 
         var scaleSizeModel1 = 1;
         model1.scale.set(scaleSizeModel1,scaleSizeModel1,scaleSizeModel1);
         model1.position.set(100,20,-20);
         //model1.rotation.x = Math.PI/2;
 
-        var scaleSizeModel2 = 400;
-        model2.scale.set(scaleSizeModel2,scaleSizeModel2,scaleSizeModel2);
-        model2.position.set(100,-200,0);
-        //model2.rotation.x = Math.PI/2;
+        // var scaleSizeModel2 = 400;
+        // model2.scale.set(scaleSizeModel2,scaleSizeModel2,scaleSizeModel2);
+        // model2.position.set(100,-200,0);
+        // //model2.rotation.x = Math.PI/2;
 
         var scaleSizeModel3 = 100;
         model3.scale.set(scaleSizeModel3,scaleSizeModel3,scaleSizeModel3);
@@ -1117,9 +1113,9 @@ function modelLoader(){
         model7.scale.set(scaleSizeModel7,scaleSizeModel7,scaleSizeModel7);
         model7.position.set(50, 70,-50);
 
-        var scaleSizeModel8 = 2000;
-        model8.scale.set(scaleSizeModel8,scaleSizeModel8,scaleSizeModel8);
-        model8.position.set(150, -50, -10);
+        // var scaleSizeModel8 = 2000;
+        // model8.scale.set(scaleSizeModel8,scaleSizeModel8,scaleSizeModel8);
+        // model8.position.set(150, -50, -10);
         //model8
         //model6.rotation.x = Math.PI/2;
 
@@ -2046,7 +2042,7 @@ function animate() {
 	}, 1000 / 30 );
 
   controls.update(Date.now() - time);
-  renderer.render(scene, camera);
+  //renderer.render(scene, camera);
   lastframe=Date.now();
   time = Date.now();
 
@@ -2112,14 +2108,14 @@ function cursorCheck(){
 						//console.log(critterLocation,"critterLocation");
 					//	if (critterLocation.equals(critterLoc) == true ) {
 					 if ((userD== item.idInWorld) || (siblingBool == true)) {
-
+						 	boolMouseOn = true;
 							newScene = item;
 							console.log("yes location same");
 							boolInPerimeter = true;
 
 							// look for click
 
-							if( boolMouseOn == true){
+							//if( boolMouseOn == true){
 							 	window.addEventListener("click", clickedOnCritter, true);
 								function clickedOnCritter() {
 										 console.log("wuu clicked");
@@ -2129,8 +2125,9 @@ function cursorCheck(){
 						 	       critterPosZ = currentScene.posZ;
 										 critterFilmLink = currentScene.videoUrl;
 									   showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmLink);
+										 window.removeEventListener("click", clickedOnCritter, true);
 								}
-							}
+						//	}
 						}else {
 						boolInPerimeter = false;
 						}
@@ -2165,14 +2162,16 @@ function cursorCheck(){
       INTERSECTED = intersects[0].object;
       // INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
       //INTERSECTED.material.emissive.setHex( 0xff0000 );
-      boolMouseOn = true;
+
+    //  boolMouseOn = true; //THIS WAS USEFUL ONCE on 28.05
+
       //pop up on hover:
       //trailer.style.visibility = "visible";
       //trailer.style.opacity = 1;
     }
   } else {
     //if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-    boolMouseOn = false;
+  //  boolMouseOn = false; //THIS WAS USEFUL ONCE on 28.05
     INTERSECTED = null;
   }
 
@@ -2198,6 +2197,7 @@ function cursorCheck(){
 
 function showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmLink){
 	//var idForFilm = id+"video";
+	boolMouseOn = false;
   let video, texture, mesh;
   let mouse = new THREE.Vector2();
 	console.log("looking for film with id " + critterId);
