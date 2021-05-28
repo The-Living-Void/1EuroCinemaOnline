@@ -328,7 +328,7 @@ opacity: 0.9;
     right:100px;
     max-width: 50%;
     opacity: 0.9;
-    animation: fadein 50s linear forwards;
+    animation: fadein 40s linear forwards;
 }
 
 @keyframes fadein {
@@ -343,7 +343,7 @@ opacity: 0.9;
     100% {opacity: 0;}
 }
 
-#found1, #found2, #found3, #found4 {
+#found1, #found2, #found3, #found4, #found1all, #found2all, #found3all, #found4all, #geoevent1, #geoevent2, #geoevent3, #geoevent4 {
   z-index: 1;
   position: fixed;
   top: 50%;
@@ -368,19 +368,22 @@ opacity: 0.9;
   top: -120%;
   left: 40%;
   position: fixed;
-  max-width: 98%;
+  max-width: 50%;
+  max-height: 50%;
   visibility: hidden;
 }
 
 #encyclo1, #encyclo2, #encyclo3, #encyclo-4 {
-  z-index: 1;
-  margin-right: 5%;
-  margin-top: -100%;
-  margin-bottom: 5%;
-  margin-left: 5%;
+  z-index: 5;
   position: fixed;
   max-width: 90%;
+  max-height: 90%;
+  margin-top: 4em;
+  margin-bottom: 4em;
+  margin-left: 4em;
+  margin-right: 4em;
   visibility: hidden;
+  display: none;
 }
 
 #welcome {
@@ -389,8 +392,20 @@ opacity: 0.9;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  max-width: 95%;
+  max-height: 95%;
+  animation: mymove 7s linear forwards;
+}
+
+#geoevent-1 {
+  z-index: 2;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   max-width: 100;
-  animation: mymove 15s linear forwards;
+  animation: mymove 10s linear forwards;
+  visibility: hidden;
 }
 
 #hintsfade, #hintsfade3, #hintsfade3-2, #hintsfade3-3, #hintsfade1-1, #hintsfade1-2, #hintsfade2-1, #hintsfade2-2, #hintsfade2-3, #hintsfade2-4, #hintsfade2-5, #hintsfade2-6, #hintsfade2-7, #hintsfade2-8, #hintsfade2-9,

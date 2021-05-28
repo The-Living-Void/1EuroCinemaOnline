@@ -212,19 +212,19 @@ var PointerLockControls = function (camera, cannonBody) {
     }
 
     if (hideHude==true) {
-      //js: document.getElementById("encyclo1").style.visibility = "visible";
-      js: document.getElementById("encyclo1").style.top = "195%";
-      //js: document.getElementById("encyclo-4").style.visibility = "visible";
-      js: document.getElementById("encyclo-4").style.top = "195%";
-      //js: document.getElementById("encyclo2").style.visibility = "visible";
-      js: document.getElementById("encyclo2").style.top = "195%";
-      //js: document.getElementById("encyclo4").style.visibility = "visible";
-      js: document.getElementById("encyclo3").style.top = "195%";
-    }else {
+      js: document.getElementById("encyclo1").style.visibility = "visible";
       js: document.getElementById("encyclo1").style.top = "0%";
+      js: document.getElementById("encyclo-4").style.visibility = "visible";
       js: document.getElementById("encyclo-4").style.top = "0%";
+      js: document.getElementById("encyclo2").style.visibility = "visible";
       js: document.getElementById("encyclo2").style.top = "0%";
+      js: document.getElementById("encyclo4").style.visibility = "visible";
       js: document.getElementById("encyclo3").style.top = "0%";
+    }else {
+      js: document.getElementById("encyclo1").style.top = "-195%";
+      js: document.getElementById("encyclo-4").style.top = "-195%";
+      js: document.getElementById("encyclo2").style.top = "-195%";
+      js: document.getElementById("encyclo3").style.top = "-195%";
     }
 
     if (hideHud==true) {
