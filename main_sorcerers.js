@@ -2029,10 +2029,10 @@ function animate() {
 
 	setTimeout( function() {
 				 requestAnimationFrame( animate );
+				 renderer.render(scene, camera);
 		 }, 1000 / 30 );
 
   controls.update(Date.now() - time);
-  renderer.render(scene, camera);
   lastframe=Date.now();
   time = Date.now();
 
