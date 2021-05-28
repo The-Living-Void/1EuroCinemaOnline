@@ -2318,7 +2318,7 @@ function cssSteps(){
 		js: document.getElementById("instructions3").style.visibility = "hidden";
 		js: document.getElementById("instructions4").style.visibility = "hidden";
 
-		js: document.getElementById("encyclo1").style.visibility = "visible";
+		js: document.getElementById("encyclo1").style.display = "block";
 		js: document.getElementById("encyclo2").style.visibility = "hidden";
 		js: document.getElementById("encyclo3").style.visibility = "hidden";
 		js: document.getElementById("encyclo-4").style.visibility = "hidden";
@@ -2343,7 +2343,7 @@ function cssSteps(){
 		js: document.getElementById("instructions4").style.visibility = "hidden";
 
 		js: document.getElementById("encyclo1").style.visibility = "hidden";
-		js: document.getElementById("encyclo2").style.visibility = "visible";
+		js: document.getElementById("encyclo2").style.display = "block";
 		js: document.getElementById("encyclo3").style.visibility = "hidden";
 		js: document.getElementById("encyclo-4").style.visibility = "hidden";
 
@@ -2367,7 +2367,7 @@ function cssSteps(){
 
 		js: document.getElementById("encyclo1").style.visibility = "hidden";
 		js: document.getElementById("encyclo2").style.visibility = "hidden";
-		js: document.getElementById("encyclo3").style.visibility = "visible";
+		js: document.getElementById("encyclo3").style.display = "block";
 		js: document.getElementById("encyclo-4").style.visibility = "hidden";
 
 		js: document.getElementById("info1").style.visibility = "hidden";
@@ -2394,7 +2394,7 @@ function cssSteps(){
 		js: document.getElementById("encyclo1").style.visibility = "hidden";
 		js: document.getElementById("encyclo2").style.visibility = "hidden";
 		js: document.getElementById("encyclo3").style.visibility = "hidden";
-		js: document.getElementById("encyclo-4").style.visibility = "visible";
+		js: document.getElementById("encyclo-4").style.display = "block";
 
 		js: document.getElementById("info1").style.visibility = "hidden";
 		js: document.getElementById("info2").style.visibility = "hidden";
