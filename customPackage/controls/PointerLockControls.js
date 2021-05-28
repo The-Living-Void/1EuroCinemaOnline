@@ -8,8 +8,8 @@ import * as CANNON from '/node_modules/cannon-es/dist/cannon-es.js'
 
 var hideHud, hideHudi,hideHude;
 // var worldId
-const _lockEvent = { type: 'lock' };
-const _unlockEvent = { type: 'unlock' };
+// const _lockEvent = { type: 'lock' };
+// const _unlockEvent = { type: 'unlock' };
 
 var PointerLockControls = function (camera, cannonBody) {
   var eyeYPos = 2 // eyes are 2 meters above the ground
@@ -146,17 +146,17 @@ var PointerLockControls = function (camera, cannonBody) {
   document.addEventListener('keydown', onKeyDown, false)
   document.addEventListener('keyup', onKeyUp, false)
 
-  this.lock = function () {
-
-			this.domElement.requestPointerLock();
-
-		};
-
-  this.unlock = function () {
-
-			scope.domElement.ownerDocument.exitPointerLock();
-
-		};
+  // this.lock = function () {
+  //
+	// 		this.domElement.requestPointerLock();
+  //
+	// 	};
+  //
+  // this.unlock = function () {
+  //
+	// 		scope.domElement.ownerDocument.exitPointerLock();
+  //
+	// 	};
 
   this.enabled = false
 
