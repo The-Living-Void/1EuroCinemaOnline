@@ -12,10 +12,19 @@ import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js'
 
 
 var debug=false;
-var checkObjId=true;
-var worldId = 1; //1= socerers 2=lighthouse 3=forest 4= cave
+var checkObjId=false;
+var worldId = 2; //1= socerers 2=lighthouse 3=forest 4= cave
 // var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
+var soundGoGo = true;
+
+//if (soundGoGo==true) {
+	const listener = new THREE.AudioListener();
+	const sound = new THREE.PositionalAudio( listener );
+	//const sound = new THREE.Audio( listener );
+	const audioLoader = new THREE.AudioLoader();
+
+//}
 
 //var imgHeightWorld = new Array();
 var boolMushroom;
@@ -28,8 +37,6 @@ var currentScene = { id: " " }; //current critter that was found in perimeter ge
 var scenes = [];
 var constructFetch =  "customPackage/scenes/scenes-" + worldId + ".json";
 
-const listener = new THREE.AudioListener();
-const sound = new THREE.Audio( listener );
 
 var zVal= 0;
 var yVal= 0;
@@ -50,6 +57,7 @@ manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
 };
 manager.onLoad = function ( ) {
 	console.log( 'Loading complete!');
+	soundGo(0);
 };
 manager.onProgress = function (url,itemsLoaded,itemsTotal) {
 	//console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
@@ -817,6 +825,8 @@ function init() {
        //gltf.scene.visible = !gltf.scene.visible;
        //count+=1;
       // boolMouseClick = true;
+			//console.log("mouseDown really?");
+			//soundGo();
        //document.getElementById("btn").innerHTML = count;
        //console.log( "mousedown Event" );
        //boolcrittercaught = true;
@@ -827,7 +837,10 @@ function init() {
    skybox();
    //addCharacters();
    modelLoader();
+	 if (soundGoGo == true) {
 	 //soundGo();
+	 }
+	 //
 
    //modelLoaderAnimate();
 
@@ -1968,15 +1981,56 @@ function addCharacters(){
   // );
 }
 
-function soundGo(){
+function soundGo(functionNumber){
 
-	const audioLoader = new THREE.AudioLoader();
-	audioLoader.load( 'sound/sound_1.mp3', function( buffer ) {
+if (functionNumber==0) {
+	//const sound = new THREE.Audio( listener );
+
+
+	console.log("zero for sound stuff");
+	camera.add( listener );
+
+	audioLoader.load( 'sound/Boat Island.mp3', function( buffer ) {
 		sound.setBuffer( buffer );
 		sound.setLoop( true );
+		sound.setRefDistance( 10 );
 		sound.setVolume( 0.5 );
 		sound.play();
+		//console.log(sound.getOutput());
 	});
+//gltf.scene.position.set(160,9,-75);
+const box = new THREE.BoxGeometry( 20, 20, 20 );
+const material = new THREE.MeshBasicMaterial( { color: 0xff2200 } );
+material.visible = false;
+const cube = new THREE.Mesh( box, material );
+cube.position.set(160,9,-75);
+
+cube.add( sound );
+scene.add( cube );
+
+}
+	// var context = new AudioContext();
+	// context.resume().then(() => {
+	// 	console.log('Playback resumed successfully');
+	//
+	// 	if (soundGoGo == true) {
+	// 		const listener = new THREE.AudioListener();
+	// 		camera.add( listener );
+	// 		//const sound = new THREE.Audio( listener );
+	// 		const sound = new THREE.PositionalAudio( listener );
+	//
+	// 	}
+	//
+	// 	const audioLoader = new THREE.AudioLoader();
+	// 	audioLoader.load( 'sound/Boat Island.mp3', function( buffer ) {
+	// 		sound.setBuffer( buffer );
+	// 		sound.setLoop( true );
+	// 		sound.setVolume( 0.5 );
+	// 		sound.play();
+	// 	});
+	// });
+
+
 
 }
 
