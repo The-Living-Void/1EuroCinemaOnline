@@ -245,7 +245,7 @@ opacity: 0.9;
 
 
 #map2, #map2-2, #map2-1, #map2w3, #map2w4, #map2-2-1, #map2-2-2, #map2-2-3, #map2-2-4,
-#map2-1-1, #map2-1-2, #map2-1-3, #map2-1-4 {
+#map2-1-1, #map2-1-2, #map2-1-3, #map2-1-4, #map-stan {
   z-index: 2;
   text-align: horizontal;
   margin-right: 1em;
@@ -316,7 +316,7 @@ opacity: 0.9;
 }
 
 #world4, #world3, #world2, #world1, #instructions4, #instructions3, #instructions2, #instructions1, #carmenroca, #vanessabosch, #levivangelder, #pleungremmen, #pienkars, #world1foundfilm, #world1welcome, #adamcentko, #karinferrari, #louisbraddock, #wouterstroet, #valerievanzuijlen, #world2foundfilm, #world2welcome, #world3welcome, #larabruggeman, #nathaliegolde,
-#alondracastellanos, #stanwiersma, #world3inrange, #world3found, #world4welcome, #emilyanderson, #minhongyu, #benjaminhall, #valentinelangeard, #yifanhe, #world2foundfilm, #world3foundfilm, #world4foundfilm {
+#alondracastellanos, #stanwiersma, #world3inrange, #world3found, #world4welcome, #emilyanderson, #minhongyu, #benjaminhall, #valentinelangeard, #yifanhe, #world2foundfilm, #world3foundfilm, #world4foundfilm, #bluepearl {
   visibility: hidden;
 }
 
