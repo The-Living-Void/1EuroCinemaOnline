@@ -13,7 +13,7 @@ import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js'
 
 var debug=false;
 var checkObjId=false;
-var worldId = 2; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 3; //1= socerers 2=lighthouse 3=forest 4= cave
 // var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 //var imgHeightWorld = new Array();
@@ -1111,14 +1111,14 @@ function modelLoader(){
 		if (worldId==2) {
 
 
-      var ambient = new THREE.AmbientLight(0xb5580d, 0.7);
+      var ambient = new THREE.AmbientLight(0xb5580d, 1);
       scene.add(ambient);
 
-      const light = new THREE.PointLight( 0xb5580d, 0.5, 100 );
-      light.position.set( 50, 50, 50 );
+      const light = new THREE.PointLight( 0xb5580d, 2, 300 );
+      light.position.set( 200, 50, 0 );
       scene.add( light );
 
-      const directionalLight = new THREE.DirectionalLight( 0x2261ab, 0.3 );
+      const directionalLight = new THREE.DirectionalLight( 0x2261ab, 0.1 );
       scene.add( directionalLight );
 
       const color = 0x2261ab;  // blue
@@ -1410,7 +1410,7 @@ function modelLoader(){
     }
     if (worldId==3) {
 
-      var ambient = new THREE.AmbientLight(0x477a79, 0.4);
+      var ambient = new THREE.AmbientLight(0x477a79, 0.6);
       scene.add(ambient);
 
       // const light = new THREE.PointLight( 0x477a79, 1, 10 );
@@ -1891,26 +1891,26 @@ function addCharacters(){
 
 
 // world shader
-  new RGBELoader()
-  .setDataType( THREE.UnsignedByteType )
-  .setPath( 'textures/equirectangular/' )
-  .load( 'venice_sunset_1k.hdr', function ( texture ) {
-
-    const pmremGenerator = new THREE.PMREMGenerator( renderer );
-    pmremGenerator.compileEquirectangularShader();
-    const envMap = pmremGenerator.fromEquirectangular( texture ).texture;
-
-    scene.background = envMap;
-    scene.environment = envMap;
-
-    texture.dispose();
-    pmremGenerator.dispose();
-
-    render();
-
-
-
-} );
+//   new RGBELoader()
+//   .setDataType( THREE.UnsignedByteType )
+//   .setPath( 'textures/equirectangular/' )
+//   .load( 'venice_sunset_1k.hdr', function ( texture ) {
+//
+//     const pmremGenerator = new THREE.PMREMGenerator( renderer );
+//     pmremGenerator.compileEquirectangularShader();
+//     const envMap = pmremGenerator.fromEquirectangular( texture ).texture;
+//
+//     scene.background = envMap;
+//     scene.environment = envMap;
+//
+//     texture.dispose();
+//     pmremGenerator.dispose();
+//
+//     render();
+//
+//
+//
+// } );
 
 
 
