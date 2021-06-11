@@ -11,15 +11,9 @@ import { RGBELoader } from './customPackage/loader/RGBELoader.js';
 // import { UnrealBloomPass } from './postprocessing/UnrealBloomPass.js';
 
 
-<<<<<<< Updated upstream
 var debug = false;
 var checkObjId = true;
 var worldId = 2; //1= socerers 2=lighthouse 3=forest 4= cave
-=======
-var debug=false;
-var checkObjId=true;
-var worldId = 1; //1= socerers 2=lighthouse 3=forest 4= cave
->>>>>>> Stashed changes
 // var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 var soundGoGo = true;
