@@ -840,6 +840,7 @@ function initCannon() {
 function init() {
 
     cssSteps();
+    critterArray();
 
 
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000)
@@ -851,7 +852,7 @@ function init() {
 
     scene.background = new THREE.Color(white);
     raycaster = new THREE.Raycaster();
-
+    loadCharacter(critterToFindArray[0]);
     //  var ambient = new THREE.AmbientLight(0xffffff, 0.7);
     //  scene.add(ambient);
 
@@ -1215,29 +1216,29 @@ function modelLoader() {
         const loader = new GLTFLoader()
 
         // adam centko man
-        loader.load('models/critters/world2/adam-gloss.glb', (gltf) => {
-            mixer = new THREE.AnimationMixer(gltf.scene);
-            jumpAction = mixer.clipAction(gltf.animations[0])
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
-            gltf.scene.position.set(144, 9.3, 88.7);
-            gltf.scene.rotation.set(0, 2.83, 0);
-            scene.add(gltf.scene);
-            jumpAction.play();
-        });
-        // box queen critter = adam critters
-        const geometry = new THREE.BoxGeometry();
-        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
-        //const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-        const cube = new THREE.Mesh(geometry, material);
-        cube.position.set(144, 9.3, 88.7);
-        cube.scale.set(2, 10, 2);
-        cube.userData.name = "adamcentko";
-        cube.uuid = "adam2";
-        scene.add(cube);
-        console.log(dumpObject(cube).join('\n'));
-        console.log(cube.userData);
+        // loader.load('models/critters/world2/adam-gloss.glb', (gltf) => {
+        //     mixer = new THREE.AnimationMixer(gltf.scene);
+        //     jumpAction = mixer.clipAction(gltf.animations[0])
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
+        //     gltf.scene.position.set(144, 9.3, 88.7);
+        //     gltf.scene.rotation.set(0, 2.83, 0);
+        //     scene.add(gltf.scene);
+        //     jumpAction.play();
+        // });
+        // // box queen critter = adam critters
+        // const geometry = new THREE.BoxGeometry();
+        // const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        // //const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+        // const cube = new THREE.Mesh(geometry, material);
+        // cube.position.set(144, 9.3, 88.7);
+        // cube.scale.set(2, 10, 2);
+        // cube.userData.name = "adamcentko";
+        // cube.uuid = "adam2";
+        // scene.add(cube);
+        // console.log(dumpObject(cube).join('\n'));
+        // console.log(cube.userData);
 
         // karin spider
         loader.load('models/critters/world2/karin-spider-anim2.glb', (gltf) => {
@@ -2298,6 +2299,41 @@ function cursorCheck() {
     }
 }
 
+function loadCharacter(characterName) {
+
+    console.log("chara name = " + characterName);
+
+    if (characterName == 'adamcentko2') {
+        console.log('im in!!');
+        const loader = new GLTFLoader();
+        // adam centko man
+        loader.load('models/critters/world2/adam-gloss.glb', (gltf) => {
+            mixer = new THREE.AnimationMixer(gltf.scene);
+            jumpAction = mixer.clipAction(gltf.animations[0])
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(144, 9.3, 88.7);
+            gltf.scene.rotation.set(0, 2.83, 0);
+            scene.add(gltf.scene);
+            jumpAction.play();
+        });
+        // box queen critter = adam critters
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        //const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+        const cube = new THREE.Mesh(geometry, material);
+        cube.position.set(144, 9.3, 88.7);
+        cube.scale.set(2, 10, 2);
+        cube.userData.name = "adamcentko";
+        cube.uuid = "adam2";
+        scene.add(cube);
+        console.log(dumpObject(cube).join('\n'));
+        console.log(cube.userData);
+    }
+
+}
+
 function clickedOnCritter() {
     muteSound = true;
     if (critterToFindArray[0] == critterId + worldId) {
@@ -2478,7 +2514,7 @@ function cssStepsWalk() {
         }
     }
 }
-critterArray();
+
 async function critterArray() {
     var CritterClassList = document.getElementsByClassName(critterClass);
     console.log(CritterClassList);
