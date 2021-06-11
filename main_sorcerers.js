@@ -3,17 +3,17 @@ import * as CANNON from './node_modules/cannon-es/dist/cannon-es.js'
 import { PointerLockControls } from './customPackage/controls/PointerLockControls.js'
 import CannonDebugRenderer from './customPackage/CannonDebugRenderer.js';
 import { GLTFLoader } from './customPackage/loader/GLTFLoader.js'
-import { threeToCannon } from './node_modules/three-to-cannon/index.js';
+//import { threeToCannon } from './node_modules/three-to-cannon/index.js';
 import { RGBELoader } from './customPackage/loader/RGBELoader.js';
-import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js';
+//import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js';
 // import { EffectComposer } from './postprocessing/EffectComposer.js';
 // import { RenderPass } from './postprocessing/RenderPass';
 // import { UnrealBloomPass } from './postprocessing/UnrealBloomPass.js';
 
 
-var debug=false;
-var checkObjId=true;
-var worldId = 3; //1= socerers 2=lighthouse 3=forest 4= cave
+var debug = false;
+var checkObjId = true;
+var worldId = 2; //1= socerers 2=lighthouse 3=forest 4= cave
 // var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 var soundGoGo = true;
@@ -25,13 +25,14 @@ const soundLayer2 = new THREE.PositionalAudio(listener);
 const soundLayer3 = new THREE.PositionalAudio(listener);
 const soundLayer4 = new THREE.PositionalAudio(listener);
 const soundLayer5 = new THREE.PositionalAudio(listener);
-//const sound = new THREE.Audio( listener );
-const soundBase = new THREE.Audio( listener );
+const soundBase = new THREE.Audio(listener);
 const audioLoader = new THREE.AudioLoader();
 
 var muteSound = false;
 var soundLoad = false;
-var fadeSpeed = 0.01;
+var fadeSpeed = 0.007;
+
+
 //}
 
 //var imgHeightWorld = new Array();
@@ -83,8 +84,8 @@ manager.onStart = function(url, itemsLoaded, itemsTotal) {
 manager.onLoad = function() {
     console.log('Loading complete!');
     if (worldId == 2) {
-    soundGo(0);
-    soundLoad = true;
+        soundGo(0);
+        soundLoad = true;
     }
 
 };
@@ -123,6 +124,7 @@ init();
 render();
 addFlatGround();
 getScenes();
+
 
 for (var i = 1; i < 10; i++) {
     addHeightMapAll(i);
@@ -1296,8 +1298,8 @@ function modelLoader() {
 
 
         scene.add(cubeLuis);
-        console.log(dumpObject(cubeLuis).join('\n'));
-        console.log(cubeLuis.userData);
+        //console.log(dumpObject(cubeLuis).join('\n'));
+        //console.log(cubeLuis.userData);
 
         // valerie tea pots
         loader.load('models/critters/world2/valerie.glb', (gltf) => {
@@ -1515,12 +1517,12 @@ function modelLoader() {
         const loader = new GLTFLoader()
 
         // alondra tree
-        loader.load('models/critters/world3/alondra-2d.glb', (gltf) => {
+        loader.load('models/critters/world3/alondra.glb', (gltf) => {
             gltf.scene.traverse(function(object) {
                 object.frustumCulled = false;
             });
             gltf.scene.position.set(240, 0.2, -50);
-            gltf.scene.scale.set(10, 10, 10);
+            gltf.scene.scale.set(3, 3, 3);
             gltf.scene.rotation.set(0, 0.6, 0);
             scene.add(gltf.scene);
         });
@@ -2004,108 +2006,61 @@ function soundGo(functionNumber) {
         //const sound = new THREE.Audio( listener );
 
         if (soundGoGo == true) {
-        //console.log("zero for sound stuff");
-        camera.add(listener);
+            //console.log("zero for sound stuff");
+            camera.add(listener);
 
-        audioLoader.load('sound/juno layer.mp3', function(buffer) {
-            sound.setBuffer(buffer);
-            sound.setLoop(true);
-            sound.setRefDistance(12);
-            sound.setVolume(0.6);
-            sound.play();
-            //console.log(sound.getOutput());
-        });
+            audioLoader.load('sound/Boat Island.mp3', function(buffer) {
+                sound.setBuffer(buffer);
+                sound.setLoop(true);
+                sound.setRefDistance(10);
+                sound.setVolume(0.5);
+                sound.play();
+                //console.log(sound.getOutput());
+            });
+            //gltf.scene.position.set(160,9,-75);
+            const box = new THREE.BoxGeometry(20, 20, 20);
+            const material = new THREE.MeshBasicMaterial({ color: 0xff2200 });
+            material.visible = false;
+            const cube = new THREE.Mesh(box, material);
+            cube.position.set(160, 9, -75);
 
-        audioLoader.load('sound/horn layer.mp3', function(buffer) {
-            soundLayer2.setBuffer(buffer);
-            soundLayer2.setLoop(true);
-            soundLayer2.setRefDistance(15);
-            soundLayer2.setVolume(0.7);
-            soundLayer2.play();
-            //console.log(sound.getOutput());
-        });
+            cube.add(sound);
+            scene.add(cube);
 
-        audioLoader.load('sound/omni layer.mp3', function(buffer) {
-            soundLayer3.setBuffer(buffer);
-            soundLayer3.setLoop(true);
-            soundLayer3.setRefDistance(25);
-            soundLayer3.setVolume(0.9);
-            soundLayer3.play();
-            //console.log(sound.getOutput());
-        });
+            const cube2 = new THREE.Mesh(box, material);
+            cube2.position.set(-40 + 5, 5 + 3, 60 + 7);
+            cube2.add(soundLayer2);
+            scene.add(cube2);
 
-        audioLoader.load('sound/Pauken layer.mp3', function(buffer) {
-            soundLayer4.setBuffer(buffer);
-            soundLayer4.setLoop(true);
-            soundLayer4.setRefDistance(30);
-            soundLayer4.setVolume(0.7);
-            soundLayer4.play();
-            //console.log(sound.getOutput());
-        });
+            const cube3 = new THREE.Mesh(box, material);
+            cube3.position.set(144 - 5, 99.3, 88.7 + 45);
+            cube3.add(soundLayer3);
+            scene.add(cube3);
 
-        audioLoader.load('sound/violin layer.mp3', function(buffer) {
-            soundLayer5.setBuffer(buffer);
-            soundLayer5.setLoop(true);
-            soundLayer5.setRefDistance(25);
-            soundLayer5.setVolume(0.5);
-            soundLayer5.play();
-            //console.log(sound.getOutput());
-        });
+            const cube4 = new THREE.Mesh(box, material);
+            cube4.position.set(-50, 15, -180);
+            cube4.add(soundLayer4);
+            scene.add(cube4);
 
-        audioLoader.load('sound/Base layer.mp3', function(buffer) {
-            soundBase.setBuffer(buffer);
-            soundBase.setLoop(true);
-            soundBase.setVolume(0.4);
-            soundBase.play();
-            //console.log(sound.getOutput());
-        });
-
-        //gltf.scene.position.set(-40, 5, 60); Britney Pos
-
-        //gltf.scene.position.set(160,9,-75);
-        const box = new THREE.BoxGeometry(20, 20, 20);
-        const material = new THREE.MeshBasicMaterial({ color: 0xff2200 });
-        material.visible = false;
-
-        const cube = new THREE.Mesh(box, material);
-        cube.position.set(160, 9, -75);
-        cube.add(sound);
-        scene.add(cube);
-
-        const cube2 = new THREE.Mesh(box, material);
-        cube2.position.set(-40+5, 5+3, 60+7);
-        cube2.add(soundLayer2);
-        scene.add(cube2);
-
-        const cube3 = new THREE.Mesh(box, material);
-        cube3.position.set(144-5, 99.3, 88.7+45);
-        cube3.add(soundLayer3);
-        scene.add(cube3);
-
-        const cube4 = new THREE.Mesh(box, material);
-        cube4.position.set(-50, 15, -180);
-        cube4.add(soundLayer4);
-        scene.add(cube4);
-
-        //gltf.scene.position.set(40.3, 15, -34);
-        const cube5 = new THREE.Mesh(box, material);
-        cube5.position.set(40, 15, -34);
-        cube5.add(soundLayer5);
-        scene.add(cube5);
+            //gltf.scene.position.set(40.3, 15, -34);
+            const cube5 = new THREE.Mesh(box, material);
+            cube5.position.set(40, 15, -34);
+            cube5.add(soundLayer5);
+            scene.add(cube5);
 
 
 
 
-          // sound.setVolume(0.6);
-          // soundLayer2.setVolume(0.7);
-          // soundLayer3.setVolume(0.9);
-          // soundLayer4.setVolume(0.7);
-          // soundLayer5.setVolume(0.5);
-          // soundBase.setVolume(0.4);
+            // sound.setVolume(0.6);
+            // soundLayer2.setVolume(0.7);
+            // soundLayer3.setVolume(0.9);
+            // soundLayer4.setVolume(0.7);
+            // soundLayer5.setVolume(0.5);
+            // soundBase.setVolume(0.4);
 
 
-        //gltf.scene.position.set(144, 9.3, 88.7); adam centko pos
-    }
+            //gltf.scene.position.set(144, 9.3, 88.7); adam centko pos
+        }
     }
     // var context = new AudioContext();
     // context.resume().then(() => {
@@ -2195,7 +2150,7 @@ function animate() {
         renderer.render(scene, camera);
 
         if (soundLoad == true) {
-        soundMute();
+            soundMute();
         }
     }, 1000 / 30);
 
@@ -2233,8 +2188,8 @@ function cursorCheck() {
             //material.color = new THREE.Color( Math.random(), Math.random(), Math.random());
             //console.log(model2.userData.STRING);
             if (checkObjId == true) {
-                console.log(userD);
-                console.log(boolInPerimeter, "boolInPerimeter");
+                // console.log(userD);
+                // console.log(boolInPerimeter, "boolInPerimeter");
                 //console.log(dumpObject(object.parent).join('\n')); //looking at interesected objsts parent structure
                 var newScene;
                 scenes.forEach(item => {
@@ -2290,10 +2245,10 @@ function cursorCheck() {
                         console.log("(currentScene.id != newScene.id)");
                     }
                 } else {
-                    console.log(" no");
+                    // console.log(" no");
                 }
-                console.log('intersect!' + userD);
-                console.log("id" + id);
+                //console.log('intersect!' + userD);
+                // console.log("id" + id);
 
             }
 
@@ -2345,15 +2300,10 @@ function cursorCheck() {
 }
 
 function clickedOnCritter() {
-    for (var i = 0; i < critterToFindArray.length; i++) {
-        if (critterToFindArray[i] == critterId + worldId) {
-            critterToFindArray.splice(i, 1);
-        }
-        console.log(critterToFindArray);
+    muteSound = true;
+    if (critterToFindArray[0] == critterId + worldId) {
+        document.getElementById(critterToFindArray[0]).style.visibility = "hidden";
     }
-    //alreadyCLickedCritters.push(critterId + worldId); // an array that keeps track of found critterfilms
-    //console.log(alreadyCLickedCritters);
-
 
     if (filmIsPlaying == false) {
         console.log("wuu clicked");
@@ -2393,6 +2343,7 @@ function showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmL
     document.getElementById("world1videofound").addEventListener("click", clickedOnExitVideo);
 
     function clickedOnExitVideo() {
+        muteSound = false;
         document.getElementById("embedContainerFilm-1").style.visibility = "hidden";
         document.getElementById("embedContainerFilm-1").style.display = "none";
         console.log("clicked exit button");
@@ -2401,12 +2352,21 @@ function showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmL
         element.requestPointerLock();
         filmIsPlaying = false;
         filmPathCont.src = "https://player.vimeo.com/video/412868812?title=0&byline=0&portrait=0";
-        document.getElementById(critterHtmlId).style.visibility = "hidden";
-        randomNumber(0, critterToFindArray.length - 1);
-        console.log(randomNumberGenerated);
-        critterHtmlId = critterToFindArray[randomNumberGenerated];
-        console.log(critterHtmlId);
-        document.getElementById(critterHtmlId).style.visibility = "visible";
+        //document.getElementById(critterHtmlId).style.visibility = "hidden";
+        console.log(critterId);
+        if (critterToFindArray[0] == critterId + worldId) {
+            critterToFindArray.splice(0, 1);
+            huntForNextCritter();
+            console.log(critterToFindArray);
+        } else {
+            console.log("different ones");
+        }
+
+        // randomNumber(0, critterToFindArray.length - 1);
+        // console.log(randomNumberGenerated);
+        // critterHtmlId = critterToFindArray[randomNumberGenerated];
+        // console.log(critterHtmlId);
+        // document.getElementById(critterHtmlId).style.visibility = "visible";
 
 
     }
@@ -2436,7 +2396,7 @@ function getScenes() {
         .then(d => {
             scenes = d.map(
                     function(item) {
-                         console.log(item);
+                        //  console.log(item);
                         var parts = item.split('|');
                         return {
                             world: parseFloat(parts[0]),
@@ -2470,7 +2430,7 @@ function cssStepsWalk() {
     if (worldId == 1) {
         if (boolInPerimeter == true) {
             js: document.getElementById("found1").style.visibility = "visible";
-            critterHtmlId = critterId + worldId;
+            //critterHtmlId = critterId + worldId;
         }
         else {
             js: document.getElementById("found1").style.visibility = "hidden";
@@ -2480,8 +2440,8 @@ function cssStepsWalk() {
     if (worldId == 2) {
         if (boolInPerimeter == true) {
             js: document.getElementById("found1").style.visibility = "visible";
-            critterHtmlId = critterId + worldId;
-            document.getElementById(critterHtmlId).style.visibility = "visible";
+            //critterHtmlId = critterId + worldId;
+            //document.getElementById(critterHtmlId).style.visibility = "visible";
             //console.log(critterHtmlId, "critterHtmlId");
             //document.getElementById(critterHtmlId).style.visibility = "visible";
             cssSteps();
@@ -2495,7 +2455,7 @@ function cssStepsWalk() {
             js: document.getElementById("range3").style.visibility = "visible";
             js: document.getElementById("found3").style.visibility = "visible";
             js: document.getElementById("hintsfade3-2").style.visibility = "visible";
-            critterHtmlId = critterId + worldId;
+            //critterHtmlId = critterId + worldId;
 
         }
         else {
@@ -2509,7 +2469,7 @@ function cssStepsWalk() {
             js: document.getElementById("range3").style.visibility = "visible";
             js: document.getElementById("found3").style.visibility = "visible";
             js: document.getElementById("hintsfade3-2").style.visibility = "visible";
-            critterHtmlId = critterId + worldId;
+            //critterHtmlId = critterId + worldId;
 
         }
         else {
@@ -2519,28 +2479,38 @@ function cssStepsWalk() {
         }
     }
 }
-
-function cssSteps() {
+critterArray();
+async function critterArray() {
     var CritterClassList = document.getElementsByClassName(critterClass);
-    //console.log(CritterClassList);
+    console.log(CritterClassList);
     for (var i = 0; i < CritterClassList.length; i++) {
-        if (runOnce == true) {
-            randomNumber(0, CritterClassList.length - 1);
-            runOnce = false;
-        } else {
-            runOnce = false;
-        }
-        if ((i < CritterClassList.length) && (runOnce2 == true)) {
-            critterToFindArray.push(CritterClassList[i].id);
-            console.log(critterToFindArray, "critterToFindArray");
-            if (i == CritterClassList.length - 1) {
-                runOnce2 = false;
-            }
-        } else { runOnce2 = false; }
+        //if (runOnce == true) {
+        //     randomNumber(0, CritterClassList.length - 1);
+        // runOnce = false;
+        // 
+        //if ((i < CritterClassList.length) && (runOnce2 == true)) {
+        critterToFindArray.push(CritterClassList[i].id);
+        console.log(critterToFindArray, "critterToFindArray");
+
+
+        // if (i == CritterClassList.length - 1) {
+        //     runOnce2 = false;
+        // }
+        //  } else { runOnce2 = false; }
+
+
+        //var firstCritterInfo = CritterClassList[randomNumberGenerated];
+
+        //console.log(CritterClassList);
+        //console.log(firstCritterId, "firstCritterId");
+        // } else {
+        //     runOnce = false;
+        // }
     }
-    var firstCritterInfo = CritterClassList[randomNumberGenerated];
-    var firstCritterId = firstCritterInfo.id;
-    //console.log(firstCritterId, "firstCritterId");
+    randomNextCritterInArray();
+
+    var firstCritterId = critterToFindArray[0];
+    console.log(firstCritterId);
     if (critterHtmlId == 0) {
         document.getElementById(firstCritterId).style.visibility = "visible";
         console.log("yes");
@@ -2549,6 +2519,28 @@ function cssSteps() {
         document.getElementById(firstCritterId).style.visibility = "hidden";
         //document.getElementById(critterHtmlId).style.visibility = "visible";
     }
+}
+
+function randomNextCritterInArray() {
+    var n = critterToFindArray.length;
+    var tempArr = [];
+    for (var i = 0; i < n - 1; i++) {
+        // The following line removes one random element from arr
+        // and pushes it onto tempArr
+        tempArr.push(critterToFindArray.splice(Math.floor(Math.random() * critterToFindArray.length), 1)[0]);
+    }
+    // Push the remaining item onto tempArr
+    tempArr.push(critterToFindArray[0]);
+    critterToFindArray = tempArr;
+    console.log(critterToFindArray);
+}
+
+function huntForNextCritter() {
+    randomNextCritterInArray();
+    document.getElementById(critterToFindArray[0]).style.visibility = "visible";
+}
+
+function cssSteps() {
 
 
     // console.log(firstCritterId);
@@ -2932,24 +2924,25 @@ function randomNumber(min, max) {
     randomNumberGenerated = Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function soundMute(){
-  if (muteSound == true) {
-
+function soundMute() {
     var volFade = listener.getMasterVolume();
-    console.log("volFade = "+volFade);
-    volFade -= fadeSpeed;
-    if (volFade<0) {
-      volFade = 0;
+    if (muteSound == true) {
+
+
+        console.log("volFade = " + volFade);
+        volFade -= fadeSpeed;
+        if (volFade < 0) {
+            volFade = 0;
+        }
+
+        listener.setMasterVolume(volFade);
+
+    } else {
+        volFade += fadeSpeed;
+        if (volFade > 1) {
+            volFade = 1;
+        }
+        listener.setMasterVolume(volFade);
+
     }
-
-    listener.setMasterVolume(volFade);
-
-  }else{
-    volFade += fadeSpeed;
-    if (volFade>1) {
-      volFade = 1;
-    }
-    listener.setMasterVolume(volFade);
-
-  }
 }
