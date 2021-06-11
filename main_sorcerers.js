@@ -1027,19 +1027,19 @@ function modelLoader() {
 
         const loader = new GLTFLoader()
 
-        // loader.load('models/critters/world1/pleunhand.glb', (gltf)  => {
-        //   gltf.scene.traverse( function( object ) {
-        //   object.frustumCulled = false;
-        //
-        //
-        //   } );
-        //   gltf.scene.position.set(300,10,50);
-        //   gltf.scene.scale.set(3,3,3);
-        //   scene.add(gltf.scene);
-        //
-        // }
+         loader.load('models/critters/world1/pleunhand.glb', (gltf)  => {
+           gltf.scene.traverse( function( object ) {
+           object.frustumCulled = false;
+        
+        
+           } );
+           gltf.scene.position.set(300,10,50);
+           gltf.scene.scale.set(3,3,3);
+           scene.add(gltf.scene);
+        
+         }
 
-        // );
+         );
 
 
         // loader.load('models/critters/world1/pleunleg.glb', (gltf)  => {
