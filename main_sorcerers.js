@@ -44,6 +44,12 @@ var critterFilmLink;
 var critterLoc = new THREE.Vector3(0, 0, 0);
 var filmIsPlaying = false;
 var critterClass = "world" + worldId + "critter";
+var runOnce = true;
+var randomNumberGenerated;
+var critterHtmlId = 0;
+var alreadyCLickedCritters = [];
+var critterToFindArray = [];
+var runOnce2 = true;
 
 
 var zVal = 0;
@@ -2179,6 +2185,8 @@ function cursorCheck() {
                     console.log("newscene", newScene);
                     console.log("you made it to the", currentScene);
                     boolInPerimeter = true;
+
+
                     if (currentScene.id != newScene.id) {
 
                         currentScene = newScene;
@@ -2190,6 +2198,7 @@ function cursorCheck() {
                 }
                 console.log('intersect!' + userD);
                 console.log("id" + id);
+
             }
 
 
@@ -2239,7 +2248,16 @@ function cursorCheck() {
 }
 
 function clickedOnCritter() {
-    console.log(filmIsPlaying, "filmIsPlaying");
+    for (var i = 0; i < critterToFindArray.length; i++) {
+        if (critterToFindArray[i] == critterId + worldId) {
+            critterToFindArray.splice(i, 1);
+        }
+        console.log(critterToFindArray);
+    }
+    //alreadyCLickedCritters.push(critterId + worldId); // an array that keeps track of found critterfilms
+    //console.log(alreadyCLickedCritters);
+
+
     if (filmIsPlaying == false) {
         console.log("wuu clicked");
         critterId = currentScene.id;
@@ -2286,6 +2304,14 @@ function showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmL
         element.requestPointerLock();
         filmIsPlaying = false;
         filmPathCont.src = "https://player.vimeo.com/video/412868812?title=0&byline=0&portrait=0";
+        document.getElementById(critterHtmlId).style.visibility = "hidden";
+        randomNumber(0, critterToFindArray.length - 1);
+        console.log(randomNumberGenerated);
+        critterHtmlId = critterToFindArray[randomNumberGenerated];
+        console.log(critterHtmlId);
+        document.getElementById(critterHtmlId).style.visibility = "visible";
+
+
     }
 
     document.exitPointerLock = document.exitPointerLock ||
@@ -2313,7 +2339,7 @@ function getScenes() {
         .then(d => {
             scenes = d.map(
                     function(item) {
-                        // console.log(item);
+                         console.log(item);
                         var parts = item.split('|');
                         return {
                             world: parseFloat(parts[0]),
@@ -2342,24 +2368,12 @@ function getScenes() {
 }
 
 function cssStepsWalk() {
-    if (worldId == 3) {
-        if (boolMushroom == true) {
-            js: document.getElementById("range3").style.visibility = "visible";
-            js: document.getElementById("found3").style.visibility = "visible";
-            js: document.getElementById("hintsfade3-2").style.visibility = "visible";
-            //console.log("hii mushroompi");
-        }
-        else {
-            js: document.getElementById("found3").style.visibility = "hidden";
-            js: document.getElementById("range3").style.visibility = "hidden";
 
-        }
-    }
 
     if (worldId == 1) {
         if (boolInPerimeter == true) {
             js: document.getElementById("found1").style.visibility = "visible";
-            //console.log("hii mushroompi");
+            critterHtmlId = critterId + worldId;
         }
         else {
             js: document.getElementById("found1").style.visibility = "hidden";
@@ -2369,22 +2383,85 @@ function cssStepsWalk() {
     if (worldId == 2) {
         if (boolInPerimeter == true) {
             js: document.getElementById("found1").style.visibility = "visible";
-            //console.log("hii mushroompi");
+            critterHtmlId = critterId + worldId;
+            document.getElementById(critterHtmlId).style.visibility = "visible";
+            //console.log(critterHtmlId, "critterHtmlId");
+            //document.getElementById(critterHtmlId).style.visibility = "visible";
+            cssSteps();
         }
         else {
             js: document.getElementById("found1").style.visibility = "hidden";
         }
     }
+    if (worldId == 3) {
+        if (boolInPerimeter == true) {
+            js: document.getElementById("range3").style.visibility = "visible";
+            js: document.getElementById("found3").style.visibility = "visible";
+            js: document.getElementById("hintsfade3-2").style.visibility = "visible";
+            critterHtmlId = critterId + worldId;
+
+        }
+        else {
+            js: document.getElementById("found3").style.visibility = "hidden";
+            js: document.getElementById("range3").style.visibility = "hidden";
+
+        }
+    }
+    if (worldId == 4) {
+        if (boolInPerimeter == true) {
+            js: document.getElementById("range3").style.visibility = "visible";
+            js: document.getElementById("found3").style.visibility = "visible";
+            js: document.getElementById("hintsfade3-2").style.visibility = "visible";
+            critterHtmlId = critterId + worldId;
+
+        }
+        else {
+            js: document.getElementById("found3").style.visibility = "hidden";
+            js: document.getElementById("range3").style.visibility = "hidden";
+
+        }
+    }
 }
 
 function cssSteps() {
+    var CritterClassList = document.getElementsByClassName(critterClass);
+    //console.log(CritterClassList);
+    for (var i = 0; i < CritterClassList.length; i++) {
+        if (runOnce == true) {
+            randomNumber(0, CritterClassList.length - 1);
+            runOnce = false;
+        } else {
+            runOnce = false;
+        }
+        if ((i < CritterClassList.length) && (runOnce2 == true)) {
+            critterToFindArray.push(CritterClassList[i].id);
+            console.log(critterToFindArray, "critterToFindArray");
+            if (i == CritterClassList.length - 1) {
+                runOnce2 = false;
+            }
+        } else { runOnce2 = false; }
+    }
+    var firstCritterInfo = CritterClassList[randomNumberGenerated];
+    var firstCritterId = firstCritterInfo.id;
+    //console.log(firstCritterId, "firstCritterId");
+    if (critterHtmlId == 0) {
+        document.getElementById(firstCritterId).style.visibility = "visible";
+        console.log("yes");
+    } else {
+        //firstCritterId = critterHtmlId;
+        document.getElementById(firstCritterId).style.visibility = "hidden";
+        //document.getElementById(critterHtmlId).style.visibility = "visible";
+    }
+
+
+    // console.log(firstCritterId);
     if (worldId == 1) {
+
         js: document.getElementById("world1").style.visibility = "visible";
         js: document.getElementById("world1welcome").style.visibility = "visible";
         js: document.getElementById("world2").style.visibility = "hidden";
         js: document.getElementById("world3").style.visibility = "hidden";
         js: document.getElementById("world4").style.visibility = "hidden";
-        js: document.getElementById("levivangelder1").style.visibility = "visible";
 
         js: document.getElementById("instructions1").style.visibility = "visible";
         js: document.getElementById("instructions2").style.visibility = "hidden";
@@ -2404,12 +2481,14 @@ function cssSteps() {
 
     }
     else if (worldId == 2) {
+        // document.getElementById(firstCritterId).style.visibility = "visible";
+
         js: document.getElementById("world1").style.visibility = "hidden";
         js: document.getElementById("world2").style.visibility = "visible";
         js: document.getElementById("world2welcome").style.visibility = "visible";
         js: document.getElementById("world3").style.visibility = "hidden";
         js: document.getElementById("world4").style.visibility = "hidden";
-        js: document.getElementById("louisbraddock2").style.visibility = "visible";
+        //js: document.getElementById("louisbraddock2").style.visibility = "visible";
 
         js: document.getElementById("instructions1").style.visibility = "hidden";
         js: document.getElementById("instructions2").style.visibility = "visible";
@@ -2750,4 +2829,8 @@ function dumpObject(obj, lines = [], isLast = true, prefix = '') {
         dumpObject(child, lines, isLast, newPrefix);
     });
     return lines;
+}
+
+function randomNumber(min, max) {
+    randomNumberGenerated = Math.floor(Math.random() * (max - min + 1)) + min;
 }
