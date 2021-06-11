@@ -11,9 +11,15 @@ import { RGBELoader } from './customPackage/loader/RGBELoader.js';
 // import { UnrealBloomPass } from './postprocessing/UnrealBloomPass.js';
 
 
+<<<<<<< Updated upstream
 var debug = false;
 var checkObjId = true;
 var worldId = 2; //1= socerers 2=lighthouse 3=forest 4= cave
+=======
+var debug=false;
+var checkObjId=true;
+var worldId = 1; //1= socerers 2=lighthouse 3=forest 4= cave
+>>>>>>> Stashed changes
 // var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 var soundGoGo = true;
@@ -177,7 +183,7 @@ function initCannon() {
     sphereBody = new CANNON.Body({ mass: mass, material: physicsMaterial });
     sphereBody.addShape(sphereShape);
     // sphereBody.position.set(nx * sx * 0.5, ny * sy + radius * 2, nz * sz * 0.5);
-    sphereBody.position.set(200, 20, -20);
+    sphereBody.position.set(100,70,-40);
     sphereBody.linearDamping = 0.9;
     world.addBody(sphereBody);
 
@@ -191,114 +197,291 @@ function initCannon() {
     //sphereChickShape.quaternion.set(n1, 0, 0, 0);
 
     if (worldId == 1) {
-        // Create a plane
-        // var groundShape = new CANNON.Plane();
-        // groundBody = new CANNON.Body({ mass: 0, material: physicsMaterial });
-        // groundBody.addShape(groundShape);
-        // groundBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-        // groundBody.position.set(0, 0, 0);
-        // world.addBody(groundBody);
+      var world1wall1Shape = new CANNON.Box(new CANNON.Vec3(400, 200, 1));
+      var world1wall1Body = new CANNON.Body({ mass: 0 });
+      world1wall1Body.addShape(world1wall1Shape);
+      world1wall1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
+      world1wall1Body.position.set(330, 0, 0);
+      world.addBody(world1wall1Body);
+
+      var world1wall2Shape = new CANNON.Box(new CANNON.Vec3(400, 200, 1));
+      var world1wall2Body = new CANNON.Body({ mass: 0 });
+      world1wall2Body.addShape(world1wall2Shape);
+      world1wall2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
+      world1wall2Body.position.set(-150, 0, 0);
+      world.addBody(world1wall2Body);
+
+      var world1wall3Shape = new CANNON.Box(new CANNON.Vec3(1, 200, 400));
+      var world1wall3Body = new CANNON.Body({ mass: 0 });
+      world1wall3Body.addShape(world1wall3Shape);
+      world1wall3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
+      world1wall3Body.position.set(0, 0, -240);
+      world.addBody(world1wall3Body);
+
+      var world1wall4Shape = new CANNON.Box(new CANNON.Vec3(1, 200, 400));
+      var world1wall4Body = new CANNON.Body({ mass: 0 });
+      world1wall4Body.addShape(world1wall4Shape);
+      world1wall4Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
+      world1wall4Body.position.set(0, 0, 250);
+      world.addBody(world1wall4Body);
 
         //CODE BOXES SUUS
         // sphere shapes (tegen klok in):
-        var sphereChickShape1 = new CANNON.Sphere(50, 60, 50);
-        var chickCircleBody1 = new CANNON.Body({ mass: 0, material: physicsMaterial });
-        chickCircleBody1.addShape(sphereChickShape1);
-        chickCircleBody1.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-        chickCircleBody1.position.set(-140, 5, -30);
-        world.addBody(chickCircleBody1);
+        var pillarShape1 = new CANNON.Sphere(43);
+        var pillarBody1 = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        pillarBody1.addShape(pillarShape1);
+        pillarBody1.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+        pillarBody1.position.set(-140, 15, -30);
+        world.addBody(pillarBody1);
 
-        var sphereChickShape2 = new CANNON.Sphere(50, 60, 50);
-        var chickCircleBody2 = new CANNON.Body({ mass: 0, material: physicsMaterial });
-        chickCircleBody2.addShape(sphereChickShape2);
-        chickCircleBody2.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-        chickCircleBody2.position.set(-90, 5, 150);
-        world.addBody(chickCircleBody2);
+        var pillarShape2 = new CANNON.Sphere(44);
+        var pillarBody2 = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        pillarBody2.addShape(pillarShape2);
+        pillarBody2.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+        pillarBody2.position.set(-91, 15, 155);
+        world.addBody(pillarBody2);
 
-        var sphereChickShape3 = new CANNON.Sphere(50, 60, 50);
-        var chickCircleBody3 = new CANNON.Body({ mass: 0, material: physicsMaterial });
-        chickCircleBody3.addShape(sphereChickShape3);
-        chickCircleBody3.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-        chickCircleBody3.position.set(100, 5, 240);
-        world.addBody(chickCircleBody3);
+        var pillarShape3 = new CANNON.Sphere(43);
+        var pillarBody3 = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        pillarBody3.addShape(pillarShape3);
+        pillarBody3.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+        pillarBody3.position.set(100, 15, 240);
+        world.addBody(pillarBody3);
 
-        var sphereChickShape4 = new CANNON.Sphere(50, 60, 50);
-        var chickCircleBody4 = new CANNON.Body({ mass: 0, material: physicsMaterial });
-        chickCircleBody4.addShape(sphereChickShape4);
-        chickCircleBody4.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-        chickCircleBody4.position.set(290, 5, 160);
-        world.addBody(chickCircleBody4);
+        var pillarShape4 = new CANNON.Sphere(43);
+        var pillarBody4 = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        pillarBody4.addShape(pillarShape4);
+        pillarBody4.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+        pillarBody4.position.set(290, 15, 160);
+        world.addBody(pillarBody4);
 
-        var sphereChickShape5 = new CANNON.Sphere(50, 60, 50);
-        var chickCircleBody5 = new CANNON.Body({ mass: 0, material: physicsMaterial });
-        chickCircleBody5.addShape(sphereChickShape5);
-        chickCircleBody5.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-        chickCircleBody5.position.set(330, 5, -30);
-        world.addBody(chickCircleBody5);
+        var pillarShape5 = new CANNON.Sphere(43);
+        var pillarBody5 = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        pillarBody5.addShape(pillarShape5);
+        pillarBody5.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+        pillarBody5.position.set(330, 15, -30);
+        world.addBody(pillarBody5);
 
-        var sphereChickShape6 = new CANNON.Sphere(50, 60, 50);
-        var chickCircleBody6 = new CANNON.Body({ mass: 0, material: physicsMaterial });
-        chickCircleBody6.addShape(sphereChickShape6);
-        chickCircleBody6.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-        chickCircleBody6.position.set(230, 5, -250);
-        world.addBody(chickCircleBody6);
+        var pillarShape6 = new CANNON.Sphere(43);
+        var pillarBody6 = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        pillarBody6.addShape(pillarShape6);
+        pillarBody6.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+        pillarBody6.position.set(230, 15, -250);
+        world.addBody(pillarBody6);
 
-        var sphereChickShape7 = new CANNON.Sphere(50, 60, 50);
-        var chickCircleBody7 = new CANNON.Body({ mass: 0, material: physicsMaterial });
-        chickCircleBody7.addShape(sphereChickShape7);
-        chickCircleBody7.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-        chickCircleBody7.position.set(-68, 5, -250);
-        world.addBody(chickCircleBody7);
+        var pillarShape7 = new CANNON.Sphere(43);
+        var pillarBody7 = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        pillarBody7.addShape(pillarShape7);
+        pillarBody7.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+        pillarBody7.position.set(-68, 15, -250);
+        world.addBody(pillarBody7);
 
         // plane
-        var chassisShape8 = new CANNON.Box(new CANNON.Vec3(20, 40, 10));
-        var chassisBody8 = new CANNON.Body({ mass: 0 });
-        chassisBody8.addShape(chassisShape8);
-        //chassisBody.position.set(0, 0, 0);
-        chassisBody8.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-        chassisBody8.position.set(95, 5, -15);
-        chassisBody8.angularVelocity.set(0, 0, 0); // initial velocity
-        world.addBody(chassisBody8);
+        // var chassisShape8 = new CANNON.Box(new CANNON.Vec3(20, 40, 10));
+        // var chassisBody8 = new CANNON.Body({ mass: 0 });
+        // chassisBody8.addShape(chassisShape8);
+        // //chassisBody.position.set(0, 0, 0);
+        // chassisBody8.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+        // chassisBody8.position.set(95, 5, -15);
+        // chassisBody8.angularVelocity.set(0, 0, 0); // initial velocity
+        // world.addBody(chassisBody8);
 
         //crystal
-        var sphereChickShape9 = new CANNON.Sphere(40, 50, 40);
-        var chickCircleBody9 = new CANNON.Body({ mass: 0, material: physicsMaterial });
-        chickCircleBody9.addShape(sphereChickShape9);
-        chickCircleBody9.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-        chickCircleBody9.position.set(100, 10, 5);
-        world.addBody(chickCircleBody9);
+        var crystalShape = new CANNON.Sphere(25);
+        var crystalBody = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        crystalBody.addShape(crystalShape);
+        crystalBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+        crystalBody.position.set(90, 20, 5);
+        world.addBody(crystalBody);
+
+        var crystal2Shape = new CANNON.Sphere(3);
+        var crystal2Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        crystal2Body.addShape(crystal2Shape);
+        crystal2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+        crystal2Body.position.set(68, 22, -13);
+        world.addBody(crystal2Body);
+
+        var crystal3Shape = new CANNON.Sphere(5);
+        var crystal3Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        crystal3Body.addShape(crystal3Shape);
+        crystal3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+        crystal3Body.position.set(68, 23, 22);
+        world.addBody(crystal3Body);
+
+        var crystal4Shape = new CANNON.Sphere(8);
+        var crystal4Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        crystal4Body.addShape(crystal4Shape);
+        crystal4Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+        crystal4Body.position.set(70, 26, 5);
+        world.addBody(crystal4Body);
+
+        var crystal5Shape = new CANNON.Sphere(8);
+        var crystal5Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        crystal5Body.addShape(crystal5Shape);
+        crystal5Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+        crystal5Body.position.set(67, 34, 6);
+        world.addBody(crystal5Body);
 
         // pillars next to crystal:
-        var sphereChickShape10 = new CANNON.Sphere(10);
-        var chickCircleBody10 = new CANNON.Body({ mass: 0, material: physicsMaterial });
-        chickCircleBody10.addShape(sphereChickShape10);
-        chickCircleBody10.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-        chickCircleBody10.position.set(100, 30, -15);
-        world.addBody(chickCircleBody10);
+        var cyrstalPillarShape1 = new CANNON.Sphere(6);
+        var crystalPillarBody1 = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        crystalPillarBody1.addShape(cyrstalPillarShape1);
+        crystalPillarBody1.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+        crystalPillarBody1.position.set(116, 25, -2);
+        world.addBody(crystalPillarBody1);
 
-        var sphereChickShape11 = new CANNON.Sphere(10);
-        var chickCircleBody11 = new CANNON.Body({ mass: 0, material: physicsMaterial });
-        chickCircleBody11.addShape(sphereChickShape11);
-        chickCircleBody11.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-        chickCircleBody11.position.set(80, 25, -40);
-        world.addBody(chickCircleBody11);
+        var crystalPillarShape2 = new CANNON.Sphere(6);
+        var crystalPillarBody2 = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        crystalPillarBody2.addShape(crystalPillarShape2);
+        crystalPillarBody2.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+        crystalPillarBody2.position.set(81, 25, -39);
+        world.addBody(crystalPillarBody2);
 
-        var sphereChickShape12 = new CANNON.Sphere(10);
-        var chickCircleBody12 = new CANNON.Body({ mass: 0, material: physicsMaterial });
-        chickCircleBody12.addShape(sphereChickShape12);
-        chickCircleBody12.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-        chickCircleBody12.position.set(115, 25, -38);
-        world.addBody(chickCircleBody12);
+        var crystalPillarShape3 = new CANNON.Sphere(6);
+        var crystalPillarBody3 = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        crystalPillarBody3.addShape(crystalPillarShape3);
+        crystalPillarBody3.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+        crystalPillarBody3.position.set(116, 25, -40);
+        world.addBody(crystalPillarBody3);
 
-        // Roos add
-        //Platform
-        var platform1Shape = new CANNON.Box(new CANNON.Vec3(40, 30, 23));
+        var swordBaseShape = new CANNON.Sphere(5);
+        var swordBaseBody = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        swordBaseBody.addShape(swordBaseShape);
+        swordBaseBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+        swordBaseBody.position.set(99.5, 20, -21.5);
+        world.addBody(swordBaseBody);
+
+        var swordShape = new CANNON.Box(new CANNON.Vec3(1, 60, 2));
+        var swordBody = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        swordBody.addShape(swordShape);
+        swordBody.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
+        swordBody.position.set(99.5, 20, -21.5);
+        world.addBody(swordBody);
+
+        var swordShape2 = new CANNON.Box(new CANNON.Vec3(1, 5, 5));
+        var swordBody2 = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        swordBody2.addShape(swordShape2);
+        swordBody2.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
+        swordBody2.position.set(99.5, 27, -21.5);
+        world.addBody(swordBody2);
+
+        //High Platform
+
+        var platform1Shape = new CANNON.Box(new CANNON.Vec3(22, 30, 30));
         var platform1Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
         platform1Body.addShape(platform1Shape);
-        platform1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 0.3, 0), -Math.PI / 2);
-        platform1Body.position.set(87, 0, -27);
-        platform1Body.angularVelocity.set(0, 0, 0);
+        platform1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 2.82);
+        platform1Body.position.set(87, -10, 0);
         world.addBody(platform1Body);
+
+        var platform2Shape = new CANNON.Box(new CANNON.Vec3(22, 30, 30));
+        var platform2Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        platform2Body.addShape(platform2Shape);
+        platform2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -2.84);
+        platform2Body.position.set(113, -10, 0);
+        world.addBody(platform2Body);
+
+        var platform3Shape = new CANNON.Box(new CANNON.Vec3(22, 30, 30));
+        var platform3Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        platform3Body.addShape(platform3Shape);
+        platform3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -1.9);
+        platform3Body.position.set(121, -10, -9);
+        world.addBody(platform3Body);
+
+        var platform4Shape = new CANNON.Box(new CANNON.Vec3(22, 30, 30));
+        var platform4Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        platform4Body.addShape(platform4Shape);
+        platform4Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -1.25);
+        platform4Body.position.set(121, -10, -32);
+        world.addBody(platform4Body);
+
+        var platform5Shape = new CANNON.Box(new CANNON.Vec3(22, 30, 30));
+        var platform5Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        platform5Body.addShape(platform5Shape);
+        platform5Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -0.32);
+        platform5Body.position.set(112, -10, -41);
+        world.addBody(platform5Body);
+
+        var platform6Shape = new CANNON.Box(new CANNON.Vec3(22, 30, 30));
+        var platform6Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        platform6Body.addShape(platform6Shape);
+        platform6Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 0.3);
+        platform6Body.position.set(87, -10, -40);
+        world.addBody(platform6Body);
+
+        var platform7Shape = new CANNON.Box(new CANNON.Vec3(22, 30, 30));
+        var platform7Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        platform7Body.addShape(platform7Shape);
+        platform7Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1.25);
+        platform7Body.position.set(78, -10, -31);
+        world.addBody(platform7Body);
+
+        var platform8Shape = new CANNON.Box(new CANNON.Vec3(22, 30, 30));
+        var platform8Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        platform8Body.addShape(platform8Shape);
+        platform8Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1.92);
+        platform8Body.position.set(79, -10, -9);
+        world.addBody(platform8Body);
+
+
+        //Low Platform
+
+        // var lowPlatform1Shape = new CANNON.Box(new CANNON.Vec3(30, 10, 30));
+        // var lowPlatform1Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        // lowPlatform1Body.addShape(lowPlatform1Shape);
+        // lowPlatform1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 2.82);
+        // lowPlatform1Body.position.set(87, 30, 0);
+        // world.addBody(lowPlatform1Body);
+
+        // var lowPlatform2Shape = new CANNON.Box(new CANNON.Vec3(30, 10, 30));
+        // var lowPlatform2Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        // lowPlatform2Body.addShape(lowPlatform2Shape);
+        // lowPlatform2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -2.84);
+        // lowPlatform2Body.position.set(113, 30, 0);
+        // world.addBody(lowPlatform2Body);
+        //
+        var lowPlatform3Shape = new CANNON.Box(new CANNON.Vec3(30, 10, 30));
+        var lowPlatform3Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        lowPlatform3Body.addShape(lowPlatform3Shape);
+        lowPlatform3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -1.9);
+        lowPlatform3Body.position.set(136, -4, -1);
+        world.addBody(lowPlatform3Body);
+
+        var lowPlatform4Shape = new CANNON.Box(new CANNON.Vec3(30, 10, 30));
+        var lowPlatform4Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        lowPlatform4Body.addShape(lowPlatform4Shape);
+        lowPlatform4Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -1.25);
+        lowPlatform4Body.position.set(142, -4, -38);
+        world.addBody(lowPlatform4Body);
+
+        var lowPlatform5Shape = new CANNON.Box(new CANNON.Vec3(30, 10, 30));
+        var lowPlatform5Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        lowPlatform5Body.addShape(lowPlatform5Shape);
+        lowPlatform5Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -0.32);
+        lowPlatform5Body.position.set(122, -4, -58);
+        world.addBody(lowPlatform5Body);
+
+        var lowPlatform6Shape = new CANNON.Box(new CANNON.Vec3(30, 10, 30));
+        var lowPlatform6Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        lowPlatform6Body.addShape(lowPlatform6Shape);
+        lowPlatform6Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 0.3);
+        lowPlatform6Body.position.set(81, -4, -59);
+        world.addBody(lowPlatform6Body);
+
+        var lowPlatform7Shape = new CANNON.Box(new CANNON.Vec3(30, 10, 30));
+        var lowPlatform7Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        lowPlatform7Body.addShape(lowPlatform7Shape);
+        lowPlatform7Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1.25);
+        lowPlatform7Body.position.set(60, -4, -39);
+        world.addBody(lowPlatform7Body);
+
+        var lowPlatform8Shape = new CANNON.Box(new CANNON.Vec3(30, 10, 30));
+        var lowPlatform8Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        lowPlatform8Body.addShape(lowPlatform8Shape);
+        lowPlatform8Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1.92);
+        lowPlatform8Body.position.set(60, -4, -2);
+        world.addBody(lowPlatform8Body);
+
 
     }
 
@@ -1005,7 +1188,11 @@ function modelLoader() {
         const directionalLight = new THREE.DirectionalLight(0xd5c3e8, 0.3);
         scene.add(directionalLight);
 
-        const color = 0xd5c3e8; // purple
+
+
+        // const color = 0xd5c3e8; // purple
+        const color = 0x000000; // black
+
         const near = 10;
         const far = 6000;
         scene.fog = new THREE.Fog(color, near, far);
