@@ -29,6 +29,9 @@ const soundLayer5 = new THREE.PositionalAudio(listener);
 const soundBase = new THREE.Audio( listener );
 const audioLoader = new THREE.AudioLoader();
 
+var muteSound = false;
+var soundLoad = false;
+var fadeSpeed = 0.01;
 //}
 
 //var imgHeightWorld = new Array();
@@ -79,7 +82,11 @@ manager.onStart = function(url, itemsLoaded, itemsTotal) {
 };
 manager.onLoad = function() {
     console.log('Loading complete!');
+    if (worldId == 2) {
     soundGo(0);
+    soundLoad = true;
+    }
+
 };
 manager.onProgress = function(url, itemsLoaded, itemsTotal) {
     //console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
@@ -864,9 +871,6 @@ function init() {
     skybox();
     //addCharacters();
     modelLoader();
-    if (soundGoGo == true) {
-        //soundGo();
-    }
     //
 
     //modelLoaderAnimate();
@@ -2000,7 +2004,7 @@ function soundGo(functionNumber) {
         //const sound = new THREE.Audio( listener );
 
         if (soundGoGo == true) {
-        console.log("zero for sound stuff");
+        //console.log("zero for sound stuff");
         camera.add(listener);
 
         audioLoader.load('sound/juno layer.mp3', function(buffer) {
@@ -2089,6 +2093,17 @@ function soundGo(functionNumber) {
         cube5.add(soundLayer5);
         scene.add(cube5);
 
+
+
+
+          // sound.setVolume(0.6);
+          // soundLayer2.setVolume(0.7);
+          // soundLayer3.setVolume(0.9);
+          // soundLayer4.setVolume(0.7);
+          // soundLayer5.setVolume(0.5);
+          // soundBase.setVolume(0.4);
+
+
         //gltf.scene.position.set(144, 9.3, 88.7); adam centko pos
     }
     }
@@ -2157,6 +2172,8 @@ function animate() {
     cssStepsWalk();
     cursorCheck();
 
+
+
     if (debug == true) {
         cannonDebugRenderer.update();
     }
@@ -2176,6 +2193,10 @@ function animate() {
     setTimeout(function() {
         requestAnimationFrame(animate);
         renderer.render(scene, camera);
+
+        if (soundLoad == true) {
+        soundMute();
+        }
     }, 1000 / 30);
 
     controls.update(Date.now() - time);
@@ -2319,6 +2340,7 @@ function cursorCheck() {
     //turn off mouseclick after possible event
     if (boolMouseClick == true) {
         boolMouseClick = false;
+
     }
 }
 
@@ -2908,4 +2930,26 @@ function dumpObject(obj, lines = [], isLast = true, prefix = '') {
 
 function randomNumber(min, max) {
     randomNumberGenerated = Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function soundMute(){
+  if (muteSound == true) {
+
+    var volFade = listener.getMasterVolume();
+    console.log("volFade = "+volFade);
+    volFade -= fadeSpeed;
+    if (volFade<0) {
+      volFade = 0;
+    }
+
+    listener.setMasterVolume(volFade);
+
+  }else{
+    volFade += fadeSpeed;
+    if (volFade>1) {
+      volFade = 1;
+    }
+    listener.setMasterVolume(volFade);
+
+  }
 }
