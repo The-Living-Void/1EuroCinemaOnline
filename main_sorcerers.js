@@ -13,7 +13,7 @@ import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js'
 
 var debug=false;
 var checkObjId=true;
-var worldId = 2; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 3; //1= socerers 2=lighthouse 3=forest 4= cave
 // var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 var soundGoGo = true;
@@ -1506,12 +1506,12 @@ function modelLoader() {
         const loader = new GLTFLoader()
 
         // alondra tree
-        loader.load('models/critters/world3/alondra.glb', (gltf) => {
+        loader.load('models/critters/world3/alondra-2d.glb', (gltf) => {
             gltf.scene.traverse(function(object) {
                 object.frustumCulled = false;
             });
             gltf.scene.position.set(240, 0.2, -50);
-            gltf.scene.scale.set(3, 3, 3);
+            gltf.scene.scale.set(10, 10, 10);
             gltf.scene.rotation.set(0, 0.6, 0);
             scene.add(gltf.scene);
         });
