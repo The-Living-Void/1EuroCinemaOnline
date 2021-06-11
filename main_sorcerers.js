@@ -1029,19 +1029,19 @@ function modelLoader() {
 
         const loader = new GLTFLoader()
 
-        // loader.load('models/critters/world1/pleunhand.glb', (gltf)  => {
-        //   gltf.scene.traverse( function( object ) {
-        //   object.frustumCulled = false;
-        //
-        //
-        //   } );
-        //   gltf.scene.position.set(300,10,50);
-        //   gltf.scene.scale.set(3,3,3);
-        //   scene.add(gltf.scene);
-        //
-        // }
+        loader.load('models/critters/world1/pleunhand.glb', (gltf) => {
+                gltf.scene.traverse(function(object) {
+                    object.frustumCulled = false;
 
-        // );
+
+                });
+                gltf.scene.position.set(300, 10, 50);
+                gltf.scene.scale.set(3, 3, 3);
+                scene.add(gltf.scene);
+
+            }
+
+        );
 
 
         // loader.load('models/critters/world1/pleunleg.glb', (gltf)  => {
@@ -1083,19 +1083,18 @@ function modelLoader() {
 
         });
 
-        // loader.load('models/critters/world1/pien-bouquet.glb', (gltf)  => {
-        //   gltf.scene.traverse( function( object ) {
-        //   object.frustumCulled = false;
-        //
-        //
-        //   } );
-        //   gltf.scene.position.set(-96,4,0);
-        //   gltf.scene.scale.set(1,1,1);
-        //   scene.add(gltf.scene);
-        // 	console.log(dumpObject(gltf.scene).join('\n'));
-        //
-        // }
-        // );
+        loader.load('models/critters/world1/pienb-beatle.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+
+
+            });
+            gltf.scene.position.set(-96, 8.4, 0);
+            gltf.scene.scale.set(4, 4, 4);
+            scene.add(gltf.scene);
+            console.log(dumpObject(gltf.scene).join('\n'));
+
+        });
 
         loader.load('models/critters/world1/carmen-phone-new.glb', (gltf) => {
             gltf.scene.traverse(function(object) {
