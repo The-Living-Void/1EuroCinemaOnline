@@ -8,6 +8,8 @@ import * as CANNON from '/node_modules/cannon-es/dist/cannon-es.js'
 
 var hideHud, hideHudi,hideHude;
 // var worldId
+// const _lockEvent = { type: 'lock' };
+// const _unlockEvent = { type: 'unlock' };
 
 var PointerLockControls = function (camera, cannonBody) {
   var eyeYPos = 2 // eyes are 2 meters above the ground
@@ -108,6 +110,7 @@ var PointerLockControls = function (camera, cannonBody) {
           break
 
 
+
           case 73: // hide "i"
             hideHudi = !hideHudi;
             //console.log("hide hud is "+hideHud);
@@ -142,6 +145,18 @@ var PointerLockControls = function (camera, cannonBody) {
   document.addEventListener('mousemove', onMouseMove, false)
   document.addEventListener('keydown', onKeyDown, false)
   document.addEventListener('keyup', onKeyUp, false)
+
+  // this.lock = function () {
+  //
+	// 		this.domElement.requestPointerLock();
+  //
+	// 	};
+  //
+  // this.unlock = function () {
+  //
+	// 		scope.domElement.ownerDocument.exitPointerLock();
+  //
+	// 	};
 
   this.enabled = false
 
@@ -197,19 +212,19 @@ var PointerLockControls = function (camera, cannonBody) {
     }
 
     if (hideHude==true) {
-      //js: document.getElementById("encyclo1").style.visibility = "visible";
-      js: document.getElementById("encyclo1").style.top = "195%";
-      //js: document.getElementById("encyclo-4").style.visibility = "visible";
-      js: document.getElementById("encyclo-4").style.top = "195%";
-      //js: document.getElementById("encyclo2").style.visibility = "visible";
-      js: document.getElementById("encyclo2").style.top = "195%";
-      //js: document.getElementById("encyclo4").style.visibility = "visible";
-      js: document.getElementById("encyclo3").style.top = "195%";
-    }else {
+      js: document.getElementById("encyclo1").style.visibility = "visible";
       js: document.getElementById("encyclo1").style.top = "0%";
+      js: document.getElementById("encyclo-4").style.visibility = "visible";
       js: document.getElementById("encyclo-4").style.top = "0%";
+      js: document.getElementById("encyclo2").style.visibility = "visible";
       js: document.getElementById("encyclo2").style.top = "0%";
+      js: document.getElementById("encyclo4").style.visibility = "visible";
       js: document.getElementById("encyclo3").style.top = "0%";
+    }else {
+      js: document.getElementById("encyclo1").style.top = "-195%";
+      js: document.getElementById("encyclo-4").style.top = "-195%";
+      js: document.getElementById("encyclo2").style.top = "-195%";
+      js: document.getElementById("encyclo3").style.top = "-195%";
     }
 
     if (hideHud==true) {
@@ -233,6 +248,7 @@ var PointerLockControls = function (camera, cannonBody) {
       js: document.getElementById("mapw3").style.right = "-20%";
       js: document.getElementById("map2w4").style.left = "-20%";
       js: document.getElementById("mapw4").style.right = "-20%";
+      js: document.getElementById("map-stan").style.right = "-20%";
       js: document.getElementById("world4critteroverlay").style.right = "-20%";
       js: document.getElementById("world4critteroverlay1").style.right = "-20%";
       js: document.getElementById("world4critteroverlay2").style.right = "-20%";
@@ -291,6 +307,7 @@ var PointerLockControls = function (camera, cannonBody) {
       js: document.getElementById("mapw3").style.right = "0%";
       js: document.getElementById("map2w4").style.left = "0%";
       js: document.getElementById("mapw4").style.right = "0%";
+      js: document.getElementById("map-stan").style.right = "0%";
       js: document.getElementById("world4critteroverlay").style.right = "0%";
       js: document.getElementById("world4critteroverlay1").style.right = "0%";
       js: document.getElementById("world4critteroverlay2").style.right = "0%";

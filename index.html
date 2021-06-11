@@ -1,71 +1,64 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>1E CINEMA ONLINE</title>
-	 <link rel="stylesheet" href="body.css">
-	<style>
-		html,
-		body {
-			width: 100%;
-			height: 100%;
-		}
+    <title>1E CINEMA ONLINE</title>
+    <link rel="stylesheet" href="body.css">
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
 
-		body {
-			background-color: #ffffff;
-			margin: 0;
-			overflow: hidden;
-			font-family: arial;
-		}
+        body {
+            background-color: #ffffff;
+            margin: 0;
+            overflow: hidden;
+            font-family: arial;
+        }
 
-		#blocker {
-			position: absolute;
+        #blocker {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
 
-			width: 100%;
-			height: 100%;
+        #info {
+            text-align: center;
+            padding: 10px;
+            z-index: 10;
+            width: 100%;
+            position: absolute;
+            color: white;
+        }
 
-			background-color: rgba(0, 0, 0, 0.5);
-		}
-
-		#info {
-			text-align: center;
-			padding: 10px;
-			z-index: 10;
-			width: 100%;
-			position: absolute;
-			color: white;
-		}
-
-		#instructions {
-			width: 100%;
-			height: 100%;
-
-			display: -webkit-box;
-			display: -moz-box;
-			display: box;
-
-			-webkit-box-orient: horizontal;
-			-moz-box-orient: horizontal;
-			box-orient: horizontal;
-
-			-webkit-box-pack: center;
-			-moz-box-pack: center;
-			box-pack: center;
-
-			-webkit-box-align: center;
-			-moz-box-align: center;
-			box-align: center;
-
-			color: #ffffff;
-			text-align: center;
-
-			cursor: pointer;
-		}
-	</style>
+        #instructions {
+            width: 100%;
+            height: 100%;
+            display: -webkit-box;
+            display: -moz-box;
+            display: box;
+            -webkit-box-orient: horizontal;
+            -moz-box-orient: horizontal;
+            box-orient: horizontal;
+            -webkit-box-pack: center;
+            -moz-box-pack: center;
+            box-pack: center;
+            -webkit-box-align: center;
+            -moz-box-align: center;
+            box-align: center;
+            color: #ffffff;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
-<!--icons-->
-<!--	<div class="coins">
+    <!--icons-->
+    <!--	<div class="coins">
 <img src="" class="coin"> <img src="" class="coin3">
 </div>
 <div class="button2">    <img src="" id="critter"></div>
@@ -73,11 +66,11 @@
 <img src="" class="coin2"><img src="" class="coin2"><img src="" class="coin2"> <img src="" class="coin2">
 </div>-->
 
-	<div class="card"></div>
-	<div class="imgbox"></div>
+    <div class="card"></div>
+    <div class="imgbox"></div>
 
-<!--video pop-up-->
-<!-- <button class="button"><i class="fa fa-play"></i>video player test</button>
+    <!--video pop-up-->
+    <!-- <button class="button"><i class="fa fa-play"></i>video player test</button>
 
 <div class="trailer">
 		<video src="video/opencall-coupled-worlds-compress.mp4" controls="true">
@@ -86,7 +79,7 @@
 </div> -->
 
 
-<!--
+    <!--
 <div class="trailer2">
 		<video src="video/video2.mp4" controls="true">
 		</video>
@@ -95,7 +88,7 @@
 
 
 
-<!-- <script>
+    <!-- <script>
 
 const button = document.querySelector("button");
 const close = document.querySelector(".close");
@@ -134,122 +127,224 @@ video.currentTime = 0;
 
 </script> -->
 
-		<div id="blocker">
+    <div id="blocker">
+        <!-- <video id="critterFilm" loop crossOrigin="anonymous" playsinline style="display:none" src="video/2.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'> -->
+        <!-- <source src="textures/sintel.ogv" type='video/ogg; codecs="theora, vorbis"'> -->
+        <!-- <source src="video/sintel.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'> -->
+        <!-- </video> -->
+        <div id="instructions1">
+            <br/>
+            <!-- <img id="centertop" src="Images/FLIP THE COIN.png"/> -->
+            <img id="centermiddle" src="Images/Laag 3.png" />
+            <img id="centerback" src="Images/coupled worlds big.png" />
+            <span style="font-size: 40px;"></span> <br />
+        </div>
 
-			<div id="instructions1">
-				<br/>
-				<!-- <img id="centertop" src="Images/FLIP THE COIN.png"/> -->
-				<img id="centermiddle" src="Images/Laag 3.png"/>
-					<img id="centerback" src="Images/coupled worlds big.png"/>
-						<span style="font-size: 40px;"></span>	<br />
-		</div>
+        <div id="instructions2">
+            <br/>
+            <!-- <img id="centertop" src="Images/FLIP THE COIN.png"/> -->
+            <img id="centermiddle" src="Images/2-pause.png" />
+            <img id="centerback" src="Images/coupled worlds big.png" />
+            <span style="font-size: 40px;"></span> <br />
+        </div>
 
-		<div id="instructions2">
-			<br/>
-			<!-- <img id="centertop" src="Images/FLIP THE COIN.png"/> -->
-			<img id="centermiddle" src="Images/2-pause.png"/>
-				<img id="centerback" src="Images/coupled worlds big.png"/>
-					<span style="font-size: 40px;"></span>	<br />
-	</div>
+        <div id="instructions3">
+            <br/>
+            <img id="centermiddle" src="Images/pause-3.png" />
+            <img id="centerback" src="Images/coupled worlds big.png" />
+            <span style="font-size: 40px;"></span> <br />
+        </div>
 
-	<div id="instructions3">
-		<br/>
-		<img id="centermiddle" src="Images/pause-3.png"/>
-							<img id="centerback" src="Images/coupled worlds big.png"/>
-								<span style="font-size: 40px;"></span>	<br />
-</div>
-
-	<div id="instructions4">
-	<br/>
-	<!-- <img id="centertop" src="Images/FLIP THE COIN.png"/> -->
-	<img id="centermiddle" src="Images/pause-4.png"/>
-	<img id="centerback" src="Images/coupled worlds big.png"/>
-		<span style="font-size: 40px;"></span>	<br />
-</div>
+        <div id="instructions4">
+            <br/>
+            <!-- <img id="centertop" src="Images/FLIP THE COIN.png"/> -->
+            <img id="centermiddle" src="Images/pause-4.png" />
+            <img id="centerback" src="Images/coupled worlds big.png" />
+            <span style="font-size: 40px;"></span> <br />
+        </div>
 
 
-					<div id="assets"><img src="textures/Heightmap.png"/></div>
-					<div id="assets"><img src="textures/HeightmapForrest.png"/></div>
+        <div id="assets"><img src="textures/Heightmap.png" /></div>
+        <div id="assets"><img src="textures/HeightmapForrest.png" /></div>
 
-					<div id="assets"><img src="heightMap/1_1.png"/></div>
-					<div id="assets"><img src="heightMap/1_2.png"/></div>
-					<div id="assets"><img src="heightMap/1_3.png"/></div>
-					<div id="assets"><img src="heightMap/1_4.png"/></div>
-					<div id="assets"><img src="heightMap/1_5.png"/></div>
-					<div id="assets"><img src="heightMap/1_6.png"/></div>
-					<div id="assets"><img src="heightMap/1_7.png"/></div>
-					<div id="assets"><img src="heightMap/1_8.png"/></div>
-					<div id="assets"><img src="heightMap/1_9.png"/></div>
+        <div id="assets"><img src="heightMap/1_1.png" /></div>
+        <div id="assets"><img src="heightMap/1_2.png" /></div>
+        <div id="assets"><img src="heightMap/1_3.png" /></div>
+        <div id="assets"><img src="heightMap/1_4.png" /></div>
+        <div id="assets"><img src="heightMap/1_5.png" /></div>
+        <div id="assets"><img src="heightMap/1_6.png" /></div>
+        <div id="assets"><img src="heightMap/1_7.png" /></div>
+        <div id="assets"><img src="heightMap/1_8.png" /></div>
+        <div id="assets"><img src="heightMap/1_9.png" /></div>
 
-					<div id="assets"><img src="heightMap/2_1.png"/></div>
-					<div id="assets"><img src="heightMap/2_2.png"/></div>
-					<div id="assets"><img src="heightMap/2_3.png"/></div>
-					<div id="assets"><img src="heightMap/2_4.png"/></div>
-					<div id="assets"><img src="heightMap/2_5.png"/></div>
-					<div id="assets"><img src="heightMap/2_6.png"/></div>
-					<div id="assets"><img src="heightMap/2_7.png"/></div>
-					<div id="assets"><img src="heightMap/2_8.png"/></div>
-					<div id="assets"><img src="heightMap/2_9.png"/></div>
+        <div id="assets"><img src="heightMap/2_1.png" /></div>
+        <div id="assets"><img src="heightMap/2_2.png" /></div>
+        <div id="assets"><img src="heightMap/2_3.png" /></div>
+        <div id="assets"><img src="heightMap/2_4.png" /></div>
+        <div id="assets"><img src="heightMap/2_5.png" /></div>
+        <div id="assets"><img src="heightMap/2_6.png" /></div>
+        <div id="assets"><img src="heightMap/2_7.png" /></div>
+        <div id="assets"><img src="heightMap/2_8.png" /></div>
+        <div id="assets"><img src="heightMap/2_9.png" /></div>
 
-					<div id="assets"><img src="heightMap/3_1.png"/></div>
-					<div id="assets"><img src="heightMap/3_2.png"/></div>
-					<div id="assets"><img src="heightMap/3_3.png"/></div>
-					<div id="assets"><img src="heightMap/3_4.png"/></div>
-					<div id="assets"><img src="heightMap/3_5.png"/></div>
-					<div id="assets"><img src="heightMap/3_6.png"/></div>
-					<div id="assets"><img src="heightMap/3_7.png"/></div>
-					<div id="assets"><img src="heightMap/3_8.png"/></div>
-					<div id="assets"><img src="heightMap/3_9.png"/></div>
+        <div id="assets"><img src="heightMap/3_1.png" /></div>
+        <div id="assets"><img src="heightMap/3_2.png" /></div>
+        <div id="assets"><img src="heightMap/3_3.png" /></div>
+        <div id="assets"><img src="heightMap/3_4.png" /></div>
+        <div id="assets"><img src="heightMap/3_5.png" /></div>
+        <div id="assets"><img src="heightMap/3_6.png" /></div>
+        <div id="assets"><img src="heightMap/3_7.png" /></div>
+        <div id="assets"><img src="heightMap/3_8.png" /></div>
+        <div id="assets"><img src="heightMap/3_9.png" /></div>
 
-					<div id="assets"><img src="heightMap/4_1.png"/></div>
-					<div id="assets"><img src="heightMap/4_2.png"/></div>
-					<div id="assets"><img src="heightMap/4_3.png"/></div>
-					<div id="assets"><img src="heightMap/4_4.png"/></div>
-					<div id="assets"><img src="heightMap/4_5.png"/></div>
-					<div id="assets"><img src="heightMap/4_6.png"/></div>
-					<div id="assets"><img src="heightMap/4_7.png"/></div>
-					<div id="assets"><img src="heightMap/4_8.png"/></div>
-					<div id="assets"><img src="heightMap/4_9.png"/></div>
+        <div id="assets"><img src="heightMap/4_1.png" /></div>
+        <div id="assets"><img src="heightMap/4_2.png" /></div>
+        <div id="assets"><img src="heightMap/4_3.png" /></div>
+        <div id="assets"><img src="heightMap/4_4.png" /></div>
+        <div id="assets"><img src="heightMap/4_5.png" /></div>
+        <div id="assets"><img src="heightMap/4_6.png" /></div>
+        <div id="assets"><img src="heightMap/4_7.png" /></div>
+        <div id="assets"><img src="heightMap/4_8.png" /></div>
+        <div id="assets"><img src="heightMap/4_9.png" /></div>
 
-				</div>
+    </div>
 
-		<!-- <div id="overlay"> -->
-			<div id="world1welcome">
-				<!-- load world 1 sequence -->
-				<img src="Images/1-WELCOME.png" id="welcome">
-				<img src="Images/place of.png" id="buttonrightoverlay">
-			</div>
+    <!-- <div id="overlay"> -->
+    <div id="world1welcome">
+        <!-- load world 1 sequence -->
+        <img src="Images/1-WELCOME.png" id="welcome" onclick="this.style.visibility='hidden';">
+        <!-- <img src="Images/place of.png" id="buttonrightoverlay" onclick="this.style.visibility='hidden';"> -->
+    </div>
 
-			<div id="world1">
-				<!-- basic interface -->
-				<img src="Images/binoculars.png" id="cursor">
-				<img src="Images/coupled worlds big.png" id="title">
-				<img src="Images/taskbar.png" id="mission">
-				<img src="Images/hud.png" id="hud">
-				<img src="Images/landof.png" id="buttonleftbottom">
-				<img src="Images/empowerment.png" id="buttonrightbottom">
-				<img src="Images/plaster-01.png" id="buttonrightbottom">
-				<img src="Images/plaster-01.png" id="buttonleftbottom">
-				<img src="Images/1-info.png" id="buttonleftbottom2">
-				<img src="Images/critterpedia.png" id="map">
-				<img src="Images/1-map-a.png" id="map2">
-				<img src="Images/1-encyclopedia.png" id="encyclo1">
-				<img src="Images/1-infocredits.png" id="info1">
-			</div>
+    <div id="world1">
+        <!-- basic interface -->
+        <img src="Images/binoculars.png" id="cursor">
+        <img src="Images/coupled worlds big.png" id="title">
+        <img src="Images/taskbar.png" id="mission">
+        <img src="Images/hud.png" id="hud">
+        <img src="Images/landof.png" id="buttonleftbottom">
+        <img src="Images/empowerment.png" id="buttonrightbottom">
+        <img src="Images/plaster-01.png" id="buttonrightbottom">
+        <img src="Images/plaster-01.png" id="buttonleftbottom">
+        <img src="Images/1-info.png" id="buttonleftbottom2">
+        <img src="Images/critterpedia.png" id="map">
+        <img src="Images/1-map-a.png" id="map2">
+        <img src="Images/1-encyclopedia.png" id="encyclo1">
+        <img src="Images/1-infocredits.png" id="info1">
+    </div>
 
-			<div id="world1foundfilm">
-				<!-- FOUND A FILM -->
-				<img src="Images/found.png" id="found1">
-			</div>
+    <div id="world1foundfilm">
+        <!-- FOUND A FILM -->
+        <img src="Images/found.png" id="found1">
+    </div>
 
-		<div id="levivangelder">
-				<img src="Images/levivangelder.png" id="world1critteroverlay">
-				<img src="Images/1-1critters.png" id="world1crittercounter">
-				<img src="Images/1-map-1.png" id="map2-1">
-				<img src="Images/levi-1.png" id="hintsfade1-1" class="B">
-				<img src="Images/levi-2.png" id="hintsfade1-2" class="A">
-				<!-- <img src="Images/levi-3.png" id="hintsfade" class="C">
+    <!-- FOUND ALL FILMS -->
+    <img src="Images/foundallworld1.png" id="found1all">
+
+    <!-- GEOEVENT -->
+    <img src="Images/bluepearlkopie.png" id="geoevent-1">
+
+
+    <!-- FILM iframe -->
+    <div class='embed-container' id="embedContainerFilm-1">
+        <iframe id="embedContainerFilm-iframe1" src="https://player.vimeo.com/video/412868812?title=0&byline=0&portrait=0" frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen>
+					</iframe>
+        <img src="Images/1exitvideo.png" class="exitVideoButton" id="world1videofound">
+
+        <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/AzpSu48PCJM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+    </div>
+
+    <div id="levivangelder1" class="world1critter">
+        <img src="Images/levivangelder.png" id="world1critteroverlay">
+        <img src="Images/1-1critters.png" id="world1crittercounter">
+        <img src="Images/1-map-1.png" id="map2-1">
+        <img src="Images/levi-1.png" id="hintsfade1-1" class="B">
+        <img src="Images/levi-2.png" id="hintsfade1-2" class="A">
+        <!-- <img src="Images/levi-3.png" id="hintsfade" class="C">
 				<img src="Images/levi-4.png" id="hintsfade" class="D"> -->
+    </div>
+
+    <div id="carmenroca1" class="world1critter">
+        <img src="Images/carmenroca.png" id="world1critteroverlay1">
+        <img src="Images/1-2critters.png" id="world1crittercounter1">
+        <img src="Images/1-map-2.png" id="map2-1-1">
+        <img src="Images/carmen-1.png" id="hintsfade1-3" class="A">
+        <img src="Images/carmen-2.png" id="hintsfade1-4" class="B">
+        <!-- <img src="Images/carmen-3.png" id="mission2"> -->
+        <!-- <img src="Images/carmen-4.png" id="mission2"> -->
+        <!-- <img src="Images/carmen-5.png" id="mission2"> -->
+    </div>
+
+    <div id="vanessabosch1" class="world1critter">
+        <img src="Images/vanessa bosch.png" id="world1critteroverlay2">
+        <img src="Images/1-3critters.png" id="world1crittercounter2">
+        <img src="Images/1-map-3.png" id="map2-1-2">
+        <img src="Images/vanessa-1.png" id="hintsfade1-5" class="A">
+        <img src="Images/vanessa-2.png" id="hintsfade1-6" class="B">
+        <!-- <img src="Images/vanessa-3.png" id="mission2"> -->
+        <!-- <img src="Images/vanessa-4.png" id="mission2"> -->
+        <!-- <img src="Images/vanessa-5.png" id="mission2"> -->
+    </div>
+
+    <div id="pleungremmen1" class="world1critter">
+        <img src="Images/pleungremmen.png" id="world1critteroverlay3">
+        <img src="Images/1-4critters.png" id="world1crittercounter3">
+        <img src="Images/1-map-4.png" id="map2-1-3">
+        <img src="Images/pleun-1.png" id="hintsfade1-7" class="A">
+        <img src="Images/pleun-2.png" id="hintsfade1-8" class="B">
+        <!-- <img src="Images/pleun-3.png" id="mission2"> -->
+        <!-- <img src="Images/pleun-4.png" id="mission2"> -->
+    </div>
+
+    <div id="pienkars1" class="world1critter">
+        <img src="Images/pienkars.png" id="world1critteroverlay4">
+        <img src="Images/1-5critters.png" id="world1crittercounter4">
+        <img src="Images/1-map-5.png" id="map2-1-4">
+        <img src="Images/pien-1.png" id="hintsfade1-9" class="A">
+        <img src="Images/pien-2.png" id="hintsfade1-10" class="B">
+        <!-- <img src="Images/pien-3.png" id="mission2"> -->
+    </div>
+
+    <div id="bluepearl1" class="world1critter">
+        <img src="Images/bluepearl.png" id="world1critteroverlay4">
+        <img src="Images/bluepearlmap.png" id="map2-1-4">
+        <img src="Images/pien-1.png" id="hintsfade1-9" class="A">
+        <img src="Images/pien-2.png" id="hintsfade1-10" class="B">
+        <!-- <img src="Images/pien-3.png" id="mission2"> -->
+    </div>
+
+    <div id="world2welcome">
+        <!-- load world 2 sequence -->
+        <img src="Images/2-WELCOME.png" id="welcome" onclick="this.style.visibility='hidden';">
+        <!-- <img src="Images/2-place of.png" id="buttonrightoverlay"> -->
+    </div>
+
+    <div id="world2">
+        <!-- basic interface -->
+        <img src="Images/2-binoculars.png" id="cursor">
+        <img src="Images/coupled worlds big.png" id="title-2">
+        <img src="Images/2-hintbar.png" id="mission">
+        <img src="Images/2-hud.png" id="hud">
+        <img src="Images/2-map-a.png" id="map2w2">
+        <img src="Images/2-encyclopedia.png" id="encyclo2">
+        <img src="Images/4-info.png" id="buttonleftbottom2">
+        <img src="Images/22-infocredits.png" id="info2">
+        <img src="Images/2-critterpedia.png" id="mapw2">
+    </div>
+
+    <div id="world2foundfilm">
+        <!-- FOUND A FILM -->
+        <img src="Images/2-found.png" id="found2">
+    </div>
+
+
+    <div id="adamcentko2" class="world2critter">
+        <img src="Images/adamcentko.png" id="world2critteroverlay">
+        <img src="Images/2-1critters.png" id="world2crittercounter">
+        <img src="Images/adam-1.png" id="hintsfade2-1" class="A">
+        <img src="Images/adam-2.png" id="hintsfade2-2" class="B">
+        <img src="Images/2-map-1.png" id="map2-2">
+        <!-- <img src="Images/adam-3.png" id="mission2">
 		</div>
 
 		<div id="carmenroca">
@@ -320,175 +415,184 @@ video.currentTime = 0;
 				<img src="Images/2-map-1.png" id="map2-2">
 				<!-- <img src="Images/adam-3.png" id="mission2">
 				<img src="Images/adam-4.png" id="mission2"> -->
-		</div>
+    </div>
 
-		<div id="karinferrari">
-				<img src="Images/karinferrari.png" id="world2critteroverlay1">
-				<img src="Images/2-2critters.png" id="world2crittercounter1">
-				<img src="Images/karin-1.png" id="hintsfade2-3" class="A">
-				<img src="Images/karin-2.png" id="hintsfade2-4" class="B">
-				<img src="Images/2-map-2.png" id="map2-2-1">
-				<!--<img src="Images/karin-3.png" id="mission2">
+    <div id="karinferrari2" class="world2critter">
+        <img src="Images/karinferrari.png" id="world2critteroverlay1">
+        <img src="Images/2-2critters.png" id="world2crittercounter1">
+        <img src="Images/karin-1.png" id="hintsfade2-3" class="A">
+        <img src="Images/karin-2.png" id="hintsfade2-4" class="B">
+        <img src="Images/2-map-2.png" id="map2-2-1">
+        <!--<img src="Images/karin-3.png" id="mission2">
 				<img src="Images/karin-4.png" id="mission2"> -->
-		</div>
+    </div>
 
-		<div id="louisbraddock">
-				<img src="Images/louisbraddock.png" id="world2critteroverlay2">
-				<img src="Images/2-3critters.png" id="world2crittercounter2">
-				<img src="Images/louis-1.png" id="hintsfade2-5" class="A">
-				<img src="Images/louis-2.png" id="hintsfade2-6" class="B">
-				<img src="Images/2-map-3.png" id="map2-2-2">
-				<!-- <img src="Images/louis-3.png" id="mission2"> -->
-				<!-- <img src="Images/louis-4.png" id="mission2"> -->
-				<!-- <img src="Images/louis-5.png" id="mission2"> -->
-		</div>
+    <div id="louisbraddock2" class="world2critter">
+        <img src="Images/louisbraddock.png" id="world2critteroverlay2">
+        <img src="Images/2-3critters.png" id="world2crittercounter2">
+        <img src="Images/louis-1.png" id="hintsfade2-5" class="A">
+        <img src="Images/louis-2.png" id="hintsfade2-6" class="B">
+        <img src="Images/2-map-3.png" id="map2-2-2">
+        <!-- <img src="Images/louis-3.png" id="mission2"> -->
+        <!-- <img src="Images/louis-4.png" id="mission2"> -->
+        <!-- <img src="Images/louis-5.png" id="mission2"> -->
+    </div>
 
-		<div id="wouterstroet">
-				<img src="Images/wouterstroet.png" id="world2critteroverlay3">
-				<img src="Images/2-4critters.png" id="world2crittercounter3">
-				<img src="Images/wouter-1.png" id="hintsfade2-7" class="A">
-				<img src="Images/wouter-2.png" id="hintsfade2-8" class="B">
-				<img src="Images/2-map-4.png" id="map2-2-3">
-				<!-- <img src="Images/wouter-3.png" id="mission2"> -->
-				<!-- <img src="Images/wouter-4.png" id="mission2"> -->
-				<!-- <img src="Images/wouter-5.png" id="mission2"> -->
-		</div>
+    <div id="wouterstroet2" class="world2critter">
+        <img src="Images/wouterstroet.png" id="world2critteroverlay3">
+        <img src="Images/2-4critters.png" id="world2crittercounter3">
+        <img src="Images/wouter-1.png" id="hintsfade2-7" class="A">
+        <img src="Images/wouter-2.png" id="hintsfade2-8" class="B">
+        <img src="Images/2-map-4.png" id="map2-2-3">
+        <!-- <img src="Images/wouter-3.png" id="mission2"> -->
+        <!-- <img src="Images/wouter-4.png" id="mission2"> -->
+        <!-- <img src="Images/wouter-5.png" id="mission2"> -->
+    </div>
 
-		<div id="valerievanzuijlen">
-				<img src="Images/valerievanzuijlen.png" id="world2critteroverlay4">
-				<img src="Images/2-5critters.png" id="world2crittercounter4">
-				<img src="Images/valerie-1.png" id="hintsfade2-9" class="A">
-				<img src="Images/valerie-2.png" id="hintsfade2-10" class="B">
-				<img src="Images/2-map-5.png" id="map2-2-4">
-				<!-- <img src="Images/valerie-3.png" id="mission2"> -->
-				<!-- <img src="Images/valerie-4.png" id="mission2"> -->
-		</div>
+    <div id="valerievanzuijlen2" class="world2critter">
+        <img src="Images/valerievanzuijlen.png" id="world2critteroverlay4">
+        <img src="Images/2-5critters.png" id="world2crittercounter4">
+        <img src="Images/valerie-1.png" id="hintsfade2-9" class="A">
+        <img src="Images/valerie-2.png" id="hintsfade2-10" class="B">
+        <img src="Images/2-map-5.png" id="map2-2-4">
+        <!-- <img src="Images/valerie-3.png" id="mission2"> -->
+        <!-- <img src="Images/valerie-4.png" id="mission2"> -->
+    </div>
 
-		<div id="world3welcome">
-			<img src="Images/3-worldintro.png" id="welcome">
-		</div>
 
-		<div id="world3">
-				<img src="Images/3-binoculars.png" id="cursor">
-				<img src="Images/coupled worlds big.png" id="title-2">
-				<img src="Images/3-hintbar.png" id="mission">
-				<img src="Images/3-hud.png" id="hud">
-				<img src="Images/3-map.png" id="map2w3">
-				<img src="Images/3-encyclopedia.png" id="encyclo3">
-				<img src="Images/2-info.png" id="buttonleftbottom2">
-				<img src="Images/3-infocredits.png" id="info3">
-				<img src="Images/3-critterpedia.png" id="mapw3">
-		</div>
 
-		<div id="larabruggeman">
-				<img src="Images/larabruggeman.png" id="world3critteroverlay">
-				<img src="Images/3-1critters.png" id="world3crittercounter">
-				<img src="Images/lara-1.png" id="hintsfade3-2" class="B">
-				<img src="Images/lara-2.png" id="hintsfade3-3" class="A">
-		</div>
 
-		<div id="nathaliegolde">
-				<img src="Images/nathaliegolde.png" id="world3critteroverlay1">
-				<img src="Images/3-2critters.png" id="world3crittercounter1">
-				<img src="Images/nathalie-1.png" id="hintsfade3-4" class="B">
-				<img src="Images/nathalie-2.png" id="hintsfade3-5" class="A">
-		</div>
+    <div id="world3welcome">
+        <img src="Images/3-worldintro.png" id="welcome" onclick="this.style.visibility='hidden';">
+    </div>
 
-		<div id="alondracastellanos">
-				<img src="Images/alondracastellanos.png" id="world3critteroverlay2">
-				<img src="Images/3-3critters.png" id="world3crittercounter2">
-				<img src="Images/alondra-1.png" id="hintsfade3-6" class="B">
-				<img src="Images/alondra-2.png" id="hintsfade3-7" class="A">
-				<!-- <img src="Images/alondra-3.png" id="hintsfade3-3" class="B"> -->
-				<!-- <img src="Images/alondra-4.png" id="hintsfade3-4" class="A"> -->
-		</div>
+    <div id="world3">
+        <img src="Images/3-binoculars.png" id="cursor">
+        <img src="Images/coupled worlds big.png" id="title-2">
+        <img src="Images/3-hintbar.png" id="mission">
+        <img src="Images/3-hud.png" id="hud">
+        <img src="Images/3-map.png" id="map2w3">
+        <img src="Images/3-encyclopedia.png" id="encyclo3">
+        <img src="Images/2-info.png" id="buttonleftbottom2">
+        <img src="Images/3-infocredits.png" id="info3">
+        <img src="Images/3-critterpedia.png" id="mapw3">
+    </div>
 
-		<div id="stanwiersma">
-				<img src="Images/stanwiersma.png" id="world3critteroverlay3">
-				<img src="Images/3-4critters.png" id="world3crittercounter3">
-				<img src="Images/stan-1.png" id="hintsfade3-8" class="B">
-				<img src="Images/stan-2.png" id="hintsfade3-9" class="A">
-				<!-- <img src="Images/stan-3.png" id="hintsfade3-3" class="B"> -->
-				<!-- <img src="Images/stan-4.png" id="hintsfade3-4" class="A"> -->
-		</div>
+    <div id="larabruggeman3" class="world3critter">
+        <img src="Images/larabruggeman.png" id="world3critteroverlay">
+        <img src="Images/3-1critters.png" id="world3crittercounter">
+        <img src="Images/lara-1.png" id="hintsfade3-2" class="B">
+        <img src="Images/lara-2.png" id="hintsfade3-3" class="A">
+    </div>
 
-		<div id="world3inrange">
-				<img src="Images/3-range.png" id="range3">
-		</div>
+    <div id="nathaliegolde3" class="world3critter">
+        <img src="Images/nathaliegolde.png" id="world3critteroverlay1">
+        <img src="Images/3-2critters.png" id="world3crittercounter1">
+        <img src="Images/nathalie-1.png" id="hintsfade3-4" class="B">
+        <img src="Images/nathalie-2.png" id="hintsfade3-5" class="A">
+    </div>
 
-		<div id="world3found">
-				<img src="Images/3-film.png" id="found3">
-		</div>
+    <div id="alondracastellanos3" class="world3critter">
+        <img src="Images/alondracastellanos.png" id="world3critteroverlay2">
+        <img src="Images/3-3critters.png" id="world3crittercounter2">
+        <img src="Images/alondra-1.png" id="hintsfade3-6" class="B">
+        <img src="Images/alondra-2.png" id="hintsfade3-7" class="A">
+        <!-- <img src="Images/alondra-3.png" id="hintsfade3-3" class="B"> -->
+        <!-- <img src="Images/alondra-4.png" id="hintsfade3-4" class="A"> -->
+    </div>
 
-		<div id="world4welcome">
-					<!-- load world 4 sequence -->
-					<img src="Images/4-intro.png" id="welcome">
-		</div>
+    <div id="stanwiersma3" class="world3critter">
+        <img src="Images/stanwiersma.png" id="world3critteroverlay3">
+        <img src="Images/3-4critters.png" id="world3crittercounter3">
+        <img src="Images/stan-1.png" id="hintsfade3-8" class="B">
+        <img src="Images/stan-2.png" id="hintsfade3-9" class="A">
+        <img src="Images/stan-map.png" id="map-stan">
+        <!-- <img src="Images/stan-3.png" id="hintsfade3-3" class="B"> -->
+        <!-- <img src="Images/stan-4.png" id="hintsfade3-4" class="A"> -->
+    </div>
 
-	  <div id="world4">
-				<!-- basic interface -->
-				<img src="Images/4-binoculars.png" id="cursor">
-				<img src="Images/coupled worlds big.png" id="title-2">
-				<img src="Images/4-hintbar.png" id="mission">
-				<img src="Images/4-hud.png" id="hud">
-				<img src="Images/4-encyclopedia.png" id="encyclo-4">
-				<img src="Images/3-info.png" id="buttonleftbottom2">
-				<img src="Images/4-infocredits.png" id="info4">
-				<img src="Images/4-map.png" id="map2w4">
-				<img src="Images/4-critterpedia.png" id="mapw4">
-		</div>
+    <div id="world3inrange">
+        <img src="Images/3-range.png" id="range3">
+    </div>
 
-		<div id="emilyanderson">
-				<img src="Images/emilyanderson.png" id="world4critteroverlay">
-				<img src="Images/4-1critters.png" id="world4crittercounter">
-				<img src="Images/emily-1.png"  id="hintsfade4-1" class="A">
-				<img src="Images/emily-2.png"  id="hintsfade4-2" class="B">
-				<!-- <img src="Images/emily-3.png"  id="hintsfade4-1" class="A">
+    <div id="world3found">
+        <img src="Images/3-film.png" id="found3">
+    </div>
+
+    <div id="world4welcome">
+        <!-- load world 4 sequence -->
+        <img src="Images/4-intro.png" id="welcome" onclick="this.style.visibility='hidden';">
+    </div>
+
+    <div id="world4">
+        <!-- basic interface -->
+        <img src="Images/4-binoculars.png" id="cursor">
+        <img src="Images/coupled worlds big.png" id="title-2">
+        <img src="Images/4-hintbar.png" id="mission">
+        <img src="Images/4-hud.png" id="hud">
+        <img src="Images/4-encyclopedia.png" id="encyclo-4">
+        <img src="Images/3-info.png" id="buttonleftbottom2">
+        <img src="Images/4-infocredits.png" id="info4">
+        <img src="Images/4-map.png" id="map2w4">
+        <img src="Images/4-critterpedia.png" id="mapw4">
+    </div>
+
+    <div id="world4foundfilm">
+        <!-- FOUND A FILM -->
+        <img src="Images/4-found.png" id="found4">
+    </div>
+
+    <div id="emilyanderson4" class="world4critter">
+        <img src="Images/emilyanderson.png" id="world4critteroverlay">
+        <img src="Images/4-1critters.png" id="world4crittercounter">
+        <img src="Images/emily-1.png" id="hintsfade4-1" class="A">
+        <img src="Images/emily-2.png" id="hintsfade4-2" class="B">
+        <!-- <img src="Images/emily-3.png"  id="hintsfade4-1" class="A">
 				<img src="Images/emily-4.png"  id="hintsfade4-2" class="B"> -->
-		</div>
+    </div>
 
-		<div id="minhongyu">
-				<img src="Images/minhongyu.png" id="world4critteroverlay1">
-				<img src="Images/4-2critters.png" id="world4crittercounter1">
-				<img src="Images/minhong-1.png"  id="hintsfade4-3" class="A">
-				<img src="Images/minhong-2.png"  id="hintsfade4-4" class="B">
-				<!-- <img src="Images/minhong-3.png"  id="hintsfade4-1" class="A">
+    <div id="minhongyu4" class="world4critter">
+        <img src="Images/minhongyu.png" id="world4critteroverlay1">
+        <img src="Images/4-2critters.png" id="world4crittercounter1">
+        <img src="Images/minhong-1.png" id="hintsfade4-3" class="A">
+        <img src="Images/minhong-2.png" id="hintsfade4-4" class="B">
+        <!-- <img src="Images/minhong-3.png"  id="hintsfade4-1" class="A">
 				<img src="Images/minhong-4.png"  id="hintsfade4-2" class="B"> -->
-		</div>
+    </div>
 
-		<div id="yifanhe">
-				<img src="Images/yifanhe.png" id="world4critteroverlay2">
-				<img src="Images/4-3critters.png" id="world4crittercounter2">
-				<img src="Images/yifan-1.png"  id="hintsfade4-5" class="A">
-				<img src="Images/yifan-2.png"  id="hintsfade4-6" class="B">
-				<!-- <img src="Images/yifan-3.png"  id="hintsfade4-1" class="A">
+    <div id="yifanhe4" class="world4critter">
+        <img src="Images/yifanhe.png" id="world4critteroverlay2">
+        <img src="Images/4-3critters.png" id="world4crittercounter2">
+        <img src="Images/yifan-1.png" id="hintsfade4-5" class="A">
+        <img src="Images/yifan-2.png" id="hintsfade4-6" class="B">
+        <!-- <img src="Images/yifan-3.png"  id="hintsfade4-1" class="A">
 				<img src="Images/yifan-4.png"  id="hintsfade4-2" class="B"> -->
-		</div>
+    </div>
 
-		<div id="benjaminhall">
-				<img src="Images/benjaminhall.png" id="world4critteroverlay3">
-				<img src="Images/4-4critters.png" id="world4crittercounter3">
-				<img src="Images/benjamin-1.png"  id="hintsfade4-7" class="A">
-				<img src="Images/benjamin-2.png"  id="hintsfade4-8" class="B">
-				<!-- <img src="Images/benjamin-3.png"  id="hintsfade4-1" class="A">
+    <div id="benjaminhall4" class="world4critter">
+        <img src="Images/benjaminhall.png" id="world4critteroverlay3">
+        <img src="Images/4-4critters.png" id="world4crittercounter3">
+        <img src="Images/benjamin-1.png" id="hintsfade4-7" class="A">
+        <img src="Images/benjamin-2.png" id="hintsfade4-8" class="B">
+        <!-- <img src="Images/benjamin-3.png"  id="hintsfade4-1" class="A">
 				<img src="Images/benjamin-4.png"  id="hintsfade4-2" class="B"> -->
-		</div>
+    </div>
 
-		<div id="valentinelangeard">
-				<img src="Images/4-5critters.png" id="world4crittercounter4">
-				<img src="Images/valentinelangeard.png" id="world4critteroverlay4">
-				<img src="Images/valentine-1.png"  id="hintsfade4-9" class="A">
-				<img src="Images/valentine-2.png"  id="hintsfade4-10" class="B">
-				<!-- <img src="Images/valentine-3.png"  id="hintsfade4-1" class="A">
+    <div id="valentinelangeard4" class="world4critter">
+        <img src="Images/4-5critters.png" id="world4crittercounter4">
+        <img src="Images/valentinelangeard.png" id="world4critteroverlay4">
+        <img src="Images/valentine-1.png" id="hintsfade4-9" class="A">
+        <img src="Images/valentine-2.png" id="hintsfade4-10" class="B">
+        <!-- <img src="Images/valentine-3.png"  id="hintsfade4-1" class="A">
 				<img src="Images/valentine-4.png"  id="hintsfade4-2" class="B"> -->
-		</div>
+    </div>
 
 
-	<!-- <script type="module" src="main.js"></script> -->
-	<!-- <script type="module" src="main-forest.js"></script> -->
-	<!-- <script type="module" src="main-sorcerers.js"></script> -->
-	<!-- <script type="module" src="main-cave.js"></script> -->
-	<script type="module" src="main_sorcerers.js"></script>
+    <!-- <script type="module" src="main.js"></script> -->
+    <!-- <script type="module" src="main-forest.js"></script> -->
+    <!-- <script type="module" src="main-sorcerers.js"></script> -->
+    <!-- <script type="module" src="main-cave.js"></script> -->
+    <script type="module" src="main_sorcerers.js"></script>
 
 
 </body>
