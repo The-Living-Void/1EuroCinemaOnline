@@ -21,7 +21,12 @@ var soundGoGo = true;
 //if (soundGoGo==true) {
 const listener = new THREE.AudioListener();
 const sound = new THREE.PositionalAudio(listener);
+const soundLayer2 = new THREE.PositionalAudio(listener);
+const soundLayer3 = new THREE.PositionalAudio(listener);
+const soundLayer4 = new THREE.PositionalAudio(listener);
+const soundLayer5 = new THREE.PositionalAudio(listener);
 //const sound = new THREE.Audio( listener );
+const soundBase = new THREE.Audio( listener );
 const audioLoader = new THREE.AudioLoader();
 
 //}
@@ -1994,28 +1999,98 @@ function soundGo(functionNumber) {
     if (functionNumber == 0) {
         //const sound = new THREE.Audio( listener );
 
-
+        if (soundGoGo == true) {
         console.log("zero for sound stuff");
         camera.add(listener);
 
-        audioLoader.load('sound/Boat Island.mp3', function(buffer) {
+        audioLoader.load('sound/juno layer.mp3', function(buffer) {
             sound.setBuffer(buffer);
             sound.setLoop(true);
-            sound.setRefDistance(10);
-            sound.setVolume(0.5);
+            sound.setRefDistance(12);
+            sound.setVolume(0.6);
             sound.play();
             //console.log(sound.getOutput());
         });
+
+        audioLoader.load('sound/horn layer.mp3', function(buffer) {
+            soundLayer2.setBuffer(buffer);
+            soundLayer2.setLoop(true);
+            soundLayer2.setRefDistance(15);
+            soundLayer2.setVolume(0.7);
+            soundLayer2.play();
+            //console.log(sound.getOutput());
+        });
+
+        audioLoader.load('sound/omni layer.mp3', function(buffer) {
+            soundLayer3.setBuffer(buffer);
+            soundLayer3.setLoop(true);
+            soundLayer3.setRefDistance(25);
+            soundLayer3.setVolume(0.9);
+            soundLayer3.play();
+            //console.log(sound.getOutput());
+        });
+
+        audioLoader.load('sound/Pauken layer.mp3', function(buffer) {
+            soundLayer4.setBuffer(buffer);
+            soundLayer4.setLoop(true);
+            soundLayer4.setRefDistance(30);
+            soundLayer4.setVolume(0.7);
+            soundLayer4.play();
+            //console.log(sound.getOutput());
+        });
+
+        audioLoader.load('sound/violin layer.mp3', function(buffer) {
+            soundLayer5.setBuffer(buffer);
+            soundLayer5.setLoop(true);
+            soundLayer5.setRefDistance(25);
+            soundLayer5.setVolume(0.5);
+            soundLayer5.play();
+            //console.log(sound.getOutput());
+        });
+
+        audioLoader.load('sound/Base layer.mp3', function(buffer) {
+            soundBase.setBuffer(buffer);
+            soundBase.setLoop(true);
+            soundBase.setVolume(0.4);
+            soundBase.play();
+            //console.log(sound.getOutput());
+        });
+
+        //gltf.scene.position.set(-40, 5, 60); Britney Pos
+
         //gltf.scene.position.set(160,9,-75);
         const box = new THREE.BoxGeometry(20, 20, 20);
         const material = new THREE.MeshBasicMaterial({ color: 0xff2200 });
         material.visible = false;
+
         const cube = new THREE.Mesh(box, material);
         cube.position.set(160, 9, -75);
-
         cube.add(sound);
         scene.add(cube);
 
+        const cube2 = new THREE.Mesh(box, material);
+        cube2.position.set(-40+5, 5+3, 60+7);
+        cube2.add(soundLayer2);
+        scene.add(cube2);
+
+        const cube3 = new THREE.Mesh(box, material);
+        cube3.position.set(144-5, 99.3, 88.7+45);
+        cube3.add(soundLayer3);
+        scene.add(cube3);
+
+        const cube4 = new THREE.Mesh(box, material);
+        cube4.position.set(-50, 15, -180);
+        cube4.add(soundLayer4);
+        scene.add(cube4);
+
+        //gltf.scene.position.set(40.3, 15, -34);
+        const cube5 = new THREE.Mesh(box, material);
+        cube5.position.set(40, 15, -34);
+        cube5.add(soundLayer5);
+        scene.add(cube5);
+
+        //gltf.scene.position.set(144, 9.3, 88.7); adam centko pos
+    }
     }
     // var context = new AudioContext();
     // context.resume().then(() => {
