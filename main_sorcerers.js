@@ -13,7 +13,7 @@ import { RoughnessMipmapper } from './customPackage/utils/RoughnessMipmapper.js'
 
 var debug=false;
 var checkObjId=true;
-var worldId = 3; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 1; //1= socerers 2=lighthouse 3=forest 4= cave
 // var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 var soundGoGo = true;
@@ -1077,19 +1077,19 @@ function modelLoader() {
 
         });
 
-        // loader.load('models/critters/world1/pien-bouquet.glb', (gltf)  => {
-        //   gltf.scene.traverse( function( object ) {
-        //   object.frustumCulled = false;
-        //
-        //
-        //   } );
-        //   gltf.scene.position.set(-96,4,0);
-        //   gltf.scene.scale.set(1,1,1);
-        //   scene.add(gltf.scene);
-        // 	console.log(dumpObject(gltf.scene).join('\n'));
-        //
-        // }
-        // );
+         loader.load('models/critters/world1/pienb-beatle.glb', (gltf)  => {
+          gltf.scene.traverse( function( object ) {
+           object.frustumCulled = false;
+        
+        
+           } );
+           gltf.scene.position.set(-96,8.4,0);
+           gltf.scene.scale.set(4,4,4);
+           scene.add(gltf.scene);
+         	console.log(dumpObject(gltf.scene).join('\n'));
+        
+        }
+         );
 
         loader.load('models/critters/world1/carmen-phone-new.glb', (gltf) => {
             gltf.scene.traverse(function(object) {
