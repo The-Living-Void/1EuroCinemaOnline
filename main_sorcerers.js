@@ -59,6 +59,12 @@ var critterHtmlId = 0;
 var alreadyCLickedCritters = [];
 var critterToFindArray = [];
 var runOnce2 = true;
+var lastCritterToFind = false;
+
+var embedContainer = "embedContainerFilm" + "-" + worldId;
+var embedContainerGet = document.getElementById(embedContainer);
+
+var initOnce = 0;
 
 
 var zVal = 0;
@@ -124,13 +130,11 @@ for (var i = 0; i < imagesTiles.length; i++) {
 }
 
 initCannon();
-
-if (runOnceInit == 0) {
-init();
-runOnceInit ++;
+if (initOnce == 0) {
+    init();
+    initOnce++;
 }
 
-//
 render();
 addFlatGround();
 getScenes();
@@ -188,7 +192,7 @@ function initCannon() {
     sphereBody = new CANNON.Body({ mass: mass, material: physicsMaterial });
     sphereBody.addShape(sphereShape);
     // sphereBody.position.set(nx * sx * 0.5, ny * sy + radius * 2, nz * sz * 0.5);
-    sphereBody.position.set(100,70,-40);
+    sphereBody.position.set(100, 70, -40);
     sphereBody.linearDamping = 0.9;
     world.addBody(sphereBody);
 
@@ -202,33 +206,33 @@ function initCannon() {
     //sphereChickShape.quaternion.set(n1, 0, 0, 0);
 
     if (worldId == 1) {
-      var world1wall1Shape = new CANNON.Box(new CANNON.Vec3(400, 200, 1));
-      var world1wall1Body = new CANNON.Body({ mass: 0 });
-      world1wall1Body.addShape(world1wall1Shape);
-      world1wall1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
-      world1wall1Body.position.set(330, 0, 0);
-      world.addBody(world1wall1Body);
+        var world1wall1Shape = new CANNON.Box(new CANNON.Vec3(400, 200, 1));
+        var world1wall1Body = new CANNON.Body({ mass: 0 });
+        world1wall1Body.addShape(world1wall1Shape);
+        world1wall1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
+        world1wall1Body.position.set(330, 0, 0);
+        world.addBody(world1wall1Body);
 
-      var world1wall2Shape = new CANNON.Box(new CANNON.Vec3(400, 200, 1));
-      var world1wall2Body = new CANNON.Body({ mass: 0 });
-      world1wall2Body.addShape(world1wall2Shape);
-      world1wall2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
-      world1wall2Body.position.set(-150, 0, 0);
-      world.addBody(world1wall2Body);
+        var world1wall2Shape = new CANNON.Box(new CANNON.Vec3(400, 200, 1));
+        var world1wall2Body = new CANNON.Body({ mass: 0 });
+        world1wall2Body.addShape(world1wall2Shape);
+        world1wall2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
+        world1wall2Body.position.set(-150, 0, 0);
+        world.addBody(world1wall2Body);
 
-      var world1wall3Shape = new CANNON.Box(new CANNON.Vec3(1, 200, 400));
-      var world1wall3Body = new CANNON.Body({ mass: 0 });
-      world1wall3Body.addShape(world1wall3Shape);
-      world1wall3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
-      world1wall3Body.position.set(0, 0, -240);
-      world.addBody(world1wall3Body);
+        var world1wall3Shape = new CANNON.Box(new CANNON.Vec3(1, 200, 400));
+        var world1wall3Body = new CANNON.Body({ mass: 0 });
+        world1wall3Body.addShape(world1wall3Shape);
+        world1wall3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
+        world1wall3Body.position.set(0, 0, -240);
+        world.addBody(world1wall3Body);
 
-      var world1wall4Shape = new CANNON.Box(new CANNON.Vec3(1, 200, 400));
-      var world1wall4Body = new CANNON.Body({ mass: 0 });
-      world1wall4Body.addShape(world1wall4Shape);
-      world1wall4Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
-      world1wall4Body.position.set(0, 0, 250);
-      world.addBody(world1wall4Body);
+        var world1wall4Shape = new CANNON.Box(new CANNON.Vec3(1, 200, 400));
+        var world1wall4Body = new CANNON.Body({ mass: 0 });
+        world1wall4Body.addShape(world1wall4Shape);
+        world1wall4Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
+        world1wall4Body.position.set(0, 0, 250);
+        world.addBody(world1wall4Body);
 
         //CODE BOXES SUUS
         // sphere shapes (tegen klok in):
@@ -1026,7 +1030,7 @@ function initCannon() {
 }
 
 function init() {
-
+    console.log("init run");
     cssSteps();
     critterArray();
 
@@ -1419,13 +1423,13 @@ function modelLoader() {
         //     scene.add(gltf.scene);
         //     jumpAction.play();
         // });
-        // // box queen critter = adam critters
+        // box queen critter = adam critters
         // const geometry = new THREE.BoxGeometry();
-        // const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
-        // //const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+        // //const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        // const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
         // const cube = new THREE.Mesh(geometry, material);
         // cube.position.set(144, 9.3, 88.7);
-        // cube.scale.set(2, 10, 2);
+        // cube.scale.set(2, 10, 4);
         // cube.userData.name = "adamcentko";
         // cube.uuid = "adam2";
         // scene.add(cube);
@@ -1433,149 +1437,149 @@ function modelLoader() {
         // console.log(cube.userData);
 
         // karin spider
-        loader.load('models/critters/world2/karin-spider-anim2.glb', (gltf) => {
-            mixer = new THREE.AnimationMixer(gltf.scene);
-            jumpAction = mixer.clipAction(gltf.animations[0])
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
-            gltf.scene.position.set(160, 9, -75);
-            gltf.scene.rotation.set(0, -0.5, 0);
-            gltf.scene.scale.set(5.5, 5.5, 5.5);
-            scene.add(gltf.scene);
-            jumpAction.play();
-        });
+        // loader.load('models/critters/world2/karin-spider-anim2.glb', (gltf) => {
+        //     mixer = new THREE.AnimationMixer(gltf.scene);
+        //     jumpAction = mixer.clipAction(gltf.animations[0])
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
+        //     gltf.scene.position.set(160, 9, -75);
+        //     gltf.scene.rotation.set(0, -0.5, 0);
+        //     gltf.scene.scale.set(5.5, 5.5, 5.5);
+        //     scene.add(gltf.scene);
+        //     jumpAction.play();
+        // });
 
-        loader.load('models/critters/world2/karin-spider-core.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
-            gltf.scene.position.set(160, 9, -75);
-            gltf.scene.rotation.set(0, -0.5, 0);
-            gltf.scene.scale.set(5.5, 5.5, 5.5);
-            scene.add(gltf.scene);
-        });
+        // loader.load('models/critters/world2/karin-spider-core.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
+        //     gltf.scene.position.set(160, 9, -75);
+        //     gltf.scene.rotation.set(0, -0.5, 0);
+        //     gltf.scene.scale.set(5.5, 5.5, 5.5);
+        //     scene.add(gltf.scene);
+        // });
 
         // wouter it's britney bitch
-        loader.load('models/critters/world2/wouter.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
-            gltf.scene.position.set(-40, 5, 60);
-            gltf.scene.scale.set(1, 1, 1);
-            gltf.scene.rotation.set(0, 3, 0);
-            scene.add(gltf.scene);
-        });
+        // loader.load('models/critters/world2/wouter.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
+        //     gltf.scene.position.set(-40, 5, 60);
+        //     gltf.scene.scale.set(1, 1, 1);
+        //     gltf.scene.rotation.set(0, 3, 0);
+        //     scene.add(gltf.scene);
+        //     console.log(dumpObject(gltf.scene).join('\n'));
+        // });
+
 
 
         // louis cores
-        loader.load('models/critters/world2/louis.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
-            gltf.scene.position.set(280, 0, -15);
-            gltf.scene.scale.set(1, 1, 1);
-            gltf.scene.rotation.set(1, 1.9, -0.2);
-            scene.add(gltf.scene);
-        });
+        // loader.load('models/critters/world2/louis.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
+        //     gltf.scene.position.set(280, 0, -15);
+        //     gltf.scene.scale.set(1, 1, 1);
+        //     gltf.scene.rotation.set(1, 1.9, -0.2);
+        //     scene.add(gltf.scene);
+        // });
 
-        // box queen critter = luis critters
-        const geometryLuis = new THREE.BoxGeometry();
-        const materialLuis = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
-        //const materialLuis = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-        const cubeLuis = new THREE.Mesh(geometryLuis, materialLuis);
-        cubeLuis.position.set(280, 0, 20); //-15
-        cubeLuis.scale.set(30, 100, 60);
-        cubeLuis.userData.name = "louisbraddock";
+        // const geometryLuis = new THREE.BoxGeometry();
+        // const materialLuis = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        // const cubeLuis = new THREE.Mesh(geometryLuis, materialLuis);
+        // cubeLuis.position.set(280, 0, 20); //-15
+        // cubeLuis.scale.set(30, 100, 60);
+        // cubeLuis.userData.name = "louisbraddock";
 
 
-        scene.add(cubeLuis);
+        // scene.add(cubeLuis);
         //console.log(dumpObject(cubeLuis).join('\n'));
         //console.log(cubeLuis.userData);
 
-        // valerie tea pots
-        loader.load('models/critters/world2/valerie.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
-            gltf.scene.position.set(40.3, 15, -34);
-            gltf.scene.scale.set(0.1, 0.1, 0.1);
-            gltf.scene.rotation.set(0, 1.5, 0.5);
-            scene.add(gltf.scene);
-        });
+        // // valerie tea pots
+        // loader.load('models/critters/world2/valerie.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
+        //     gltf.scene.position.set(40.3, 15, -34);
+        //     gltf.scene.scale.set(0.1, 0.1, 0.1);
+        //     gltf.scene.rotation.set(0, 1.5, 0.5);
+        //     scene.add(gltf.scene);
+        // });
 
 
-        loader.load('models/critters/world2/valerie.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
-            gltf.scene.position.set(43, 14, -30.1);
-            gltf.scene.scale.set(0.1, 0.1, 0.1);
-            gltf.scene.rotation.set(2, 1, 0.7);
-            scene.add(gltf.scene);
-        });
+        // loader.load('models/critters/world2/valerie.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
+        //     gltf.scene.position.set(43, 14, -30.1);
+        //     gltf.scene.scale.set(0.1, 0.1, 0.1);
+        //     gltf.scene.rotation.set(2, 1, 0.7);
+        //     scene.add(gltf.scene);
+        // });
 
 
-        loader.load('models/critters/world2/valerie.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
-            gltf.scene.position.set(41, 13, -32.6);
-            gltf.scene.scale.set(0.05, 0.05, 0.05);
-            gltf.scene.rotation.set(1.3, 3, -0.6);
-            scene.add(gltf.scene);
-        });
+        // loader.load('models/critters/world2/valerie.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
+        //     gltf.scene.position.set(41, 13, -32.6);
+        //     gltf.scene.scale.set(0.05, 0.05, 0.05);
+        //     gltf.scene.rotation.set(1.3, 3, -0.6);
+        //     scene.add(gltf.scene);
+        // });
 
-        loader.load('models/critters/world2/valerie.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
-            gltf.scene.position.set(41.3, 14.8, -32.3);
-            gltf.scene.scale.set(0.03, 0.03, 0.03);
-            gltf.scene.rotation.set(0.2, 1, -1);
-            scene.add(gltf.scene);
-        });
+        // loader.load('models/critters/world2/valerie.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
+        //     gltf.scene.position.set(41.3, 14.8, -32.3);
+        //     gltf.scene.scale.set(0.03, 0.03, 0.03);
+        //     gltf.scene.rotation.set(0.2, 1, -1);
+        //     scene.add(gltf.scene);
+        // });
 
 
-        loader.load('models/critters/world2/valerie.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
-            gltf.scene.position.set(40.7, 17.8, -33.4);
-            gltf.scene.scale.set(0.04, 0.04, 0.04);
-            gltf.scene.rotation.set(-2, 1.3, 0);
-            scene.add(gltf.scene);
-        });
+        // loader.load('models/critters/world2/valerie.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
+        //     gltf.scene.position.set(40.7, 17.8, -33.4);
+        //     gltf.scene.scale.set(0.04, 0.04, 0.04);
+        //     gltf.scene.rotation.set(-2, 1.3, 0);
+        //     scene.add(gltf.scene);
+        // });
 
-        loader.load('models/critters/world2/valerie.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
-            gltf.scene.position.set(42, 17, -32);
-            gltf.scene.scale.set(0.07, 0.07, 0.07);
-            gltf.scene.rotation.set(2, 1.2, 0);
-            scene.add(gltf.scene);
-        });
+        // loader.load('models/critters/world2/valerie.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
+        //     gltf.scene.position.set(42, 17, -32);
+        //     gltf.scene.scale.set(0.07, 0.07, 0.07);
+        //     gltf.scene.rotation.set(2, 1.2, 0);
+        //     scene.add(gltf.scene);
+        // });
 
-        loader.load('models/critters/world2/valerie.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
-            gltf.scene.position.set(37, 11.3, -22);
-            gltf.scene.scale.set(0.1, 0.1, 0.1);
-            gltf.scene.rotation.set(0, 0, 0.4);
-            scene.add(gltf.scene);
-        });
+        // loader.load('models/critters/world2/valerie.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
+        //     gltf.scene.position.set(37, 11.3, -22);
+        //     gltf.scene.scale.set(0.1, 0.1, 0.1);
+        //     gltf.scene.rotation.set(0, 0, 0.4);
+        //     scene.add(gltf.scene);
+        // });
 
-        loader.load('models/critters/world2/valerie.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
-            gltf.scene.position.set(38, 11.8, -19);
-            gltf.scene.scale.set(0.05, 0.05, 0.05);
-            gltf.scene.rotation.set(0.2, 2, -0.2);
-            scene.add(gltf.scene);
-        });
+        // loader.load('models/critters/world2/valerie.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
+        //     gltf.scene.position.set(38, 11.8, -19);
+        //     gltf.scene.scale.set(0.05, 0.05, 0.05);
+        //     gltf.scene.rotation.set(0.2, 2, -0.2);
+        //     scene.add(gltf.scene);
+        // });
 
 
 
@@ -2477,6 +2481,207 @@ function animate() {
     //requestAnimationFrame(animate);
 }
 
+function loadCharacter(characterName) {
+
+    console.log("chara name = " + characterName);
+
+    // adam centko man
+    if (characterName == 'adamcentko2') {
+        console.log('im in!!');
+        const loader = new GLTFLoader();
+
+        loader.load('models/critters/world2/adam-gloss.glb', (gltf) => {
+            mixer = new THREE.AnimationMixer(gltf.scene);
+            jumpAction = mixer.clipAction(gltf.animations[0])
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(144, 9.3, 88.7);
+            gltf.scene.rotation.set(0, 2.83, 0);
+            scene.add(gltf.scene);
+            jumpAction.play();
+        });
+        // box queen critter = adam critters
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        //const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cube = new THREE.Mesh(geometry, material);
+        cube.position.set(144, 9.3, 88.7);
+        cube.scale.set(2, 17, 4);
+        cube.userData.name = "adamcentko";
+        cube.uuid = "adam2";
+        scene.add(cube);
+        console.log(dumpObject(cube).join('\n'));
+        console.log(cube.userData);
+    }
+
+    // karin spider
+    if (characterName == 'karinferrari2') {
+
+        const loader = new GLTFLoader();
+        loader.load('models/critters/world2/karin-spider-anim2.glb', (gltf) => {
+            mixer = new THREE.AnimationMixer(gltf.scene);
+            jumpAction = mixer.clipAction(gltf.animations[0])
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(160, 9, -75);
+            gltf.scene.rotation.set(0, -0.5, 0);
+            gltf.scene.scale.set(5.5, 5.5, 5.5);
+            scene.add(gltf.scene);
+            jumpAction.play();
+        });
+
+        loader.load('models/critters/world2/karin-spider-core.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(160, 9, -75);
+            gltf.scene.rotation.set(0, -0.5, 0);
+            gltf.scene.scale.set(5.5, 5.5, 5.5);
+            scene.add(gltf.scene);
+        });
+    }
+    // wouter it's britney bitch
+    if (characterName == 'wouterstroet2') {
+        const loader = new GLTFLoader();
+        loader.load('models/critters/world2/wouter.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(-40, 5, 60);
+            gltf.scene.scale.set(1, 1, 1);
+            gltf.scene.rotation.set(0, 3, 0);
+            scene.add(gltf.scene);
+
+        });
+        // box queen critter = wouter britney critters
+        const geometrybrit = new THREE.BoxGeometry();
+        const materialbrit = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        //const materialbrit = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cube = new THREE.Mesh(geometrybrit, materialbrit);
+        cube.position.set(-40, 5, 55);
+        cube.scale.set(6, 25, 2);
+        cube.userData.name = "wouterstroet";
+        cube.uuid = "wouterstroet2";
+        scene.add(cube);
+        console.log(dumpObject(cube).join('\n'));
+        console.log(cube.userData);
+    }
+
+    // louis cores
+    if (characterName == 'louisbraddock2') {
+        const loader = new GLTFLoader();
+        loader.load('models/critters/world2/louis.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(280, 0, -15);
+            gltf.scene.scale.set(1, 1, 1);
+            gltf.scene.rotation.set(1, 1.9, -0.2);
+            scene.add(gltf.scene);
+        });
+
+        // box queen critter = luis critters
+        const geometryLuis = new THREE.BoxGeometry();
+        const materialLuis = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        //const materialLuis = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+        const cubeLuis = new THREE.Mesh(geometryLuis, materialLuis);
+        cubeLuis.position.set(280, 0, 20); //-15
+        cubeLuis.scale.set(30, 100, 60);
+        cubeLuis.userData.name = "louisbraddock";
+
+
+        scene.add(cubeLuis);
+    }
+    // valerie tea pots
+    if (characterName == 'valerievanzuijlen2') {
+        const loader = new GLTFLoader();
+        loader.load('models/critters/world2/valerie.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(40.3, 15, -34);
+            gltf.scene.scale.set(0.1, 0.1, 0.1);
+            gltf.scene.rotation.set(0, 1.5, 0.5);
+            scene.add(gltf.scene);
+        });
+
+
+        loader.load('models/critters/world2/valerie.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(43, 14, -30.1);
+            gltf.scene.scale.set(0.1, 0.1, 0.1);
+            gltf.scene.rotation.set(2, 1, 0.7);
+            scene.add(gltf.scene);
+        });
+
+
+        loader.load('models/critters/world2/valerie.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(41, 13, -32.6);
+            gltf.scene.scale.set(0.05, 0.05, 0.05);
+            gltf.scene.rotation.set(1.3, 3, -0.6);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world2/valerie.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(41.3, 14.8, -32.3);
+            gltf.scene.scale.set(0.03, 0.03, 0.03);
+            gltf.scene.rotation.set(0.2, 1, -1);
+            scene.add(gltf.scene);
+        });
+
+
+        loader.load('models/critters/world2/valerie.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(40.7, 17.8, -33.4);
+            gltf.scene.scale.set(0.04, 0.04, 0.04);
+            gltf.scene.rotation.set(-2, 1.3, 0);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world2/valerie.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(42, 17, -32);
+            gltf.scene.scale.set(0.07, 0.07, 0.07);
+            gltf.scene.rotation.set(2, 1.2, 0);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world2/valerie.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(37, 11.3, -22);
+            gltf.scene.scale.set(0.1, 0.1, 0.1);
+            gltf.scene.rotation.set(0, 0, 0.4);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world2/valerie.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(38, 11.8, -19);
+            gltf.scene.scale.set(0.05, 0.05, 0.05);
+            gltf.scene.rotation.set(0.2, 2, -0.2);
+            scene.add(gltf.scene);
+        });
+    }
+
+}
 
 function cursorCheck() {
 
@@ -2508,14 +2713,14 @@ function cursorCheck() {
                 //console.log(dumpObject(object.parent).join('\n')); //looking at interesected objsts parent structure
                 var newScene;
                 scenes.forEach(item => {
-                    critterLoc = new THREE.Vector3(item.posX, item.posY, item.posZ);
+                    //critterLoc = new THREE.Vector3(item.posX, item.posY, item.posZ);
                     if (objectSiblings.length > 0) {
                         objectSiblings.forEach(function(child) {
                             siblingNames.push(child.name);
                             //console.log(siblingNames);
                         });
                         if (siblingNames.includes(item.idInWorld) == true) {
-                            console.log("chidlren of it yes name");
+                            //console.log("chidlren of it yes name");
                             siblingBool = true;
                         } else { siblingBool = false; }
                         // siblingNames.forEach(namevalue);
@@ -2548,8 +2753,8 @@ function cursorCheck() {
                 });
 
                 if (newScene) {
-                    console.log("newscene", newScene);
-                    console.log("you made it to the", currentScene);
+                    //console.log("newscene", newScene);
+                    //console.log("you made it to the", currentScene);
                     boolInPerimeter = true;
 
 
@@ -2557,7 +2762,9 @@ function cursorCheck() {
 
                         currentScene = newScene;
                         critterId = currentScene.id;
-                        console.log("(currentScene.id != newScene.id)");
+                        //console.log("(currentScene.id != newScene.id)");
+                        critterFilmLink = currentScene.videoUrl;
+                        // updateFilmUrl(critterFilmLink)
                     }
                 } else {
                     // console.log(" no");
@@ -2614,42 +2821,28 @@ function cursorCheck() {
     }
 }
 
-function loadCharacter(characterName) {
 
-    console.log("chara name = " + characterName);
-
-    if (characterName == 'adamcentko2') {
-        console.log('im in!!');
-        const loader = new GLTFLoader();
-        // adam centko man
-        loader.load('models/critters/world2/adam-gloss.glb', (gltf) => {
-            mixer = new THREE.AnimationMixer(gltf.scene);
-            jumpAction = mixer.clipAction(gltf.animations[0])
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
-            gltf.scene.position.set(144, 9.3, 88.7);
-            gltf.scene.rotation.set(0, 2.83, 0);
-            scene.add(gltf.scene);
-            jumpAction.play();
-        });
-        // box queen critter = adam critters
-        const geometry = new THREE.BoxGeometry();
-        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
-        //const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-        const cube = new THREE.Mesh(geometry, material);
-        cube.position.set(144, 9.3, 88.7);
-        cube.scale.set(2, 10, 2);
-        cube.userData.name = "adamcentko";
-        cube.uuid = "adam2";
-        scene.add(cube);
-        console.log(dumpObject(cube).join('\n'));
-        console.log(cube.userData);
-    }
-
-}
 
 function clickedOnCritter() {
+    window.removeEventListener("click", clickedOnCritter, false);
+    boolMouseOn = false;
+
+    //critterFilmLink = currentScene.videoUrl;
+    updateFilmUrl(critterFilmLink);
+    //document.getElementById("embedContainerFilm-iframe2").src = "https://player.vimeo.com/video/559077120?autoplay=1&badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
+
+    embedContainerGet.style.backgroundColor = "black";
+    embedContainerGet.style.visibility = "visible";
+    embedContainerGet.style.display = "block";
+
+    var exitimageGet = "world" + worldId + "videofound";
+    document.getElementById(exitimageGet).addEventListener("click", clickedOnExitVideo);
+    //instructions.click();
+    document.exitPointerLock = document.exitPointerLock ||
+        document.mozExitPointerLock ||
+        document.webkitExitPointerLock;
+    document.exitPointerLock();
+
     muteSound = true;
     if (critterToFindArray[0] == critterId + worldId) {
         document.getElementById(critterToFindArray[0]).style.visibility = "hidden";
@@ -2661,20 +2854,75 @@ function clickedOnCritter() {
         critterPosX = currentScene.posX;
         critterPosY = currentScene.posY;
         critterPosZ = currentScene.posZ;
-        critterFilmLink = currentScene.videoUrl;
-        showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmLink);
+
+
+        //showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmLink);
     } else {
         console.log("film was already playing");
     }
 }
 
+function updateFilmUrl(critterFilmLink) {
+    var filmPath = critterFilmLink;
+    var iframeGet = 'embedContainerFilm-iframe' + worldId;
+    var filmPathCont = document.getElementById(iframeGet);
+    filmPathCont.src = filmPath;
+}
+
+function clickedOnExitVideo() {
+    muteSound = false;
+    //embedContainerGet.classList.remove('fade-in');
+    //embedContainerGet.classList.add('fade-out');
+    embedContainerGet.style.visibility = null;
+    embedContainerGet.style.display = null;
+    embedContainerGet.style.transition = null;
+    embedContainerGet.style.backgroundColor = null;
+    console.log("clicked exit button");
+    instructions.click();
+    var element = document.body;
+    element.requestPointerLock();
+    filmIsPlaying = false;
+    var iframeGet = 'embedContainerFilm-iframe' + worldId;
+    var filmPathCont = document.getElementById(iframeGet);
+    filmPathCont.removeAttribute('src');
+    //filmPathCont.src = null; //#
+    //document.getElementById(critterHtmlId).style.visibility = "hidden";
+    console.log(critterId);
+    if (lastCritterToFind == false) {
+        if (critterToFindArray[0] == critterId + worldId) {
+            critterToFindArray.splice(0, 1);
+            huntForNextCritter();
+            console.log(critterToFindArray);
+        } else {
+            console.log("different ones");
+        }
+    } else {
+        console.log("geoevent start");
+    }
+
+    // randomNumber(0, critterToFindArray.length - 1);
+    // console.log(randomNumberGenerated);
+    // critterHtmlId = critterToFindArray[randomNumberGenerated];
+    // console.log(critterHtmlId);
+    // document.getElementById(critterHtmlId).style.visibility = "visible";
+
+
+}
+
 function showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmLink) {
+    document.exitPointerLock = document.exitPointerLock ||
+        document.mozExitPointerLock ||
+        document.webkitExitPointerLock;
+    document.exitPointerLock();
     //var idForFilm = id+"video";
     window.removeEventListener("click", clickedOnCritter, false);
     boolMouseOn = false;
     let video, texture, mesh;
     let mouse = new THREE.Vector2();
-    console.log("looking for film with id " + critterId);
+    // var filmPath = critterFilmLink;
+    // var filmPathCont = document.getElementById('embedContainerFilm-iframe1');
+    // filmPathCont.src = filmPath;
+    // console.log("looking for film with id " + critterId);
     // var element = document.body;
     // element.requestPointerLock =
     // 	element.requestPointerLock || element.mozRequestPointerLock || element.webkitRequestPointerLock
@@ -2683,48 +2931,25 @@ function showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmL
     //   'key': 'Escape'
     // }));
     //var filmPath =  "video/" + critterId + "/" + "1.mp4";
-    var filmPath = critterFilmLink;
-    var filmPathCont = document.getElementById('embedContainerFilm-iframe1');
-    filmPathCont.src = filmPath;
-    document.getElementById("embedContainerFilm-1").style.visibility = "visible";
-    document.getElementById("embedContainerFilm-1").style.display = "block";
+    //var embedContainer = "embedContainerFilm" + "-" + worldId;
+    // var embedContainerGet = document.getElementById(embedContainer);
+    //embedContainerGet.classList.remove('fade-out');
+    //embedContainerGet.classList.add('fade-in');
+    // embedContainerGet.style.visibility = "visible";
+    // embedContainerGet.style.display = "block";
+
+    //embedContainerGet.setAttribute("style", "background: red; transition: 30 ease-in;");
+    // embedContainerGet.style.transition = "5s ease-in";
+    // embedContainerGet.style.backgroundColor = "black";
+
     //pointerLock();
     filmIsPlaying = true;
-    document.getElementById("world1videofound").addEventListener("click", clickedOnExitVideo);
-
-    function clickedOnExitVideo() {
-        muteSound = false;
-        document.getElementById("embedContainerFilm-1").style.visibility = "hidden";
-        document.getElementById("embedContainerFilm-1").style.display = "none";
-        console.log("clicked exit button");
-        instructions.click();
-        var element = document.body;
-        element.requestPointerLock();
-        filmIsPlaying = false;
-        filmPathCont.src = "https://player.vimeo.com/video/412868812?title=0&byline=0&portrait=0";
-        //document.getElementById(critterHtmlId).style.visibility = "hidden";
-        console.log(critterId);
-        if (critterToFindArray[0] == critterId + worldId) {
-            critterToFindArray.splice(0, 1);
-            huntForNextCritter();
-            console.log(critterToFindArray);
-        } else {
-            console.log("different ones");
-        }
-
-        // randomNumber(0, critterToFindArray.length - 1);
-        // console.log(randomNumberGenerated);
-        // critterHtmlId = critterToFindArray[randomNumberGenerated];
-        // console.log(critterHtmlId);
-        // document.getElementById(critterHtmlId).style.visibility = "visible";
+    var exitimageGet = "world" + worldId + "videofound";
+    document.getElementById(exitimageGet).addEventListener("click", clickedOnExitVideo);
 
 
-    }
 
-    document.exitPointerLock = document.exitPointerLock ||
-        document.mozExitPointerLock ||
-        document.webkitExitPointerLock;
-    document.exitPointerLock();
+
 
 
     //controls.unlock();
@@ -2733,6 +2958,71 @@ function showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmL
     //console.log(controls);
 
 
+}
+
+function critterArray() {
+    var CritterClassList = document.getElementsByClassName(critterClass);
+    console.log(CritterClassList);
+    for (var i = 0; i < CritterClassList.length; i++) {
+        //if (runOnce == true) {
+        //     randomNumber(0, CritterClassList.length - 1);
+        // runOnce = false;
+        //
+        //if ((i < CritterClassList.length) && (runOnce2 == true)) {
+        critterToFindArray.push(CritterClassList[i].id);
+        console.log(critterToFindArray, "critterToFindArray");
+
+
+        // if (i == CritterClassList.length - 1) {
+        //     runOnce2 = false;
+        // }
+        //  } else { runOnce2 = false; }
+
+
+        //var firstCritterInfo = CritterClassList[randomNumberGenerated];
+
+        //console.log(CritterClassList);
+        //console.log(firstCritterId, "firstCritterId");
+        // } else {
+        //     runOnce = false;
+        // }
+    }
+    randomNextCritterInArray();
+
+    var firstCritterId = critterToFindArray[0];
+    console.log(firstCritterId);
+    if (critterHtmlId == 0) {
+        document.getElementById(firstCritterId).style.visibility = "visible";
+        console.log("yes");
+    } else {
+        //firstCritterId = critterHtmlId;
+        document.getElementById(firstCritterId).style.visibility = "hidden";
+        //document.getElementById(critterHtmlId).style.visibility = "visible";
+    }
+}
+
+function randomNextCritterInArray() {
+    var n = critterToFindArray.length;
+    var tempArr = [];
+    for (var i = 0; i < n - 1; i++) {
+        // The following line removes one random element from arr
+        // and pushes it onto tempArr
+        tempArr.push(critterToFindArray.splice(Math.floor(Math.random() * critterToFindArray.length), 1)[0]);
+    }
+    // Push the remaining item onto tempArr
+    tempArr.push(critterToFindArray[0]);
+    critterToFindArray = tempArr;
+    console.log(critterToFindArray);
+    if (n == 1) {
+        console.log("last one to find");
+        lastCritterToFind = true;
+    }
+}
+
+function huntForNextCritter() {
+    randomNextCritterInArray();
+    document.getElementById(critterToFindArray[0]).style.visibility = "visible";
+    loadCharacter(critterToFindArray[0]);
 }
 
 function getScenes() {
@@ -2830,65 +3120,6 @@ function cssStepsWalk() {
     }
 }
 
-async function critterArray() {
-    var CritterClassList = document.getElementsByClassName(critterClass);
-    console.log(CritterClassList);
-    for (var i = 0; i < CritterClassList.length; i++) {
-        //if (runOnce == true) {
-        //     randomNumber(0, CritterClassList.length - 1);
-        // runOnce = false;
-        //
-        //if ((i < CritterClassList.length) && (runOnce2 == true)) {
-        critterToFindArray.push(CritterClassList[i].id);
-        console.log(critterToFindArray, "critterToFindArray");
-
-
-        // if (i == CritterClassList.length - 1) {
-        //     runOnce2 = false;
-        // }
-        //  } else { runOnce2 = false; }
-
-
-        //var firstCritterInfo = CritterClassList[randomNumberGenerated];
-
-        //console.log(CritterClassList);
-        //console.log(firstCritterId, "firstCritterId");
-        // } else {
-        //     runOnce = false;
-        // }
-    }
-    randomNextCritterInArray();
-
-    var firstCritterId = critterToFindArray[0];
-    console.log(firstCritterId);
-    if (critterHtmlId == 0) {
-        document.getElementById(firstCritterId).style.visibility = "visible";
-        console.log("yes");
-    } else {
-        //firstCritterId = critterHtmlId;
-        document.getElementById(firstCritterId).style.visibility = "hidden";
-        //document.getElementById(critterHtmlId).style.visibility = "visible";
-    }
-}
-
-function randomNextCritterInArray() {
-    var n = critterToFindArray.length;
-    var tempArr = [];
-    for (var i = 0; i < n - 1; i++) {
-        // The following line removes one random element from arr
-        // and pushes it onto tempArr
-        tempArr.push(critterToFindArray.splice(Math.floor(Math.random() * critterToFindArray.length), 1)[0]);
-    }
-    // Push the remaining item onto tempArr
-    tempArr.push(critterToFindArray[0]);
-    critterToFindArray = tempArr;
-    console.log(critterToFindArray);
-}
-
-function huntForNextCritter() {
-    randomNextCritterInArray();
-    document.getElementById(critterToFindArray[0]).style.visibility = "visible";
-}
 
 function cssSteps() {
 
@@ -3048,33 +3279,35 @@ function pointerLock() {
                 element.requestPointerLock =
                     element.requestPointerLock || element.mozRequestPointerLock || element.webkitRequestPointerLock
 
-                if (/Firefox/i.test(navigator.userAgent)) {
-                    var fullscreenchange = function(event) {
-                        if (
-                            document.fullscreenElement === element ||
-                            document.mozFullscreenElement === element ||
-                            document.mozFullScreenElement === element
-                        ) {
-                            document.removeEventListener('fullscreenchange', fullscreenchange)
-                            document.removeEventListener('mozfullscreenchange', fullscreenchange)
+                element.requestPointerLock()
 
-                            element.requestPointerLock()
-                        }
-                    }
+                // if (/Firefox/i.test(navigator.userAgent)) {
+                //     var fullscreenchange = function(event) {
+                //         if (
+                //             document.fullscreenElement === element ||
+                //             document.mozFullscreenElement === element ||
+                //             document.mozFullScreenElement === element
+                //         ) {
+                //             document.removeEventListener('fullscreenchange', fullscreenchange)
+                //             document.removeEventListener('mozfullscreenchange', fullscreenchange)
 
-                    document.addEventListener('fullscreenchange', fullscreenchange, false)
-                    document.addEventListener('mozfullscreenchange', fullscreenchange, false)
+                //             element.requestPointerLock()
+                //         }
+                //     }
 
-                    element.requestFullscreen =
-                        element.requestFullscreen ||
-                        element.mozRequestFullscreen ||
-                        element.mozRequestFullScreen ||
-                        element.webkitRequestFullscreen
+                //     document.addEventListener('fullscreenchange', fullscreenchange, false)
+                //     document.addEventListener('mozfullscreenchange', fullscreenchange, false)
 
-                    element.requestFullscreen()
-                } else {
-                    element.requestPointerLock()
-                }
+                //     element.requestFullscreen =
+                //         element.requestFullscreen ||
+                //         element.mozRequestFullscreen ||
+                //         element.mozRequestFullScreen ||
+                //         element.webkitRequestFullscreen
+
+                //     element.requestFullscreen()
+                // } else {
+                //     element.requestPointerLock()
+                // }
             },
             false
         )
@@ -3279,7 +3512,7 @@ function soundMute() {
     if (muteSound == true) {
 
 
-        console.log("volFade = " + volFade);
+        //console.log("volFade = " + volFade);
         volFade -= fadeSpeed;
         if (volFade < 0) {
             volFade = 0;

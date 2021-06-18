@@ -10,6 +10,27 @@ body {
     background: black;
 }
 
+
+/* 
+.fade-in {
+    background-color: black;
+    -moz-transition: all 1.2s ease-in;
+    -o-transition: all 1.2s ease-in;
+    -webkit-transition: all 1.2s ease-in;
+    transition: all 1.2s ease-in;
+}
+
+.fade-out {
+    background: black;
+    opacity: 0;
+    -moz-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    -webkit-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+    visibility: hidden;
+    display: none;
+} */
+
 canvas {
     width: 100%;
     height: 100%;
@@ -335,12 +356,13 @@ canvas {
 
 .embed-container {
     position: relative;
-    padding-bottom: 56.25%;
+    /* padding-bottom: 56.25%; was making iframe appear all the way to the bottom */
+    padding-bottom: 100vh;
     height: 0;
     overflow: hidden;
     max-width: 100%;
     z-index: 4;
-    align: center;
+    /* align: center; */
 }
 
 .embed-container iframe,
