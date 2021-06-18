@@ -9,8 +9,7 @@ import { RGBELoader } from './customPackage/loader/RGBELoader.js';
 // import { EffectComposer } from './postprocessing/EffectComposer.js';
 // import { RenderPass } from './postprocessing/RenderPass';
 // import { UnrealBloomPass } from './postprocessing/UnrealBloomPass.js';
-
-
+import { VideoTexture } from './node_modules/three/src/textures/VideoTexture.js'; 
 var debug = false;
 var checkObjId = true;
 var worldId = 2; //1= socerers 2=lighthouse 3=forest 4= cave
@@ -2832,6 +2831,69 @@ function loadCharacter(characterName) {
     }
 
 }
+
+//geoevents
+ 
+//Get your video element:
+const geoeventjiarey = document.getElementById('geoeventjiarey');
+const geoeventisabella = document.getElementById('geoeventisabella');
+const geoeventjoachim = document.getElementById('geoeventjoachim');
+const geoeventmeggie = document.getElementById('geoeventmeggie');
+const geoeventannikay = document.getElementById('geoeventannika');
+ 
+//world1
+const geoeventWorld1Texture = new THREE.VideoTexture(geoeventannika);
+const geoeventWorld1Material =  new THREE.MeshBasicMaterial( {map: geoeventWorld1Texture, side: THREE.FrontSide, toneMapped: false} );
+ 
+const geoeventWorld1screen = new THREE.PlaneGeometry(20, 20, 0);
+const geoeventWorld1videoScreen = new THREE.Mesh(geoeventWorld1screen, geoeventWorld1Material);
+geoeventWorld1videoScreen.rotation.set(-90, 0, 0);
+geoeventWorld1videoScreen.scale.set(50, 50, 50);
+geoeventWorld1videoScreen.position.set(0, 0, 170);
+scene.add(geoeventWorld1videoScreen);
+ 
+//world2
+const geoeventWorld2Texture = new THREE.VideoTexture(geoeventisabella);
+const geoeventWorld2Material =  new THREE.MeshBasicMaterial( {map: geoeventWorld2Texture, side: THREE.FrontSide, toneMapped: false} );
+ 
+const geoeventWorld2screen = new THREE.PlaneGeometry(20, 20, 0);
+const geoeventWorld2videoScreen = new THREE.Mesh(geoeventWorld2screen, geoeventWorld2Material);
+geoeventWorld2videoScreen.rotation.set(-90, 0, 0);
+geoeventWorld2videoScreen.scale.set(50, 50, 50);
+geoeventWorld2videoScreen.position.set(0, 0, 170);
+scene.add(geoeventWorld2videoScreen);
+ 
+//world3
+const geoeventWorld3Texture = new THREE.VideoTexture(geoeventjiarey);
+const geoeventWorld3Material =  new THREE.MeshBasicMaterial( {map: geoeventWorld3Texture, side: THREE.FrontSide, toneMapped: false} );
+ 
+const geoeventWorld3screen = new THREE.PlaneGeometry(20, 20, 0);
+const geoeventWorld3videoScreen = new THREE.Mesh(geoeventWorld3screen, geoeventWorld3Material);
+geoeventWorld3videoScreen.rotation.set(-90, 0, 0);
+geoeventWorld3videoScreen.scale.set(50, 50, 50);
+geoeventWorld3videoScreen.position.set(0, 0, 170);
+scene.add(geoeventWorld3videoScreen);
+ 
+//world4
+const geoeventWorld4Texture = new THREE.VideoTexture(geoeventmeggie);
+const geoeventWorld4Material =  new THREE.MeshBasicMaterial( {map: geoeventWorld4Texture, side: THREE.FrontSide, toneMapped: false} );
+ 
+const geoeventWorld4screen = new THREE.TorusGeometry( 10, 3, 16, 100 );
+const geoeventWorld4videoScreen = new THREE.Mesh(geoeventWorld4screen, geoeventWorld4Material);
+geoeventWorld4videoScreen.rotation.set(200, 0, 0);
+geoeventWorld4videoScreen.scale.set(50, 50, 50);
+geoeventWorld4videoScreen.position.set(0, 0, 170);
+scene.add(geoeventWorld4videoScreen);
+ 
+//everyworld
+const geoeventWaterTexture = new THREE.VideoTexture(geoeventjoachim);
+const geoeventWaterMaterial =  new THREE.MeshBasicMaterial( {map: geoeventWaterTexture, side: THREE.FrontSide, toneMapped: false} );
+ 
+const geoeventWaterscreen = new THREE.PlaneGeometry(50, 50, 0);
+const geoeventWatervideoScreen = new THREE.Mesh(geoeventWaterscreen, geoeventWaterMaterial);
+geoeventWatervideoScreen.rotation.set(-90, 0, 0);
+geoeventWatervideoScreen.position.set(0, 10, 170);
+scene.add(geoeventWatervideoScreen);
 
 function cursorCheck() {
 
