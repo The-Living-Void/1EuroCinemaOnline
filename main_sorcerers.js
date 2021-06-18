@@ -13,7 +13,7 @@ import { RGBELoader } from './customPackage/loader/RGBELoader.js';
 
 var debug = false;
 var checkObjId = true;
-var worldId = 2; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 3; //1= socerers 2=lighthouse 3=forest 4= cave
 // var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 var soundGoGo = true;
@@ -31,7 +31,7 @@ const audioLoader = new THREE.AudioLoader();
 var muteSound = false;
 var soundLoad = false;
 var fadeSpeed = 0.007;
-
+var runOnceInit = 0;
 
 //}
 
@@ -84,7 +84,11 @@ manager.onStart = function(url, itemsLoaded, itemsTotal) {
 manager.onLoad = function() {
     console.log('Loading complete!');
     if (worldId == 2) {
-        soundGo(0);
+        soundGo(2);
+        soundLoad = true;
+    }
+    if (worldId == 3) {
+        soundGo(3);
         soundLoad = true;
     }
 
@@ -120,7 +124,13 @@ for (var i = 0; i < imagesTiles.length; i++) {
 }
 
 initCannon();
+
+if (runOnceInit == 0) {
 init();
+runOnceInit ++;
+}
+
+//
 render();
 addFlatGround();
 getScenes();
@@ -129,6 +139,7 @@ getScenes();
 for (var i = 1; i < 10; i++) {
     addHeightMapAll(i);
 }
+
 animate();
 
 console.log("heyaa I am working :)");
@@ -2183,7 +2194,7 @@ function addCharacters() {
 
 function soundGo(functionNumber) {
 
-    if (functionNumber == 0) {
+    if (functionNumber == 2) {
         //const sound = new THREE.Audio( listener );
 
         if (soundGoGo == true) {
@@ -2253,36 +2264,142 @@ function soundGo(functionNumber) {
          const material = new THREE.MeshBasicMaterial({ color: 0xff2200 });
          material.visible = false;
 
-         const cube = new THREE.Mesh(box, material);
-         cube.position.set(160, 9, -75);
+         const cubeSound = new THREE.Mesh(box, material);
+         cubeSound.position.set(160, 9, -75);
 
-         cube.add(sound);
-         scene.add(cube);
+         cubeSound.add(sound);
+         scene.add(cubeSound);
 
-         const cube2 = new THREE.Mesh(box, material);
-         cube2.position.set(-40+5, 5+3, 60+7);
-         cube2.add(soundLayer2);
-         scene.add(cube2);
+         const cubeSound2 = new THREE.Mesh(box, material);
+         cubeSound2.position.set(-40+5, 5+3, 60+7);
+         cubeSound2.add(soundLayer2);
+         scene.add(cubeSound2);
 
-         const cube3 = new THREE.Mesh(box, material);
-         cube3.position.set(144-5, 99.3, 88.7+45);
-         cube3.add(soundLayer3);
-         scene.add(cube3);
+         const cubeSound3 = new THREE.Mesh(box, material);
+         cubeSound3.position.set(144-5, 99.3, 88.7+45);
+         cubeSound3.add(soundLayer3);
+         scene.add(cubeSound3);
 
-         const cube4 = new THREE.Mesh(box, material);
-         cube4.position.set(-50, 15, -180);
-         cube4.add(soundLayer4);
-         scene.add(cube4);
+         const cubeSound4 = new THREE.Mesh(box, material);
+         cubeSound4.position.set(-50, 15, -180);
+         cubeSound4.add(soundLayer4);
+         scene.add(cubeSound4);
 
          //gltf.scene.position.set(40.3, 15, -34);
-         const cube5 = new THREE.Mesh(box, material);
-         cube5.position.set(40, 15, -34);
-         cube5.add(soundLayer5);
-         scene.add(cube5);
+         const cubeSound5 = new THREE.Mesh(box, material);
+         cubeSound5.position.set(40, 15, -34);
+         cubeSound5.add(soundLayer5);
+         scene.add(cubeSound5);
 
          //gltf.scene.position.set(144, 9.3, 88.7); adam centko pos
           }
         }
+        if (functionNumber == 3) {
+            //const sound = new THREE.Audio( listener );
+
+            if (soundGoGo == true) {
+             //console.log("zero for sound stuff");
+             camera.add(listener);
+
+             //audioLoader.load('sound/Boat Island.mp3', function(buffer) {
+             audioLoader.load('sound/Forest Arp & bass Layer.mp3', function(buffer) {
+                 sound.setBuffer(buffer);
+                 sound.setLoop(true);
+                 sound.setRefDistance(17);
+                 sound.coneInnerAngle = 45;
+                 //sound.setVolume(0.01);
+                 //console.log("rolloff = "+sound.getDistanceModel());
+                 sound.setRolloffFactor(0.1);
+                 //sound.setRefDistance(2);
+                 sound.setVolume(0.4);
+                 sound.play();
+                 //console.log(sound.getOutput());
+             });
+             //
+             audioLoader.load('sound/Forest Rhodes Layer.mp3', function(buffer) {
+                 soundLayer2.setBuffer(buffer);
+                 soundLayer2.setLoop(true);
+                 soundLayer2.coneInnerAngle = 45;
+                 soundLayer2.setRefDistance(20);
+                 soundLayer2.setVolume(0.7);
+                 soundLayer2.play();
+                 //console.log(sound.getOutput());
+             });
+             //
+             audioLoader.load('sound/Forest Dilruba Layer.mp3', function(buffer) {
+                 soundLayer3.setBuffer(buffer);
+                 soundLayer3.setLoop(true);
+                 soundLayer3.setRefDistance(25);
+                 soundLayer3.setVolume(0.9);
+                 soundLayer3.setRolloffFactor(0.5);
+                 soundLayer3.play();
+                 //console.log(sound.getOutput());
+             });
+             //
+             audioLoader.load('sound/Forest Kalimba Layer.mp3', function(buffer) {
+                 soundLayer4.setBuffer(buffer);
+                 soundLayer4.setLoop(true);
+                 soundLayer4.setRefDistance(30);
+                 soundLayer4.setRolloffFactor(0.5);
+                 soundLayer4.setVolume(0.5);
+                 soundLayer4.play();
+                 //console.log(sound.getOutput());
+             });
+             //
+             audioLoader.load('sound/Forest Kaos Layer.mp3', function(buffer) {
+                 soundLayer5.setBuffer(buffer);
+                 soundLayer5.setLoop(true);
+                 soundLayer5.setRefDistance(30);
+                 soundLayer5.setVolume(0.6);
+                 soundLayer5.play();
+                 //console.log(sound.getOutput());
+             });
+
+             audioLoader.load('sound/Forest Base Layer.mp3', function(buffer) {
+                 soundBase.setBuffer(buffer);
+                 soundBase.setLoop(true);
+                 soundBase.setVolume(0.4);
+                 soundBase.play();
+                 //console.log(sound.getOutput());
+             });
+
+             //gltf.scene.position.set(-40, 5, 60); Britney Pos
+
+             //gltf.scene.position.set(160,9,-75);
+             const box = new THREE.BoxGeometry(20, 20, 20);
+             const material = new THREE.MeshBasicMaterial({ color: 0xff2200 });
+             material.visible = false;
+
+             const cubeSound = new THREE.Mesh(box, material);
+             cubeSound.position.set(100, 20, -20);
+
+             cubeSound.add(sound);
+             scene.add(cubeSound);
+
+             const cube2 = new THREE.Mesh(box, material);
+             cube2.position.set(100, 20, -185);
+             cube2.add(soundLayer2);
+             scene.add(cube2);
+             //
+             const cube3 = new THREE.Mesh(box, material);
+             cube3.position.set(335, 20, -160);
+             cube3.add(soundLayer3);
+             scene.add(cube3);
+             //
+             const cube4 = new THREE.Mesh(box, material);
+             cube4.position.set(-120, 40, -165);
+             cube4.add(soundLayer4);
+             scene.add(cube4);
+             //
+             //gltf.scene.position.set(40.3, 15, -34);
+             const cube5 = new THREE.Mesh(box, material);
+             cube5.position.set(185, 45, 195);
+             cube5.add(soundLayer5);
+             scene.add(cube5);
+
+             //gltf.scene.position.set(144, 9.3, 88.7); adam centko pos
+              }
+            }
 }
 
 function LoadAnimatedModelAndPlay(path, modelFile, animFile, offset) {
