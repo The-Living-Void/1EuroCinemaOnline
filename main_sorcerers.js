@@ -13,7 +13,7 @@ import { RGBELoader } from './customPackage/loader/RGBELoader.js';
 
 var debug = false;
 var checkObjId = true;
-var worldId = 2; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 4; //1= socerers 2=lighthouse 3=forest 4= cave
 // var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 var soundGoGo = true;
@@ -56,9 +56,9 @@ var critterClass = "world" + worldId + "critter";
 var runOnce = true;
 var randomNumberGenerated;
 var critterHtmlId = 0;
-var alreadyCLickedCritters = [];
+//var alreadyCLickedCritters = [];
 var critterToFindArray = [];
-var runOnce2 = true;
+//var runOnce2 = true;
 var lastCritterToFind = false;
 
 var embedContainer = "embedContainerFilm" + "-" + worldId;
@@ -1221,19 +1221,28 @@ function modelLoader() {
 
         const loader = new GLTFLoader()
 
-        loader.load('models/critters/world1/pleunhand.glb', (gltf) => {
-                gltf.scene.traverse(function(object) {
-                    object.frustumCulled = false;
+        // loader.load('models/critters/world1/pleunhand.glb', (gltf) => {
+        //         gltf.scene.traverse(function(object) {
+        //             object.frustumCulled = false;
 
 
-                });
-                gltf.scene.position.set(300, 10, 50);
-                gltf.scene.scale.set(3, 3, 3);
-                scene.add(gltf.scene);
+        //         });
+        //         gltf.scene.position.set(300, 10, 50);
+        //         gltf.scene.scale.set(3, 3, 3);
+        //         scene.add(gltf.scene);
 
-            }
+        //     }
 
-        );
+        // );
+        // // box queen critter = pleun
+        // const geometryPleun = new THREE.BoxGeometry();
+        // const materialPleun = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        // //const materialPleun = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        // const cubePleun = new THREE.Mesh(geometryPleun, materialPleun);
+        // cubePleun.position.set(300, 10, 50);
+        // cubePleun.scale.set(100, 50, 30);
+        // cubePleun.userData.name = "pleungremmen";
+        // scene.add(cubePleun);
 
 
         // loader.load('models/critters/world1/pleunleg.glb', (gltf)  => {
@@ -1249,69 +1258,78 @@ function modelLoader() {
         // }
         // );
 
-        loader.load('models/critters/world1/levi.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
+        // loader.load('models/critters/world1/levi.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
 
 
-            });
-            gltf.scene.position.set(80, 20, -20);
-            gltf.scene.scale.set(3, 3, 3);
-            gltf.scene.rotation.set(0, 255, 0);
-            scene.add(gltf.scene);
+        //     });
+        //     gltf.scene.position.set(80, 20, -20);
+        //     gltf.scene.scale.set(3, 3, 3);
+        //     gltf.scene.rotation.set(0, 255, 0);
+        //     scene.add(gltf.scene);
 
-        });
+        // });
 
-        loader.load('models/critters/world1/vanessa.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-
-
-            });
-            gltf.scene.position.set(100, 2, 320);
-            gltf.scene.scale.set(6, 6, 6);
-            scene.add(gltf.scene);
-            console.log(dumpObject(gltf.scene).join('\n'));
-
-        });
-
-        loader.load('models/critters/world1/pienb-beatle.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
+        // loader.load('models/critters/world1/vanessa.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
 
 
-            });
-            gltf.scene.position.set(-96, 8.4, 0);
-            gltf.scene.scale.set(4, 4, 4);
-            scene.add(gltf.scene);
-            console.log(dumpObject(gltf.scene).join('\n'));
+        //     });
+        //     gltf.scene.position.set(100, 2, 320);
+        //     gltf.scene.scale.set(6, 6, 6);
+        //     scene.add(gltf.scene);
+        //     //console.log(dumpObject(gltf.scene).join('\n'));
 
-        });
+        // });
+        // // box queen critter = vanessa
+        // const geometryVanessa = new THREE.BoxGeometry();
+        // const materialVanessa = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        // //const materialVanessa = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        // const cubeVanessa = new THREE.Mesh(geometryVanessa, materialVanessa);
+        // cubeVanessa.position.set(100, 2, 320);
+        // cubeVanessa.scale.set(50, 100, 60);
+        // cubeVanessa.userData.name = "vanessabosch";
+        // scene.add(cubeVanessa);
 
-        loader.load('models/critters/world1/carmen-phone-new.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-                object.uuid = "carmenroca";
+        // loader.load('models/critters/world1/pienb-beatle.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+
+
+        //     });
+        //     gltf.scene.position.set(-96, 8.4, 0);
+        //     gltf.scene.scale.set(4, 4, 4);
+        //     scene.add(gltf.scene);
+        //     //console.log(dumpObject(gltf.scene).join('\n'));
+
+        // });
+
+        // loader.load('models/critters/world1/carmen-phone-new.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //         object.uuid = "carmenroca";
 
 
 
-            });
-            gltf.scene.position.set(50, 15, -200);
-            gltf.scene.scale.set(2, 2, 2);
-            gltf.scene.rotation.set(45, 0, 0);
-            //gltf.scene.userData.name("Carmen");
+        //     });
+        //     gltf.scene.position.set(50, 15, -200);
+        //     gltf.scene.scale.set(2, 2, 2);
+        //     gltf.scene.rotation.set(45, 0, 0);
+        //     //gltf.scene.userData.name("Carmen");
 
-            scene.add(gltf.scene);
-            //console.log(gltf.scene.getObjectByName("group_iphone6_plus"));
+        //     scene.add(gltf.scene);
+        //     //console.log(gltf.scene.getObjectByName("group_iphone6_plus"));
 
-        });
+        // });
 
-        //boxcritter 1_carmen_0_50_15_
-        // const geometryCarmen = new THREE.BoxGeometry();
-        // const materialCarmen = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-        // const cubeCarmen = new THREE.Mesh( geometryCarmen, materialCarmen );
-        // cubeCarmen.position.set(50,15,-200);
-        // scene.add( cubeCarmen );
+        // //boxcritter 1_carmen_0_50_15_
+        // // const geometryCarmen = new THREE.BoxGeometry();
+        // // const materialCarmen = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+        // // const cubeCarmen = new THREE.Mesh( geometryCarmen, materialCarmen );
+        // // cubeCarmen.position.set(50,15,-200);
+        // // scene.add( cubeCarmen );
 
         Promise.all([p1, p3, p4, p6, p7]).then(() => {
 
@@ -2066,6 +2084,15 @@ function modelLoader() {
             scene.add(gltf.scene);
 
         });
+        // box queen critter = minhong
+        const geometryMinhong = new THREE.BoxGeometry();
+        const materialMinhong = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        //const materialMinhong = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cubeMinhong = new THREE.Mesh(geometryMinhong, materialMinhong);
+        cubeMinhong.position.set(0, 0, 100);
+        cubeMinhong.scale.set(30, 40, 50);
+        cubeMinhong.userData.name = "minhongyu";
+        scene.add(cubeMinhong);
 
         loader.load('models/critters/world4/emily.glb', (gltf) => {
             gltf.scene.traverse(function(object) {
@@ -2374,9 +2401,133 @@ function loadCharacter(characterName) {
 
     console.log("chara name = " + characterName);
 
+    //world1
+    // levi
+    if (characterName == 'levivangelder1') {
+        console.log('im in!!');
+        const loader = new GLTFLoader();
+
+        loader.load('models/critters/world1/levi.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(80, 20, -20);
+            gltf.scene.scale.set(3, 3, 3);
+            gltf.scene.rotation.set(0, 255, 0);
+            scene.add(gltf.scene);
+
+        });
+    }
+
+    // carmen
+    if (characterName == 'carmenroca1') {
+        console.log('im in!!');
+        const loader = new GLTFLoader();
+
+        loader.load('models/critters/world1/carmen-phone-new.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+                object.uuid = "carmenroca";
+
+
+
+            });
+            gltf.scene.position.set(50, 15, -200);
+            gltf.scene.scale.set(2, 2, 2);
+            gltf.scene.rotation.set(45, 0, 0);
+            //gltf.scene.userData.name("Carmen");
+
+            scene.add(gltf.scene);
+            //console.log(gltf.scene.getObjectByName("group_iphone6_plus"));
+
+        });
+
+        //boxcritter 1_carmen_0_50_15_
+        // const geometryCarmen = new THREE.BoxGeometry();
+        // const materialCarmen = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+        // const cubeCarmen = new THREE.Mesh( geometryCarmen, materialCarmen );
+        // cubeCarmen.position.set(50,15,-200);
+        // scene.add( cubeCarmen );
+    }
+
+    // vanessa
+    if (characterName == 'vanessabosch1') {
+        console.log('im in!!');
+        const loader = new GLTFLoader();
+
+        loader.load('models/critters/world1/vanessa.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+
+
+            });
+            gltf.scene.position.set(100, 2, 320);
+            gltf.scene.scale.set(6, 6, 6);
+            scene.add(gltf.scene);
+            //console.log(dumpObject(gltf.scene).join('\n'));
+
+        });
+        // box queen critter = vanessa
+        const geometryVanessa = new THREE.BoxGeometry();
+        const materialVanessa = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        //const materialVanessa = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cubeVanessa = new THREE.Mesh(geometryVanessa, materialVanessa);
+        cubeVanessa.position.set(100, 2, 320);
+        cubeVanessa.scale.set(50, 100, 60);
+        cubeVanessa.userData.name = "vanessabosch";
+        scene.add(cubeVanessa);
+    }
+
+
+
+    // pleun
+    if (characterName == 'pleungremmen1') {
+        const loader = new GLTFLoader();
+
+        loader.load('models/critters/world1/pleunhand.glb', (gltf) => {
+                gltf.scene.traverse(function(object) {
+                    object.frustumCulled = false;
+
+
+                });
+                gltf.scene.position.set(300, 10, 50);
+                gltf.scene.scale.set(3, 3, 3);
+                scene.add(gltf.scene);
+
+            }
+
+        );
+        // box queen critter = pleun
+        const geometryPleun = new THREE.BoxGeometry();
+        const materialPleun = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        //const materialPleun = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cubePleun = new THREE.Mesh(geometryPleun, materialPleun);
+        cubePleun.position.set(300, 10, 50);
+        cubePleun.scale.set(100, 50, 30);
+        cubePleun.userData.name = "pleungremmen";
+        scene.add(cubePleun);
+    }
+
+    // pien
+    if (characterName == 'pienkars1') {
+        const loader = new GLTFLoader();
+
+        loader.load('models/critters/world1/pienb-beatle.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+
+
+            });
+            gltf.scene.position.set(-96, 8.4, 0);
+            gltf.scene.scale.set(4, 4, 4);
+            scene.add(gltf.scene);
+
+        });
+    }
+
+    //world2
     // adam centko man
     if (characterName == 'adamcentko2') {
-        console.log('im in!!');
         const loader = new GLTFLoader();
 
         loader.load('models/critters/world2/adam-gloss.glb', (gltf) => {
@@ -2403,7 +2554,6 @@ function loadCharacter(characterName) {
         console.log(dumpObject(cube).join('\n'));
         console.log(cube.userData);
     }
-
     // karin spider
     if (characterName == 'karinferrari2') {
 
@@ -2658,7 +2808,7 @@ function cursorCheck() {
                 } else {
                     // console.log(" no");
                 }
-                //console.log('intersect!' + userD);
+                console.log('intersect!' + userD);
                 // console.log("id" + id);
 
             }
@@ -2787,6 +2937,14 @@ function clickedOnExitVideo() {
         }
     } else {
         console.log("geoevent start");
+        var foundAll = document.getElementById("found" + worldId + "all");
+        foundAll.style.visibility = "visible";
+        foundAll.style.display = "block";
+        document.getElementsById("geoevent-" + worldId).style.visibility = "visible";
+        document.getElementsById("geoevent-" + worldId).style.display = "block";
+        var geoEventUi = document.getElementsByClassName("world" + worldId + "critterEvent");
+        geoEventUi.style.visibility = "visible";
+        geoEventUi.style.display = "block";
     }
 
     // randomNumber(0, critterToFindArray.length - 1);
@@ -3071,7 +3229,7 @@ function cssSteps() {
         js: document.getElementById("world3").style.visibility = "visible";
         js: document.getElementById("world3welcome").style.visibility = "visible";
         js: document.getElementById("world4").style.visibility = "hidden";
-        js: document.getElementById("alondracastellanos3").style.visibility = "visible";
+        //js: document.getElementById("alondracastellanos3").style.visibility = "visible";
 
         js: document.getElementById("instructions1").style.visibility = "hidden";
         js: document.getElementById("instructions2").style.visibility = "hidden";
@@ -3098,7 +3256,7 @@ function cssSteps() {
         js: document.getElementById("world3").style.visibility = "hidden";
         js: document.getElementById("world4").style.visibility = "visible";
         js: document.getElementById("world4welcome").style.visibility = "visible";
-        js: document.getElementById("benjaminhall4").style.visibility = "visible";
+        //js: document.getElementById("benjaminhall4").style.visibility = "visible";
 
         js: document.getElementById("instructions1").style.visibility = "hidden";
         js: document.getElementById("instructions2").style.visibility = "hidden";
