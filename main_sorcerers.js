@@ -13,10 +13,11 @@ import { RGBELoader } from './customPackage/loader/RGBELoader.js';
 
 var debug = false;
 var checkObjId = true;
-var worldId = 3; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 2; //1= socerers 2=lighthouse 3=forest 4= cave
 // var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 var soundGoGo = true;
+var distance2Click = 40.0;
 
 //if (soundGoGo==true) {
 const listener = new THREE.AudioListener();
@@ -1042,6 +1043,7 @@ function init() {
 
     scene.background = new THREE.Color(white);
     raycaster = new THREE.Raycaster();
+    raycaster.far = distance2Click;
     loadCharacter(critterToFindArray[0]);
     //  var ambient = new THREE.AmbientLight(0xffffff, 0.7);
     //  scene.add(ambient);
@@ -2684,6 +2686,7 @@ function loadCharacter(characterName) {
 function cursorCheck() {
 
     raycaster.setFromCamera(mouse, camera);
+
     var intersects = raycaster.intersectObjects(scene.children, true);
 
     // If only interested in one intersection, you can use .intersectObject()
