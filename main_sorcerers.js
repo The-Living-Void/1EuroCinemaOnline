@@ -9,11 +9,12 @@ import { RGBELoader } from './customPackage/loader/RGBELoader.js';
 // import { EffectComposer } from './postprocessing/EffectComposer.js';
 // import { RenderPass } from './postprocessing/RenderPass';
 // import { UnrealBloomPass } from './postprocessing/UnrealBloomPass.js';
+import { VideoTexture } from './node_modules/three/src/textures/VideoTexture.js';
 
 
 var debug = false;
 var checkObjId = true;
-var worldId = 2; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 2; //1=sorcerers 2=lighthouse 3=forest 4=cave
 // var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 var soundGoGo = true;
@@ -57,6 +58,7 @@ var randomNumberGenerated;
 var critterHtmlId = 0;
 //var alreadyCLickedCritters = [];
 var critterToFindArray = [];
+<<<<<<< Updated upstream
 //var runOnce2 = true;
 var lastCritterToFind = false;
 
@@ -64,6 +66,9 @@ var embedContainer = "embedContainerFilm" + "-" + worldId;
 var embedContainerGet = document.getElementById(embedContainer);
 
 var initOnce = 0;
+=======
+var runOnce2 = true;
+>>>>>>> Stashed changes
 
 
 var zVal = 0;
@@ -129,11 +134,7 @@ for (var i = 0; i < imagesTiles.length; i++) {
 }
 
 initCannon();
-if (initOnce == 0) {
-    init();
-    initOnce++;
-}
-
+init();
 render();
 addFlatGround();
 getScenes();
@@ -191,7 +192,7 @@ function initCannon() {
     sphereBody = new CANNON.Body({ mass: mass, material: physicsMaterial });
     sphereBody.addShape(sphereShape);
     // sphereBody.position.set(nx * sx * 0.5, ny * sy + radius * 2, nz * sz * 0.5);
-    sphereBody.position.set(100, 70, -40);
+    sphereBody.position.set(100,70,-40);
     sphereBody.linearDamping = 0.9;
     world.addBody(sphereBody);
 
@@ -205,33 +206,33 @@ function initCannon() {
     //sphereChickShape.quaternion.set(n1, 0, 0, 0);
 
     if (worldId == 1) {
-        var world1wall1Shape = new CANNON.Box(new CANNON.Vec3(400, 200, 1));
-        var world1wall1Body = new CANNON.Body({ mass: 0 });
-        world1wall1Body.addShape(world1wall1Shape);
-        world1wall1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
-        world1wall1Body.position.set(330, 0, 0);
-        world.addBody(world1wall1Body);
+      var world1wall1Shape = new CANNON.Box(new CANNON.Vec3(400, 200, 1));
+      var world1wall1Body = new CANNON.Body({ mass: 0 });
+      world1wall1Body.addShape(world1wall1Shape);
+      world1wall1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
+      world1wall1Body.position.set(330, 0, 0);
+      world.addBody(world1wall1Body);
 
-        var world1wall2Shape = new CANNON.Box(new CANNON.Vec3(400, 200, 1));
-        var world1wall2Body = new CANNON.Body({ mass: 0 });
-        world1wall2Body.addShape(world1wall2Shape);
-        world1wall2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
-        world1wall2Body.position.set(-150, 0, 0);
-        world.addBody(world1wall2Body);
+      var world1wall2Shape = new CANNON.Box(new CANNON.Vec3(400, 200, 1));
+      var world1wall2Body = new CANNON.Body({ mass: 0 });
+      world1wall2Body.addShape(world1wall2Shape);
+      world1wall2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
+      world1wall2Body.position.set(-150, 0, 0);
+      world.addBody(world1wall2Body);
 
-        var world1wall3Shape = new CANNON.Box(new CANNON.Vec3(1, 200, 400));
-        var world1wall3Body = new CANNON.Body({ mass: 0 });
-        world1wall3Body.addShape(world1wall3Shape);
-        world1wall3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
-        world1wall3Body.position.set(0, 0, -240);
-        world.addBody(world1wall3Body);
+      var world1wall3Shape = new CANNON.Box(new CANNON.Vec3(1, 200, 400));
+      var world1wall3Body = new CANNON.Body({ mass: 0 });
+      world1wall3Body.addShape(world1wall3Shape);
+      world1wall3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
+      world1wall3Body.position.set(0, 0, -240);
+      world.addBody(world1wall3Body);
 
-        var world1wall4Shape = new CANNON.Box(new CANNON.Vec3(1, 200, 400));
-        var world1wall4Body = new CANNON.Body({ mass: 0 });
-        world1wall4Body.addShape(world1wall4Shape);
-        world1wall4Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
-        world1wall4Body.position.set(0, 0, 250);
-        world.addBody(world1wall4Body);
+      var world1wall4Shape = new CANNON.Box(new CANNON.Vec3(1, 200, 400));
+      var world1wall4Body = new CANNON.Body({ mass: 0 });
+      world1wall4Body.addShape(world1wall4Shape);
+      world1wall4Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
+      world1wall4Body.position.set(0, 0, 250);
+      world.addBody(world1wall4Body);
 
         //CODE BOXES SUUS
         // sphere shapes (tegen klok in):
@@ -1029,7 +1030,7 @@ function initCannon() {
 }
 
 function init() {
-    console.log("init run");
+
     cssSteps();
     critterArray();
 
@@ -1441,13 +1442,13 @@ function modelLoader() {
         //     scene.add(gltf.scene);
         //     jumpAction.play();
         // });
-        // box queen critter = adam critters
+        // // box queen critter = adam critters
         // const geometry = new THREE.BoxGeometry();
-        // //const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
-        // const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        // const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        // //const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
         // const cube = new THREE.Mesh(geometry, material);
         // cube.position.set(144, 9.3, 88.7);
-        // cube.scale.set(2, 10, 4);
+        // cube.scale.set(2, 10, 2);
         // cube.userData.name = "adamcentko";
         // cube.uuid = "adam2";
         // scene.add(cube);
@@ -1455,149 +1456,149 @@ function modelLoader() {
         // console.log(cube.userData);
 
         // karin spider
-        // loader.load('models/critters/world2/karin-spider-anim2.glb', (gltf) => {
-        //     mixer = new THREE.AnimationMixer(gltf.scene);
-        //     jumpAction = mixer.clipAction(gltf.animations[0])
-        //     gltf.scene.traverse(function(object) {
-        //         object.frustumCulled = false;
-        //     });
-        //     gltf.scene.position.set(160, 9, -75);
-        //     gltf.scene.rotation.set(0, -0.5, 0);
-        //     gltf.scene.scale.set(5.5, 5.5, 5.5);
-        //     scene.add(gltf.scene);
-        //     jumpAction.play();
-        // });
+        loader.load('models/critters/world2/karin-spider-anim2.glb', (gltf) => {
+            mixer = new THREE.AnimationMixer(gltf.scene);
+            jumpAction = mixer.clipAction(gltf.animations[0])
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(160, 9, -75);
+            gltf.scene.rotation.set(0, -0.5, 0);
+            gltf.scene.scale.set(5.5, 5.5, 5.5);
+            scene.add(gltf.scene);
+            jumpAction.play();
+        });
 
-        // loader.load('models/critters/world2/karin-spider-core.glb', (gltf) => {
-        //     gltf.scene.traverse(function(object) {
-        //         object.frustumCulled = false;
-        //     });
-        //     gltf.scene.position.set(160, 9, -75);
-        //     gltf.scene.rotation.set(0, -0.5, 0);
-        //     gltf.scene.scale.set(5.5, 5.5, 5.5);
-        //     scene.add(gltf.scene);
-        // });
+        loader.load('models/critters/world2/karin-spider-core.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(160, 9, -75);
+            gltf.scene.rotation.set(0, -0.5, 0);
+            gltf.scene.scale.set(5.5, 5.5, 5.5);
+            scene.add(gltf.scene);
+        });
 
         // wouter it's britney bitch
-        // loader.load('models/critters/world2/wouter.glb', (gltf) => {
-        //     gltf.scene.traverse(function(object) {
-        //         object.frustumCulled = false;
-        //     });
-        //     gltf.scene.position.set(-40, 5, 60);
-        //     gltf.scene.scale.set(1, 1, 1);
-        //     gltf.scene.rotation.set(0, 3, 0);
-        //     scene.add(gltf.scene);
-        //     console.log(dumpObject(gltf.scene).join('\n'));
-        // });
-
+        loader.load('models/critters/world2/wouter.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(-40, 5, 60);
+            gltf.scene.scale.set(1, 1, 1);
+            gltf.scene.rotation.set(0, 3, 0);
+            scene.add(gltf.scene);
+        });
 
 
         // louis cores
-        // loader.load('models/critters/world2/louis.glb', (gltf) => {
-        //     gltf.scene.traverse(function(object) {
-        //         object.frustumCulled = false;
-        //     });
-        //     gltf.scene.position.set(280, 0, -15);
-        //     gltf.scene.scale.set(1, 1, 1);
-        //     gltf.scene.rotation.set(1, 1.9, -0.2);
-        //     scene.add(gltf.scene);
-        // });
+        loader.load('models/critters/world2/louis.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(280, 0, -15);
+            gltf.scene.scale.set(1, 1, 1);
+            gltf.scene.rotation.set(1, 1.9, -0.2);
+            scene.add(gltf.scene);
+        });
 
-        // const geometryLuis = new THREE.BoxGeometry();
-        // const materialLuis = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
-        // const cubeLuis = new THREE.Mesh(geometryLuis, materialLuis);
-        // cubeLuis.position.set(280, 0, 20); //-15
-        // cubeLuis.scale.set(30, 100, 60);
-        // cubeLuis.userData.name = "louisbraddock";
+        // box queen critter = luis critters
+        const geometryLuis = new THREE.BoxGeometry();
+        const materialLuis = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        //const materialLuis = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+        const cubeLuis = new THREE.Mesh(geometryLuis, materialLuis);
+        cubeLuis.position.set(280, 0, 20); //-15
+        cubeLuis.scale.set(30, 100, 60);
+        cubeLuis.userData.name = "louisbraddock";
 
 
-        // scene.add(cubeLuis);
+        scene.add(cubeLuis);
         //console.log(dumpObject(cubeLuis).join('\n'));
         //console.log(cubeLuis.userData);
 
-        // // valerie tea pots
-        // loader.load('models/critters/world2/valerie.glb', (gltf) => {
-        //     gltf.scene.traverse(function(object) {
-        //         object.frustumCulled = false;
-        //     });
-        //     gltf.scene.position.set(40.3, 15, -34);
-        //     gltf.scene.scale.set(0.1, 0.1, 0.1);
-        //     gltf.scene.rotation.set(0, 1.5, 0.5);
-        //     scene.add(gltf.scene);
-        // });
+        // valerie tea pots
+        loader.load('models/critters/world2/valerie.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(40.3, 15, -34);
+            gltf.scene.scale.set(0.1, 0.1, 0.1);
+            gltf.scene.rotation.set(0, 1.5, 0.5);
+            scene.add(gltf.scene);
+        });
 
 
-        // loader.load('models/critters/world2/valerie.glb', (gltf) => {
-        //     gltf.scene.traverse(function(object) {
-        //         object.frustumCulled = false;
-        //     });
-        //     gltf.scene.position.set(43, 14, -30.1);
-        //     gltf.scene.scale.set(0.1, 0.1, 0.1);
-        //     gltf.scene.rotation.set(2, 1, 0.7);
-        //     scene.add(gltf.scene);
-        // });
+        loader.load('models/critters/world2/valerie.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(43, 14, -30.1);
+            gltf.scene.scale.set(0.1, 0.1, 0.1);
+            gltf.scene.rotation.set(2, 1, 0.7);
+            scene.add(gltf.scene);
+        });
 
 
-        // loader.load('models/critters/world2/valerie.glb', (gltf) => {
-        //     gltf.scene.traverse(function(object) {
-        //         object.frustumCulled = false;
-        //     });
-        //     gltf.scene.position.set(41, 13, -32.6);
-        //     gltf.scene.scale.set(0.05, 0.05, 0.05);
-        //     gltf.scene.rotation.set(1.3, 3, -0.6);
-        //     scene.add(gltf.scene);
-        // });
+        loader.load('models/critters/world2/valerie.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(41, 13, -32.6);
+            gltf.scene.scale.set(0.05, 0.05, 0.05);
+            gltf.scene.rotation.set(1.3, 3, -0.6);
+            scene.add(gltf.scene);
+        });
 
-        // loader.load('models/critters/world2/valerie.glb', (gltf) => {
-        //     gltf.scene.traverse(function(object) {
-        //         object.frustumCulled = false;
-        //     });
-        //     gltf.scene.position.set(41.3, 14.8, -32.3);
-        //     gltf.scene.scale.set(0.03, 0.03, 0.03);
-        //     gltf.scene.rotation.set(0.2, 1, -1);
-        //     scene.add(gltf.scene);
-        // });
+        loader.load('models/critters/world2/valerie.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(41.3, 14.8, -32.3);
+            gltf.scene.scale.set(0.03, 0.03, 0.03);
+            gltf.scene.rotation.set(0.2, 1, -1);
+            scene.add(gltf.scene);
+        });
 
 
-        // loader.load('models/critters/world2/valerie.glb', (gltf) => {
-        //     gltf.scene.traverse(function(object) {
-        //         object.frustumCulled = false;
-        //     });
-        //     gltf.scene.position.set(40.7, 17.8, -33.4);
-        //     gltf.scene.scale.set(0.04, 0.04, 0.04);
-        //     gltf.scene.rotation.set(-2, 1.3, 0);
-        //     scene.add(gltf.scene);
-        // });
+        loader.load('models/critters/world2/valerie.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(40.7, 17.8, -33.4);
+            gltf.scene.scale.set(0.04, 0.04, 0.04);
+            gltf.scene.rotation.set(-2, 1.3, 0);
+            scene.add(gltf.scene);
+        });
 
-        // loader.load('models/critters/world2/valerie.glb', (gltf) => {
-        //     gltf.scene.traverse(function(object) {
-        //         object.frustumCulled = false;
-        //     });
-        //     gltf.scene.position.set(42, 17, -32);
-        //     gltf.scene.scale.set(0.07, 0.07, 0.07);
-        //     gltf.scene.rotation.set(2, 1.2, 0);
-        //     scene.add(gltf.scene);
-        // });
+        loader.load('models/critters/world2/valerie.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(42, 17, -32);
+            gltf.scene.scale.set(0.07, 0.07, 0.07);
+            gltf.scene.rotation.set(2, 1.2, 0);
+            scene.add(gltf.scene);
+        });
 
-        // loader.load('models/critters/world2/valerie.glb', (gltf) => {
-        //     gltf.scene.traverse(function(object) {
-        //         object.frustumCulled = false;
-        //     });
-        //     gltf.scene.position.set(37, 11.3, -22);
-        //     gltf.scene.scale.set(0.1, 0.1, 0.1);
-        //     gltf.scene.rotation.set(0, 0, 0.4);
-        //     scene.add(gltf.scene);
-        // });
+        loader.load('models/critters/world2/valerie.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(37, 11.3, -22);
+            gltf.scene.scale.set(0.1, 0.1, 0.1);
+            gltf.scene.rotation.set(0, 0, 0.4);
+            scene.add(gltf.scene);
+        });
 
-        // loader.load('models/critters/world2/valerie.glb', (gltf) => {
-        //     gltf.scene.traverse(function(object) {
-        //         object.frustumCulled = false;
-        //     });
-        //     gltf.scene.position.set(38, 11.8, -19);
-        //     gltf.scene.scale.set(0.05, 0.05, 0.05);
-        //     gltf.scene.rotation.set(0.2, 2, -0.2);
-        //     scene.add(gltf.scene);
-        // });
+        loader.load('models/critters/world2/valerie.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(38, 11.8, -19);
+            gltf.scene.scale.set(0.05, 0.05, 0.05);
+            gltf.scene.rotation.set(0.2, 2, -0.2);
+            scene.add(gltf.scene);
+        });
 
 
 
@@ -2229,6 +2230,7 @@ function soundGo(functionNumber) {
         //const sound = new THREE.Audio( listener );
 
         if (soundGoGo == true) {
+<<<<<<< Updated upstream
             //console.log("zero for sound stuff");
             camera.add(listener);
 
@@ -2429,8 +2431,104 @@ function soundGo(functionNumber) {
             scene.add(cube5);
 
             //gltf.scene.position.set(144, 9.3, 88.7); adam centko pos
+=======
+         //console.log("zero for sound stuff");
+         camera.add(listener);
+
+         //audioLoader.load('sound/Boat Island.mp3', function(buffer) {
+         audioLoader.load('sound/juno layer.mp3', function(buffer) {
+             sound.setBuffer(buffer);
+             sound.setLoop(true);
+             sound.setRefDistance(10);
+             sound.setVolume(0.5);
+             sound.setRefDistance(12);
+             sound.setVolume(0.6);
+             sound.play();
+             //console.log(sound.getOutput());
+         });
+
+         audioLoader.load('sound/horn layer.mp3', function(buffer) {
+             soundLayer2.setBuffer(buffer);
+             soundLayer2.setLoop(true);
+             soundLayer2.setRefDistance(15);
+             soundLayer2.setVolume(0.7);
+             soundLayer2.play();
+             //console.log(sound.getOutput());
+         });
+
+         audioLoader.load('sound/omni layer.mp3', function(buffer) {
+             soundLayer3.setBuffer(buffer);
+             soundLayer3.setLoop(true);
+             soundLayer3.setRefDistance(25);
+             soundLayer3.setVolume(0.9);
+             soundLayer3.play();
+             //console.log(sound.getOutput());
+         });
+
+         audioLoader.load('sound/Pauken layer.mp3', function(buffer) {
+             soundLayer4.setBuffer(buffer);
+             soundLayer4.setLoop(true);
+             soundLayer4.setRefDistance(30);
+             soundLayer4.setVolume(0.7);
+             soundLayer4.play();
+             //console.log(sound.getOutput());
+         });
+
+         audioLoader.load('sound/violin layer.mp3', function(buffer) {
+             soundLayer5.setBuffer(buffer);
+             soundLayer5.setLoop(true);
+             soundLayer5.setRefDistance(25);
+             soundLayer5.setVolume(0.5);
+             soundLayer5.play();
+             //console.log(sound.getOutput());
+         });
+
+         audioLoader.load('sound/Base layer.mp3', function(buffer) {
+             soundBase.setBuffer(buffer);
+             soundBase.setLoop(true);
+             soundBase.setVolume(0.4);
+             soundBase.play();
+             //console.log(sound.getOutput());
+         });
+
+         //gltf.scene.position.set(-40, 5, 60); Britney Pos
+
+         //gltf.scene.position.set(160,9,-75);
+         const box = new THREE.BoxGeometry(20, 20, 20);
+         const material = new THREE.MeshBasicMaterial({ color: 0xff2200 });
+         material.visible = false;
+
+         const cube = new THREE.Mesh(box, material);
+         cube.position.set(160, 9, -75);
+
+         cube.add(sound);
+         scene.add(cube);
+
+         const cube2 = new THREE.Mesh(box, material);
+         cube2.position.set(-40+5, 5+3, 60+7);
+         cube2.add(soundLayer2);
+         scene.add(cube2);
+
+         const cube3 = new THREE.Mesh(box, material);
+         cube3.position.set(144-5, 99.3, 88.7+45);
+         cube3.add(soundLayer3);
+         scene.add(cube3);
+
+         const cube4 = new THREE.Mesh(box, material);
+         cube4.position.set(-50, 15, -180);
+         cube4.add(soundLayer4);
+         scene.add(cube4);
+
+         //gltf.scene.position.set(40.3, 15, -34);
+         const cube5 = new THREE.Mesh(box, material);
+         cube5.position.set(40, 15, -34);
+         cube5.add(soundLayer5);
+         scene.add(cube5);
+
+         //gltf.scene.position.set(144, 9.3, 88.7); adam centko pos
+          }
+>>>>>>> Stashed changes
         }
-    }
 }
 
 function LoadAnimatedModelAndPlay(path, modelFile, animFile, offset) {
@@ -2508,10 +2606,10 @@ function animate() {
     //requestAnimationFrame(animate);
 }
 
-function loadCharacter(characterName) {
 
-    console.log("chara name = " + characterName);
+function cursorCheck() {
 
+<<<<<<< Updated upstream
     //world1
     // levi
     if (characterName == 'levivangelder1') {
@@ -2839,6 +2937,11 @@ function cursorCheck() {
 
     var intersects = raycaster.intersectObjects(scene.children, true);
 
+=======
+    raycaster.setFromCamera(mouse, camera);
+    var intersects = raycaster.intersectObjects(scene.children, true);
+
+>>>>>>> Stashed changes
     // If only interested in one intersection, you can use .intersectObject()
 
     if (intersects.length > 0) {
@@ -2864,14 +2967,14 @@ function cursorCheck() {
                 //console.log(dumpObject(object.parent).join('\n')); //looking at interesected objsts parent structure
                 var newScene;
                 scenes.forEach(item => {
-                    //critterLoc = new THREE.Vector3(item.posX, item.posY, item.posZ);
+                    critterLoc = new THREE.Vector3(item.posX, item.posY, item.posZ);
                     if (objectSiblings.length > 0) {
                         objectSiblings.forEach(function(child) {
                             siblingNames.push(child.name);
                             //console.log(siblingNames);
                         });
                         if (siblingNames.includes(item.idInWorld) == true) {
-                            //console.log("chidlren of it yes name");
+                            console.log("chidlren of it yes name");
                             siblingBool = true;
                         } else { siblingBool = false; }
                         // siblingNames.forEach(namevalue);
@@ -2904,8 +3007,8 @@ function cursorCheck() {
                 });
 
                 if (newScene) {
-                    //console.log("newscene", newScene);
-                    //console.log("you made it to the", currentScene);
+                    console.log("newscene", newScene);
+                    console.log("you made it to the", currentScene);
                     boolInPerimeter = true;
 
 
@@ -2913,9 +3016,7 @@ function cursorCheck() {
 
                         currentScene = newScene;
                         critterId = currentScene.id;
-                        //console.log("(currentScene.id != newScene.id)");
-                        critterFilmLink = currentScene.videoUrl;
-                        // updateFilmUrl(critterFilmLink)
+                        console.log("(currentScene.id != newScene.id)");
                     }
                 } else {
                     // console.log(" no");
@@ -2972,28 +3073,42 @@ function cursorCheck() {
     }
 }
 
+function loadCharacter(characterName) {
 
+    console.log("chara name = " + characterName);
+
+    if (characterName == 'adamcentko2') {
+        console.log('im in!!');
+        const loader = new GLTFLoader();
+        // adam centko man
+        loader.load('models/critters/world2/adam-gloss.glb', (gltf) => {
+            mixer = new THREE.AnimationMixer(gltf.scene);
+            jumpAction = mixer.clipAction(gltf.animations[0])
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(144, 9.3, 88.7);
+            gltf.scene.rotation.set(0, 2.83, 0);
+            scene.add(gltf.scene);
+            jumpAction.play();
+        });
+        // box queen critter = adam critters
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        //const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+        const cube = new THREE.Mesh(geometry, material);
+        cube.position.set(144, 9.3, 88.7);
+        cube.scale.set(2, 10, 2);
+        cube.userData.name = "adamcentko";
+        cube.uuid = "adam2";
+        scene.add(cube);
+        console.log(dumpObject(cube).join('\n'));
+        console.log(cube.userData);
+    }
+
+}
 
 function clickedOnCritter() {
-    window.removeEventListener("click", clickedOnCritter, false);
-    boolMouseOn = false;
-
-    //critterFilmLink = currentScene.videoUrl;
-    updateFilmUrl(critterFilmLink);
-    //document.getElementById("embedContainerFilm-iframe2").src = "https://player.vimeo.com/video/559077120?autoplay=1&badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
-
-    embedContainerGet.style.backgroundColor = "black";
-    embedContainerGet.style.visibility = "visible";
-    embedContainerGet.style.display = "block";
-
-    var exitimageGet = "world" + worldId + "videofound";
-    document.getElementById(exitimageGet).addEventListener("click", clickedOnExitVideo);
-    //instructions.click();
-    document.exitPointerLock = document.exitPointerLock ||
-        document.mozExitPointerLock ||
-        document.webkitExitPointerLock;
-    document.exitPointerLock();
-
     muteSound = true;
     if (critterToFindArray[0] == critterId + worldId) {
         document.getElementById(critterToFindArray[0]).style.visibility = "hidden";
@@ -3005,14 +3120,14 @@ function clickedOnCritter() {
         critterPosX = currentScene.posX;
         critterPosY = currentScene.posY;
         critterPosZ = currentScene.posZ;
-
-
-        //showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmLink);
+        critterFilmLink = currentScene.videoUrl;
+        showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmLink);
     } else {
         console.log("film was already playing");
     }
 }
 
+<<<<<<< Updated upstream
 function updateFilmUrl(critterFilmLink) {
     var filmPath = critterFilmLink;
     var iframeGet = 'embedContainerFilm-iframe' + worldId;
@@ -3068,20 +3183,15 @@ function clickedOnExitVideo() {
 
 }
 
+=======
+>>>>>>> Stashed changes
 function showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmLink) {
-    document.exitPointerLock = document.exitPointerLock ||
-        document.mozExitPointerLock ||
-        document.webkitExitPointerLock;
-    document.exitPointerLock();
     //var idForFilm = id+"video";
     window.removeEventListener("click", clickedOnCritter, false);
     boolMouseOn = false;
     let video, texture, mesh;
     let mouse = new THREE.Vector2();
-    // var filmPath = critterFilmLink;
-    // var filmPathCont = document.getElementById('embedContainerFilm-iframe1');
-    // filmPathCont.src = filmPath;
-    // console.log("looking for film with id " + critterId);
+    console.log("looking for film with id " + critterId);
     // var element = document.body;
     // element.requestPointerLock =
     // 	element.requestPointerLock || element.mozRequestPointerLock || element.webkitRequestPointerLock
@@ -3090,25 +3200,50 @@ function showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmL
     //   'key': 'Escape'
     // }));
     //var filmPath =  "video/" + critterId + "/" + "1.mp4";
-    //var embedContainer = "embedContainerFilm" + "-" + worldId;
-    // var embedContainerGet = document.getElementById(embedContainer);
-    //embedContainerGet.classList.remove('fade-out');
-    //embedContainerGet.classList.add('fade-in');
-    // embedContainerGet.style.visibility = "visible";
-    // embedContainerGet.style.display = "block";
-
-    //embedContainerGet.setAttribute("style", "background: red; transition: 30 ease-in;");
-    // embedContainerGet.style.transition = "5s ease-in";
-    // embedContainerGet.style.backgroundColor = "black";
-
+    var filmPath = critterFilmLink;
+    var filmPathCont = document.getElementById('embedContainerFilm-iframe1');
+    filmPathCont.src = filmPath;
+    document.getElementById("embedContainerFilm-1").style.visibility = "visible";
+    document.getElementById("embedContainerFilm-1").style.display = "block";
     //pointerLock();
     filmIsPlaying = true;
-    var exitimageGet = "world" + worldId + "videofound";
-    document.getElementById(exitimageGet).addEventListener("click", clickedOnExitVideo);
+    document.getElementById("world1videofound").addEventListener("click", clickedOnExitVideo);
+
+    function clickedOnExitVideo() {
+        muteSound = false;
+        document.getElementById("embedContainerFilm-1").style.visibility = "hidden";
+        document.getElementById("embedContainerFilm-1").style.display = "none";
+        console.log("clicked exit button");
+        instructions.click();
+        var element = document.body;
+        element.requestPointerLock();
+        filmIsPlaying = false;
+        filmPathCont.src = "https://player.vimeo.com/video/412868812?title=0&byline=0&portrait=0";
+        //document.getElementById(critterHtmlId).style.visibility = "hidden";
+        console.log(critterId);
+        if (critterToFindArray[0] == critterId + worldId) {
+            critterToFindArray.splice(0, 1);
+            huntForNextCritter();
+            console.log(critterToFindArray);
+        } else {
+            console.log("different ones");
+        }
+
+        // randomNumber(0, critterToFindArray.length - 1);
+        // console.log(randomNumberGenerated);
+        // critterHtmlId = critterToFindArray[randomNumberGenerated];
+        // console.log(critterHtmlId);
+        // document.getElementById(critterHtmlId).style.visibility = "visible";
+
+
+    }
 
 
 
-
+    document.exitPointerLock = document.exitPointerLock ||
+        document.mozExitPointerLock ||
+        document.webkitExitPointerLock;
+    document.exitPointerLock();
 
 
     //controls.unlock();
@@ -3119,70 +3254,7 @@ function showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmL
 
 }
 
-function critterArray() {
-    var CritterClassList = document.getElementsByClassName(critterClass);
-    console.log(CritterClassList);
-    for (var i = 0; i < CritterClassList.length; i++) {
-        //if (runOnce == true) {
-        //     randomNumber(0, CritterClassList.length - 1);
-        // runOnce = false;
-        //
-        //if ((i < CritterClassList.length) && (runOnce2 == true)) {
-        critterToFindArray.push(CritterClassList[i].id);
-        console.log(critterToFindArray, "critterToFindArray");
 
-
-        // if (i == CritterClassList.length - 1) {
-        //     runOnce2 = false;
-        // }
-        //  } else { runOnce2 = false; }
-
-
-        //var firstCritterInfo = CritterClassList[randomNumberGenerated];
-
-        //console.log(CritterClassList);
-        //console.log(firstCritterId, "firstCritterId");
-        // } else {
-        //     runOnce = false;
-        // }
-    }
-    randomNextCritterInArray();
-
-    var firstCritterId = critterToFindArray[0];
-    console.log(firstCritterId);
-    if (critterHtmlId == 0) {
-        document.getElementById(firstCritterId).style.visibility = "visible";
-        console.log("yes");
-    } else {
-        //firstCritterId = critterHtmlId;
-        document.getElementById(firstCritterId).style.visibility = "hidden";
-        //document.getElementById(critterHtmlId).style.visibility = "visible";
-    }
-}
-
-function randomNextCritterInArray() {
-    var n = critterToFindArray.length;
-    var tempArr = [];
-    for (var i = 0; i < n - 1; i++) {
-        // The following line removes one random element from arr
-        // and pushes it onto tempArr
-        tempArr.push(critterToFindArray.splice(Math.floor(Math.random() * critterToFindArray.length), 1)[0]);
-    }
-    // Push the remaining item onto tempArr
-    tempArr.push(critterToFindArray[0]);
-    critterToFindArray = tempArr;
-    console.log(critterToFindArray);
-    if (n == 1) {
-        console.log("last one to find");
-        lastCritterToFind = true;
-    }
-}
-
-function huntForNextCritter() {
-    randomNextCritterInArray();
-    document.getElementById(critterToFindArray[0]).style.visibility = "visible";
-    loadCharacter(critterToFindArray[0]);
-}
 
 function getScenes() {
 
@@ -3279,6 +3351,65 @@ function cssStepsWalk() {
     }
 }
 
+async function critterArray() {
+    var CritterClassList = document.getElementsByClassName(critterClass);
+    console.log(CritterClassList);
+    for (var i = 0; i < CritterClassList.length; i++) {
+        //if (runOnce == true) {
+        //     randomNumber(0, CritterClassList.length - 1);
+        // runOnce = false;
+        //
+        //if ((i < CritterClassList.length) && (runOnce2 == true)) {
+        critterToFindArray.push(CritterClassList[i].id);
+        console.log(critterToFindArray, "critterToFindArray");
+
+
+        // if (i == CritterClassList.length - 1) {
+        //     runOnce2 = false;
+        // }
+        //  } else { runOnce2 = false; }
+
+
+        //var firstCritterInfo = CritterClassList[randomNumberGenerated];
+
+        //console.log(CritterClassList);
+        //console.log(firstCritterId, "firstCritterId");
+        // } else {
+        //     runOnce = false;
+        // }
+    }
+    randomNextCritterInArray();
+
+    var firstCritterId = critterToFindArray[0];
+    console.log(firstCritterId);
+    if (critterHtmlId == 0) {
+        document.getElementById(firstCritterId).style.visibility = "visible";
+        console.log("yes");
+    } else {
+        //firstCritterId = critterHtmlId;
+        document.getElementById(firstCritterId).style.visibility = "hidden";
+        //document.getElementById(critterHtmlId).style.visibility = "visible";
+    }
+}
+
+function randomNextCritterInArray() {
+    var n = critterToFindArray.length;
+    var tempArr = [];
+    for (var i = 0; i < n - 1; i++) {
+        // The following line removes one random element from arr
+        // and pushes it onto tempArr
+        tempArr.push(critterToFindArray.splice(Math.floor(Math.random() * critterToFindArray.length), 1)[0]);
+    }
+    // Push the remaining item onto tempArr
+    tempArr.push(critterToFindArray[0]);
+    critterToFindArray = tempArr;
+    console.log(critterToFindArray);
+}
+
+function huntForNextCritter() {
+    randomNextCritterInArray();
+    document.getElementById(critterToFindArray[0]).style.visibility = "visible";
+}
 
 function cssSteps() {
 
@@ -3438,35 +3569,33 @@ function pointerLock() {
                 element.requestPointerLock =
                     element.requestPointerLock || element.mozRequestPointerLock || element.webkitRequestPointerLock
 
-                element.requestPointerLock()
+                if (/Firefox/i.test(navigator.userAgent)) {
+                    var fullscreenchange = function(event) {
+                        if (
+                            document.fullscreenElement === element ||
+                            document.mozFullscreenElement === element ||
+                            document.mozFullScreenElement === element
+                        ) {
+                            document.removeEventListener('fullscreenchange', fullscreenchange)
+                            document.removeEventListener('mozfullscreenchange', fullscreenchange)
 
-                // if (/Firefox/i.test(navigator.userAgent)) {
-                //     var fullscreenchange = function(event) {
-                //         if (
-                //             document.fullscreenElement === element ||
-                //             document.mozFullscreenElement === element ||
-                //             document.mozFullScreenElement === element
-                //         ) {
-                //             document.removeEventListener('fullscreenchange', fullscreenchange)
-                //             document.removeEventListener('mozfullscreenchange', fullscreenchange)
+                            element.requestPointerLock()
+                        }
+                    }
 
-                //             element.requestPointerLock()
-                //         }
-                //     }
+                    document.addEventListener('fullscreenchange', fullscreenchange, false)
+                    document.addEventListener('mozfullscreenchange', fullscreenchange, false)
 
-                //     document.addEventListener('fullscreenchange', fullscreenchange, false)
-                //     document.addEventListener('mozfullscreenchange', fullscreenchange, false)
+                    element.requestFullscreen =
+                        element.requestFullscreen ||
+                        element.mozRequestFullscreen ||
+                        element.mozRequestFullScreen ||
+                        element.webkitRequestFullscreen
 
-                //     element.requestFullscreen =
-                //         element.requestFullscreen ||
-                //         element.mozRequestFullscreen ||
-                //         element.mozRequestFullScreen ||
-                //         element.webkitRequestFullscreen
-
-                //     element.requestFullscreen()
-                // } else {
-                //     element.requestPointerLock()
-                // }
+                    element.requestFullscreen()
+                } else {
+                    element.requestPointerLock()
+                }
             },
             false
         )
@@ -3474,6 +3603,71 @@ function pointerLock() {
         instructions.innerHTML = "Your browser doesn't seem to support Pointer Lock API"
     }
 }
+
+//geoevents
+
+//Get your video element:
+const geoeventjiarey = document.getElementById('geoeventjiarey');
+const geoeventisabella = document.getElementById('geoeventisabella');
+const geoeventjoachim = document.getElementById('geoeventjoachim');
+const geoeventmeggie = document.getElementById('geoeventmeggie');
+const geoeventannikay = document.getElementById('geoeventannika');
+
+//world1
+const geoeventWorld1Texture = new THREE.VideoTexture(geoeventannika);
+const geoeventWorld1Material =  new THREE.MeshBasicMaterial( {map: geoeventWorld1Texture, side: THREE.FrontSide, toneMapped: false} );
+
+const geoeventWorld1screen = new THREE.PlaneGeometry(20, 20, 0);
+const geoeventWorld1videoScreen = new THREE.Mesh(geoeventWorld1screen, geoeventWorld1Material);
+geoeventWorld1videoScreen.rotation.set(-90, 0, 0);
+geoeventWorld1videoScreen.scale.set(50, 50, 50);
+geoeventWorld1videoScreen.position.set(0, 0, 170);
+scene.add(geoeventWorld1videoScreen);
+
+//world2
+const geoeventWorld2Texture = new THREE.VideoTexture(geoeventisabella);
+const geoeventWorld2Material =  new THREE.MeshBasicMaterial( {map: geoeventWorld2Texture, side: THREE.FrontSide, toneMapped: false} );
+
+const geoeventWorld2screen = new THREE.PlaneGeometry(20, 20, 0);
+const geoeventWorld2videoScreen = new THREE.Mesh(geoeventWorld2screen, geoeventWorld2Material);
+geoeventWorld2videoScreen.rotation.set(-90, 0, 0);
+geoeventWorld2videoScreen.scale.set(50, 50, 50);
+geoeventWorld2videoScreen.position.set(0, 0, 170);
+scene.add(geoeventWorld2videoScreen);
+
+//world3
+const geoeventWorld3Texture = new THREE.VideoTexture(geoeventjiarey);
+const geoeventWorld3Material =  new THREE.MeshBasicMaterial( {map: geoeventWorld3Texture, side: THREE.FrontSide, toneMapped: false} );
+
+const geoeventWorld3screen = new THREE.PlaneGeometry(20, 20, 0);
+const geoeventWorld3videoScreen = new THREE.Mesh(geoeventWorld3screen, geoeventWorld3Material);
+geoeventWorld3videoScreen.rotation.set(-90, 0, 0);
+geoeventWorld3videoScreen.scale.set(50, 50, 50);
+geoeventWorld3videoScreen.position.set(0, 0, 170);
+scene.add(geoeventWorld3videoScreen);
+
+//world4
+const geoeventWorld4Texture = new THREE.VideoTexture(geoeventmeggie);
+const geoeventWorld4Material =  new THREE.MeshBasicMaterial( {map: geoeventWorld4Texture, side: THREE.FrontSide, toneMapped: false} );
+
+const geoeventWorld4screen = new THREE.TorusGeometry( 10, 3, 16, 100 );
+const geoeventWorld4videoScreen = new THREE.Mesh(geoeventWorld4screen, geoeventWorld4Material);
+geoeventWorld4videoScreen.rotation.set(200, 0, 0);
+geoeventWorld4videoScreen.scale.set(50, 50, 50);
+geoeventWorld4videoScreen.position.set(0, 0, 170);
+scene.add(geoeventWorld4videoScreen);
+
+//everyworld
+const geoeventWaterTexture = new THREE.VideoTexture(geoeventjoachim);
+const geoeventWaterMaterial =  new THREE.MeshBasicMaterial( {map: geoeventWaterTexture, side: THREE.FrontSide, toneMapped: false} );
+
+const geoeventWaterscreen = new THREE.PlaneGeometry(50, 50, 0);
+const geoeventWatervideoScreen = new THREE.Mesh(geoeventWaterscreen, geoeventWaterMaterial);
+geoeventWatervideoScreen.rotation.set(-90, 0, 0);
+geoeventWatervideoScreen.position.set(0, 10, 170);
+scene.add(geoeventWatervideoScreen);
+
+
 //return array with height data from img
 function getTerrainPixelData(image) {
     //var canvas = document.getElementById("canvas");
@@ -3671,7 +3865,7 @@ function soundMute() {
     if (muteSound == true) {
 
 
-        //console.log("volFade = " + volFade);
+        console.log("volFade = " + volFade);
         volFade -= fadeSpeed;
         if (volFade < 0) {
             volFade = 0;
