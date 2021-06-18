@@ -31,8 +31,6 @@ const audioLoader = new THREE.AudioLoader();
 var muteSound = false;
 var soundLoad = false;
 var fadeSpeed = 0.007;
-var runOnceInit = 0;
-
 //}
 
 //var imgHeightWorld = new Array();
