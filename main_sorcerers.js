@@ -9,10 +9,10 @@ import { RGBELoader } from './customPackage/loader/RGBELoader.js';
 // import { EffectComposer } from './postprocessing/EffectComposer.js';
 // import { RenderPass } from './postprocessing/RenderPass';
 // import { UnrealBloomPass } from './postprocessing/UnrealBloomPass.js';
-import { VideoTexture } from './node_modules/three/src/textures/VideoTexture.js'; 
-var debug = false;
+import { VideoTexture } from './node_modules/three/src/textures/VideoTexture.js';
+var debug = true;
 var checkObjId = true;
-var worldId = 2; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 4; //1= socerers 2=lighthouse 3=forest 4= cave
 // var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 var soundGoGo = true;
@@ -190,7 +190,7 @@ function initCannon() {
     sphereBody = new CANNON.Body({ mass: mass, material: physicsMaterial });
     sphereBody.addShape(sphereShape);
     // sphereBody.position.set(nx * sx * 0.5, ny * sy + radius * 2, nz * sz * 0.5);
-    sphereBody.position.set(100, 70, -40);
+    sphereBody.position.set(90, 70, 40);
     sphereBody.linearDamping = 0.9;
     world.addBody(sphereBody);
 
@@ -232,7 +232,6 @@ function initCannon() {
         world1wall4Body.position.set(0, 0, 250);
         world.addBody(world1wall4Body);
 
-        //CODE BOXES SUUS
         // sphere shapes (tegen klok in):
         var pillarShape1 = new CANNON.Sphere(43);
         var pillarBody1 = new CANNON.Body({ mass: 0, material: physicsMaterial });
@@ -283,15 +282,6 @@ function initCannon() {
         pillarBody7.position.set(-68, 15, -250);
         world.addBody(pillarBody7);
 
-        // plane
-        // var chassisShape8 = new CANNON.Box(new CANNON.Vec3(20, 40, 10));
-        // var chassisBody8 = new CANNON.Body({ mass: 0 });
-        // chassisBody8.addShape(chassisShape8);
-        // //chassisBody.position.set(0, 0, 0);
-        // chassisBody8.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-        // chassisBody8.position.set(95, 5, -15);
-        // chassisBody8.angularVelocity.set(0, 0, 0); // initial velocity
-        // world.addBody(chassisBody8);
 
         //crystal
         var crystalShape = new CANNON.Sphere(25);
@@ -433,20 +423,6 @@ function initCannon() {
 
         //Low Platform
 
-        // var lowPlatform1Shape = new CANNON.Box(new CANNON.Vec3(30, 10, 30));
-        // var lowPlatform1Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
-        // lowPlatform1Body.addShape(lowPlatform1Shape);
-        // lowPlatform1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 2.82);
-        // lowPlatform1Body.position.set(87, 30, 0);
-        // world.addBody(lowPlatform1Body);
-
-        // var lowPlatform2Shape = new CANNON.Box(new CANNON.Vec3(30, 10, 30));
-        // var lowPlatform2Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
-        // lowPlatform2Body.addShape(lowPlatform2Shape);
-        // lowPlatform2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -2.84);
-        // lowPlatform2Body.position.set(113, 30, 0);
-        // world.addBody(lowPlatform2Body);
-        //
         var lowPlatform3Shape = new CANNON.Box(new CANNON.Vec3(30, 10, 30));
         var lowPlatform3Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
         lowPlatform3Body.addShape(lowPlatform3Shape);
@@ -734,7 +710,6 @@ function initCannon() {
         const waterGeometry = new THREE.PlaneGeometry(10000, 10000);
 
 
-
     }
     if (worldId == 3) {
         var world3wall1Shape = new CANNON.Box(new CANNON.Vec3(400, 200, 1));
@@ -916,13 +891,6 @@ function initCannon() {
         cliff13Body.position.set(59, 9, -57);
         world.addBody(cliff13Body);
 
-        // var cliff14Shape = new CANNON.Box(new CANNON.Vec3(4, 18, 5));
-        // var cliff14Body = new CANNON.Body({mass: 0, material: physicsMaterial});
-        // cliff14Body.addShape(cliff14Shape);
-        // cliff14Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 1, 1), -0.5);
-        // cliff14Body.position.set(50, 9, -27);
-        // world.addBody(cliff14Body);
-
         var cliff15Shape = new CANNON.Box(new CANNON.Vec3(4, 16, 6));
         var cliff15Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
         cliff15Body.addShape(cliff15Shape);
@@ -1002,29 +970,93 @@ function initCannon() {
 
     }
     if (worldId == 4) {
-        // Create a plane
-        // var groundShape = new CANNON.Plane();
-        // groundBody = new CANNON.Body({ mass: 0, material: physicsMaterial });
-        // groundBody.addShape(groundShape);
-        // groundBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-        // groundBody.position.set(0, 0, 0);
-        // world.addBody(groundBody);
 
-        //box shapes:
-        var chassisShape = new CANNON.Box(new CANNON.Vec3(1, 1, 3.2));
-        var chassisBody = new CANNON.Body({ mass: 0 });
-        chassisBody.addShape(chassisShape);
-        //chassisBody.position.set(0, 0, 0);
-        chassisBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-        chassisBody.position.set(20, 4, -40);
-        chassisBody.angularVelocity.set(0, 0, 0); // initial velocity
-        world.addBody(chassisBody);
+      var world4wall1Shape = new CANNON.Box(new CANNON.Vec3(400, 200, 1));
+      var world4wall1Body = new CANNON.Body({ mass: 0 });
+      world4wall1Body.addShape(world4wall1Shape);
+      world4wall1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
+      world4wall1Body.position.set(300, 0, 0);
+      world.addBody(world4wall1Body);
 
-        var chickShape = new CANNON.Box(new CANNON.Vec3(3, 1, 4));
-        var chickBody = new CANNON.Body({ mass: 0 });
-        chickBody.addShape(chickShape);
+      var world4wall2Shape = new CANNON.Box(new CANNON.Vec3(400, 200, 1));
+      var world4wall2Body = new CANNON.Body({ mass: 0 });
+      world4wall2Body.addShape(world4wall2Shape);
+      world4wall2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
+      world4wall2Body.position.set(-130, 0, 0);
+      world.addBody(world4wall2Body);
+
+      var world4wall3Shape = new CANNON.Box(new CANNON.Vec3(1, 200, 400));
+      var world4wall3Body = new CANNON.Body({ mass: 0 });
+      world4wall3Body.addShape(world4wall3Shape);
+      world4wall3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
+      world4wall3Body.position.set(0, 0, -280);
+      world.addBody(world4wall3Body);
+
+      var world4wall4Shape = new CANNON.Box(new CANNON.Vec3(1, 200, 400));
+      var world4wall4Body = new CANNON.Body({ mass: 0 });
+      world4wall4Body.addShape(world4wall4Shape);
+      world4wall4Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
+      world4wall4Body.position.set(0, 0, 170);
+      world.addBody(world4wall4Body);
+
+      var caverockShape = new CANNON.Sphere(48);
+      var caverockBody = new CANNON.Body({ mass: 0, material: physicsMaterial });
+      caverockBody.addShape(caverockShape);
+      caverockBody.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1);
+      caverockBody.position.set(100, -13, 0);
+      world.addBody(caverockBody);
+
+      var caverock2Shape = new CANNON.Sphere(25);
+      var caverock2Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+      caverock2Body.addShape(caverock2Shape);
+      caverock2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1);
+      caverock2Body.position.set(105, 11, 17);
+      world.addBody(caverock2Body);
+
+      var caverock2Shape = new CANNON.Sphere(30);
+      var caverock2Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+      caverock2Body.addShape(caverock2Shape);
+      caverock2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1);
+      caverock2Body.position.set(87, 3, -17);
+      world.addBody(caverock2Body);
+
+      var cavecrystal1Shape = new CANNON.Box(new CANNON.Vec3(1, 40, 7));
+      var cavecrystal1Body = new CANNON.Body({ mass: 0 });
+      cavecrystal1Body.addShape(cavecrystal1Shape);
+      cavecrystal1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 2.3);
+      cavecrystal1Body.position.set(92, 30, -11);
+      world.addBody(cavecrystal1Body);
+
+      var cavecrystal2Shape = new CANNON.Box(new CANNON.Vec3(1, 40, 7));
+      var cavecrystal2Body = new CANNON.Body({ mass: 0 });
+      cavecrystal2Body.addShape(cavecrystal2Shape);
+      cavecrystal2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1.3);
+      cavecrystal2Body.position.set(106, 30, -12);
+      world.addBody(cavecrystal2Body);
+
+      var cavecrystal3Shape = new CANNON.Box(new CANNON.Vec3(1, 40, 10));
+      var cavecrystal3Body = new CANNON.Body({ mass: 0 });
+      cavecrystal3Body.addShape(cavecrystal3Shape);
+      cavecrystal3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 2.9);
+      cavecrystal3Body.position.set(113, 30, 0);
+      world.addBody(cavecrystal3Body);
+
+      var cavecrystal4Shape = new CANNON.Box(new CANNON.Vec3(1, 40, 11));
+      var cavecrystal4Body = new CANNON.Body({ mass: 0 });
+      cavecrystal4Body.addShape(cavecrystal4Shape);
+      cavecrystal4Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1.7);
+      cavecrystal4Body.position.set(100, 30, 11);
+      world.addBody(cavecrystal4Body);
+
+      var cavecrystal5Shape = new CANNON.Box(new CANNON.Vec3(1, 40, 11));
+      var cavecrystal5Body = new CANNON.Body({ mass: 0 });
+      cavecrystal5Body.addShape(cavecrystal5Shape);
+      cavecrystal5Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 3.3);
+      cavecrystal5Body.position.set(88, 30, 2);
+      world.addBody(cavecrystal5Body);
+
+
     }
-    // bodies.push(body);
 }
 
 function init() {
@@ -2022,9 +2054,9 @@ function modelLoader() {
         var ambient = new THREE.AmbientLight(0xffffff, 0.4);
         scene.add(ambient);
 
-        // const light = new THREE.PointLight( 0x400318, 1, 100 );
-        // light.position.set( 20, 10, 50 );
-        // scene.add( light );
+        const light = new THREE.PointLight( 0x400318, 1, 100 );
+        light.position.set( 20, 10, -300 );
+        scene.add( light );
 
         const directionalLight = new THREE.DirectionalLight(0x400318, 0.3);
         scene.add(directionalLight);
@@ -2059,7 +2091,7 @@ function modelLoader() {
 
 
             });
-            gltf.scene.position.set(10, 30, 0);
+            gltf.scene.position.set(100, 100, 0);
             gltf.scene.scale.set(10, 10, 10);
             scene.add(gltf.scene);
 
@@ -2833,62 +2865,62 @@ function loadCharacter(characterName) {
 }
 
 //geoevents
- 
+
 //Get your video element:
 const geoeventjiarey = document.getElementById('geoeventjiarey');
 const geoeventisabella = document.getElementById('geoeventisabella');
 const geoeventjoachim = document.getElementById('geoeventjoachim');
 const geoeventmeggie = document.getElementById('geoeventmeggie');
 const geoeventannikay = document.getElementById('geoeventannika');
- 
+
 //world1
 const geoeventWorld1Texture = new THREE.VideoTexture(geoeventannika);
 const geoeventWorld1Material =  new THREE.MeshBasicMaterial( {map: geoeventWorld1Texture, side: THREE.FrontSide, toneMapped: false} );
- 
+
 const geoeventWorld1screen = new THREE.PlaneGeometry(20, 20, 0);
 const geoeventWorld1videoScreen = new THREE.Mesh(geoeventWorld1screen, geoeventWorld1Material);
 geoeventWorld1videoScreen.rotation.set(-90, 0, 0);
 geoeventWorld1videoScreen.scale.set(50, 50, 50);
 geoeventWorld1videoScreen.position.set(0, 0, 170);
 scene.add(geoeventWorld1videoScreen);
- 
+
 //world2
 const geoeventWorld2Texture = new THREE.VideoTexture(geoeventisabella);
 const geoeventWorld2Material =  new THREE.MeshBasicMaterial( {map: geoeventWorld2Texture, side: THREE.FrontSide, toneMapped: false} );
- 
+
 const geoeventWorld2screen = new THREE.PlaneGeometry(20, 20, 0);
 const geoeventWorld2videoScreen = new THREE.Mesh(geoeventWorld2screen, geoeventWorld2Material);
 geoeventWorld2videoScreen.rotation.set(-90, 0, 0);
 geoeventWorld2videoScreen.scale.set(50, 50, 50);
 geoeventWorld2videoScreen.position.set(0, 0, 170);
 scene.add(geoeventWorld2videoScreen);
- 
+
 //world3
 const geoeventWorld3Texture = new THREE.VideoTexture(geoeventjiarey);
 const geoeventWorld3Material =  new THREE.MeshBasicMaterial( {map: geoeventWorld3Texture, side: THREE.FrontSide, toneMapped: false} );
- 
+
 const geoeventWorld3screen = new THREE.PlaneGeometry(20, 20, 0);
 const geoeventWorld3videoScreen = new THREE.Mesh(geoeventWorld3screen, geoeventWorld3Material);
 geoeventWorld3videoScreen.rotation.set(-90, 0, 0);
 geoeventWorld3videoScreen.scale.set(50, 50, 50);
 geoeventWorld3videoScreen.position.set(0, 0, 170);
 scene.add(geoeventWorld3videoScreen);
- 
+
 //world4
-const geoeventWorld4Texture = new THREE.VideoTexture(geoeventmeggie);
-const geoeventWorld4Material =  new THREE.MeshBasicMaterial( {map: geoeventWorld4Texture, side: THREE.FrontSide, toneMapped: false} );
- 
-const geoeventWorld4screen = new THREE.TorusGeometry( 10, 3, 16, 100 );
-const geoeventWorld4videoScreen = new THREE.Mesh(geoeventWorld4screen, geoeventWorld4Material);
-geoeventWorld4videoScreen.rotation.set(200, 0, 0);
-geoeventWorld4videoScreen.scale.set(50, 50, 50);
-geoeventWorld4videoScreen.position.set(0, 0, 170);
-scene.add(geoeventWorld4videoScreen);
- 
+// const geoeventWorld4Texture = new THREE.VideoTexture(geoeventmeggie);
+// const geoeventWorld4Material =  new THREE.MeshBasicMaterial( {map: geoeventWorld4Texture, side: THREE.FrontSide, toneMapped: false} );
+//
+// const geoeventWorld4screen = new THREE.TorusGeometry( 10, 3, 16, 100 );
+// const geoeventWorld4videoScreen = new THREE.Mesh(geoeventWorld4screen, geoeventWorld4Material);
+// geoeventWorld4videoScreen.rotation.set(200, 0, 0);
+// geoeventWorld4videoScreen.scale.set(50, 50, 50);
+// geoeventWorld4videoScreen.position.set(0, 0, 170);
+// scene.add(geoeventWorld4videoScreen);
+
 //everyworld
 const geoeventWaterTexture = new THREE.VideoTexture(geoeventjoachim);
 const geoeventWaterMaterial =  new THREE.MeshBasicMaterial( {map: geoeventWaterTexture, side: THREE.FrontSide, toneMapped: false} );
- 
+
 const geoeventWaterscreen = new THREE.PlaneGeometry(50, 50, 0);
 const geoeventWatervideoScreen = new THREE.Mesh(geoeventWaterscreen, geoeventWaterMaterial);
 geoeventWatervideoScreen.rotation.set(-90, 0, 0);
