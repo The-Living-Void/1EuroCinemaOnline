@@ -10,13 +10,17 @@ import { RGBELoader } from './customPackage/loader/RGBELoader.js';
 // import { RenderPass } from './postprocessing/RenderPass';
 // import { UnrealBloomPass } from './postprocessing/UnrealBloomPass.js';
 import { VideoTexture } from './node_modules/three/src/textures/VideoTexture.js';
-var debug = true;
+var debug = false;
 var checkObjId = true;
-var worldId = 4; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 1; //1= socerers 2=lighthouse 3=forest 4= cave
 // var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 var soundGoGo = true;
-var distance2Click = 40.0;
+var distanceWorld1 = 50.0;
+var distanceWorld2 = 40.0;
+var distanceWorld3 = 70.0;
+var distanceWorld4 = 40.0;
+var distance2Click = "distanceWorld" + worldId;
 
 //if (soundGoGo==true) {
 const listener = new THREE.AudioListener();
@@ -58,6 +62,8 @@ var critterHtmlId = 0;
 var critterToFindArray = [];
 //var runOnce2 = true;
 var lastCritterToFind = false;
+var foundConstructor = "found" + worldId;
+var foundConstructorGet = document.getElementById(foundConstructor);
 
 var embedContainer = "embedContainerFilm" + "-" + worldId;
 var embedContainerGet = document.getElementById(embedContainer);
@@ -971,89 +977,89 @@ function initCannon() {
     }
     if (worldId == 4) {
 
-      var world4wall1Shape = new CANNON.Box(new CANNON.Vec3(400, 200, 1));
-      var world4wall1Body = new CANNON.Body({ mass: 0 });
-      world4wall1Body.addShape(world4wall1Shape);
-      world4wall1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
-      world4wall1Body.position.set(300, 0, 0);
-      world.addBody(world4wall1Body);
+        var world4wall1Shape = new CANNON.Box(new CANNON.Vec3(400, 200, 1));
+        var world4wall1Body = new CANNON.Body({ mass: 0 });
+        world4wall1Body.addShape(world4wall1Shape);
+        world4wall1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
+        world4wall1Body.position.set(300, 0, 0);
+        world.addBody(world4wall1Body);
 
-      var world4wall2Shape = new CANNON.Box(new CANNON.Vec3(400, 200, 1));
-      var world4wall2Body = new CANNON.Body({ mass: 0 });
-      world4wall2Body.addShape(world4wall2Shape);
-      world4wall2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
-      world4wall2Body.position.set(-130, 0, 0);
-      world.addBody(world4wall2Body);
+        var world4wall2Shape = new CANNON.Box(new CANNON.Vec3(400, 200, 1));
+        var world4wall2Body = new CANNON.Body({ mass: 0 });
+        world4wall2Body.addShape(world4wall2Shape);
+        world4wall2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
+        world4wall2Body.position.set(-130, 0, 0);
+        world.addBody(world4wall2Body);
 
-      var world4wall3Shape = new CANNON.Box(new CANNON.Vec3(1, 200, 400));
-      var world4wall3Body = new CANNON.Body({ mass: 0 });
-      world4wall3Body.addShape(world4wall3Shape);
-      world4wall3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
-      world4wall3Body.position.set(0, 0, -280);
-      world.addBody(world4wall3Body);
+        var world4wall3Shape = new CANNON.Box(new CANNON.Vec3(1, 200, 400));
+        var world4wall3Body = new CANNON.Body({ mass: 0 });
+        world4wall3Body.addShape(world4wall3Shape);
+        world4wall3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
+        world4wall3Body.position.set(0, 0, -280);
+        world.addBody(world4wall3Body);
 
-      var world4wall4Shape = new CANNON.Box(new CANNON.Vec3(1, 200, 400));
-      var world4wall4Body = new CANNON.Body({ mass: 0 });
-      world4wall4Body.addShape(world4wall4Shape);
-      world4wall4Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
-      world4wall4Body.position.set(0, 0, 170);
-      world.addBody(world4wall4Body);
+        var world4wall4Shape = new CANNON.Box(new CANNON.Vec3(1, 200, 400));
+        var world4wall4Body = new CANNON.Body({ mass: 0 });
+        world4wall4Body.addShape(world4wall4Shape);
+        world4wall4Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
+        world4wall4Body.position.set(0, 0, 170);
+        world.addBody(world4wall4Body);
 
-      var caverockShape = new CANNON.Sphere(48);
-      var caverockBody = new CANNON.Body({ mass: 0, material: physicsMaterial });
-      caverockBody.addShape(caverockShape);
-      caverockBody.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1);
-      caverockBody.position.set(100, -13, 0);
-      world.addBody(caverockBody);
+        var caverockShape = new CANNON.Sphere(48);
+        var caverockBody = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        caverockBody.addShape(caverockShape);
+        caverockBody.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1);
+        caverockBody.position.set(100, -13, 0);
+        world.addBody(caverockBody);
 
-      var caverock2Shape = new CANNON.Sphere(25);
-      var caverock2Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
-      caverock2Body.addShape(caverock2Shape);
-      caverock2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1);
-      caverock2Body.position.set(105, 11, 17);
-      world.addBody(caverock2Body);
+        var caverock2Shape = new CANNON.Sphere(25);
+        var caverock2Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        caverock2Body.addShape(caverock2Shape);
+        caverock2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1);
+        caverock2Body.position.set(105, 11, 17);
+        world.addBody(caverock2Body);
 
-      var caverock2Shape = new CANNON.Sphere(30);
-      var caverock2Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
-      caverock2Body.addShape(caverock2Shape);
-      caverock2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1);
-      caverock2Body.position.set(87, 3, -17);
-      world.addBody(caverock2Body);
+        var caverock2Shape = new CANNON.Sphere(30);
+        var caverock2Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        caverock2Body.addShape(caverock2Shape);
+        caverock2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1);
+        caverock2Body.position.set(87, 3, -17);
+        world.addBody(caverock2Body);
 
-      var cavecrystal1Shape = new CANNON.Box(new CANNON.Vec3(1, 40, 7));
-      var cavecrystal1Body = new CANNON.Body({ mass: 0 });
-      cavecrystal1Body.addShape(cavecrystal1Shape);
-      cavecrystal1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 2.3);
-      cavecrystal1Body.position.set(92, 30, -11);
-      world.addBody(cavecrystal1Body);
+        var cavecrystal1Shape = new CANNON.Box(new CANNON.Vec3(1, 40, 7));
+        var cavecrystal1Body = new CANNON.Body({ mass: 0 });
+        cavecrystal1Body.addShape(cavecrystal1Shape);
+        cavecrystal1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 2.3);
+        cavecrystal1Body.position.set(92, 30, -11);
+        world.addBody(cavecrystal1Body);
 
-      var cavecrystal2Shape = new CANNON.Box(new CANNON.Vec3(1, 40, 7));
-      var cavecrystal2Body = new CANNON.Body({ mass: 0 });
-      cavecrystal2Body.addShape(cavecrystal2Shape);
-      cavecrystal2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1.3);
-      cavecrystal2Body.position.set(106, 30, -12);
-      world.addBody(cavecrystal2Body);
+        var cavecrystal2Shape = new CANNON.Box(new CANNON.Vec3(1, 40, 7));
+        var cavecrystal2Body = new CANNON.Body({ mass: 0 });
+        cavecrystal2Body.addShape(cavecrystal2Shape);
+        cavecrystal2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1.3);
+        cavecrystal2Body.position.set(106, 30, -12);
+        world.addBody(cavecrystal2Body);
 
-      var cavecrystal3Shape = new CANNON.Box(new CANNON.Vec3(1, 40, 10));
-      var cavecrystal3Body = new CANNON.Body({ mass: 0 });
-      cavecrystal3Body.addShape(cavecrystal3Shape);
-      cavecrystal3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 2.9);
-      cavecrystal3Body.position.set(113, 30, 0);
-      world.addBody(cavecrystal3Body);
+        var cavecrystal3Shape = new CANNON.Box(new CANNON.Vec3(1, 40, 10));
+        var cavecrystal3Body = new CANNON.Body({ mass: 0 });
+        cavecrystal3Body.addShape(cavecrystal3Shape);
+        cavecrystal3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 2.9);
+        cavecrystal3Body.position.set(113, 30, 0);
+        world.addBody(cavecrystal3Body);
 
-      var cavecrystal4Shape = new CANNON.Box(new CANNON.Vec3(1, 40, 11));
-      var cavecrystal4Body = new CANNON.Body({ mass: 0 });
-      cavecrystal4Body.addShape(cavecrystal4Shape);
-      cavecrystal4Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1.7);
-      cavecrystal4Body.position.set(100, 30, 11);
-      world.addBody(cavecrystal4Body);
+        var cavecrystal4Shape = new CANNON.Box(new CANNON.Vec3(1, 40, 11));
+        var cavecrystal4Body = new CANNON.Body({ mass: 0 });
+        cavecrystal4Body.addShape(cavecrystal4Shape);
+        cavecrystal4Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1.7);
+        cavecrystal4Body.position.set(100, 30, 11);
+        world.addBody(cavecrystal4Body);
 
-      var cavecrystal5Shape = new CANNON.Box(new CANNON.Vec3(1, 40, 11));
-      var cavecrystal5Body = new CANNON.Body({ mass: 0 });
-      cavecrystal5Body.addShape(cavecrystal5Shape);
-      cavecrystal5Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 3.3);
-      cavecrystal5Body.position.set(88, 30, 2);
-      world.addBody(cavecrystal5Body);
+        var cavecrystal5Shape = new CANNON.Box(new CANNON.Vec3(1, 40, 11));
+        var cavecrystal5Body = new CANNON.Body({ mass: 0 });
+        cavecrystal5Body.addShape(cavecrystal5Shape);
+        cavecrystal5Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 3.3);
+        cavecrystal5Body.position.set(88, 30, 2);
+        world.addBody(cavecrystal5Body);
 
 
     }
@@ -1063,6 +1069,7 @@ function init() {
     console.log("init run");
     cssSteps();
     critterArray();
+
 
 
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000)
@@ -1761,223 +1768,261 @@ function modelLoader() {
 
         const loader = new GLTFLoader()
 
-        // alondra tree
-        loader.load('models/critters/world3/alondra.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
-            gltf.scene.position.set(240, 0.2, -50);
-            gltf.scene.scale.set(3, 3, 3);
-            gltf.scene.rotation.set(0, 0.6, 0);
-            scene.add(gltf.scene);
-        });
+        // // alondra tree
+        // loader.load('models/critters/world3/alondra.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
+        //     gltf.scene.position.set(240, 0.2, -50);
+        //     gltf.scene.scale.set(3, 3, 3);
+        //     gltf.scene.rotation.set(0, 0.6, 0);
+        //     scene.add(gltf.scene);
+        // });
+        // // box queen critter = alondra
+        // const geometryAlondra = new THREE.BoxGeometry();
+        // const materialAlondra = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        // //const materialAlondra = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        // const cubeAlondra = new THREE.Mesh(geometryAlondra, materialAlondra);
+        // cubeAlondra.position.set(240, 0.2, -50);
+        // cubeAlondra.scale.set(10, 25, 10);
+        // cubeAlondra.userData.name = "alondracastellanos";
+        // scene.add(cubeAlondra);
 
-        // stan piano
-        loader.load('models/critters/world3/stan.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
+        // // stan piano
+        // loader.load('models/critters/world3/stan.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
 
-            gltf.scene.position.set(270, 24.6, 160);
-            gltf.scene.scale.set(0.7, 0.7, 0.7);
-            gltf.scene.rotation.set(0, 0.6, 0);
-            scene.add(gltf.scene);
-        });
+        //     gltf.scene.position.set(270, 24.6, 160);
+        //     gltf.scene.scale.set(0.7, 0.7, 0.7);
+        //     gltf.scene.rotation.set(0, 0.6, 0);
+        //     scene.add(gltf.scene);
+        // });
+        // // box queen critter = stan
+        // const geometryStan = new THREE.BoxGeometry();
+        // const materialStan = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        // //const materialStan = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        // const cubeStan = new THREE.Mesh(geometryStan, materialStan);
+        // cubeStan.position.set(270, 24.6, 160);
+        // cubeStan.scale.set(6, 6, 6);
+        // cubeStan.userData.name = "stanwiersma";
+        // scene.add(cubeStan);
 
-        // nathalie like buttons
+        // // nathalie like buttons
 
-        // nathalie queen critter
-        loader.load('models/critters/world3/nathalie2.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
+        // // nathalie queen critter
+        // loader.load('models/critters/world3/nathalie2.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
 
-            gltf.scene.position.set(186, 47, 180);
-            gltf.scene.scale.set(0.1, 0.1, 0.1);
-            gltf.scene.rotation.set(0, 0, -1.55);
-            scene.add(gltf.scene);
-        });
+        //     gltf.scene.position.set(186, 37, 180);
+        //     gltf.scene.scale.set(0.1, 0.1, 0.1);
+        //     gltf.scene.rotation.set(0, 0, -1.55);
+        //     scene.add(gltf.scene);
+        //     console.log(dumpObject(gltf.scene).join('\n'));
+        // });
+        // // box queen critter = nathalie
+        // const geometryNathalie = new THREE.BoxGeometry();
+        // const materialNathalie = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        // // const materialNathalie = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        // const cubeNathalie = new THREE.Mesh(geometryNathalie, materialNathalie);
+        // cubeNathalie.position.set(186, 27, 180);
+        // cubeNathalie.scale.set(6, 36, 6);
+        // cubeNathalie.userData.name = "nathaliegolde";
+        // scene.add(cubeNathalie);
 
-        loader.load('models/critters/world3/nathalie2.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
+        // loader.load('models/critters/world3/nathalie2.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
 
-            gltf.scene.position.set(190, 48, 165);
-            gltf.scene.scale.set(0.06, 0.06, 0.06);
-            gltf.scene.rotation.set(0, 0.6, -1.55);
-            scene.add(gltf.scene);
-        });
+        //     gltf.scene.position.set(190, 48, 165);
+        //     gltf.scene.scale.set(0.06, 0.06, 0.06);
+        //     gltf.scene.rotation.set(0, 0.6, -1.55);
+        //     scene.add(gltf.scene);
+        // });
 
-        loader.load('models/critters/world3/nathalie2.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
+        // loader.load('models/critters/world3/nathalie2.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
 
-            gltf.scene.position.set(159.5, 42, 150);
-            gltf.scene.scale.set(0.1, 0.1, 0.1);
-            gltf.scene.rotation.set(0, 0.8, -1.55);
-            scene.add(gltf.scene);
-        });
+        //     gltf.scene.position.set(159.5, 42, 150);
+        //     gltf.scene.scale.set(0.1, 0.1, 0.1);
+        //     gltf.scene.rotation.set(0, 0.8, -1.55);
+        //     scene.add(gltf.scene);
+        // });
 
-        loader.load('models/critters/world3/nathalie2.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
+        // loader.load('models/critters/world3/nathalie2.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
 
-            gltf.scene.position.set(167, 90, 200.5);
-            gltf.scene.scale.set(0.1, 0.1, 0.1);
-            gltf.scene.rotation.set(0, -0.3, -1.55);
-            scene.add(gltf.scene);
-        });
+        //     gltf.scene.position.set(167, 90, 200.5);
+        //     gltf.scene.scale.set(0.1, 0.1, 0.1);
+        //     gltf.scene.rotation.set(0, -0.3, -1.55);
+        //     scene.add(gltf.scene);
+        // });
 
-        loader.load('models/critters/world3/nathalie2.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
+        // loader.load('models/critters/world3/nathalie2.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
 
-            gltf.scene.position.set(196.7, 97, 145);
-            gltf.scene.scale.set(0.06, 0.06, 0.06);
-            gltf.scene.rotation.set(0, 1, -1.55);
-            scene.add(gltf.scene);
-        });
+        //     gltf.scene.position.set(196.7, 97, 145);
+        //     gltf.scene.scale.set(0.06, 0.06, 0.06);
+        //     gltf.scene.rotation.set(0, 1, -1.55);
+        //     scene.add(gltf.scene);
+        // });
 
-        loader.load('models/critters/world3/nathalie2.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
+        // loader.load('models/critters/world3/nathalie2.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
 
-            gltf.scene.position.set(160, 55, 204);
-            gltf.scene.scale.set(0.07, 0.07, 0.07);
-            gltf.scene.rotation.set(0, -0.8, -1.55);
-            scene.add(gltf.scene);
-        });
+        //     gltf.scene.position.set(160, 55, 204);
+        //     gltf.scene.scale.set(0.07, 0.07, 0.07);
+        //     gltf.scene.rotation.set(0, -0.8, -1.55);
+        //     scene.add(gltf.scene);
+        // });
 
-        // Lara cloth ghosts
-        loader.load('models/critters/world3/lara.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
+        // // Lara cloth ghosts
+        // loader.load('models/critters/world3/lara.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
 
-            gltf.scene.position.set(5, 5, 100);
-            gltf.scene.scale.set(3, 3, 3);
-            gltf.scene.rotation.set(0, 0, 0);
-            scene.add(gltf.scene);
-        });
+        //     gltf.scene.position.set(5, 5, 100);
+        //     gltf.scene.scale.set(3, 3, 3);
+        //     gltf.scene.rotation.set(0, 0, 0);
+        //     scene.add(gltf.scene);
+        // });
 
-        loader.load('models/critters/world3/lara.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
+        // loader.load('models/critters/world3/lara.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
 
-            gltf.scene.position.set(12, 3.2, 90);
-            gltf.scene.scale.set(3, 3, 3);
-            gltf.scene.rotation.set(0, 4, 0);
-            scene.add(gltf.scene);
-        });
+        //     gltf.scene.position.set(12, 3.2, 90);
+        //     gltf.scene.scale.set(3, 3, 3);
+        //     gltf.scene.rotation.set(0, 4, 0);
+        //     scene.add(gltf.scene);
+        // });
 
-        loader.load('models/critters/world3/lara.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
+        // loader.load('models/critters/world3/lara.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
 
-            gltf.scene.position.set(3, 3.5, 75);
-            gltf.scene.scale.set(3, 3, 3);
-            gltf.scene.rotation.set(0, 7, 0);
-            scene.add(gltf.scene);
-        });
+        //     gltf.scene.position.set(3, 3.5, 75);
+        //     gltf.scene.scale.set(3, 3, 3);
+        //     gltf.scene.rotation.set(0, 7, 0);
+        //     scene.add(gltf.scene);
+        // });
 
-        loader.load('models/critters/world3/lara.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
+        // loader.load('models/critters/world3/lara.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
 
-            gltf.scene.position.set(4, -0.5, 85);
-            gltf.scene.scale.set(3, 3, 3);
-            gltf.scene.rotation.set(0, 8, 0);
-            scene.add(gltf.scene);
-        });
+        //     gltf.scene.position.set(4, -0.5, 85);
+        //     gltf.scene.scale.set(3, 3, 3);
+        //     gltf.scene.rotation.set(0, 8, 0);
+        //     scene.add(gltf.scene);
+        // });
 
-        loader.load('models/critters/world3/lara.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
+        // loader.load('models/critters/world3/lara.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
 
-            gltf.scene.position.set(-5, 3, 90);
-            gltf.scene.scale.set(3, 3, 3);
-            gltf.scene.rotation.set(0, 17, 0);
-            scene.add(gltf.scene);
-        });
-
-
+        //     gltf.scene.position.set(-5, 3, 90);
+        //     gltf.scene.scale.set(3, 3, 3);
+        //     gltf.scene.rotation.set(0, 17, 0);
+        //     scene.add(gltf.scene);
+        // });
 
 
-        // Inwoo apples
-        loader.load('models/critters/world3/inwoo.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
 
-            gltf.scene.position.set(32, 20, -170);
-            gltf.scene.scale.set(17, 17, 17);
-            gltf.scene.rotation.set(2, 0, 0);
-            scene.add(gltf.scene);
-        });
 
-        loader.load('models/critters/world3/inwoo.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
+        // // Inwoo apples
+        // loader.load('models/critters/world3/inwoo.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
 
-            gltf.scene.position.set(54, 15, -175);
-            gltf.scene.scale.set(17, 17, 17);
-            gltf.scene.rotation.set(0, 0, 7);
-            scene.add(gltf.scene);
-        });
+        //     gltf.scene.position.set(32, 20, -170);
+        //     gltf.scene.scale.set(17, 17, 17);
+        //     gltf.scene.rotation.set(2, 0, 0);
+        //     scene.add(gltf.scene);
+        // });
+        // // box queen critter = inwoo
+        // const geometryInwoo = new THREE.BoxGeometry();
+        // const materialInwoo = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        // //const materialInwoo = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        // const cubeInwoo = new THREE.Mesh(geometryInwoo, materialInwoo);
+        // cubeInwoo.position.set(32, 18, -165);
+        // cubeInwoo.scale.set(7, 7, 7);
+        // cubeInwoo.rotation.set(2, 0, 0);
+        // cubeInwoo.userData.name = "inwooyung";
+        // scene.add(cubeInwoo);
 
-        loader.load('models/critters/world3/inwoo.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
+        // loader.load('models/critters/world3/inwoo.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
 
-            gltf.scene.position.set(90, 17.5, -155);
-            gltf.scene.scale.set(17, 17, 17);
-            gltf.scene.rotation.set(0, 3, 2);
-            scene.add(gltf.scene);
-        });
+        //     gltf.scene.position.set(54, 15, -175);
+        //     gltf.scene.scale.set(17, 17, 17);
+        //     gltf.scene.rotation.set(0, 0, 7);
+        //     scene.add(gltf.scene);
+        // });
 
-        loader.load('models/critters/world3/inwoo.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
+        // loader.load('models/critters/world3/inwoo.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
 
-            gltf.scene.position.set(42, 12, -150);
-            gltf.scene.scale.set(17, 17, 17);
-            gltf.scene.rotation.set(0, 0, 1);
-            scene.add(gltf.scene);
-        });
+        //     gltf.scene.position.set(90, 17.5, -155);
+        //     gltf.scene.scale.set(17, 17, 17);
+        //     gltf.scene.rotation.set(0, 3, 2);
+        //     scene.add(gltf.scene);
+        // });
 
-        loader.load('models/critters/world3/inwoo.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
+        // loader.load('models/critters/world3/inwoo.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
 
-            gltf.scene.position.set(62, 16, -163);
-            gltf.scene.scale.set(17, 17, 17);
-            gltf.scene.rotation.set(30, 2, 0);
-            scene.add(gltf.scene);
-        });
+        //     gltf.scene.position.set(42, 12, -150);
+        //     gltf.scene.scale.set(17, 17, 17);
+        //     gltf.scene.rotation.set(0, 0, 1);
+        //     scene.add(gltf.scene);
+        // });
 
-        loader.load('models/critters/world3/inwoo.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
+        // loader.load('models/critters/world3/inwoo.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
 
-            gltf.scene.position.set(119, 93, -110);
-            gltf.scene.scale.set(17, 17, 17);
-            gltf.scene.rotation.set(0, 0, 0);
-            scene.add(gltf.scene);
-        });
+        //     gltf.scene.position.set(62, 16, -163);
+        //     gltf.scene.scale.set(17, 17, 17);
+        //     gltf.scene.rotation.set(30, 2, 0);
+        //     scene.add(gltf.scene);
+        // });
+
+        // loader.load('models/critters/world3/inwoo.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
+
+        //     gltf.scene.position.set(119, 93, -110);
+        //     gltf.scene.scale.set(17, 17, 17);
+        //     gltf.scene.rotation.set(0, 0, 0);
+        //     scene.add(gltf.scene);
+        // });
 
         function loadModel(url) {
             return new Promise(resolve => {
@@ -2054,9 +2099,9 @@ function modelLoader() {
         var ambient = new THREE.AmbientLight(0xffffff, 0.4);
         scene.add(ambient);
 
-        const light = new THREE.PointLight( 0x400318, 1, 100 );
-        light.position.set( 20, 10, -300 );
-        scene.add( light );
+        const light = new THREE.PointLight(0x400318, 1, 100);
+        light.position.set(20, 10, -300);
+        scene.add(light);
 
         const directionalLight = new THREE.DirectionalLight(0x400318, 0.3);
         scene.add(directionalLight);
@@ -2501,7 +2546,7 @@ function animate() {
     const numObjects = 14;
     const idToObject = {};
 
-    cssStepsWalk();
+    // cssStepsWalk();
     cursorCheck();
 
 
@@ -2862,6 +2907,273 @@ function loadCharacter(characterName) {
         });
     }
 
+    //world3
+    // nathalie like buttons
+    if (characterName == 'nathaliegolde3') {
+        const loader = new GLTFLoader();
+        // nathalie queen critter
+        loader.load('models/critters/world3/nathalie2.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+
+            gltf.scene.position.set(186, 37, 180);
+            gltf.scene.scale.set(0.1, 0.1, 0.1);
+            gltf.scene.rotation.set(0, 0, -1.55);
+            scene.add(gltf.scene);
+            console.log(dumpObject(gltf.scene).join('\n'));
+        });
+        // box queen critter = nathalie
+        const geometryNathalie = new THREE.BoxGeometry();
+        const materialNathalie = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        // const materialNathalie = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cubeNathalie = new THREE.Mesh(geometryNathalie, materialNathalie);
+        cubeNathalie.position.set(186, 27, 180);
+        cubeNathalie.scale.set(6, 36, 6);
+        cubeNathalie.userData.name = "nathaliegolde";
+        scene.add(cubeNathalie);
+
+        loader.load('models/critters/world3/nathalie2.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+
+            gltf.scene.position.set(190, 48, 165);
+            gltf.scene.scale.set(0.06, 0.06, 0.06);
+            gltf.scene.rotation.set(0, 0.6, -1.55);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world3/nathalie2.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+
+            gltf.scene.position.set(159.5, 42, 150);
+            gltf.scene.scale.set(0.1, 0.1, 0.1);
+            gltf.scene.rotation.set(0, 0.8, -1.55);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world3/nathalie2.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+
+            gltf.scene.position.set(167, 90, 200.5);
+            gltf.scene.scale.set(0.1, 0.1, 0.1);
+            gltf.scene.rotation.set(0, -0.3, -1.55);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world3/nathalie2.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+
+            gltf.scene.position.set(196.7, 97, 145);
+            gltf.scene.scale.set(0.06, 0.06, 0.06);
+            gltf.scene.rotation.set(0, 1, -1.55);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world3/nathalie2.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+
+            gltf.scene.position.set(160, 55, 204);
+            gltf.scene.scale.set(0.07, 0.07, 0.07);
+            gltf.scene.rotation.set(0, -0.8, -1.55);
+            scene.add(gltf.scene);
+        });
+    }
+
+    // alondra tree
+    if (characterName == 'alondracastellanos3') {
+        const loader = new GLTFLoader();
+        loader.load('models/critters/world3/alondra.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(240, 0.2, -50);
+            gltf.scene.scale.set(3, 3, 3);
+            gltf.scene.rotation.set(0, 0.6, 0);
+            scene.add(gltf.scene);
+        });
+        // box queen critter = alondra
+        const geometryAlondra = new THREE.BoxGeometry();
+        const materialAlondra = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        //const materialAlondra = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cubeAlondra = new THREE.Mesh(geometryAlondra, materialAlondra);
+        cubeAlondra.position.set(240, 0.2, -50);
+        cubeAlondra.scale.set(10, 25, 10);
+        cubeAlondra.userData.name = "alondracastellanos";
+        scene.add(cubeAlondra);
+    }
+
+    // stan piano
+    if (characterName == 'stanwiersma3') {
+        const loader = new GLTFLoader();
+        loader.load('models/critters/world3/stan.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+
+            gltf.scene.position.set(270, 24.6, 160);
+            gltf.scene.scale.set(0.7, 0.7, 0.7);
+            gltf.scene.rotation.set(0, 0.6, 0);
+            scene.add(gltf.scene);
+        });
+        // box queen critter = stan
+        const geometryStan = new THREE.BoxGeometry();
+        const materialStan = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        //const materialStan = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cubeStan = new THREE.Mesh(geometryStan, materialStan);
+        cubeStan.position.set(270, 24.6, 160);
+        cubeStan.scale.set(6, 6, 6);
+        cubeStan.userData.name = "stanwiersma";
+        scene.add(cubeStan);
+    }
+
+    // Inwoo apples
+    if (characterName == 'inwooyung3') {
+        const loader = new GLTFLoader();
+        loader.load('models/critters/world3/inwoo.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+
+            gltf.scene.position.set(32, 20, -170);
+            gltf.scene.scale.set(17, 17, 17);
+            gltf.scene.rotation.set(2, 0, 0);
+            scene.add(gltf.scene);
+        });
+        // box queen critter = inwoo
+        const geometryInwoo = new THREE.BoxGeometry();
+        const materialInwoo = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        //const materialInwoo = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cubeInwoo = new THREE.Mesh(geometryInwoo, materialInwoo);
+        cubeInwoo.position.set(32, 18, -165);
+        cubeInwoo.scale.set(7, 7, 7);
+        cubeInwoo.rotation.set(2, 0, 0);
+        cubeInwoo.userData.name = "inwooyung";
+        scene.add(cubeInwoo);
+
+        loader.load('models/critters/world3/inwoo.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+
+            gltf.scene.position.set(54, 15, -175);
+            gltf.scene.scale.set(17, 17, 17);
+            gltf.scene.rotation.set(0, 0, 7);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world3/inwoo.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+
+            gltf.scene.position.set(90, 17.5, -155);
+            gltf.scene.scale.set(17, 17, 17);
+            gltf.scene.rotation.set(0, 3, 2);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world3/inwoo.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+
+            gltf.scene.position.set(42, 12, -150);
+            gltf.scene.scale.set(17, 17, 17);
+            gltf.scene.rotation.set(0, 0, 1);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world3/inwoo.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+
+            gltf.scene.position.set(62, 16, -163);
+            gltf.scene.scale.set(17, 17, 17);
+            gltf.scene.rotation.set(30, 2, 0);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world3/inwoo.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+
+            gltf.scene.position.set(119, 93, -110);
+            gltf.scene.scale.set(17, 17, 17);
+            gltf.scene.rotation.set(0, 0, 0);
+            scene.add(gltf.scene);
+        });
+    }
+    // Lara cloth ghosts
+    if (characterName == 'larabruggeman3') {
+        const loader = new GLTFLoader();
+        loader.load('models/critters/world3/lara.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+
+            gltf.scene.position.set(5, 5, 100);
+            gltf.scene.scale.set(3, 3, 3);
+            gltf.scene.rotation.set(0, 0, 0);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world3/lara.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+
+            gltf.scene.position.set(12, 3.2, 90);
+            gltf.scene.scale.set(3, 3, 3);
+            gltf.scene.rotation.set(0, 4, 0);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world3/lara.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+
+            gltf.scene.position.set(3, 3.5, 75);
+            gltf.scene.scale.set(3, 3, 3);
+            gltf.scene.rotation.set(0, 7, 0);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world3/lara.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+
+            gltf.scene.position.set(4, -0.5, 85);
+            gltf.scene.scale.set(3, 3, 3);
+            gltf.scene.rotation.set(0, 8, 0);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world3/lara.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+
+            gltf.scene.position.set(-5, 3, 90);
+            gltf.scene.scale.set(3, 3, 3);
+            gltf.scene.rotation.set(0, 17, 0);
+            scene.add(gltf.scene);
+        });
+    }
+
 }
 
 //geoevents
@@ -2874,39 +3186,43 @@ const geoeventmeggie = document.getElementById('geoeventmeggie');
 const geoeventannikay = document.getElementById('geoeventannika');
 
 //world1
-const geoeventWorld1Texture = new THREE.VideoTexture(geoeventannika);
-const geoeventWorld1Material =  new THREE.MeshBasicMaterial( {map: geoeventWorld1Texture, side: THREE.FrontSide, toneMapped: false} );
+function addGeoEventWorld1() {
+    const geoeventWorld1Texture = new THREE.VideoTexture(geoeventannika);
+    const geoeventWorld1Material = new THREE.MeshBasicMaterial({ map: geoeventWorld1Texture, side: THREE.FrontSide, toneMapped: false });
 
-const geoeventWorld1screen = new THREE.PlaneGeometry(20, 20, 0);
-const geoeventWorld1videoScreen = new THREE.Mesh(geoeventWorld1screen, geoeventWorld1Material);
-geoeventWorld1videoScreen.rotation.set(-90, 0, 0);
-geoeventWorld1videoScreen.scale.set(50, 50, 50);
-geoeventWorld1videoScreen.position.set(0, 0, 170);
-scene.add(geoeventWorld1videoScreen);
-
+    const geoeventWorld1screen = new THREE.PlaneGeometry(20, 20, 0);
+    const geoeventWorld1videoScreen = new THREE.Mesh(geoeventWorld1screen, geoeventWorld1Material);
+    geoeventWorld1videoScreen.rotation.set(-90, 0, 0);
+    geoeventWorld1videoScreen.scale.set(50, 50, 50);
+    geoeventWorld1videoScreen.position.set(0, 0, 170);
+    scene.add(geoeventWorld1videoScreen);
+}
 //world2
-const geoeventWorld2Texture = new THREE.VideoTexture(geoeventisabella);
-const geoeventWorld2Material =  new THREE.MeshBasicMaterial( {map: geoeventWorld2Texture, side: THREE.FrontSide, toneMapped: false} );
+function addGeoEventWorld2() {
+    const geoeventWorld2Texture = new THREE.VideoTexture(geoeventisabella);
+    const geoeventWorld2Material = new THREE.MeshBasicMaterial({ map: geoeventWorld2Texture, side: THREE.FrontSide, toneMapped: false });
 
-const geoeventWorld2screen = new THREE.PlaneGeometry(20, 20, 0);
-const geoeventWorld2videoScreen = new THREE.Mesh(geoeventWorld2screen, geoeventWorld2Material);
-geoeventWorld2videoScreen.rotation.set(-90, 0, 0);
-geoeventWorld2videoScreen.scale.set(50, 50, 50);
-geoeventWorld2videoScreen.position.set(0, 0, 170);
-scene.add(geoeventWorld2videoScreen);
-
+    const geoeventWorld2screen = new THREE.PlaneGeometry(20, 20, 0);
+    const geoeventWorld2videoScreen = new THREE.Mesh(geoeventWorld2screen, geoeventWorld2Material);
+    geoeventWorld2videoScreen.rotation.set(-90, 0, 0);
+    geoeventWorld2videoScreen.scale.set(50, 50, 50);
+    geoeventWorld2videoScreen.position.set(0, 0, 170);
+    scene.add(geoeventWorld2videoScreen);
+}
 //world3
-const geoeventWorld3Texture = new THREE.VideoTexture(geoeventjiarey);
-const geoeventWorld3Material =  new THREE.MeshBasicMaterial( {map: geoeventWorld3Texture, side: THREE.FrontSide, toneMapped: false} );
+function addGeoEventWorld3() {
+    const geoeventWorld3Texture = new THREE.VideoTexture(geoeventjiarey);
+    const geoeventWorld3Material = new THREE.MeshBasicMaterial({ map: geoeventWorld3Texture, side: THREE.FrontSide, toneMapped: false });
 
-const geoeventWorld3screen = new THREE.PlaneGeometry(20, 20, 0);
-const geoeventWorld3videoScreen = new THREE.Mesh(geoeventWorld3screen, geoeventWorld3Material);
-geoeventWorld3videoScreen.rotation.set(-90, 0, 0);
-geoeventWorld3videoScreen.scale.set(50, 50, 50);
-geoeventWorld3videoScreen.position.set(0, 0, 170);
-scene.add(geoeventWorld3videoScreen);
-
+    const geoeventWorld3screen = new THREE.PlaneGeometry(20, 20, 0);
+    const geoeventWorld3videoScreen = new THREE.Mesh(geoeventWorld3screen, geoeventWorld3Material);
+    geoeventWorld3videoScreen.rotation.set(-90, 0, 0);
+    geoeventWorld3videoScreen.scale.set(50, 50, 50);
+    geoeventWorld3videoScreen.position.set(0, 0, 170);
+    scene.add(geoeventWorld3videoScreen);
+}
 //world4
+//function addGeoEventWorld4{ 
 // const geoeventWorld4Texture = new THREE.VideoTexture(geoeventmeggie);
 // const geoeventWorld4Material =  new THREE.MeshBasicMaterial( {map: geoeventWorld4Texture, side: THREE.FrontSide, toneMapped: false} );
 //
@@ -2916,16 +3232,19 @@ scene.add(geoeventWorld3videoScreen);
 // geoeventWorld4videoScreen.scale.set(50, 50, 50);
 // geoeventWorld4videoScreen.position.set(0, 0, 170);
 // scene.add(geoeventWorld4videoScreen);
+//}
 
 //everyworld
-const geoeventWaterTexture = new THREE.VideoTexture(geoeventjoachim);
-const geoeventWaterMaterial =  new THREE.MeshBasicMaterial( {map: geoeventWaterTexture, side: THREE.FrontSide, toneMapped: false} );
+function addGeoEventWorld() {
+    const geoeventWaterTexture = new THREE.VideoTexture(geoeventjoachim);
+    const geoeventWaterMaterial = new THREE.MeshBasicMaterial({ map: geoeventWaterTexture, side: THREE.FrontSide, toneMapped: false });
 
-const geoeventWaterscreen = new THREE.PlaneGeometry(50, 50, 0);
-const geoeventWatervideoScreen = new THREE.Mesh(geoeventWaterscreen, geoeventWaterMaterial);
-geoeventWatervideoScreen.rotation.set(-90, 0, 0);
-geoeventWatervideoScreen.position.set(0, 10, 170);
-scene.add(geoeventWatervideoScreen);
+    const geoeventWaterscreen = new THREE.PlaneGeometry(50, 50, 0);
+    const geoeventWatervideoScreen = new THREE.Mesh(geoeventWaterscreen, geoeventWaterMaterial);
+    geoeventWatervideoScreen.rotation.set(-90, 0, 0);
+    geoeventWatervideoScreen.position.set(0, 10, 170);
+    scene.add(geoeventWatervideoScreen);
+}
 
 function cursorCheck() {
 
@@ -2985,6 +3304,9 @@ function cursorCheck() {
                         console.log("yes location same");
                         boolInPerimeter = true;
 
+                        foundConstructorGet.style.visibility = "visible";
+                        foundConstructorGet.style.display = "block";
+
                         // look for click
 
                         //if( boolMouseOn == true){
@@ -2994,6 +3316,8 @@ function cursorCheck() {
                         //	}
                     } else {
                         boolInPerimeter = false;
+                        foundConstructorGet.style.visibility = "hidden";
+                        foundConstructorGet.style.display = "none";
                     }
                 });
 
@@ -3001,7 +3325,10 @@ function cursorCheck() {
                     //console.log("newscene", newScene);
                     //console.log("you made it to the", currentScene);
                     boolInPerimeter = true;
-
+                    foundConstructorGet.style.visibility = "visible";
+                    foundConstructorGet.style.display = "block";
+                    //foundConstructorGet.style.visibility = "visible";
+                    // foundConstructorGet.style.display = "block";
 
                     if (currentScene.id != newScene.id) {
 
@@ -3013,6 +3340,9 @@ function cursorCheck() {
                     }
                 } else {
                     // console.log(" no");
+                    // foundConstructorGet.style.visibility = "hidden";
+                    foundConstructorGet.style.visibility = "hidden";
+                    foundConstructorGet.style.display = "none";
                 }
                 console.log('intersect!' + userD);
                 // console.log("id" + id);
@@ -3118,6 +3448,8 @@ function clickedOnExitVideo() {
     muteSound = false;
     //embedContainerGet.classList.remove('fade-in');
     //embedContainerGet.classList.add('fade-out');
+    foundConstructorGet.style.visibility = "hidden";
+    foundConstructorGet.style.display = "none";
     embedContainerGet.style.visibility = null;
     embedContainerGet.style.display = null;
     embedContainerGet.style.transition = null;
@@ -3143,11 +3475,26 @@ function clickedOnExitVideo() {
         }
     } else {
         console.log("geoevent start");
+        //var geoEventCaller = "addGeoEventWorld" + worldId;
+        //window["geoEventCaller"]();
+        if (worldId == 1) {
+            addGeoEventWorld1();
+        }
+        if (worldId == 2) {
+            addGeoEventWorld2();
+        }
+        if (worldId == 3) {
+            addGeoEventWorld3();
+        }
+        if (worldId == 4) {
+            addGeoEventWorld4();
+        }
+        addGeoEventWorld();
         var foundAll = document.getElementById("found" + worldId + "all");
         foundAll.style.visibility = "visible";
         foundAll.style.display = "block";
-        document.getElementsById("geoevent-" + worldId).style.visibility = "visible";
-        document.getElementsById("geoevent-" + worldId).style.display = "block";
+        document.getElementById("geoevent-" + worldId).style.visibility = "visible";
+        document.getElementById("geoevent-" + worldId).style.display = "block";
         var geoEventUi = document.getElementsByClassName("world" + worldId + "critterEvent");
         geoEventUi.style.visibility = "visible";
         geoEventUi.style.display = "block";
@@ -3278,6 +3625,7 @@ function huntForNextCritter() {
     loadCharacter(critterToFindArray[0]);
 }
 
+
 function getScenes() {
 
     //  structure of json: "world-id | idInWorld | posX |posY | posZ | videoUrl"
@@ -3317,61 +3665,63 @@ function getScenes() {
         )
 }
 
-function cssStepsWalk() {
 
 
-    if (worldId == 1) {
-        if (boolInPerimeter == true) {
-            js: document.getElementById("found1").style.visibility = "visible";
-            //critterHtmlId = critterId + worldId;
-        }
-        else {
-            js: document.getElementById("found1").style.visibility = "hidden";
+// function cssStepsWalk() {
 
-        }
-    }
-    if (worldId == 2) {
-        if (boolInPerimeter == true) {
-            js: document.getElementById("found1").style.visibility = "visible";
-            //critterHtmlId = critterId + worldId;
-            //document.getElementById(critterHtmlId).style.visibility = "visible";
-            //console.log(critterHtmlId, "critterHtmlId");
-            //document.getElementById(critterHtmlId).style.visibility = "visible";
-            cssSteps();
-        }
-        else {
-            js: document.getElementById("found1").style.visibility = "hidden";
-        }
-    }
-    if (worldId == 3) {
-        if (boolInPerimeter == true) {
-            js: document.getElementById("range3").style.visibility = "visible";
-            js: document.getElementById("found3").style.visibility = "visible";
-            js: document.getElementById("hintsfade3-2").style.visibility = "visible";
-            //critterHtmlId = critterId + worldId;
 
-        }
-        else {
-            js: document.getElementById("found3").style.visibility = "hidden";
-            js: document.getElementById("range3").style.visibility = "hidden";
+//     if (worldId == 1) {
+//         if (boolInPerimeter == true) {
+//             js: document.getElementById("found1").style.visibility = "visible";
+//             //critterHtmlId = critterId + worldId;
+//         }
+//         else {
+//             js: document.getElementById("found1").style.visibility = "hidden";
 
-        }
-    }
-    if (worldId == 4) {
-        if (boolInPerimeter == true) {
-            js: document.getElementById("range3").style.visibility = "visible";
-            js: document.getElementById("found3").style.visibility = "visible";
-            js: document.getElementById("hintsfade3-2").style.visibility = "visible";
-            //critterHtmlId = critterId + worldId;
+//         }
+//     }
+//     // if (worldId == 2) {
+//     //     if (boolInPerimeter == true) {
+//     //         js: document.getElementById("found1").style.visibility = "visible";
+//     //         //critterHtmlId = critterId + worldId;
+//     //         //document.getElementById(critterHtmlId).style.visibility = "visible";
+//     //         //console.log(critterHtmlId, "critterHtmlId");
+//     //         //document.getElementById(critterHtmlId).style.visibility = "visible";
+//     //         cssSteps();
+//     //     }
+//     //     else {
+//     //         js: document.getElementById("found1").style.visibility = "hidden";
+//     //     }
+//     // }
+//     if (worldId == 3) {
+//         if (boolInPerimeter == true) {
+//             js: document.getElementById("range3").style.visibility = "visible";
+//             js: document.getElementById("found3").style.visibility = "visible";
+//             js: document.getElementById("hintsfade3-2").style.visibility = "visible";
+//             //critterHtmlId = critterId + worldId;
 
-        }
-        else {
-            js: document.getElementById("found3").style.visibility = "hidden";
-            js: document.getElementById("range3").style.visibility = "hidden";
+//         }
+//         else {
+//             js: document.getElementById("found3").style.visibility = "hidden";
+//             js: document.getElementById("range3").style.visibility = "hidden";
 
-        }
-    }
-}
+//         }
+//     }
+//     if (worldId == 4) {
+//         if (boolInPerimeter == true) {
+//             js: document.getElementById("range3").style.visibility = "visible";
+//             js: document.getElementById("found3").style.visibility = "visible";
+//             js: document.getElementById("hintsfade3-2").style.visibility = "visible";
+//             //critterHtmlId = critterId + worldId;
+
+//         }
+//         else {
+//             js: document.getElementById("found3").style.visibility = "hidden";
+//             js: document.getElementById("range3").style.visibility = "hidden";
+
+//         }
+//     }
+// }
 
 
 function cssSteps() {
