@@ -12,7 +12,7 @@ import { RGBELoader } from './customPackage/loader/RGBELoader.js';
 import { VideoTexture } from './node_modules/three/src/textures/VideoTexture.js';
 var debug = false;
 var checkObjId = true;
-var worldId = 1; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 4; //1= socerers 2=lighthouse 3=forest 4= cave
 // var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 var soundGoGo = true;
@@ -29,6 +29,7 @@ const soundLayer2 = new THREE.PositionalAudio(listener);
 const soundLayer3 = new THREE.PositionalAudio(listener);
 const soundLayer4 = new THREE.PositionalAudio(listener);
 const soundLayer5 = new THREE.PositionalAudio(listener);
+const soundLayer6 = new THREE.PositionalAudio(listener);
 const soundBase = new THREE.Audio(listener);
 const audioLoader = new THREE.AudioLoader();
 
@@ -93,14 +94,14 @@ manager.onStart = function(url, itemsLoaded, itemsTotal) {
 };
 manager.onLoad = function() {
     console.log('Loading complete!');
-    if (worldId == 2) {
-        soundGo(2);
+    //if (worldId == 2) {
+        soundGo(worldId);
         soundLoad = true;
-    }
-    if (worldId == 3) {
-        soundGo(3);
-        soundLoad = true;
-    }
+    //}
+    // if (worldId == 3) {
+    //     soundGo(3);
+    //     soundLoad = true;
+    // }
 
 };
 manager.onProgress = function(url, itemsLoaded, itemsTotal) {
@@ -2301,6 +2302,133 @@ function addCharacters() {
 
 function soundGo(functionNumber) {
 
+    if (functionNumber == 1) {
+        //const sound = new THREE.Audio( listener );
+
+        if (soundGoGo == true) {
+            //console.log("zero for sound stuff");
+            camera.add(listener);
+            var setVolumeAll = -0.1;
+
+            audioLoader.load('sound/Cristal World Bass Layer.mp3', function(buffer) {
+                sound.setBuffer(buffer);
+                sound.setLoop(true);
+                sound.coneInnerAngle = 45;
+                sound.setRolloffFactor(0.3);
+                sound.setRefDistance(50);
+                sound.setVolume(0.6+setVolumeAll);
+                sound.play();
+                //console.log(sound.getOutput());
+            });
+            //
+            audioLoader.load('sound/Cristal World Violin Layer2.mp3', function(buffer) {
+                soundLayer2.setBuffer(buffer);
+                soundLayer2.setLoop(true);
+                soundLayer2.setRolloffFactor(0.7);
+                soundLayer2.setRefDistance(40);
+                soundLayer2.setVolume(0.9+setVolumeAll);
+                soundLayer2.play();
+                //console.log(sound.getOutput());
+            });
+            //
+            audioLoader.load('sound/Cristal World Clarinet Layer.mp3', function(buffer) {
+                soundLayer3.setBuffer(buffer);
+                soundLayer3.setLoop(true);
+                soundLayer3.setRolloffFactor(0.5);
+                soundLayer3.setRefDistance(45);
+                soundLayer3.setVolume(0.9+setVolumeAll);
+                soundLayer3.play();
+                //console.log(sound.getOutput());
+            });
+            //
+            audioLoader.load('sound/Cristal World Arpi Layer.mp3', function(buffer) {
+                soundLayer4.setBuffer(buffer);
+                soundLayer4.setLoop(true);
+                soundLayer4.setRefDistance(30);
+                soundLayer4.coneInnerAngle = 40;
+                soundLayer4.setVolume(0.7+setVolumeAll);
+                soundLayer4.play();
+                //console.log(sound.getOutput());
+            });
+            //
+            audioLoader.load('sound/Cristal World KidPiano Layer.mp3', function(buffer) {
+                soundLayer5.setBuffer(buffer);
+                soundLayer5.setLoop(true);
+                soundLayer5.setRefDistance(25);
+                soundLayer5.setVolume(0.5+setVolumeAll);
+                soundLayer5.play();
+                //console.log(sound.getOutput());
+            });
+
+            audioLoader.load('sound/Cristal World Whurli Layer.mp3', function(buffer) {
+                soundLayer6.setBuffer(buffer);
+                soundLayer6.setLoop(true);
+                soundLayer6.setRefDistance(5);
+                soundLayer6.setVolume(0.5+setVolumeAll);
+                soundLayer6.play();
+                //console.log(sound.getOutput());
+            });
+
+            audioLoader.load('sound/Cristal World Base Layer.mp3', function(buffer) {
+                soundBase.setBuffer(buffer);
+                soundBase.setLoop(true);
+                soundBase.setVolume(0.3+setVolumeAll);
+                soundBase.play();
+                //put down the omni ffx a bit in the base layer, X
+                //console.log(sound.getOutput());
+            });
+
+            // gltf.scene.position.set(-40, 5, 60); Britney Pos
+            //
+            // gltf.scene.position.set(160,9,-75);
+            const box = new THREE.BoxGeometry(20, 20, 20);
+            const material = new THREE.MeshBasicMaterial({ color: 0xff2200 });
+            material.visible = false;
+
+            const cubeSound = new THREE.Mesh(box, material);
+            cubeSound.position.set(100, 80, -20);
+            cubeSound.add(sound);
+            scene.add(cubeSound);
+
+            const cubeSound2 = new THREE.Mesh(box, material);
+            cubeSound2.position.set(320, 20, 50);
+            cubeSound2.add(soundLayer2);
+            scene.add(cubeSound2);
+
+            const cubeSound2_2 = new THREE.Mesh(box, material);
+            cubeSound2_2.position.set(-100, 5, 50);
+            cubeSound2_2.add(soundLayer2);
+            scene.add(cubeSound2_2);
+
+            const cubeSound3 = new THREE.Mesh(box, material);
+            cubeSound3.position.set(-100, 5,-100);
+            cubeSound3.add(soundLayer3);
+            scene.add(cubeSound3);
+
+            const cubeSound3_2 = new THREE.Mesh(box, material);
+            cubeSound3_2.position.set(300, 10,-150);
+            cubeSound3_2.add(soundLayer3);
+            scene.add(cubeSound3_2);
+
+            const cubeSound4 = new THREE.Mesh(box, material);
+            cubeSound4.position.set(90, 15, 18);
+            cubeSound4.add(soundLayer4);
+            scene.add(cubeSound4);
+            //
+
+            //position of the current character to find
+            const cubeSound5 = new THREE.Mesh(box, material);
+            cubeSound5.position.set(40, 15, -200);
+            cubeSound5.add(soundLayer5);
+            scene.add(cubeSound5);
+
+            const cubeSound6 = new THREE.Mesh(box, material);
+            cubeSound6.position.set(35, 15, 200);
+            cubeSound6.add(soundLayer6);
+            scene.add(cubeSound6);
+        }
+    }
+
     if (functionNumber == 2) {
         //const sound = new THREE.Audio( listener );
 
@@ -2308,14 +2436,18 @@ function soundGo(functionNumber) {
             //console.log("zero for sound stuff");
             camera.add(listener);
 
+            var setVolumeAll = 0.4;
+
             //audioLoader.load('sound/Boat Island.mp3', function(buffer) {
             audioLoader.load('sound/juno layer.mp3', function(buffer) {
                 sound.setBuffer(buffer);
                 sound.setLoop(true);
-                sound.setRefDistance(10);
+                sound.setRefDistance(13);
                 sound.setVolume(0.5);
+                sound.coneInnerAngle = 45;
+                sound.setRolloffFactor(0.8);
                 sound.setRefDistance(12);
-                sound.setVolume(0.6);
+                sound.setVolume(0.6+setVolumeAll);
                 sound.play();
                 //console.log(sound.getOutput());
             });
@@ -2323,8 +2455,10 @@ function soundGo(functionNumber) {
             audioLoader.load('sound/horn layer.mp3', function(buffer) {
                 soundLayer2.setBuffer(buffer);
                 soundLayer2.setLoop(true);
+                soundLayer2.coneInnerAngle = 45;
+                soundLayer2.setRolloffFactor(0.7);
                 soundLayer2.setRefDistance(15);
-                soundLayer2.setVolume(0.7);
+                soundLayer2.setVolume(0.7+setVolumeAll);
                 soundLayer2.play();
                 //console.log(sound.getOutput());
             });
@@ -2333,7 +2467,9 @@ function soundGo(functionNumber) {
                 soundLayer3.setBuffer(buffer);
                 soundLayer3.setLoop(true);
                 soundLayer3.setRefDistance(25);
-                soundLayer3.setVolume(0.9);
+                soundLayer3.coneInnerAngle = 45;
+                soundLayer3.setRolloffFactor(0.6);
+                soundLayer3.setVolume(0.7+setVolumeAll);
                 soundLayer3.play();
                 //console.log(sound.getOutput());
             });
@@ -2342,7 +2478,7 @@ function soundGo(functionNumber) {
                 soundLayer4.setBuffer(buffer);
                 soundLayer4.setLoop(true);
                 soundLayer4.setRefDistance(30);
-                soundLayer4.setVolume(0.7);
+                soundLayer4.setVolume(0.7+setVolumeAll);
                 soundLayer4.play();
                 //console.log(sound.getOutput());
             });
@@ -2351,7 +2487,7 @@ function soundGo(functionNumber) {
                 soundLayer5.setBuffer(buffer);
                 soundLayer5.setLoop(true);
                 soundLayer5.setRefDistance(25);
-                soundLayer5.setVolume(0.5);
+                soundLayer5.setVolume(0.5+setVolumeAll);
                 soundLayer5.play();
                 //console.log(sound.getOutput());
             });
@@ -2359,7 +2495,7 @@ function soundGo(functionNumber) {
             audioLoader.load('sound/Base layer.mp3', function(buffer) {
                 soundBase.setBuffer(buffer);
                 soundBase.setLoop(true);
-                soundBase.setVolume(0.4);
+                soundBase.setVolume(0.5+setVolumeAll);
                 soundBase.play();
                 //console.log(sound.getOutput());
             });
@@ -2407,6 +2543,7 @@ function soundGo(functionNumber) {
         if (soundGoGo == true) {
             //console.log("zero for sound stuff");
             camera.add(listener);
+            var setVolumeAll = 0.2;
 
             //audioLoader.load('sound/Boat Island.mp3', function(buffer) {
             audioLoader.load('sound/Forest Arp & bass Layer.mp3', function(buffer) {
@@ -2418,7 +2555,7 @@ function soundGo(functionNumber) {
                 //console.log("rolloff = "+sound.getDistanceModel());
                 sound.setRolloffFactor(0.1);
                 //sound.setRefDistance(2);
-                sound.setVolume(0.4);
+                sound.setVolume(0.4+setVolumeAll);
                 sound.play();
                 //console.log(sound.getOutput());
             });
@@ -2428,7 +2565,7 @@ function soundGo(functionNumber) {
                 soundLayer2.setLoop(true);
                 soundLayer2.coneInnerAngle = 45;
                 soundLayer2.setRefDistance(20);
-                soundLayer2.setVolume(0.7);
+                soundLayer2.setVolume(0.7+setVolumeAll);
                 soundLayer2.play();
                 //console.log(sound.getOutput());
             });
@@ -2437,7 +2574,7 @@ function soundGo(functionNumber) {
                 soundLayer3.setBuffer(buffer);
                 soundLayer3.setLoop(true);
                 soundLayer3.setRefDistance(25);
-                soundLayer3.setVolume(0.9);
+                soundLayer3.setVolume(0.9+setVolumeAll);
                 soundLayer3.setRolloffFactor(0.5);
                 soundLayer3.play();
                 //console.log(sound.getOutput());
@@ -2448,7 +2585,7 @@ function soundGo(functionNumber) {
                 soundLayer4.setLoop(true);
                 soundLayer4.setRefDistance(30);
                 soundLayer4.setRolloffFactor(0.5);
-                soundLayer4.setVolume(0.5);
+                soundLayer4.setVolume(0.5+setVolumeAll);
                 soundLayer4.play();
                 //console.log(sound.getOutput());
             });
@@ -2457,7 +2594,7 @@ function soundGo(functionNumber) {
                 soundLayer5.setBuffer(buffer);
                 soundLayer5.setLoop(true);
                 soundLayer5.setRefDistance(30);
-                soundLayer5.setVolume(0.6);
+                soundLayer5.setVolume(0.6+setVolumeAll);
                 soundLayer5.play();
                 //console.log(sound.getOutput());
             });
@@ -2465,7 +2602,7 @@ function soundGo(functionNumber) {
             audioLoader.load('sound/Forest Base Layer.mp3', function(buffer) {
                 soundBase.setBuffer(buffer);
                 soundBase.setLoop(true);
-                soundBase.setVolume(0.4);
+                soundBase.setVolume(0.4+setVolumeAll);
                 soundBase.play();
                 //console.log(sound.getOutput());
             });
@@ -2503,6 +2640,143 @@ function soundGo(functionNumber) {
             cube5.position.set(185, 45, 195);
             cube5.add(soundLayer5);
             scene.add(cube5);
+
+            //gltf.scene.position.set(144, 9.3, 88.7); adam centko pos
+        }
+    }
+
+    if (functionNumber == 4) {
+        //const sound = new THREE.Audio( listener );
+
+        if (soundGoGo == true) {
+            //console.log("zero for sound stuff");
+            camera.add(listener);
+            var setVolumeAll = 0.0;
+
+            //audioLoader.load('sound/Boat Island.mp3', function(buffer) {
+            audioLoader.load('sound/Cave World Sub Layer.mp3', function(buffer) {
+                sound.setBuffer(buffer);
+                sound.setLoop(true);
+                sound.setRefDistance(50);
+                sound.coneInnerAngle = 45;
+                //sound.setVolume(0.01);
+                //console.log("rolloff = "+sound.getDistanceModel());
+                sound.setRolloffFactor(0.3);
+                //sound.setRefDistance(2);
+                sound.setVolume(0.9+setVolumeAll);
+                sound.play();
+                //console.log(sound.getOutput());
+            });
+
+            audioLoader.load('sound/Cave World SplshTlk Layer.mp3', function(buffer) {
+                soundLayer2.setBuffer(buffer);
+                soundLayer2.setLoop(true);
+                soundLayer2.coneInnerAngle = 30;
+                soundLayer2.setRefDistance(70);
+                soundLayer2.setVolume(1.1+setVolumeAll);
+                soundLayer2.play();
+                //console.log(sound.getOutput());
+            });
+
+            audioLoader.load('sound/Cave World DX7 Layer.mp3', function(buffer) {
+                soundLayer3.setBuffer(buffer);
+                soundLayer3.setLoop(true);
+                soundLayer3.setRefDistance(45);
+                soundLayer3.setVolume(0.9+setVolumeAll);
+                soundLayer3.setRolloffFactor(0.6);
+                soundLayer3.play();
+                //console.log(sound.getOutput());
+            });
+            // //
+            audioLoader.load('sound/Cave World MinLo Layer.mp3', function(buffer) {
+                soundLayer4.setBuffer(buffer);
+                soundLayer4.setLoop(true);
+                soundLayer4.setRefDistance(40);
+                soundLayer4.coneInnerAngle = 45;
+                soundLayer4.setRolloffFactor(0.3);
+                soundLayer4.setVolume(1.0+setVolumeAll);
+                soundLayer4.play();
+                //console.log(sound.getOutput());
+            });
+            // //
+            audioLoader.load('sound/Cave World Moog Layer.mp3', function(buffer) {
+                soundLayer5.setBuffer(buffer);
+                soundLayer5.setLoop(true);
+                soundLayer5.setRefDistance(45);
+                soundLayer5.coneInnerAngle = 45;
+                soundLayer5.setRolloffFactor(0.5);
+                soundLayer5.setVolume(0.9+setVolumeAll);
+                soundLayer5.play();
+                //console.log(sound.getOutput());
+            });
+
+            audioLoader.load('sound/Cave World TikTok Layer.mp3', function(buffer) {
+                soundLayer6.setBuffer(buffer);
+                soundLayer6.setLoop(true);
+                soundLayer6.setRefDistance(45);
+                soundLayer6.coneInnerAngle = 45;
+                soundLayer6.setRolloffFactor(0.5);
+                soundLayer6.setVolume(0.9+setVolumeAll);
+                soundLayer6.play();
+                //console.log(sound.getOutput());
+            });
+
+            audioLoader.load('sound/Cave World Base Layer.mp3', function(buffer) {
+                soundBase.setBuffer(buffer);
+                soundBase.setLoop(true);
+                soundBase.setVolume(0.9+setVolumeAll);
+                soundBase.play();
+                //console.log(sound.getOutput());
+            });
+
+            //gltf.scene.position.set(-40, 5, 60); Britney Pos
+
+            //gltf.scene.position.set(160,9,-75);
+            const box = new THREE.BoxGeometry(20, 20, 20);
+            const material = new THREE.MeshBasicMaterial({ color: 0xff2200 });
+            material.visible = false;
+
+            const cubeSound = new THREE.Mesh(box, material);
+            cubeSound.position.set(100, 40, 0);
+            cubeSound.add(sound);
+            scene.add(cubeSound);
+
+            //
+            const cube2 = new THREE.Mesh(box, material);
+            cube2.position.set(100, 100, 0);
+            cube2.add(soundLayer2);
+            scene.add(cube2);
+            // //
+            const cube3 = new THREE.Mesh(box, material);
+            cube3.position.set(-175, 30, -200);
+            cube3.add(soundLayer3);
+            scene.add(cube3);
+
+            const cube3_2 = new THREE.Mesh(box, material);
+            cube3_2.position.set(110, 20, 200);
+            cube3_2.add(soundLayer3);
+            scene.add(cube3_2);
+            // //
+            const cube4 = new THREE.Mesh(box, material);
+            cube4.position.set(320, 4, 75);
+            cube4.add(soundLayer4);
+            scene.add(cube4);
+            // //
+            //gltf.scene.position.set(40.3, 15, -34);
+            const cube5 = new THREE.Mesh(box, material);
+            cube5.position.set(-175, 0, 50);
+            cube5.add(soundLayer5);
+            scene.add(cube5);
+
+            const cube5_2 = new THREE.Mesh(box, material);
+            cube5_2.position.set(275, 10, -150);
+            cube5_2.add(soundLayer5);
+            scene.add(cube5_2);
+
+            const cube6 = new THREE.Mesh(box, material);
+            cube6.position.set(120, 10, -175);
+            cube6.add(soundLayer6);
+            scene.add(cube6);
 
             //gltf.scene.position.set(144, 9.3, 88.7); adam centko pos
         }
@@ -3222,7 +3496,7 @@ function addGeoEventWorld3() {
     scene.add(geoeventWorld3videoScreen);
 }
 //world4
-//function addGeoEventWorld4{ 
+//function addGeoEventWorld4{
 // const geoeventWorld4Texture = new THREE.VideoTexture(geoeventmeggie);
 // const geoeventWorld4Material =  new THREE.MeshBasicMaterial( {map: geoeventWorld4Texture, side: THREE.FrontSide, toneMapped: false} );
 //
