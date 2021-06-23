@@ -12,7 +12,7 @@ import { RGBELoader } from './customPackage/loader/RGBELoader.js';
 import { VideoTexture } from './node_modules/three/src/textures/VideoTexture.js';
 var debug = false;
 var checkObjId = true;
-var worldId = 4; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 1; //1= socerers 2=lighthouse 3=forest 4= cave
 // var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 var soundGoGo = false;
@@ -197,7 +197,7 @@ function initCannon() {
     sphereBody = new CANNON.Body({ mass: mass, material: physicsMaterial });
     sphereBody.addShape(sphereShape);
     // sphereBody.position.set(nx * sx * 0.5, ny * sy + radius * 2, nz * sz * 0.5);
-    sphereBody.position.set(150, 40, 50);
+    sphereBody.position.set(-70, 30, 10);
     sphereBody.linearDamping = 0.9;
     world.addBody(sphereBody);
 
@@ -1385,38 +1385,41 @@ function modelLoader() {
         //
         //
         //   } );
-        //   gltf.scene.position.set(-30,-2,-120);
+        //   gltf.scene.position.set(0,10,0);
         //   gltf.scene.scale.set(3,3,3);
         //   scene.add(gltf.scene);
         //
         // }
         // );
-
+        //
         // loader.load('models/critters/world1/levi.glb', (gltf) => {
         //     gltf.scene.traverse(function(object) {
         //         object.frustumCulled = false;
-
-
+        //
+        //
         //     });
-        //     gltf.scene.position.set(80, 20, -20);
-        //     gltf.scene.scale.set(3, 3, 3);
-        //     gltf.scene.rotation.set(0, 255, 0);
+        //     gltf.scene.position.set(99.5, 20.1, -27.5);
+        //     gltf.scene.scale.set(0.32, 0.32, 0.32);
+        //     gltf.scene.rotation.set(0, 3, 0);
         //     scene.add(gltf.scene);
-
+        //
         // });
-
+        //
         // loader.load('models/critters/world1/vanessa.glb', (gltf) => {
         //     gltf.scene.traverse(function(object) {
         //         object.frustumCulled = false;
-
-
+        //
+        //
         //     });
-        //     gltf.scene.position.set(100, 2, 320);
+        //     gltf.scene.position.set(0, 2, 200);
         //     gltf.scene.scale.set(6, 6, 6);
+        //     gltf.scene.rotation.set(0, 2.8, 0);
         //     scene.add(gltf.scene);
         //     //console.log(dumpObject(gltf.scene).join('\n'));
-
+        //
         // });
+
+
         // // box queen critter = vanessa
         // const geometryVanessa = new THREE.BoxGeometry();
         // const materialVanessa = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
@@ -1430,15 +1433,15 @@ function modelLoader() {
         // loader.load('models/critters/world1/pienb-beatle.glb', (gltf) => {
         //     gltf.scene.traverse(function(object) {
         //         object.frustumCulled = false;
-
-
         //     });
-        //     gltf.scene.position.set(-96, 8.4, 0);
-        //     gltf.scene.scale.set(4, 4, 4);
+        //     gltf.scene.position.set(-85, 10.3, -5);
+        //     gltf.scene.scale.set(8,8,8);
+        //     gltf.scene.rotation.set(0, 1, -0.06);
         //     scene.add(gltf.scene);
-        //     //console.log(dumpObject(gltf.scene).join('\n'));
-
         // });
+
+
+
 
         // loader.load('models/critters/world1/carmen-phone-new.glb', (gltf) => {
         //     gltf.scene.traverse(function(object) {
@@ -3146,13 +3149,15 @@ function loadCharacter(characterName) {
             gltf.scene.traverse(function(object) {
                 object.frustumCulled = false;
             });
-            gltf.scene.position.set(80, 20, -20);
-            gltf.scene.scale.set(3, 3, 3);
-            gltf.scene.rotation.set(0, 255, 0);
+            gltf.scene.position.set(99.5, 20.1, -27.5);
+            gltf.scene.scale.set(0.32, 0.32, 0.32);
+            gltf.scene.rotation.set(0, 3, 0);
             scene.add(gltf.scene);
 
         });
     }
+
+
 
     // carmen
     if (characterName == 'carmenroca1') {
@@ -3196,8 +3201,9 @@ function loadCharacter(characterName) {
 
 
             });
-            gltf.scene.position.set(100, 2, 320);
+            gltf.scene.position.set(0, 2, 200);
             gltf.scene.scale.set(6, 6, 6);
+            gltf.scene.rotation.set(0, 2.8, 0);
             scene.add(gltf.scene);
             //console.log(dumpObject(gltf.scene).join('\n'));
 
@@ -3207,7 +3213,7 @@ function loadCharacter(characterName) {
         const materialVanessa = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
         //const materialVanessa = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
         const cubeVanessa = new THREE.Mesh(geometryVanessa, materialVanessa);
-        cubeVanessa.position.set(100, 2, 320);
+        cubeVanessa.position.set(0, 2, 200);
         cubeVanessa.scale.set(50, 100, 60);
         cubeVanessa.userData.name = "vanessabosch";
         scene.add(cubeVanessa);
@@ -3253,10 +3259,41 @@ function loadCharacter(characterName) {
 
 
             });
-            gltf.scene.position.set(-96, 8.4, 0);
-            gltf.scene.scale.set(4, 4, 4);
+            gltf.scene.position.set(-85, 10.3, -5);
+            gltf.scene.scale.set(8,8,8);
+            gltf.scene.rotation.set(0, 1, -0.06);
             scene.add(gltf.scene);
 
+        });
+
+        loader.load('models/critters/world1/pienb-beatle.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(-102, 25, -5);
+            gltf.scene.scale.set(2,2,2);
+            gltf.scene.rotation.set(1.2, 0, -1);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world1/pienb-beatle.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(-97, 20, -16);
+            gltf.scene.scale.set(1.2,1.2,1.2);
+            gltf.scene.rotation.set(2, 1, -1);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world1/pienb-beatle.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(-75, 7.4, -13);
+            gltf.scene.scale.set(2.3,2.3,2.3);
+            gltf.scene.rotation.set(0, 1.2, 0);
+            scene.add(gltf.scene);
         });
     }
 
