@@ -12,7 +12,7 @@ import { RGBELoader } from './customPackage/loader/RGBELoader.js';
 import { VideoTexture } from './node_modules/three/src/textures/VideoTexture.js';
 var debug = false;
 var checkObjId = true;
-var worldId = 3; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 2; //1= socerers 2=lighthouse 3=forest 4= cave
 // var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 var soundGoGo = false;
@@ -70,7 +70,7 @@ var embedContainer = "embedContainerFilm" + "-" + worldId;
 var embedContainerGet = document.getElementById(embedContainer);
 
 var initOnce = 0;
-
+var allIsLoaded = false;
 
 var zVal = 0;
 var yVal = 0;
@@ -94,21 +94,29 @@ manager.onStart = function(url, itemsLoaded, itemsTotal) {
 };
 manager.onLoad = function() {
     console.log('Loading complete!');
+    allIsLoaded = true;
     //if (worldId == 2) {
         soundGo(worldId);
         soundLoad = true;
+
+        // videoPlayer.style.display = "hide";
+
     //}
     // if (worldId == 3) {
     //     soundGo(3);
     //     soundLoad = true;
     // }
-
+cssSteps();
 };
 manager.onProgress = function(url, itemsLoaded, itemsTotal) {
     //console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
 };
 
+
+loadFilm();
+
 pointerLock();
+
 
 var plane2;
 var sphereShape, sphereBody, world, physicsMaterial, walls = [],
@@ -1158,7 +1166,7 @@ function initCannon() {
 
 function init() {
     console.log("init run");
-    cssSteps();
+
     critterArray();
 
 
@@ -4346,6 +4354,8 @@ function cssSteps() {
         js: document.getElementById("world2welcome").style.visibility = "visible";
         js: document.getElementById("world3").style.visibility = "hidden";
         js: document.getElementById("world4").style.visibility = "hidden";
+
+        //js: document.getElementsByClassName("world2critter").style.visibility = "visible";
         //js: document.getElementById("louisbraddock2").style.visibility = "visible";
 
         js: document.getElementById("instructions1").style.visibility = "hidden";
@@ -4415,6 +4425,67 @@ function cssSteps() {
         js: document.getElementById("info4").style.visibility = "visible";
     }
 
+}
+
+function loadFilm(){
+
+
+  window.addEventListener('load', function(){
+    var newVideo = document.getElementById('videoElementId1');
+    var newVideo2 = document.getElementById('videoElementId2');
+    var newVideo3 = document.getElementById('videoElementId3');
+    newVideo.addEventListener('ended', function() {
+        //console.log('current time at = '+this.currentTime);
+        //this.currentTime = 0;
+        js: document.getElementById("videoElementId1").style.visibility = "hidden";
+        js: document.getElementById("videoElementId2").style.visibility = "visible";
+        newVideo2.currentTime = 0;
+        newVideo2.play();
+        // if (allIsLoaded == true) {
+        // js: document.getElementById("videoElementId").style.visibility = "hidden";
+        // //this.removeAttribute;
+        // }else {
+        // //this.play();
+        // }
+
+    }, false);
+    newVideo.play();
+
+
+      newVideo2.addEventListener('ended', function() {
+              //console.log('current time at = '+this.currentTime);
+
+              if (allIsLoaded == true) {
+              js: document.getElementById("videoElementId2").style.visibility = "hidden";
+              newVideo3.currentTime = 0;
+              newVideo3.play();
+              js: document.getElementById("videoElementId3").style.visibility = "visible";
+              //this.removeAttribute;
+              }else {
+              this.currentTime = 0;
+              this.play();
+              }
+
+          }, false);
+
+          newVideo3.addEventListener('ended', function() {
+                  //console.log('current time at = '+this.currentTime);
+
+                  //if (allIsLoaded == true) {
+                  //js: document.getElementById("videoElementId2").style.visibility = "hidden";
+                  //newVideo3.currentTime = 0;
+                  //newVideo3.play();
+                  js: document.getElementById("videoElementId3").style.visibility = "hidden";
+                  js: document.getElementById("videostart").style.zIndex = "-1";
+                  //this.removeAttribute;
+                  //}else {
+                  //this.currentTime = 0;
+                  //this.play();
+                  //}
+
+              }, false);
+          //newVideo2.play();
+        });
 }
 
 function pointerLock() {

@@ -126,13 +126,31 @@ video.currentTime = 0;
 //coin3.style.opacity = 1;
 
 </script> -->
+<div id="videostart">
+<video id="videoElementId1" autoplay muted>
+<source src="videos_coin/radio.mp4">
+</video>
+<video id="videoElementId2" muted>
+<source src="videos_coin/clubnight.mp4">
+</video>
+<video id="videoElementId3" muted>
+<source src="videos_coin/heart.mov">
+</video>
+</div>
+
 
     <div id="blocker">
+      <!-- <video id="videoPlayer" autoplay loop muted>
+      <source src="videos_coin/radio.mp4">
+      </video> -->
+
+
         <!-- <video id="critterFilm" loop crossOrigin="anonymous" playsinline style="display:none" src="video/2.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'> -->
         <!-- <source src="textures/sintel.ogv" type='video/ogg; codecs="theora, vorbis"'> -->
         <!-- <source src="video/sintel.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'> -->
         <!-- </video> -->
         <div id="instructions1">
+
             <br/>
             <!-- <img id="centertop" src="Images/FLIP THE COIN.png"/> -->
             <img id="centermiddle" src="Images/Laag 3.png" />
@@ -162,7 +180,6 @@ video.currentTime = 0;
             <img id="centerback" src="Images/coupled worlds big.png" />
             <span style="font-size: 40px;"></span> <br />
         </div>
-
 
         <div id="assets"><img src="textures/Heightmap.png" /></div>
         <div id="assets"><img src="textures/HeightmapForrest.png" /></div>
@@ -213,6 +230,7 @@ video.currentTime = 0;
     <div id="world1welcome">
         <!-- load world 1 sequence -->
         <img src="Images/1-WELCOME.png" id="welcome" onclick="this.style.visibility='hidden';">
+
         <!-- <img src="Images/place of.png" id="buttonrightoverlay" onclick="this.style.visibility='hidden';"> -->
     </div>
 
