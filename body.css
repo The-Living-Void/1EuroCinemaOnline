@@ -11,7 +11,7 @@ body {
 }
 
 
-/* 
+/*
 .fade-in {
     background-color: black;
     -moz-transition: all 1.2s ease-in;
@@ -319,6 +319,16 @@ canvas {
 #map2-1-2,
 #map2-1-3,
 #map2-1-4,
+#map2-4-0,
+#map2-4-1,
+#map2-4-2,
+#map2-4-3,
+#map2-4-4,
+#map2-3-1,
+#map2-3-2,
+#map2-3-3,
+#map2-3-4,
+#map2-3-5,
 #map-stan {
     z-index: 2;
     text-align: horizontal;
