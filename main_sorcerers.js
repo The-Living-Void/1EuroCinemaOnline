@@ -15,7 +15,7 @@ var checkObjId = true;
 var worldId = 4; //1= socerers 2=lighthouse 3=forest 4= cave
 // var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
-var soundGoGo = true;
+var soundGoGo = false;
 var distanceWorld1 = 50.0;
 var distanceWorld2 = 40.0;
 var distanceWorld3 = 70.0;
@@ -190,14 +190,14 @@ function initCannon() {
         sy = 0.5,
         sz = 0.5;
 
-    // Create a sphere
+    // Create a sphere // POV
     var mass = 2,
         radius = 1.3;
     sphereShape = new CANNON.Sphere(radius);
     sphereBody = new CANNON.Body({ mass: mass, material: physicsMaterial });
     sphereBody.addShape(sphereShape);
     // sphereBody.position.set(nx * sx * 0.5, ny * sy + radius * 2, nz * sz * 0.5);
-    sphereBody.position.set(90, 70, 40);
+    sphereBody.position.set(150, 40, 50);
     sphereBody.linearDamping = 0.9;
     world.addBody(sphereBody);
 
@@ -982,14 +982,14 @@ function initCannon() {
         var world4wall1Body = new CANNON.Body({ mass: 0 });
         world4wall1Body.addShape(world4wall1Shape);
         world4wall1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
-        world4wall1Body.position.set(300, 0, 0);
+        world4wall1Body.position.set(315, 0, 0);
         world.addBody(world4wall1Body);
 
         var world4wall2Shape = new CANNON.Box(new CANNON.Vec3(400, 200, 1));
         var world4wall2Body = new CANNON.Body({ mass: 0 });
         world4wall2Body.addShape(world4wall2Shape);
         world4wall2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
-        world4wall2Body.position.set(-130, 0, 0);
+        world4wall2Body.position.set(-160, 0, 0);
         world.addBody(world4wall2Body);
 
         var world4wall3Shape = new CANNON.Box(new CANNON.Vec3(1, 200, 400));
@@ -1003,14 +1003,14 @@ function initCannon() {
         var world4wall4Body = new CANNON.Body({ mass: 0 });
         world4wall4Body.addShape(world4wall4Shape);
         world4wall4Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -Math.PI / 2);
-        world4wall4Body.position.set(0, 0, 170);
+        world4wall4Body.position.set(0, 0, 190);
         world.addBody(world4wall4Body);
 
         var caverockShape = new CANNON.Sphere(48);
         var caverockBody = new CANNON.Body({ mass: 0, material: physicsMaterial });
         caverockBody.addShape(caverockShape);
         caverockBody.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1);
-        caverockBody.position.set(100, -13, 0);
+        caverockBody.position.set(100, -14, -5);
         world.addBody(caverockBody);
 
         var caverock2Shape = new CANNON.Sphere(25);
@@ -1020,47 +1020,137 @@ function initCannon() {
         caverock2Body.position.set(105, 11, 17);
         world.addBody(caverock2Body);
 
-        var caverock2Shape = new CANNON.Sphere(30);
-        var caverock2Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
-        caverock2Body.addShape(caverock2Shape);
-        caverock2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1);
-        caverock2Body.position.set(87, 3, -17);
-        world.addBody(caverock2Body);
+        var caverock3Shape = new CANNON.Sphere(30);
+        var caverock3Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        caverock3Body.addShape(caverock3Shape);
+        caverock3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1);
+        caverock3Body.position.set(87, 3, -17);
+        world.addBody(caverock3Body);
 
-        var cavecrystal1Shape = new CANNON.Box(new CANNON.Vec3(1, 40, 7));
+        var caverock4Shape = new CANNON.Sphere(25);
+        var caverock4Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        caverock4Body.addShape(caverock4Shape);
+        caverock4Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1);
+        caverock4Body.position.set(110, 11, -10);
+        world.addBody(caverock4Body);
+
+        var caverock5Shape = new CANNON.Sphere(10);
+        var caverock5Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        caverock5Body.addShape(caverock5Shape);
+        caverock5Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1);
+        caverock5Body.position.set(127, 15, 8);
+        world.addBody(caverock5Body);
+
+        var caverock6Shape = new CANNON.Sphere(10);
+        var caverock6Body = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        caverock6Body.addShape(caverock6Shape);
+        caverock6Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1);
+        caverock6Body.position.set(120, 15, 12);
+        world.addBody(caverock6Body);
+
+        var caveCeilingShape = new CANNON.Box(new CANNON.Vec3(20, 20, 1));
+        var caveCeilingBody = new CANNON.Body({mass: 0});
+        caveCeilingBody.addShape(caveCeilingShape);
+        //chickBody.addShape(sphereChickShape);
+        caveCeilingBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+        caveCeilingBody.position.set(100, 30, 0);
+        caveCeilingBody.angularVelocity.set(0, 0, 0); // initial velocity
+        world.addBody(caveCeilingBody);
+
+        var caveCeiling2Shape = new CANNON.Box(new CANNON.Vec3(20, 20, 1));
+        var caveCeiling2Body = new CANNON.Body({mass: 0});
+        caveCeiling2Body.addShape(caveCeiling2Shape);
+        //chickBody.addShape(sphereChickShape);
+        caveCeiling2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+        caveCeiling2Body.position.set(95, 25, -17);
+        caveCeiling2Body.angularVelocity.set(0, 0, 0); // initial velocity
+        world.addBody(caveCeiling2Body);
+
+        var caveCeiling3Shape = new CANNON.Box(new CANNON.Vec3(20, 20, 1));
+        var caveCeiling3Body = new CANNON.Body({mass: 0});
+        caveCeiling3Body.addShape(caveCeiling3Shape);
+        //chickBody.addShape(sphereChickShape);
+        caveCeiling3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+        caveCeiling3Body.position.set(95, 28, -12);
+        caveCeiling3Body.angularVelocity.set(0, 0, 0); // initial velocity
+        world.addBody(caveCeiling3Body);
+
+        var cavecrystal1Shape = new CANNON.Box(new CANNON.Vec3(1, 20, 7));
         var cavecrystal1Body = new CANNON.Body({ mass: 0 });
         cavecrystal1Body.addShape(cavecrystal1Shape);
         cavecrystal1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 2.3);
-        cavecrystal1Body.position.set(92, 30, -11);
+        cavecrystal1Body.position.set(92, 50, -11);
         world.addBody(cavecrystal1Body);
 
-        var cavecrystal2Shape = new CANNON.Box(new CANNON.Vec3(1, 40, 7));
+        var cavecrystal2Shape = new CANNON.Box(new CANNON.Vec3(1, 20, 7));
         var cavecrystal2Body = new CANNON.Body({ mass: 0 });
         cavecrystal2Body.addShape(cavecrystal2Shape);
         cavecrystal2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1.3);
-        cavecrystal2Body.position.set(106, 30, -12);
+        cavecrystal2Body.position.set(106, 50, -12);
         world.addBody(cavecrystal2Body);
 
-        var cavecrystal3Shape = new CANNON.Box(new CANNON.Vec3(1, 40, 10));
+        var cavecrystal3Shape = new CANNON.Box(new CANNON.Vec3(1, 20, 10));
         var cavecrystal3Body = new CANNON.Body({ mass: 0 });
         cavecrystal3Body.addShape(cavecrystal3Shape);
         cavecrystal3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 2.9);
-        cavecrystal3Body.position.set(113, 30, 0);
+        cavecrystal3Body.position.set(113, 40, 0);
         world.addBody(cavecrystal3Body);
 
-        var cavecrystal4Shape = new CANNON.Box(new CANNON.Vec3(1, 40, 11));
+        var cavecrystal4Shape = new CANNON.Box(new CANNON.Vec3(1, 20, 11));
         var cavecrystal4Body = new CANNON.Body({ mass: 0 });
         cavecrystal4Body.addShape(cavecrystal4Shape);
         cavecrystal4Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1.7);
-        cavecrystal4Body.position.set(100, 30, 11);
+        cavecrystal4Body.position.set(100, 50, 11);
         world.addBody(cavecrystal4Body);
 
-        var cavecrystal5Shape = new CANNON.Box(new CANNON.Vec3(1, 40, 11));
+        var cavecrystal5Shape = new CANNON.Box(new CANNON.Vec3(1, 20, 11));
         var cavecrystal5Body = new CANNON.Body({ mass: 0 });
         cavecrystal5Body.addShape(cavecrystal5Shape);
         cavecrystal5Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 3.3);
-        cavecrystal5Body.position.set(88, 30, 2);
+        cavecrystal5Body.position.set(88, 50, 2);
         world.addBody(cavecrystal5Body);
+
+        var serverrack1Shape = new CANNON.Box(new CANNON.Vec3(5, 10, 3));
+        var serverrack1Body = new CANNON.Body({ mass: 0 });
+        serverrack1Body.addShape(serverrack1Shape);
+        serverrack1Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), -1.4);
+        serverrack1Body.position.set(284, 6, -100);
+        world.addBody(serverrack1Body);
+
+        var serverrack2Shape = new CANNON.Box(new CANNON.Vec3(3, 10, 5));
+        var serverrack2Body = new CANNON.Body({ mass: 0 });
+        serverrack2Body.addShape(serverrack2Shape);
+        serverrack2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1);
+        serverrack2Body.position.set(300, 6, -86);
+        world.addBody(serverrack2Body);
+
+        var serverrack3Shape = new CANNON.Box(new CANNON.Vec3(5, 5, 13));
+        var serverrack3Body = new CANNON.Body({ mass: 0 });
+        serverrack3Body.addShape(serverrack3Shape);
+        serverrack3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1);
+        serverrack3Body.position.set(309, 4, -62);
+        world.addBody(serverrack3Body);
+
+        var serverrack4Shape = new CANNON.Box(new CANNON.Vec3(5, 5, 13));
+        var serverrack4Body = new CANNON.Body({ mass: 0 });
+        serverrack4Body.addShape(serverrack4Shape);
+        serverrack4Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 0, 1), 0.8);
+        serverrack4Body.position.set(278, 0, -74);
+        world.addBody(serverrack4Body);
+
+        var serverrack5Shape = new CANNON.Box(new CANNON.Vec3(4, 15, 5));
+        var serverrack5Body = new CANNON.Body({ mass: 0 });
+        serverrack5Body.addShape(serverrack5Shape);
+        serverrack5Body.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1.4);
+        serverrack5Body.position.set(290, 12, -20);
+        world.addBody(serverrack5Body);
+
+        var carShape = new CANNON.Sphere(5);
+        var carBody = new CANNON.Body({ mass: 0, material: physicsMaterial });
+        carBody.addShape(carShape);
+        carBody.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), 1);
+        carBody.position.set(280, 4.5, -37);
+        world.addBody(carBody);
 
 
     }
@@ -2112,7 +2202,7 @@ function modelLoader() {
         const far = 3000;
         scene.fog = new THREE.Fog(color, near, far);
 
-        let model1, model2, model3, model4, model5, model6;
+        let model1, model2, model3, model4, model5, model6, model7, model8, model9, model10, model11, model12, model13, model14, model15, model16;
 
         //add names and locations of models here #SUUS
         let p1 = loadModel('models/crystal-cave/crystal-cave.gltf').then(result => { model1 = result.scene.children[0]; });
@@ -2121,6 +2211,16 @@ function modelLoader() {
         let p4 = loadModel('models/island.glb').then(result => { model4 = result.scene.children[0]; });
         let p5 = loadModel('models/islandCollisionMap.glb').then(result => { model5 = result.scene.children[0]; });
         let p6 = loadModel('models/gemstone-02/gem.gltf').then(result => { model6 = result.scene.children[0]; });
+        let p7 = loadModel('models/5GTower/scene.gltf').then(result => { model7 = result.scene.children[0]; });
+        let p8 = loadModel('models/5GTower/scene.gltf').then(result => { model8 = result.scene.children[0]; });
+        let p9 = loadModel('models/5GTower/scene.gltf').then(result => { model9 = result.scene.children[0]; });
+        let p10 = loadModel('models/5GTower/scene.gltf').then(result => { model10 = result.scene.children[0]; });
+        let p11 = loadModel('models/5GTower/scene.gltf').then(result => { model11 = result.scene.children[0]; });
+        let p12 = loadModel('models/serverrack/scene.gltf').then(result => { model12 = result.scene.children[0]; });
+        let p13 = loadModel('models/serverrack/scene.gltf').then(result => { model13 = result.scene.children[0]; });
+        let p14 = loadModel('models/serverrack/scene.gltf').then(result => { model14 = result.scene.children[0]; });
+        let p15 = loadModel('models/serverrack/scene.gltf').then(result => { model15 = result.scene.children[0]; });
+        let p16 = loadModel('models/serverrack/scene.gltf').then(result => { model16 = result.scene.children[0]; });
 
 
         function loadModel(url) {
@@ -2143,26 +2243,56 @@ function modelLoader() {
 
         });
 
+// queen critter valentine
         loader.load('models/critters/world4/valentine.glb', (gltf) => {
             gltf.scene.traverse(function(object) {
                 object.frustumCulled = false;
-
-
             });
-            gltf.scene.position.set(245, 5, 0);
-            gltf.scene.scale.set(0.7, 0.7, 0.7);
+            gltf.scene.position.set(120, 7.5, 43);
+            gltf.scene.scale.set(0.3, 0.3, 0.3);
             scene.add(gltf.scene);
-
         });
 
+        // box queen critter = valentine
+        const geometryValentine = new THREE.BoxGeometry();
+        const materialValentine = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        //const materialValentine = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cubeValentine = new THREE.Mesh(geometryValentine, materialValentine);
+        cubeValentine.position.set(120, 10, 43);
+        cubeValentine.scale.set(5,5,5);
+        cubeValentine.userData.name = "valentinelangeard";
+        scene.add(cubeValentine);
+
+        loader.load('models/critters/world4/valentine.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(110, 9.5, 37);
+            gltf.scene.scale.set(0.3, 0.3, 0.3);
+            gltf.scene.rotation.set(0,1.7,0);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world4/valentine.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(112, 28.2, 34.4);
+            gltf.scene.scale.set(0.3, 0.3, 0.3);
+            gltf.scene.rotation.set(0,2,0);
+            scene.add(gltf.scene);
+        });
+
+// queen critter minhong
         loader.load('models/critters/world4/minhong.glb', (gltf) => {
             gltf.scene.traverse(function(object) {
                 object.frustumCulled = false;
 
 
             });
-            gltf.scene.position.set(0, 0, 100);
-            gltf.scene.scale.set(3.5, 3.5, 3.5);
+            gltf.scene.position.set(290, 3, -60);
+            gltf.scene.scale.set(2, 2, 2);
+            gltf.scene.rotation.set(0.2,3.6,0.2);
             scene.add(gltf.scene);
 
         });
@@ -2171,21 +2301,100 @@ function modelLoader() {
         const materialMinhong = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
         //const materialMinhong = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
         const cubeMinhong = new THREE.Mesh(geometryMinhong, materialMinhong);
-        cubeMinhong.position.set(0, 0, 100);
+        cubeMinhong.position.set(290, 4, -60);
         cubeMinhong.scale.set(30, 40, 50);
         cubeMinhong.userData.name = "minhongyu";
         scene.add(cubeMinhong);
 
-        loader.load('models/critters/world4/emily.glb', (gltf) => {
+
+        loader.load('models/critters/world4/minhong.glb', (gltf) => {
             gltf.scene.traverse(function(object) {
                 object.frustumCulled = false;
 
 
             });
-            gltf.scene.position.set(-180, 30, -200);
-            gltf.scene.scale.set(5, 5, 5);
+            gltf.scene.position.set(288, 1, -40);
+            gltf.scene.scale.set(2, 2, 2);
+            gltf.scene.rotation.set(1,1,1);
             scene.add(gltf.scene);
+        });
 
+
+
+// queen critter emily
+        loader.load('models/critters/world4/emily.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(-145, 20, -20);
+            gltf.scene.scale.set(4,4,4);
+            scene.add(gltf.scene);
+        });
+
+// box queen critter = emily
+        const geometryEmily = new THREE.BoxGeometry();
+        const materialEmily = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        //const materialEmily = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cubeEmily = new THREE.Mesh(geometryEmily, materialEmily);
+        cubeEmily.position.set(-145, 25, -20);
+        cubeEmily.scale.set(10,10,10);
+        cubeEmily.userData.name = "emilyanderson";
+        scene.add(cubeEmily);
+
+
+
+        loader.load('models/critters/world4/emily.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(-148, 15, -10);
+            gltf.scene.scale.set(2,2,2);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world4/emily.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(-150, 18, 9);
+            gltf.scene.scale.set(1,1,1);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world4/emily.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(-153, 25, 5);
+            gltf.scene.scale.set(1,1,1);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world4/emily.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(-155, 25, 30);
+            gltf.scene.scale.set(4,4,4);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world4/emily.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(-135, 17, 27);
+            gltf.scene.scale.set(2.5,2.5,2.5);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world4/emily.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(-180, 20, -8);
+            gltf.scene.scale.set(4,4,4);
+            scene.add(gltf.scene);
         });
 
         loader.load('models/critters/world4/benjamin-anim.glb', (gltf) => {
@@ -2199,7 +2408,7 @@ function modelLoader() {
 
         });
 
-        Promise.all([p1, p2, p3, p4, p5, p6]).then(() => {
+        Promise.all([p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16]).then(() => {
             var scaleSizeModel1 = 2;
             model1.scale.set(scaleSizeModel1, scaleSizeModel1, scaleSizeModel1);
             model1.position.set(20, 50, 0);
@@ -2229,6 +2438,61 @@ function modelLoader() {
             model6.position.set(100, 40, 0);
             //model6.rotation.x = Math.PI/2;
 
+            var scaleSizeModel7 = 2;
+            model7.scale.set(scaleSizeModel7, scaleSizeModel7, scaleSizeModel7);
+            model7.position.set(-160, 0, 0);
+
+            var scaleSizeModel8 = 3;
+            model8.scale.set(scaleSizeModel8, scaleSizeModel8, scaleSizeModel8);
+            model8.position.set(-160, 0, 20);
+
+            var scaleSizeModel9 = 3;
+            model9.scale.set(scaleSizeModel9, scaleSizeModel9, scaleSizeModel9);
+            model9.position.set(300, 0, 0);
+
+            var scaleSizeModel10 = 2;
+            model10.scale.set(scaleSizeModel10, scaleSizeModel10, scaleSizeModel10);
+            model10.position.set(300, 0, -100);
+
+            var scaleSizeModel11 = 2;
+            model11.scale.set(scaleSizeModel11, scaleSizeModel11, scaleSizeModel11);
+            model11.position.set(15, 10, -220);
+
+            var scaleSizeModel12 = 0.015;
+            model12.scale.set(scaleSizeModel12, scaleSizeModel12, scaleSizeModel12);
+            model12.position.set(280, -2, -90);
+            model12.rotation.y = 0;
+            model12.rotation.x = 0;
+            model12.rotation.z = 4;
+
+            var scaleSizeModel13 = 0.01;
+            model13.scale.set(scaleSizeModel13, scaleSizeModel13, scaleSizeModel13);
+            model13.position.set(285, -5, -100);
+            model13.rotation.y = -0.1;
+            // model13.rotation.x = 1;
+            model13.rotation.z = 0.2;
+
+            var scaleSizeModel14 = 0.01;
+            model14.scale.set(scaleSizeModel14, scaleSizeModel14, scaleSizeModel14);
+            model14.position.set(300, -5, -85);
+            // model14.rotation.y = 0;
+            // model14.rotation.x = -0.2;
+            model14.rotation.z = 4;
+
+            var scaleSizeModel15 = 0.015;
+            model15.scale.set(scaleSizeModel15, scaleSizeModel15, scaleSizeModel15);
+            model15.position.set(295, 1, -70);
+            model15.rotation.y = 1;
+            model15.rotation.x = 0;
+            model15.rotation.z = 3;
+
+            var scaleSizeModel16 = 0.01;
+            model16.scale.set(scaleSizeModel16, scaleSizeModel16, scaleSizeModel16);
+            model16.position.set(288, 6, -20);
+            model16.rotation.y = 0.2;
+            // model16.rotation.x = 1;
+            model16.rotation.z = -1.8;
+
             //add models 2 scene here #SUUS
             scene.add(model1);
             scene.add(model2);
@@ -2236,6 +2500,16 @@ function modelLoader() {
             scene.add(model4);
             scene.add(model5);
             scene.add(model6);
+            scene.add(model7);
+            scene.add(model8);
+            scene.add(model9);
+            scene.add(model10);
+            scene.add(model11);
+            scene.add(model12);
+            scene.add(model13);
+            scene.add(model14);
+            scene.add(model15);
+            scene.add(model16);
             //continue the process
         });
     }
