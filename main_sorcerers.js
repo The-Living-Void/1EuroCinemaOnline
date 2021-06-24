@@ -54,6 +54,7 @@ const soundBase = new THREE.Audio(listener);
 const audioLoader = new THREE.AudioLoader();
 
 var muteSound = false;
+var startVideo = false;
 var soundLoad = false;
 var fadeSpeed = 0.007;
 //}
@@ -132,8 +133,10 @@ manager.onProgress = function(url, itemsLoaded, itemsTotal) {
     //console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
 };
 
+if (startVideo == true) {
+loadFilm();  
+}
 
-loadFilm();
 
 pointerLock();
 
