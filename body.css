@@ -209,6 +209,7 @@ canvas {
 #world1critteroverlay3,
 #world1critteroverlay4,
 #world1critteroverlay5,
+#world1critteroverlay6,
 #world1crittercounter1,
 #world1crittercounter2,
 #world1crittercounter3,
@@ -249,7 +250,9 @@ canvas {
 #world3critteroverlay1,
 #world3critteroverlay2,
 #world3critteroverlay3,
-#world3critteroverlay4 {
+#world3critteroverlay4,
+#world3critteroverlay5,
+#world3critteroverlay6 {
     z-index: 1;
     text-align: horizontal;
     margin-right: -0.7em;
@@ -280,11 +283,15 @@ canvas {
 #world4critteroverlay2,
 #world4critteroverlay3,
 #world4critteroverlay4,
+#world4critteroverlay5,
+#world4critteroverlay6,
 #world2critteroverlay,
 #world2critteroverlay1,
 #world2critteroverlay2,
 #world2critteroverlay3,
-#world2critteroverlay4 {
+#world2critteroverlay4,
+#world2critteroverlay5,
+#world2critteroverlay6 {
     z-index: 1;
     text-align: horizontal;
     margin-right: 0em;
@@ -315,20 +322,28 @@ canvas {
 #map2-2-2,
 #map2-2-3,
 #map2-2-4,
+#map2-2-5,
+#map2-2-6,
 #map2-1-1,
 #map2-1-2,
 #map2-1-3,
 #map2-1-4,
+#map2-1-5,
+#map2-1-6,
 #map2-4-0,
 #map2-4-1,
 #map2-4-2,
 #map2-4-3,
 #map2-4-4,
+#map2-4-5,
+#map2-4-6,
 #map2-3-1,
 #map2-3-2,
 #map2-3-3,
 #map2-3-4,
 #map2-3-5,
+#map2-3-6,
+#map2-3-7,
 #map-stan {
     z-index: 2;
     text-align: horizontal;
@@ -448,7 +463,17 @@ canvas {
 #world2foundfilm,
 #world3foundfilm,
 #world4foundfilm,
-#bluepearl1 {
+#world1critterEvent,
+#world2critterEvent,
+#world3critterEvent,
+#world4critterEvent,
+#world5critterEvent,
+#world1critterEvent2,
+#world2critterEvent2,
+#world3critterEvent2,
+#world4critterEvent2,
+#world4critterEvent2
+{
     visibility: hidden;
 }
 
@@ -654,6 +679,9 @@ canvas {
 #hintsfade2-8,
 #hintsfade2-9,
 #hintsfade2-10,
+#hintsfade2-11,
+#hintsfade2-13,
+#hintsfade2-14,
 #hintsfade4-1,
 #hintsfade4-2,
 #hintsfade1-3,
@@ -664,6 +692,10 @@ canvas {
 #hintsfade1-8,
 #hintsfade1-9,
 #hintsfade1-10,
+#hintsfade1-11,
+#hintsfade1-12,
+#hintsfade1-13,
+#hintsfade1-14,
 #hintsfade3-1,
 #hintsfade3-4,
 #hintsfade3-5,
@@ -672,6 +704,11 @@ canvas {
 #hintsfade3-8,
 #hintsfade3-9,
 #hintsfade3-10,
+#hintsfade3-11,
+#hintsfade3-12,
+#hintsfade3-13,
+#hintsfade3-14,
+#hintsfade3-15,
 #hintsfade4-3,
 #hintsfade4-4,
 #hintsfade4-5,
@@ -679,7 +716,10 @@ canvas {
 #hintsfade4-7,
 #hintsfade4-8,
 #hintsfade4-9,
-#hintsfade4-10 {
+#hintsfade4-10,
+#hintsfade4-12,
+#hintsfade4-13,
+#hintsfade4-14 {
     max-height: 100em;
     position: absolute;
     max-width: 60em;
