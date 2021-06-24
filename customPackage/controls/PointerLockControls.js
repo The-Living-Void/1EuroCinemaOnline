@@ -218,8 +218,10 @@ var PointerLockControls = function (camera, cannonBody) {
       js: document.getElementById("encyclo-4").style.top = "0%";
       js: document.getElementById("encyclo2").style.visibility = "visible";
       js: document.getElementById("encyclo2").style.top = "0%";
-      js: document.getElementById("encyclo4").style.visibility = "visible";
+      js: document.getElementById("encyclo-4").style.visibility = "visible";
       js: document.getElementById("encyclo3").style.top = "0%";
+      js: document.getElementById("encyclo3").style.visibility = "visible";
+
     }else {
       js: document.getElementById("encyclo1").style.top = "-195%";
       js: document.getElementById("encyclo-4").style.top = "-195%";
