@@ -113,7 +113,7 @@ manager.onProgress = function(url, itemsLoaded, itemsTotal) {
 };
 
 
-loadFilm();
+// loadFilm();
 
 pointerLock();
 
