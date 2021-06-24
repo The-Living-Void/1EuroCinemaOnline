@@ -12,15 +12,39 @@ import { RGBELoader } from './customPackage/loader/RGBELoader.js';
 import { VideoTexture } from './node_modules/three/src/textures/VideoTexture.js';
 var debug = false;
 var checkObjId = true;
-var worldId = 2; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 4; //1= socerers 2=lighthouse 3=forest 4= cave
+//var worldId = getRandomInt(4)+1;
+
+//console.log("checkRandom = "+checkRandom);
+
 // var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
-var soundGoGo = true;
+
+var soundGoGo = false;
 var distanceWorld1 = 50.0;
 var distanceWorld2 = 40.0;
 var distanceWorld3 = 70.0;
 var distanceWorld4 = 40.0;
 var distance2Click = "distanceWorld" + worldId;
+
+var soundGoGo = true;
+if (worldId == 1) {
+    var distance2Click = 50.0;
+}
+if (worldId == 2) {
+    var distance2Click = 40.0;
+}
+if (worldId == 3) {
+    var distance2Click = 70.0;
+}
+if (worldId == 4) {
+    var distance2Click = 40.0;
+}
+// var distanceWorld1 = 50.0;
+// var distanceWorld2 = 40.0;
+// var distanceWorld3 = 70.0;
+// var distanceWorld4 = 40.0;
+// var distance2Click = "distanceWorld" + worldId;
 
 //if (soundGoGo==true) {
 const listener = new THREE.AudioListener();
@@ -34,6 +58,7 @@ const soundBase = new THREE.Audio(listener);
 const audioLoader = new THREE.AudioLoader();
 
 var muteSound = false;
+var startVideo = false;
 var soundLoad = false;
 var fadeSpeed = 0.007;
 //}
@@ -112,8 +137,10 @@ manager.onProgress = function(url, itemsLoaded, itemsTotal) {
     //console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
 };
 
+if (startVideo == true) {
+loadFilm();
+}
 
-// loadFilm();
 
 pointerLock();
 
@@ -3844,6 +3871,7 @@ function cursorCheck() {
     raycaster.setFromCamera(mouse, camera);
 
     var intersects = raycaster.intersectObjects(scene.children, true);
+    var intersected = false;
 
     // If only interested in one intersection, you can use .intersectObject()
 
@@ -3937,6 +3965,10 @@ function cursorCheck() {
                     foundConstructorGet.style.visibility = "hidden";
                     foundConstructorGet.style.display = "none";
                 }
+                if (foundConstructorGet.style.display == "none") {
+                        window.removeEventListener("click", clickedOnCritter, false);
+                        console.log("After 3 seconds!");
+                    }
                 console.log('intersect!' + userD);
                 // console.log("id" + id);
 
@@ -4433,7 +4465,23 @@ function loadFilm(){
   window.addEventListener('load', function(){
     var newVideo = document.getElementById('videoElementId1');
     var newVideo2 = document.getElementById('videoElementId2');
-    var newVideo3 = document.getElementById('videoElementId3');
+    var newVideo3 = document.getElementById('videoElementId'+worldId);
+    var videoString = 'videoElementId3World1';
+
+    if (worldId == 1) {
+    newVideo3 = document.getElementById('videoElementId3World1');
+    videoString = 'videoElementId3World1';
+    }else if (worldId == 2) {
+    newVideo3 = document.getElementById('videoElementId3World2');
+    videoString = 'videoElementId3World2';
+    }else if (worldId == 3) {
+    newVideo3 = document.getElementById('videoElementId3World3');
+    videoString = 'videoElementId3World3';
+    }else if (worldId == 4) {
+    newVideo3 = document.getElementById('videoElementId3World4');
+    videoString = 'videoElementId3World4';
+    }
+
     newVideo.addEventListener('ended', function() {
         //console.log('current time at = '+this.currentTime);
         //this.currentTime = 0;
@@ -4459,7 +4507,17 @@ function loadFilm(){
               js: document.getElementById("videoElementId2").style.visibility = "hidden";
               newVideo3.currentTime = 0;
               newVideo3.play();
-              js: document.getElementById("videoElementId3").style.visibility = "visible";
+              js: document.getElementById(videoString).style.visibility = "visible";
+              // if (worldId==1) {
+              // js: document.getElementById("videoElementId3World1").style.visibility = "visible";
+              // }else if (worldId==2) {
+              // js: document.getElementById("videoElementId3World2").style.visibility = "visible";
+              // }else if (worldId==3) {
+              // js: document.getElementById("videoElementId3World3").style.visibility = "visible";
+              // }else if (worldId==4) {
+              // js: document.getElementById("videoElementId3World4").style.visibility = "visible";
+              // }
+
               //this.removeAttribute;
               }else {
               this.currentTime = 0;
@@ -4475,7 +4533,7 @@ function loadFilm(){
                   //js: document.getElementById("videoElementId2").style.visibility = "hidden";
                   //newVideo3.currentTime = 0;
                   //newVideo3.play();
-                  js: document.getElementById("videoElementId3").style.visibility = "hidden";
+                  js: document.getElementById(videoString).style.visibility = "hidden";
                   js: document.getElementById("videostart").style.zIndex = "-1";
                   //this.removeAttribute;
                   //}else {
@@ -4787,4 +4845,8 @@ function soundMute() {
         listener.setMasterVolume(volFade);
 
     }
+}
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
 }
