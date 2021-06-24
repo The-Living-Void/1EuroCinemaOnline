@@ -12,7 +12,7 @@ import { RGBELoader } from './customPackage/loader/RGBELoader.js';
 import { VideoTexture } from './node_modules/three/src/textures/VideoTexture.js';
 var debug = false;
 var checkObjId = true;
-var worldId = 4; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 3; //1= socerers 2=lighthouse 3=forest 4= cave
 //var worldId = getRandomInt(4)+1;
 
 //console.log("checkRandom = "+checkRandom);
@@ -4371,7 +4371,7 @@ function cssSteps() {
         js: document.getElementById("encyclo3").style.visibility = "hidden";
         js: document.getElementById("encyclo-4").style.visibility = "hidden";
 
-        js: document.getElementById("info1").style.visibility = "hidden"; //for development sake commnt out
+        js: document.getElementById("info1").style.visibility = "visible";
         js: document.getElementById("info2").style.visibility = "hidden";
         js: document.getElementById("info3").style.visibility = "hidden";
         js: document.getElementById("info4").style.visibility = "hidden";
