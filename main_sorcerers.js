@@ -16,11 +16,23 @@ var worldId = 2; //1= socerers 2=lighthouse 3=forest 4= cave
 // var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 var soundGoGo = true;
-var distanceWorld1 = 50.0;
-var distanceWorld2 = 40.0;
-var distanceWorld3 = 70.0;
-var distanceWorld4 = 40.0;
-var distance2Click = "distanceWorld" + worldId;
+if (worldId == 1) {
+    var distance2Click = 50.0;
+}
+if (worldId == 2) {
+    var distance2Click = 40.0;
+}
+if (worldId == 3) {
+    var distance2Click = 70.0;
+}
+if (worldId == 4) {
+    var distance2Click = 40.0;
+}
+// var distanceWorld1 = 50.0;
+// var distanceWorld2 = 40.0;
+// var distanceWorld3 = 70.0;
+// var distanceWorld4 = 40.0;
+// var distance2Click = "distanceWorld" + worldId;
 
 //if (soundGoGo==true) {
 const listener = new THREE.AudioListener();
