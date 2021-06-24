@@ -13,6 +13,10 @@ import { VideoTexture } from './node_modules/three/src/textures/VideoTexture.js'
 var debug = false;
 var checkObjId = true;
 var worldId = 4; //1= socerers 2=lighthouse 3=forest 4= cave
+//var worldId = getRandomInt(4)+1;
+
+//console.log("checkRandom = "+checkRandom);
+
 // var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 
@@ -134,7 +138,7 @@ manager.onProgress = function(url, itemsLoaded, itemsTotal) {
 };
 
 if (startVideo == true) {
-loadFilm();  
+loadFilm();
 }
 
 
@@ -4841,4 +4845,8 @@ function soundMute() {
         listener.setMasterVolume(volFade);
 
     }
+}
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
 }
