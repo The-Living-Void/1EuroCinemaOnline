@@ -21,11 +21,11 @@ var worldId = 3; //1= socerers 2=lighthouse 3=forest 4= cave
 var adjustHeigth = -20;
 
 var soundGoGo = false;
-var distanceWorld1 = 50.0;
-var distanceWorld2 = 40.0;
-var distanceWorld3 = 70.0;
-var distanceWorld4 = 40.0;
-var distance2Click = "distanceWorld" + worldId;
+// var distanceWorld1 = 50.0;
+// var distanceWorld2 = 40.0;
+// var distanceWorld3 = 70.0;
+// var distanceWorld4 = 40.0;
+// var distance2Click = "distanceWorld" + worldId;
 
 var soundGoGo = true;
 if (worldId == 1) {
@@ -3550,7 +3550,7 @@ function loadCharacter(characterName) {
             gltf.scene.scale.set(0.1, 0.1, 0.1);
             gltf.scene.rotation.set(0, 0, -1.55);
             scene.add(gltf.scene);
-            console.log(dumpObject(gltf.scene).join('\n'));
+            //console.log(dumpObject(gltf.scene).join('\n'));
         });
         // box queen critter = nathalie
         const geometryNathalie = new THREE.BoxGeometry();
@@ -4054,17 +4054,17 @@ function addGeoEventWorld3() {
     scene.add(geoeventWorld3videoScreen);
 }
 //world4
-//function addGeoEventWorld4{
-// const geoeventWorld4Texture = new THREE.VideoTexture(geoeventmeggie);
-// const geoeventWorld4Material =  new THREE.MeshBasicMaterial( {map: geoeventWorld4Texture, side: THREE.FrontSide, toneMapped: false} );
-//
-// const geoeventWorld4screen = new THREE.TorusGeometry( 10, 3, 16, 100 );
-// const geoeventWorld4videoScreen = new THREE.Mesh(geoeventWorld4screen, geoeventWorld4Material);
-// geoeventWorld4videoScreen.rotation.set(200, 0, 0);
-// geoeventWorld4videoScreen.scale.set(50, 50, 50);
-// geoeventWorld4videoScreen.position.set(0, 0, 170);
-// scene.add(geoeventWorld4videoScreen);
-//}
+function addGeoEventWorld4() {
+    const geoeventWorld4Texture = new THREE.VideoTexture(geoeventmeggie);
+    const geoeventWorld4Material = new THREE.MeshBasicMaterial({ map: geoeventWorld4Texture, side: THREE.FrontSide, toneMapped: false });
+
+    const geoeventWorld4screen = new THREE.TorusGeometry(10, 3, 16, 100);
+    const geoeventWorld4videoScreen = new THREE.Mesh(geoeventWorld4screen, geoeventWorld4Material);
+    geoeventWorld4videoScreen.rotation.set(200, 0, 0);
+    geoeventWorld4videoScreen.scale.set(50, 50, 50);
+    geoeventWorld4videoScreen.position.set(0, 0, 170);
+    scene.add(geoeventWorld4videoScreen);
+}
 
 //everyworld
 function addGeoEventWorld() {
@@ -4083,8 +4083,8 @@ function cursorCheck() {
     raycaster.setFromCamera(mouse, camera);
 
     var intersects = raycaster.intersectObjects(scene.children, true);
-    var intersected = false;
-    var doOnlyOnce = 0;
+    // var intersected = false;
+    // var doOnlyOnce = 0;
 
     // If only interested in one intersection, you can use .intersectObject()
 
@@ -4360,8 +4360,9 @@ function clickedOnExitVideo() {
         var foundAll = document.getElementById("found" + worldId + "all");
         foundAll.style.visibility = "visible";
         foundAll.style.display = "block";
-        document.getElementById("geoevent-" + worldId).style.visibility = "visible";
-        document.getElementById("geoevent-" + worldId).style.display = "block";
+        foundAll.classList.add("foundall");
+        document.getElementById("geoevent" + worldId).style.visibility = "visible";
+        document.getElementById("geoevent" + worldId).style.display = "block";
         var geoEventUi = document.getElementsByClassName("world" + worldId + "critterEvent");
         geoEventUi.style.visibility = "visible";
         geoEventUi.style.display = "block";
@@ -4375,7 +4376,35 @@ function clickedOnExitVideo() {
 
 
 }
+// geo test 
 
+if (worldId == 1) {
+    addGeoEventWorld1();
+}
+if (worldId == 2) {
+    addGeoEventWorld2();
+}
+if (worldId == 3) {
+    addGeoEventWorld3();
+}
+if (worldId == 4) {
+    addGeoEventWorld4();
+}
+addGeoEventWorld();
+//main image in middle
+var foundAll = document.getElementById("found" + worldId + "all");
+foundAll.style.visibility = "visible";
+foundAll.style.display = "block";
+foundAll.classList.add("foundall");
+//side UI
+document.getElementById("geoevent" + worldId).style.visibility = "visible";
+document.getElementById("geoevent" + worldId).style.display = "block";
+
+// var geoEventUi = document.getElementsById("world" + worldId + "critterEvent");
+// geoEventUi.style.visibility = "visible";
+// geoEventUi.style.display = "block";
+
+// 
 function showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmLink) {
     document.exitPointerLock = document.exitPointerLock ||
         document.mozExitPointerLock ||
