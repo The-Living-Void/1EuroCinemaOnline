@@ -26,7 +26,7 @@ if (worldId == 3) {
     var distance2Click = 70.0;
 }
 if (worldId == 4) {
-    var distance2Click = 40.0;
+    var distance2Click = 70.0;
 }
 // var distanceWorld1 = 50.0;
 // var distanceWorld2 = 40.0;
@@ -108,17 +108,17 @@ manager.onLoad = function() {
     console.log('Loading complete!');
     allIsLoaded = true;
     //if (worldId == 2) {
-        soundGo(worldId);
-        soundLoad = true;
+    soundGo(worldId);
+    soundLoad = true;
 
-        // videoPlayer.style.display = "hide";
+    // videoPlayer.style.display = "hide";
 
     //}
     // if (worldId == 3) {
     //     soundGo(3);
     //     soundLoad = true;
     // }
-cssSteps();
+    cssSteps();
 };
 manager.onProgress = function(url, itemsLoaded, itemsTotal) {
     //console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
@@ -1069,7 +1069,7 @@ function initCannon() {
         world.addBody(caverock6Body);
 
         var caveCeilingShape = new CANNON.Box(new CANNON.Vec3(20, 20, 1));
-        var caveCeilingBody = new CANNON.Body({mass: 0});
+        var caveCeilingBody = new CANNON.Body({ mass: 0 });
         caveCeilingBody.addShape(caveCeilingShape);
         //chickBody.addShape(sphereChickShape);
         caveCeilingBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
@@ -1078,7 +1078,7 @@ function initCannon() {
         world.addBody(caveCeilingBody);
 
         var caveCeiling2Shape = new CANNON.Box(new CANNON.Vec3(20, 20, 1));
-        var caveCeiling2Body = new CANNON.Body({mass: 0});
+        var caveCeiling2Body = new CANNON.Body({ mass: 0 });
         caveCeiling2Body.addShape(caveCeiling2Shape);
         //chickBody.addShape(sphereChickShape);
         caveCeiling2Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
@@ -1087,7 +1087,7 @@ function initCannon() {
         world.addBody(caveCeiling2Body);
 
         var caveCeiling3Shape = new CANNON.Box(new CANNON.Vec3(20, 20, 1));
-        var caveCeiling3Body = new CANNON.Body({mass: 0});
+        var caveCeiling3Body = new CANNON.Body({ mass: 0 });
         caveCeiling3Body.addShape(caveCeiling3Shape);
         //chickBody.addShape(sphereChickShape);
         caveCeiling3Body.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
@@ -2254,19 +2254,28 @@ function modelLoader() {
 
         const loader = new GLTFLoader()
 
-        loader.load('models/critters/world4/yifan.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
+        // loader.load('models/critters/world4/yifan.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
 
 
-            });
-            gltf.scene.position.set(100, 100, 0);
-            gltf.scene.scale.set(10, 10, 10);
-            scene.add(gltf.scene);
+        //     });
+        //     gltf.scene.position.set(100, 100, 0);
+        //     gltf.scene.scale.set(10, 10, 10);
+        //     scene.add(gltf.scene);
 
-        });
+        // });
+        // // box queen critter = yifan
+        // const geometryYifan = new THREE.BoxGeometry();
+        // //const materialYifan = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        // const materialYifan = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        // const cubeYifan = new THREE.Mesh(geometryYifan, materialYifan);
+        // cubeYifan.position.set(100, 100, 0);
+        // cubeYifan.scale.set(30, 100, 30);
+        // cubeYifan.userData.name = "yifanhe";
+        // scene.add(cubeYifan);
 
-// queen critter valentine
+        // queen critter valentine
         loader.load('models/critters/world4/valentine.glb', (gltf) => {
             gltf.scene.traverse(function(object) {
                 object.frustumCulled = false;
@@ -2282,7 +2291,7 @@ function modelLoader() {
         //const materialValentine = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
         const cubeValentine = new THREE.Mesh(geometryValentine, materialValentine);
         cubeValentine.position.set(120, 10, 43);
-        cubeValentine.scale.set(5,5,5);
+        cubeValentine.scale.set(5, 5, 5);
         cubeValentine.userData.name = "valentinelangeard";
         scene.add(cubeValentine);
 
@@ -2292,7 +2301,7 @@ function modelLoader() {
             });
             gltf.scene.position.set(110, 9.5, 37);
             gltf.scene.scale.set(0.3, 0.3, 0.3);
-            gltf.scene.rotation.set(0,1.7,0);
+            gltf.scene.rotation.set(0, 1.7, 0);
             scene.add(gltf.scene);
         });
 
@@ -2302,134 +2311,134 @@ function modelLoader() {
             });
             gltf.scene.position.set(112, 28.2, 34.4);
             gltf.scene.scale.set(0.3, 0.3, 0.3);
-            gltf.scene.rotation.set(0,2,0);
+            gltf.scene.rotation.set(0, 2, 0);
             scene.add(gltf.scene);
         });
 
-// queen critter minhong
-        loader.load('models/critters/world4/minhong.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
+        // // queen critter minhong
+        // loader.load('models/critters/world4/minhong.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
 
 
-            });
-            gltf.scene.position.set(290, 3, -60);
-            gltf.scene.scale.set(2, 2, 2);
-            gltf.scene.rotation.set(0.2,3.6,0.2);
-            scene.add(gltf.scene);
+        //     });
+        //     gltf.scene.position.set(290, 3, -60);
+        //     gltf.scene.scale.set(2, 2, 2);
+        //     gltf.scene.rotation.set(0.2, 3.6, 0.2);
+        //     scene.add(gltf.scene);
 
-        });
-        // box queen critter = minhong
-        const geometryMinhong = new THREE.BoxGeometry();
-        const materialMinhong = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
-        //const materialMinhong = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-        const cubeMinhong = new THREE.Mesh(geometryMinhong, materialMinhong);
-        cubeMinhong.position.set(290, 4, -60);
-        cubeMinhong.scale.set(30, 40, 50);
-        cubeMinhong.userData.name = "minhongyu";
-        scene.add(cubeMinhong);
-
-
-        loader.load('models/critters/world4/minhong.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
+        // });
+        // // box queen critter = minhong
+        // const geometryMinhong = new THREE.BoxGeometry();
+        // const materialMinhong = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        // //const materialMinhong = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        // const cubeMinhong = new THREE.Mesh(geometryMinhong, materialMinhong);
+        // cubeMinhong.position.set(290, 4, -60);
+        // cubeMinhong.scale.set(30, 40, 50);
+        // cubeMinhong.userData.name = "minhongyu";
+        // scene.add(cubeMinhong);
 
 
-            });
-            gltf.scene.position.set(288, 1, -40);
-            gltf.scene.scale.set(2, 2, 2);
-            gltf.scene.rotation.set(1,1,1);
-            scene.add(gltf.scene);
-        });
+        // loader.load('models/critters/world4/minhong.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
 
 
-
-// queen critter emily
-        loader.load('models/critters/world4/emily.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
-            gltf.scene.position.set(-145, 20, -20);
-            gltf.scene.scale.set(4,4,4);
-            scene.add(gltf.scene);
-        });
-
-// box queen critter = emily
-        const geometryEmily = new THREE.BoxGeometry();
-        const materialEmily = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
-        //const materialEmily = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-        const cubeEmily = new THREE.Mesh(geometryEmily, materialEmily);
-        cubeEmily.position.set(-145, 25, -20);
-        cubeEmily.scale.set(10,10,10);
-        cubeEmily.userData.name = "emilyanderson";
-        scene.add(cubeEmily);
+        //     });
+        //     gltf.scene.position.set(288, 1, -40);
+        //     gltf.scene.scale.set(2, 2, 2);
+        //     gltf.scene.rotation.set(1, 1, 1);
+        //     scene.add(gltf.scene);
+        // });
 
 
 
-        loader.load('models/critters/world4/emily.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
-            gltf.scene.position.set(-148, 15, -10);
-            gltf.scene.scale.set(2,2,2);
-            scene.add(gltf.scene);
-        });
+        // // queen critter emily
+        // loader.load('models/critters/world4/emily.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
+        //     gltf.scene.position.set(-145, 20, -20);
+        //     gltf.scene.scale.set(4, 4, 4);
+        //     scene.add(gltf.scene);
+        // });
 
-        loader.load('models/critters/world4/emily.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
-            gltf.scene.position.set(-150, 18, 9);
-            gltf.scene.scale.set(1,1,1);
-            scene.add(gltf.scene);
-        });
+        // // box queen critter = emily
+        // const geometryEmily = new THREE.BoxGeometry();
+        // const materialEmily = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        // //const materialEmily = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        // const cubeEmily = new THREE.Mesh(geometryEmily, materialEmily);
+        // cubeEmily.position.set(-145, 25, -20);
+        // cubeEmily.scale.set(10, 10, 10);
+        // cubeEmily.userData.name = "emilyanderson";
+        // scene.add(cubeEmily);
 
-        loader.load('models/critters/world4/emily.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
-            gltf.scene.position.set(-153, 25, 5);
-            gltf.scene.scale.set(1,1,1);
-            scene.add(gltf.scene);
-        });
 
-        loader.load('models/critters/world4/emily.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
-            gltf.scene.position.set(-155, 25, 30);
-            gltf.scene.scale.set(4,4,4);
-            scene.add(gltf.scene);
-        });
 
-        loader.load('models/critters/world4/emily.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
-            gltf.scene.position.set(-135, 17, 27);
-            gltf.scene.scale.set(2.5,2.5,2.5);
-            scene.add(gltf.scene);
-        });
+        // loader.load('models/critters/world4/emily.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
+        //     gltf.scene.position.set(-148, 15, -10);
+        //     gltf.scene.scale.set(2, 2, 2);
+        //     scene.add(gltf.scene);
+        // });
 
-        loader.load('models/critters/world4/emily.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
-            gltf.scene.position.set(-180, 20, -8);
-            gltf.scene.scale.set(4,4,4);
-            scene.add(gltf.scene);
-        });
+        // loader.load('models/critters/world4/emily.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
+        //     gltf.scene.position.set(-150, 18, 9);
+        //     gltf.scene.scale.set(1, 1, 1);
+        //     scene.add(gltf.scene);
+        // });
 
-        loader.load('models/critters/world4/benjamin-anim.glb', (gltf) => {
+        // loader.load('models/critters/world4/emily.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
+        //     gltf.scene.position.set(-153, 25, 5);
+        //     gltf.scene.scale.set(1, 1, 1);
+        //     scene.add(gltf.scene);
+        // });
 
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
-            gltf.scene.position.set(120, 0, -200);
-            gltf.scene.scale.set(80, 80, 80);
-            scene.add(gltf.scene);
+        // loader.load('models/critters/world4/emily.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
+        //     gltf.scene.position.set(-155, 25, 30);
+        //     gltf.scene.scale.set(4, 4, 4);
+        //     scene.add(gltf.scene);
+        // });
 
-        });
+        // loader.load('models/critters/world4/emily.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
+        //     gltf.scene.position.set(-135, 17, 27);
+        //     gltf.scene.scale.set(2.5, 2.5, 2.5);
+        //     scene.add(gltf.scene);
+        // });
+
+        // loader.load('models/critters/world4/emily.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
+        //     gltf.scene.position.set(-180, 20, -8);
+        //     gltf.scene.scale.set(4, 4, 4);
+        //     scene.add(gltf.scene);
+        // });
+
+        // loader.load('models/critters/world4/benjamin-anim.glb', (gltf) => {
+
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
+        //     gltf.scene.position.set(120, 0, -200);
+        //     gltf.scene.scale.set(80, 80, 80);
+        //     scene.add(gltf.scene);
+
+        // });
 
         Promise.all([p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16]).then(() => {
             var scaleSizeModel1 = 2;
@@ -2613,7 +2622,7 @@ function soundGo(functionNumber) {
                 sound.coneInnerAngle = 45;
                 sound.setRolloffFactor(0.3);
                 sound.setRefDistance(50);
-                sound.setVolume(0.6+setVolumeAll);
+                sound.setVolume(0.6 + setVolumeAll);
                 sound.play();
                 //console.log(sound.getOutput());
             });
@@ -2623,7 +2632,7 @@ function soundGo(functionNumber) {
                 soundLayer2.setLoop(true);
                 soundLayer2.setRolloffFactor(0.7);
                 soundLayer2.setRefDistance(40);
-                soundLayer2.setVolume(0.9+setVolumeAll);
+                soundLayer2.setVolume(0.9 + setVolumeAll);
                 soundLayer2.play();
                 //console.log(sound.getOutput());
             });
@@ -2633,7 +2642,7 @@ function soundGo(functionNumber) {
                 soundLayer3.setLoop(true);
                 soundLayer3.setRolloffFactor(0.5);
                 soundLayer3.setRefDistance(45);
-                soundLayer3.setVolume(0.9+setVolumeAll);
+                soundLayer3.setVolume(0.9 + setVolumeAll);
                 soundLayer3.play();
                 //console.log(sound.getOutput());
             });
@@ -2643,7 +2652,7 @@ function soundGo(functionNumber) {
                 soundLayer4.setLoop(true);
                 soundLayer4.setRefDistance(30);
                 soundLayer4.coneInnerAngle = 40;
-                soundLayer4.setVolume(0.7+setVolumeAll);
+                soundLayer4.setVolume(0.7 + setVolumeAll);
                 soundLayer4.play();
                 //console.log(sound.getOutput());
             });
@@ -2652,7 +2661,7 @@ function soundGo(functionNumber) {
                 soundLayer5.setBuffer(buffer);
                 soundLayer5.setLoop(true);
                 soundLayer5.setRefDistance(25);
-                soundLayer5.setVolume(0.5+setVolumeAll);
+                soundLayer5.setVolume(0.5 + setVolumeAll);
                 soundLayer5.play();
                 //console.log(sound.getOutput());
             });
@@ -2661,7 +2670,7 @@ function soundGo(functionNumber) {
                 soundLayer6.setBuffer(buffer);
                 soundLayer6.setLoop(true);
                 soundLayer6.setRefDistance(5);
-                soundLayer6.setVolume(0.5+setVolumeAll);
+                soundLayer6.setVolume(0.5 + setVolumeAll);
                 soundLayer6.play();
                 //console.log(sound.getOutput());
             });
@@ -2669,7 +2678,7 @@ function soundGo(functionNumber) {
             audioLoader.load('sound/Cristal World Base Layer.mp3', function(buffer) {
                 soundBase.setBuffer(buffer);
                 soundBase.setLoop(true);
-                soundBase.setVolume(0.3+setVolumeAll);
+                soundBase.setVolume(0.3 + setVolumeAll);
                 soundBase.play();
                 //put down the omni ffx a bit in the base layer, X
                 //console.log(sound.getOutput());
@@ -2698,12 +2707,12 @@ function soundGo(functionNumber) {
             scene.add(cubeSound2_2);
 
             const cubeSound3 = new THREE.Mesh(box, material);
-            cubeSound3.position.set(-100, 5,-100);
+            cubeSound3.position.set(-100, 5, -100);
             cubeSound3.add(soundLayer3);
             scene.add(cubeSound3);
 
             const cubeSound3_2 = new THREE.Mesh(box, material);
-            cubeSound3_2.position.set(300, 10,-150);
+            cubeSound3_2.position.set(300, 10, -150);
             cubeSound3_2.add(soundLayer3);
             scene.add(cubeSound3_2);
 
@@ -2744,7 +2753,7 @@ function soundGo(functionNumber) {
                 sound.coneInnerAngle = 45;
                 sound.setRolloffFactor(0.8);
                 sound.setRefDistance(12);
-                sound.setVolume(0.6+setVolumeAll);
+                sound.setVolume(0.6 + setVolumeAll);
                 sound.play();
                 //console.log(sound.getOutput());
             });
@@ -2755,7 +2764,7 @@ function soundGo(functionNumber) {
                 soundLayer2.coneInnerAngle = 45;
                 soundLayer2.setRolloffFactor(0.7);
                 soundLayer2.setRefDistance(15);
-                soundLayer2.setVolume(0.7+setVolumeAll);
+                soundLayer2.setVolume(0.7 + setVolumeAll);
                 soundLayer2.play();
                 //console.log(sound.getOutput());
             });
@@ -2766,7 +2775,7 @@ function soundGo(functionNumber) {
                 soundLayer3.setRefDistance(25);
                 soundLayer3.coneInnerAngle = 45;
                 soundLayer3.setRolloffFactor(0.6);
-                soundLayer3.setVolume(0.7+setVolumeAll);
+                soundLayer3.setVolume(0.7 + setVolumeAll);
                 soundLayer3.play();
                 //console.log(sound.getOutput());
             });
@@ -2775,7 +2784,7 @@ function soundGo(functionNumber) {
                 soundLayer4.setBuffer(buffer);
                 soundLayer4.setLoop(true);
                 soundLayer4.setRefDistance(30);
-                soundLayer4.setVolume(0.7+setVolumeAll);
+                soundLayer4.setVolume(0.7 + setVolumeAll);
                 soundLayer4.play();
                 //console.log(sound.getOutput());
             });
@@ -2784,7 +2793,7 @@ function soundGo(functionNumber) {
                 soundLayer5.setBuffer(buffer);
                 soundLayer5.setLoop(true);
                 soundLayer5.setRefDistance(25);
-                soundLayer5.setVolume(0.5+setVolumeAll);
+                soundLayer5.setVolume(0.5 + setVolumeAll);
                 soundLayer5.play();
                 //console.log(sound.getOutput());
             });
@@ -2792,7 +2801,7 @@ function soundGo(functionNumber) {
             audioLoader.load('sound/Base layer.mp3', function(buffer) {
                 soundBase.setBuffer(buffer);
                 soundBase.setLoop(true);
-                soundBase.setVolume(0.5+setVolumeAll);
+                soundBase.setVolume(0.5 + setVolumeAll);
                 soundBase.play();
                 //console.log(sound.getOutput());
             });
@@ -2852,7 +2861,7 @@ function soundGo(functionNumber) {
                 //console.log("rolloff = "+sound.getDistanceModel());
                 sound.setRolloffFactor(0.1);
                 //sound.setRefDistance(2);
-                sound.setVolume(0.4+setVolumeAll);
+                sound.setVolume(0.4 + setVolumeAll);
                 sound.play();
                 //console.log(sound.getOutput());
             });
@@ -2862,7 +2871,7 @@ function soundGo(functionNumber) {
                 soundLayer2.setLoop(true);
                 soundLayer2.coneInnerAngle = 45;
                 soundLayer2.setRefDistance(20);
-                soundLayer2.setVolume(0.7+setVolumeAll);
+                soundLayer2.setVolume(0.7 + setVolumeAll);
                 soundLayer2.play();
                 //console.log(sound.getOutput());
             });
@@ -2871,7 +2880,7 @@ function soundGo(functionNumber) {
                 soundLayer3.setBuffer(buffer);
                 soundLayer3.setLoop(true);
                 soundLayer3.setRefDistance(25);
-                soundLayer3.setVolume(0.9+setVolumeAll);
+                soundLayer3.setVolume(0.9 + setVolumeAll);
                 soundLayer3.setRolloffFactor(0.5);
                 soundLayer3.play();
                 //console.log(sound.getOutput());
@@ -2882,7 +2891,7 @@ function soundGo(functionNumber) {
                 soundLayer4.setLoop(true);
                 soundLayer4.setRefDistance(30);
                 soundLayer4.setRolloffFactor(0.5);
-                soundLayer4.setVolume(0.5+setVolumeAll);
+                soundLayer4.setVolume(0.5 + setVolumeAll);
                 soundLayer4.play();
                 //console.log(sound.getOutput());
             });
@@ -2891,7 +2900,7 @@ function soundGo(functionNumber) {
                 soundLayer5.setBuffer(buffer);
                 soundLayer5.setLoop(true);
                 soundLayer5.setRefDistance(30);
-                soundLayer5.setVolume(0.6+setVolumeAll);
+                soundLayer5.setVolume(0.6 + setVolumeAll);
                 soundLayer5.play();
                 //console.log(sound.getOutput());
             });
@@ -2899,7 +2908,7 @@ function soundGo(functionNumber) {
             audioLoader.load('sound/Forest Base Layer.mp3', function(buffer) {
                 soundBase.setBuffer(buffer);
                 soundBase.setLoop(true);
-                soundBase.setVolume(0.4+setVolumeAll);
+                soundBase.setVolume(0.4 + setVolumeAll);
                 soundBase.play();
                 //console.log(sound.getOutput());
             });
@@ -2960,7 +2969,7 @@ function soundGo(functionNumber) {
                 //console.log("rolloff = "+sound.getDistanceModel());
                 sound.setRolloffFactor(0.3);
                 //sound.setRefDistance(2);
-                sound.setVolume(0.9+setVolumeAll);
+                sound.setVolume(0.9 + setVolumeAll);
                 sound.play();
                 //console.log(sound.getOutput());
             });
@@ -2970,7 +2979,7 @@ function soundGo(functionNumber) {
                 soundLayer2.setLoop(true);
                 soundLayer2.coneInnerAngle = 30;
                 soundLayer2.setRefDistance(70);
-                soundLayer2.setVolume(1.1+setVolumeAll);
+                soundLayer2.setVolume(1.1 + setVolumeAll);
                 soundLayer2.play();
                 //console.log(sound.getOutput());
             });
@@ -2979,7 +2988,7 @@ function soundGo(functionNumber) {
                 soundLayer3.setBuffer(buffer);
                 soundLayer3.setLoop(true);
                 soundLayer3.setRefDistance(45);
-                soundLayer3.setVolume(0.9+setVolumeAll);
+                soundLayer3.setVolume(0.9 + setVolumeAll);
                 soundLayer3.setRolloffFactor(0.6);
                 soundLayer3.play();
                 //console.log(sound.getOutput());
@@ -2991,7 +3000,7 @@ function soundGo(functionNumber) {
                 soundLayer4.setRefDistance(40);
                 soundLayer4.coneInnerAngle = 45;
                 soundLayer4.setRolloffFactor(0.3);
-                soundLayer4.setVolume(1.0+setVolumeAll);
+                soundLayer4.setVolume(1.0 + setVolumeAll);
                 soundLayer4.play();
                 //console.log(sound.getOutput());
             });
@@ -3002,7 +3011,7 @@ function soundGo(functionNumber) {
                 soundLayer5.setRefDistance(45);
                 soundLayer5.coneInnerAngle = 45;
                 soundLayer5.setRolloffFactor(0.5);
-                soundLayer5.setVolume(0.9+setVolumeAll);
+                soundLayer5.setVolume(0.9 + setVolumeAll);
                 soundLayer5.play();
                 //console.log(sound.getOutput());
             });
@@ -3013,7 +3022,7 @@ function soundGo(functionNumber) {
                 soundLayer6.setRefDistance(45);
                 soundLayer6.coneInnerAngle = 45;
                 soundLayer6.setRolloffFactor(0.5);
-                soundLayer6.setVolume(0.9+setVolumeAll);
+                soundLayer6.setVolume(0.9 + setVolumeAll);
                 soundLayer6.play();
                 //console.log(sound.getOutput());
             });
@@ -3021,7 +3030,7 @@ function soundGo(functionNumber) {
             audioLoader.load('sound/Cave World Base Layer.mp3', function(buffer) {
                 soundBase.setBuffer(buffer);
                 soundBase.setLoop(true);
-                soundBase.setVolume(0.9+setVolumeAll);
+                soundBase.setVolume(0.9 + setVolumeAll);
                 soundBase.play();
                 //console.log(sound.getOutput());
             });
@@ -3280,7 +3289,7 @@ function loadCharacter(characterName) {
 
             });
             gltf.scene.position.set(-85, 10.3, -5);
-            gltf.scene.scale.set(8,8,8);
+            gltf.scene.scale.set(8, 8, 8);
             gltf.scene.rotation.set(0, 1, -0.06);
             scene.add(gltf.scene);
 
@@ -3291,7 +3300,7 @@ function loadCharacter(characterName) {
                 object.frustumCulled = false;
             });
             gltf.scene.position.set(-102, 25, -5);
-            gltf.scene.scale.set(2,2,2);
+            gltf.scene.scale.set(2, 2, 2);
             gltf.scene.rotation.set(1.2, 0, -1);
             scene.add(gltf.scene);
         });
@@ -3301,7 +3310,7 @@ function loadCharacter(characterName) {
                 object.frustumCulled = false;
             });
             gltf.scene.position.set(-97, 20, -16);
-            gltf.scene.scale.set(1.2,1.2,1.2);
+            gltf.scene.scale.set(1.2, 1.2, 1.2);
             gltf.scene.rotation.set(2, 1, -1);
             scene.add(gltf.scene);
         });
@@ -3311,7 +3320,7 @@ function loadCharacter(characterName) {
                 object.frustumCulled = false;
             });
             gltf.scene.position.set(-75, 7.4, -13);
-            gltf.scene.scale.set(2.3,2.3,2.3);
+            gltf.scene.scale.set(2.3, 2.3, 2.3);
             gltf.scene.rotation.set(0, 1.2, 0);
             scene.add(gltf.scene);
         });
@@ -3779,6 +3788,209 @@ function loadCharacter(characterName) {
         });
     }
 
+    //world4
+    // queen critter emily
+    if (characterName == 'emilyanderson4') {
+        const loader = new GLTFLoader();
+        // queen critter emily
+        loader.load('models/critters/world4/emily.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(-145, 20, -20);
+            gltf.scene.scale.set(4, 4, 4);
+            scene.add(gltf.scene);
+        });
+
+        // box queen critter = emily
+        const geometryEmily = new THREE.BoxGeometry();
+        const materialEmily = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        //const materialEmily = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cubeEmily = new THREE.Mesh(geometryEmily, materialEmily);
+        cubeEmily.position.set(-145, 25, -20);
+        cubeEmily.scale.set(10, 10, 10);
+        cubeEmily.userData.name = "emilyanderson";
+        scene.add(cubeEmily);
+
+
+
+        loader.load('models/critters/world4/emily.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(-148, 15, -10);
+            gltf.scene.scale.set(2, 2, 2);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world4/emily.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(-150, 18, 9);
+            gltf.scene.scale.set(1, 1, 1);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world4/emily.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(-153, 25, 5);
+            gltf.scene.scale.set(1, 1, 1);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world4/emily.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(-155, 25, 30);
+            gltf.scene.scale.set(4, 4, 4);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world4/emily.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(-135, 17, 27);
+            gltf.scene.scale.set(2.5, 2.5, 2.5);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world4/emily.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(-180, 20, -8);
+            gltf.scene.scale.set(4, 4, 4);
+            scene.add(gltf.scene);
+        });
+    }
+
+    // queen critter minhong
+    if (characterName == 'minhongyu4') {
+        const loader = new GLTFLoader();
+        // queen critter minhong
+        loader.load('models/critters/world4/minhong.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+
+
+            });
+            gltf.scene.position.set(290, 3, -60);
+            gltf.scene.scale.set(2, 2, 2);
+            gltf.scene.rotation.set(0.2, 3.6, 0.2);
+            scene.add(gltf.scene);
+
+        });
+        // box queen critter = minhong
+        const geometryMinhong = new THREE.BoxGeometry();
+        const materialMinhong = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        //const materialMinhong = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cubeMinhong = new THREE.Mesh(geometryMinhong, materialMinhong);
+        cubeMinhong.position.set(290, 4, -60);
+        cubeMinhong.scale.set(30, 40, 50);
+        cubeMinhong.userData.name = "minhongyu";
+        scene.add(cubeMinhong);
+
+
+        loader.load('models/critters/world4/minhong.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+
+
+            });
+            gltf.scene.position.set(288, 1, -40);
+            gltf.scene.scale.set(2, 2, 2);
+            gltf.scene.rotation.set(1, 1, 1);
+            scene.add(gltf.scene);
+        });
+    }
+
+    //yifanhe
+    if (characterName == 'yifanhe4') {
+        const loader = new GLTFLoader();
+        loader.load('models/critters/world4/yifan.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+
+
+            });
+            gltf.scene.position.set(100, 100, 0);
+            gltf.scene.scale.set(10, 10, 10);
+            scene.add(gltf.scene);
+
+        });
+        // box queen critter = yifan
+        const geometryYifan = new THREE.BoxGeometry();
+        const materialYifan = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        //const materialYifan = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cubeYifan = new THREE.Mesh(geometryYifan, materialYifan);
+        cubeYifan.position.set(100, 100, 0);
+        cubeYifan.scale.set(30, 100, 30);
+        cubeYifan.userData.name = "yifanhe";
+        scene.add(cubeYifan);
+
+    }
+    //benjaminhall
+    if (characterName == 'benjaminhall4') {
+        const loader = new GLTFLoader();
+        loader.load('models/critters/world4/benjamin-anim.glb', (gltf) => {
+
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(120, 0, -200);
+            gltf.scene.scale.set(80, 80, 80);
+            scene.add(gltf.scene);
+
+        });
+    }
+    //valentinelangeard
+    if (characterName == 'valentinelangeard4') {
+        const loader = new GLTFLoader();
+        // queen critter valentine
+        loader.load('models/critters/world4/valentine.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(120, 7.5, 43);
+            gltf.scene.scale.set(0.3, 0.3, 0.3);
+            scene.add(gltf.scene);
+        });
+
+        // box queen critter = valentine
+        const geometryValentine = new THREE.BoxGeometry();
+        const materialValentine = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        //const materialValentine = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cubeValentine = new THREE.Mesh(geometryValentine, materialValentine);
+        cubeValentine.position.set(120, 10, 43);
+        cubeValentine.scale.set(5, 5, 5);
+        cubeValentine.userData.name = "valentinelangeard";
+        scene.add(cubeValentine);
+
+        loader.load('models/critters/world4/valentine.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(110, 9.5, 37);
+            gltf.scene.scale.set(0.3, 0.3, 0.3);
+            gltf.scene.rotation.set(0, 1.7, 0);
+            scene.add(gltf.scene);
+        });
+
+        loader.load('models/critters/world4/valentine.glb', (gltf) => {
+            gltf.scene.traverse(function(object) {
+                object.frustumCulled = false;
+            });
+            gltf.scene.position.set(112, 28.2, 34.4);
+            gltf.scene.scale.set(0.3, 0.3, 0.3);
+            gltf.scene.rotation.set(0, 2, 0);
+            scene.add(gltf.scene);
+        });
+    }
 }
 
 //geoevents
@@ -3857,6 +4069,7 @@ function cursorCheck() {
 
     var intersects = raycaster.intersectObjects(scene.children, true);
     var intersected = false;
+    var doOnlyOnce = 0;
 
     // If only interested in one intersection, you can use .intersectObject()
 
@@ -3904,7 +4117,12 @@ function cursorCheck() {
                     //console.log(critterLoc,"critterLoc");
                     //console.log(critterLocation,"critterLocation");
                     //	if (critterLocation.equals(critterLoc) == true ) {
+                    // while ((userD == item.idInWorld) || (siblingBool == true)) {
+                    //     console.log("intersects same id ");
+                    // }
+
                     if ((userD == item.idInWorld) || (siblingBool == true)) {
+
                         boolMouseOn = true;
                         newScene = item;
                         console.log("yes location same");
@@ -3917,9 +4135,20 @@ function cursorCheck() {
 
                         //if( boolMouseOn == true){
                         window.addEventListener("click", clickedOnCritter, false);
+                        setTimeout(removePerimeter, 500);
 
+                        function removePerimeter() {
+                            window.addEventListener("mousemove", mouseMovesFromCritter, false);
+                        }
 
                         //	}
+                        // } else {
+                        // boolInPerimeter = false;
+                        // foundConstructorGet.style.visibility = "hidden";
+                        // foundConstructorGet.style.display = "none";
+                        // }
+
+
                     } else {
                         boolInPerimeter = false;
                         foundConstructorGet.style.visibility = "hidden";
@@ -3951,10 +4180,11 @@ function cursorCheck() {
                     foundConstructorGet.style.display = "none";
                 }
                 if (foundConstructorGet.style.display == "none") {
-                        window.removeEventListener("click", clickedOnCritter, false);
-                        console.log("After 3 seconds!");
-                    }
+                    window.removeEventListener("click", clickedOnCritter, false);
+                    console.log("After 3 seconds!");
+                }
                 console.log('intersect!' + userD);
+                console.log('intersected!' + INTERSECTED);
                 // console.log("id" + id);
 
             }
@@ -4006,7 +4236,19 @@ function cursorCheck() {
     }
 }
 
+function mouseMovesFromCritter() {
+    // setTimeout(removePerimeter, 1000);
 
+    // function removePerimeter() {
+
+    foundConstructorGet.style.visibility = "hidden";
+    foundConstructorGet.style.display = "none";
+    console.log("mousemoved");
+    window.removeEventListener("mousemove", mouseMovesFromCritter, false);
+    window.removeEventListener("click", clickedOnCritter, false);
+    cursorCheck();
+    // }
+}
 
 function clickedOnCritter() {
     window.removeEventListener("click", clickedOnCritter, false);
@@ -4444,65 +4686,66 @@ function cssSteps() {
 
 }
 
-function loadFilm(){
+function loadFilm() {
 
 
-  window.addEventListener('load', function(){
-    var newVideo = document.getElementById('videoElementId1');
-    var newVideo2 = document.getElementById('videoElementId2');
-    var newVideo3 = document.getElementById('videoElementId3');
-    newVideo.addEventListener('ended', function() {
-        //console.log('current time at = '+this.currentTime);
-        //this.currentTime = 0;
-        js: document.getElementById("videoElementId1").style.visibility = "hidden";
-        js: document.getElementById("videoElementId2").style.visibility = "visible";
-        newVideo2.currentTime = 0;
-        newVideo2.play();
-        // if (allIsLoaded == true) {
-        // js: document.getElementById("videoElementId").style.visibility = "hidden";
-        // //this.removeAttribute;
-        // }else {
-        // //this.play();
-        // }
+    window.addEventListener('load', function() {
+        var newVideo = document.getElementById('videoElementId1');
+        var newVideo2 = document.getElementById('videoElementId2');
+        var newVideo3 = document.getElementById('videoElementId3');
+        newVideo.addEventListener('ended', function() {
+            //console.log('current time at = '+this.currentTime);
+            //this.currentTime = 0;
+            js: document.getElementById("videoElementId1").style.visibility = "hidden";
+            js: document.getElementById("videoElementId2").style.visibility = "visible";
+            newVideo2.currentTime = 0;
+            newVideo2.play();
+            // if (allIsLoaded == true) {
+            // js: document.getElementById("videoElementId").style.visibility = "hidden";
+            // //this.removeAttribute;
+            // }else {
+            // //this.play();
+            // }
 
-    }, false);
-    newVideo.play();
+        }, false);
+        newVideo.play();
 
 
-      newVideo2.addEventListener('ended', function() {
-              //console.log('current time at = '+this.currentTime);
+        newVideo2.addEventListener('ended', function() {
+            //console.log('current time at = '+this.currentTime);
 
-              if (allIsLoaded == true) {
-              js: document.getElementById("videoElementId2").style.visibility = "hidden";
-              newVideo3.currentTime = 0;
-              newVideo3.play();
-              js: document.getElementById("videoElementId3").style.visibility = "visible";
-              //this.removeAttribute;
-              }else {
-              this.currentTime = 0;
-              this.play();
-              }
+            if (allIsLoaded == true) {
+                js: document.getElementById("videoElementId2").style.visibility = "hidden";
+                newVideo3.currentTime = 0;
+                newVideo3.play();
+                js: document.getElementById("videoElementId3").style.visibility = "visible";
+                //this.removeAttribute;
+            }
+            else {
+                this.currentTime = 0;
+                this.play();
+            }
 
-          }, false);
+        }, false);
 
-          newVideo3.addEventListener('ended', function() {
-                  //console.log('current time at = '+this.currentTime);
+        newVideo3.addEventListener('ended', function() {
+            //console.log('current time at = '+this.currentTime);
 
-                  //if (allIsLoaded == true) {
-                  //js: document.getElementById("videoElementId2").style.visibility = "hidden";
-                  //newVideo3.currentTime = 0;
-                  //newVideo3.play();
-                  js: document.getElementById("videoElementId3").style.visibility = "hidden";
-                  js: document.getElementById("videostart").style.zIndex = "-1";
-                  //this.removeAttribute;
-                  //}else {
-                  //this.currentTime = 0;
-                  //this.play();
-                  //}
+            //if (allIsLoaded == true) {
+            //js: document.getElementById("videoElementId2").style.visibility = "hidden";
+            //newVideo3.currentTime = 0;
+            //newVideo3.play();
+            js: document.getElementById("videoElementId3").style.visibility = "hidden";
+            js: document.getElementById("videostart").style.zIndex = "-1";
+            //this.removeAttribute;
+            //}else {
+            //this.currentTime = 0;
+            //this.play();
+            //}
 
-              }, false);
-          //newVideo2.play();
-        });
+        }, false);
+        //newVideo2.play();
+    });
 }
 
 function pointerLock() {
