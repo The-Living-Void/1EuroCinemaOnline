@@ -4497,6 +4497,8 @@ function loadFilm(){
         // }
 
     }, false);
+    js: document.getElementById("loadingScreenBlock").style.visibility = "hidden";
+    js: document.getElementById("loadingScreenBlock").style.zIndex = "-1";
     newVideo.play();
 
 
