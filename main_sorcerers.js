@@ -15,7 +15,7 @@ var checkObjId = true;
 var worldId = 2; //1= socerers 2=lighthouse 3=forest 4= cave
 // var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
-var soundGoGo = true;
+var soundGoGo = false;
 var distanceWorld1 = 50.0;
 var distanceWorld2 = 40.0;
 var distanceWorld3 = 70.0;
