@@ -539,7 +539,11 @@ canvas {
 #geoevent1,
 #geoevent2,
 #geoevent3,
-#geoevent4 {
+#geoevent4,
+#geoevent5,
+#geoevent6,
+#geoevent7,
+#geoevent8 {
     z-index: 1;
     position: fixed;
     top: 50%;
