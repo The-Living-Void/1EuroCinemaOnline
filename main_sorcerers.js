@@ -12,8 +12,8 @@ import { RGBELoader } from './customPackage/loader/RGBELoader.js';
 import { VideoTexture } from './node_modules/three/src/textures/VideoTexture.js';
 var debug = false;
 var checkObjId = true;
-var worldId = 3; //1= socerers 2=lighthouse 3=forest 4= cave
-//var worldId = getRandomInt(4)+1;
+// var worldId = 3; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = (getRandomInt(4)+1);
 
 //console.log("checkRandom = "+checkRandom);
 
@@ -58,7 +58,7 @@ const soundBase = new THREE.Audio(listener);
 const audioLoader = new THREE.AudioLoader();
 
 var muteSound = false;
-var startVideo = false;
+var startVideo = true;
 var soundLoad = false;
 var fadeSpeed = 0.007;
 //}
@@ -3145,7 +3145,6 @@ function animate() {
     cursorCheck();
 
 
-
     if (debug == true) {
         cannonDebugRenderer.update();
     }
@@ -4376,7 +4375,7 @@ function clickedOnExitVideo() {
 
 
 }
-// geo test 
+// geo test
 
 if (worldId == 1) {
     addGeoEventWorld1();
@@ -4404,7 +4403,7 @@ document.getElementById("geoevent" + worldId).style.display = "block";
 // geoEventUi.style.visibility = "visible";
 // geoEventUi.style.display = "block";
 
-// 
+//
 function showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmLink) {
     document.exitPointerLock = document.exitPointerLock ||
         document.mozExitPointerLock ||
