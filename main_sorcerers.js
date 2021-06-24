@@ -3856,6 +3856,7 @@ function cursorCheck() {
     raycaster.setFromCamera(mouse, camera);
 
     var intersects = raycaster.intersectObjects(scene.children, true);
+    var intersected = false;
 
     // If only interested in one intersection, you can use .intersectObject()
 
@@ -3949,6 +3950,10 @@ function cursorCheck() {
                     foundConstructorGet.style.visibility = "hidden";
                     foundConstructorGet.style.display = "none";
                 }
+                if (foundConstructorGet.style.display == "none") {
+                        window.removeEventListener("click", clickedOnCritter, false);
+                        console.log("After 3 seconds!");
+                    }
                 console.log('intersect!' + userD);
                 // console.log("id" + id);
 
