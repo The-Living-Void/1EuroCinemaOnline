@@ -12,7 +12,7 @@ import { RGBELoader } from './customPackage/loader/RGBELoader.js';
 import { VideoTexture } from './node_modules/three/src/textures/VideoTexture.js';
 var debug = false;
 var checkObjId = true;
-var worldId = 2; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = 4; //1= socerers 2=lighthouse 3=forest 4= cave
 // var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 var soundGoGo = false;
@@ -4433,7 +4433,23 @@ function loadFilm(){
   window.addEventListener('load', function(){
     var newVideo = document.getElementById('videoElementId1');
     var newVideo2 = document.getElementById('videoElementId2');
-    var newVideo3 = document.getElementById('videoElementId3');
+    var newVideo3 = document.getElementById('videoElementId'+worldId);
+    var videoString = 'videoElementId3World1';
+
+    if (worldId == 1) {
+    newVideo3 = document.getElementById('videoElementId3World1');
+    videoString = 'videoElementId3World1';
+    }else if (worldId == 2) {
+    newVideo3 = document.getElementById('videoElementId3World2');
+    videoString = 'videoElementId3World2';
+    }else if (worldId == 3) {
+    newVideo3 = document.getElementById('videoElementId3World3');
+    videoString = 'videoElementId3World3';
+    }else if (worldId == 4) {
+    newVideo3 = document.getElementById('videoElementId3World4');
+    videoString = 'videoElementId3World4';
+    }
+
     newVideo.addEventListener('ended', function() {
         //console.log('current time at = '+this.currentTime);
         //this.currentTime = 0;
@@ -4459,7 +4475,17 @@ function loadFilm(){
               js: document.getElementById("videoElementId2").style.visibility = "hidden";
               newVideo3.currentTime = 0;
               newVideo3.play();
-              js: document.getElementById("videoElementId3").style.visibility = "visible";
+              js: document.getElementById(videoString).style.visibility = "visible";
+              // if (worldId==1) {
+              // js: document.getElementById("videoElementId3World1").style.visibility = "visible";
+              // }else if (worldId==2) {
+              // js: document.getElementById("videoElementId3World2").style.visibility = "visible";
+              // }else if (worldId==3) {
+              // js: document.getElementById("videoElementId3World3").style.visibility = "visible";
+              // }else if (worldId==4) {
+              // js: document.getElementById("videoElementId3World4").style.visibility = "visible";
+              // }
+
               //this.removeAttribute;
               }else {
               this.currentTime = 0;
@@ -4475,7 +4501,7 @@ function loadFilm(){
                   //js: document.getElementById("videoElementId2").style.visibility = "hidden";
                   //newVideo3.currentTime = 0;
                   //newVideo3.play();
-                  js: document.getElementById("videoElementId3").style.visibility = "hidden";
+                  js: document.getElementById(videoString).style.visibility = "hidden";
                   js: document.getElementById("videostart").style.zIndex = "-1";
                   //this.removeAttribute;
                   //}else {
