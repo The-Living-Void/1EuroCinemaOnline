@@ -12,8 +12,8 @@ import { RGBELoader } from './customPackage/loader/RGBELoader.js';
 import { VideoTexture } from './node_modules/three/src/textures/VideoTexture.js';
 var debug = false;
 var checkObjId = true;
-// var worldId = 3; //1= socerers 2=lighthouse 3=forest 4= cave
-var worldId = (getRandomInt(4)+1);
+var worldId = 4; //1= socerers 2=lighthouse 3=forest 4= cave
+// var worldId = (getRandomInt(4) + 1);
 
 //console.log("checkRandom = "+checkRandom);
 
@@ -240,7 +240,7 @@ function initCannon() {
     sphereBody = new CANNON.Body({ mass: mass, material: physicsMaterial });
     sphereBody.addShape(sphereShape);
     // sphereBody.position.set(nx * sx * 0.5, ny * sy + radius * 2, nz * sz * 0.5);
-    sphereBody.position.set(-70, 30, 10);
+    sphereBody.position.set(100, 20, 100);
     sphereBody.linearDamping = 0.9;
     world.addBody(sphereBody);
 
@@ -1401,7 +1401,7 @@ function modelLoader() {
         const geoeventWaterTexture = new THREE.VideoTexture(geoeventjoachim);
         const geoeventWaterMaterial = new THREE.MeshBasicMaterial({ map: geoeventWaterTexture, side: THREE.FrontSide, toneMapped: false });
 
-        const geoeventWaterscreen = new THREE.CircleGeometry( 70, 50 );
+        const geoeventWaterscreen = new THREE.CircleGeometry(70, 50);
         const geoeventWatervideoScreen = new THREE.Mesh(geoeventWaterscreen, geoeventWaterMaterial);
         geoeventWatervideoScreen.rotation.set(-Math.PI / 2, 0, 0);
         geoeventWatervideoScreen.position.set(0, 0.37, -70);
@@ -1617,7 +1617,7 @@ function modelLoader() {
         const geoeventWaterTexture = new THREE.VideoTexture(geoeventjoachim);
         const geoeventWaterMaterial = new THREE.MeshBasicMaterial({ map: geoeventWaterTexture, side: THREE.FrontSide, toneMapped: false });
 
-        const geoeventWaterscreen = new THREE.CircleGeometry( 300, 50 );
+        const geoeventWaterscreen = new THREE.CircleGeometry(300, 50);
         const geoeventWatervideoScreen = new THREE.Mesh(geoeventWaterscreen, geoeventWaterMaterial);
         geoeventWatervideoScreen.rotation.set(-Math.PI / 2, 0, 0);
         geoeventWatervideoScreen.position.set(50, 1, -20);
@@ -1928,7 +1928,7 @@ function modelLoader() {
             const geoeventWaterTexture3 = new THREE.VideoTexture(geoeventjoachim);
             const geoeventWaterMaterial3 = new THREE.MeshBasicMaterial({ map: geoeventWaterTexture3, side: THREE.FrontSide, toneMapped: false });
 
-            const geoeventWaterscreen3 = new THREE.CircleGeometry( 130, 50 );
+            const geoeventWaterscreen3 = new THREE.CircleGeometry(130, 50);
             const geoeventWatervideoScreen3 = new THREE.Mesh(geoeventWaterscreen3, geoeventWaterMaterial3);
             geoeventWatervideoScreen3.rotation.set(-Math.PI / 2, 0, 0);
             geoeventWatervideoScreen3.position.set(-20, 4, -50);
@@ -2310,7 +2310,7 @@ function modelLoader() {
         const geoeventWaterTexture = new THREE.VideoTexture(geoeventjoachim);
         const geoeventWaterMaterial = new THREE.MeshBasicMaterial({ map: geoeventWaterTexture, side: THREE.FrontSide, toneMapped: false });
 
-        const geoeventWaterscreen = new THREE.CircleGeometry( 150, 50 );
+        const geoeventWaterscreen = new THREE.CircleGeometry(150, 50);
         const geoeventWatervideoScreen = new THREE.Mesh(geoeventWaterscreen, geoeventWaterMaterial);
         geoeventWatervideoScreen.rotation.set(-Math.PI / 2, 0, 0);
         geoeventWatervideoScreen.position.set(0, 1, 120);
@@ -2337,45 +2337,45 @@ function modelLoader() {
         // cubeYifan.userData.name = "yifanhe";
         // scene.add(cubeYifan);
 
-        // queen critter valentine
-        loader.load('models/critters/world4/valentine.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
-            gltf.scene.position.set(120, 7.5, 43);
-            gltf.scene.scale.set(0.3, 0.3, 0.3);
-            scene.add(gltf.scene);
-        });
-
-        // box queen critter = valentine
-        const geometryValentine = new THREE.BoxGeometry();
-        const materialValentine = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
-        //const materialValentine = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-        const cubeValentine = new THREE.Mesh(geometryValentine, materialValentine);
-        cubeValentine.position.set(120, 10, 43);
-        cubeValentine.scale.set(5, 5, 5);
-        cubeValentine.userData.name = "valentinelangeard";
-        scene.add(cubeValentine);
-
-        loader.load('models/critters/world4/valentine.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
-            gltf.scene.position.set(110, 9.5, 37);
-            gltf.scene.scale.set(0.3, 0.3, 0.3);
-            gltf.scene.rotation.set(0, 1.7, 0);
-            scene.add(gltf.scene);
-        });
-
-        loader.load('models/critters/world4/valentine.glb', (gltf) => {
-            gltf.scene.traverse(function(object) {
-                object.frustumCulled = false;
-            });
-            gltf.scene.position.set(112, 28.2, 34.4);
-            gltf.scene.scale.set(0.3, 0.3, 0.3);
-            gltf.scene.rotation.set(0, 2, 0);
-            scene.add(gltf.scene);
-        });
+        // // queen critter valentine
+        // loader.load('models/critters/world4/valentine.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
+        //     gltf.scene.position.set(120, 7.5, 43);
+        //     gltf.scene.scale.set(0.3, 0.3, 0.3);
+        //     scene.add(gltf.scene);
+        // });
+        //
+        // // box queen critter = valentine
+        // const geometryValentine = new THREE.BoxGeometry();
+        // const materialValentine = new THREE.MeshBasicMaterial({ color: 0x00ff00, opacity: 0, transparent: true });
+        // //const materialValentine = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        // const cubeValentine = new THREE.Mesh(geometryValentine, materialValentine);
+        // cubeValentine.position.set(120, 10, 43);
+        // cubeValentine.scale.set(5, 5, 5);
+        // cubeValentine.userData.name = "valentinelangeard";
+        // scene.add(cubeValentine);
+        //
+        // loader.load('models/critters/world4/valentine.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
+        //     gltf.scene.position.set(110, 9.5, 37);
+        //     gltf.scene.scale.set(0.3, 0.3, 0.3);
+        //     gltf.scene.rotation.set(0, 1.7, 0);
+        //     scene.add(gltf.scene);
+        // });
+        //
+        // loader.load('models/critters/world4/valentine.glb', (gltf) => {
+        //     gltf.scene.traverse(function(object) {
+        //         object.frustumCulled = false;
+        //     });
+        //     gltf.scene.position.set(112, 28.2, 34.4);
+        //     gltf.scene.scale.set(0.3, 0.3, 0.3);
+        //     gltf.scene.rotation.set(0, 2, 0);
+        //     scene.add(gltf.scene);
+        // });
 
         // // queen critter minhong
         // loader.load('models/critters/world4/minhong.glb', (gltf) => {
@@ -4399,7 +4399,7 @@ function clickedOnExitVideo() {
         if (worldId == 4) {
             addGeoEventWorld4();
         }
-        addGeoEventWorld();
+        //addGeoEventWorld();
         //main image in middle
         var foundAll = document.getElementById("found" + worldId + "all");
         foundAll.style.visibility = "visible";

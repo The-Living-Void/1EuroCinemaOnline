@@ -470,17 +470,7 @@ canvas {
 #yifanhe4,
 #world2foundfilm,
 #world3foundfilm,
-#world4foundfilm,
-#world1critterEvent,
-#world2critterEvent,
-#world3critterEvent,
-#world4critterEvent,
-#world5critterEvent,
-#world1critterEvent2,
-#world2critterEvent2,
-#world3critterEvent2,
-#world4critterEvent2,
-#world4critterEvent2 {
+#world4foundfilm {
     visibility: hidden;
 }
 
@@ -707,6 +697,7 @@ canvas {
 #hintsfade2-9,
 #hintsfade2-10,
 #hintsfade2-11,
+#hintsfade2-12,
 #hintsfade2-13,
 #hintsfade2-14,
 #hintsfade4-1,
@@ -744,6 +735,7 @@ canvas {
 #hintsfade4-8,
 #hintsfade4-9,
 #hintsfade4-10,
+#hintsfade4-11,
 #hintsfade4-12,
 #hintsfade4-13,
 #hintsfade4-14 {
