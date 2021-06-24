@@ -532,15 +532,7 @@ canvas {
 #found1all,
 #found2all,
 #found3all,
-#found4all,
-#geoevent1,
-#geoevent2,
-#geoevent3,
-#geoevent4,
-#geoevent5,
-#geoevent6,
-#geoevent7,
-#geoevent8 {
+#found4all {
     z-index: 1;
     position: fixed;
     top: 50%;
@@ -548,6 +540,14 @@ canvas {
     transform: translate(-50%, -50%);
     max-width: 95%;
     visibility: hidden;
+}
+
+#geoevent1,
+#geoevent2,
+#geoevent3,
+#geoevent4 {
+    visibility: hidden;
+    display: none;
 }
 
 #range1,
