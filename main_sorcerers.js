@@ -12,8 +12,8 @@ import { RGBELoader } from './customPackage/loader/RGBELoader.js';
 import { VideoTexture } from './node_modules/three/src/textures/VideoTexture.js';
 var debug = false;
 var checkObjId = true;
-// var worldId = 3; //1= socerers 2=lighthouse 3=forest 4= cave
-var worldId = (getRandomInt(4)+1);
+//var worldId = 3; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = (getRandomInt(4) + 1);
 
 //console.log("checkRandom = "+checkRandom);
 
@@ -58,6 +58,7 @@ const soundBase = new THREE.Audio(listener);
 const audioLoader = new THREE.AudioLoader();
 
 var muteSound = false;
+//startVideo true + cmnt  
 var startVideo = true;
 var soundLoad = false;
 var fadeSpeed = 0.007;
@@ -1397,11 +1398,11 @@ function modelLoader() {
 
 
         const loader = new GLTFLoader()
-        //optimised for world1
+            //optimised for world1
         const geoeventWaterTexture = new THREE.VideoTexture(geoeventjoachim);
         const geoeventWaterMaterial = new THREE.MeshBasicMaterial({ map: geoeventWaterTexture, side: THREE.FrontSide, toneMapped: false });
 
-        const geoeventWaterscreen = new THREE.CircleGeometry( 70, 50 );
+        const geoeventWaterscreen = new THREE.CircleGeometry(70, 50);
         const geoeventWatervideoScreen = new THREE.Mesh(geoeventWaterscreen, geoeventWaterMaterial);
         geoeventWatervideoScreen.rotation.set(-Math.PI / 2, 0, 0);
         geoeventWatervideoScreen.position.set(0, 0.37, -70);
@@ -1617,7 +1618,7 @@ function modelLoader() {
         const geoeventWaterTexture = new THREE.VideoTexture(geoeventjoachim);
         const geoeventWaterMaterial = new THREE.MeshBasicMaterial({ map: geoeventWaterTexture, side: THREE.FrontSide, toneMapped: false });
 
-        const geoeventWaterscreen = new THREE.CircleGeometry( 300, 50 );
+        const geoeventWaterscreen = new THREE.CircleGeometry(300, 50);
         const geoeventWatervideoScreen = new THREE.Mesh(geoeventWaterscreen, geoeventWaterMaterial);
         geoeventWatervideoScreen.rotation.set(-Math.PI / 2, 0, 0);
         geoeventWatervideoScreen.position.set(50, 1, -20);
@@ -1925,14 +1926,14 @@ function modelLoader() {
         const loader = new GLTFLoader()
 
         //optimised for world3
-            const geoeventWaterTexture3 = new THREE.VideoTexture(geoeventjoachim);
-            const geoeventWaterMaterial3 = new THREE.MeshBasicMaterial({ map: geoeventWaterTexture3, side: THREE.FrontSide, toneMapped: false });
+        const geoeventWaterTexture3 = new THREE.VideoTexture(geoeventjoachim);
+        const geoeventWaterMaterial3 = new THREE.MeshBasicMaterial({ map: geoeventWaterTexture3, side: THREE.FrontSide, toneMapped: false });
 
-            const geoeventWaterscreen3 = new THREE.CircleGeometry( 130, 50 );
-            const geoeventWatervideoScreen3 = new THREE.Mesh(geoeventWaterscreen3, geoeventWaterMaterial3);
-            geoeventWatervideoScreen3.rotation.set(-Math.PI / 2, 0, 0);
-            geoeventWatervideoScreen3.position.set(-20, 4, -50);
-            scene.add(geoeventWatervideoScreen3);
+        const geoeventWaterscreen3 = new THREE.CircleGeometry(130, 50);
+        const geoeventWatervideoScreen3 = new THREE.Mesh(geoeventWaterscreen3, geoeventWaterMaterial3);
+        geoeventWatervideoScreen3.rotation.set(-Math.PI / 2, 0, 0);
+        geoeventWatervideoScreen3.position.set(-20, 4, -50);
+        scene.add(geoeventWatervideoScreen3);
 
         // // alondra tree
         // loader.load('models/critters/world3/alondra.glb', (gltf) => {
@@ -2310,7 +2311,7 @@ function modelLoader() {
         const geoeventWaterTexture = new THREE.VideoTexture(geoeventjoachim);
         const geoeventWaterMaterial = new THREE.MeshBasicMaterial({ map: geoeventWaterTexture, side: THREE.FrontSide, toneMapped: false });
 
-        const geoeventWaterscreen = new THREE.CircleGeometry( 150, 50 );
+        const geoeventWaterscreen = new THREE.CircleGeometry(150, 50);
         const geoeventWatervideoScreen = new THREE.Mesh(geoeventWaterscreen, geoeventWaterMaterial);
         geoeventWatervideoScreen.rotation.set(-Math.PI / 2, 0, 0);
         geoeventWatervideoScreen.position.set(0, 1, 120);
@@ -4066,7 +4067,7 @@ function addGeoEventWorld1() {
     const geoeventWorld1Texture = new THREE.VideoTexture(geoeventannika);
     const geoeventWorld1Material = new THREE.MeshBasicMaterial({ map: geoeventWorld1Texture, side: THREE.FrontSide, toneMapped: false });
 
-    const geoeventWorld1screen = new THREE.CircleGeometry( 10, 50 );
+    const geoeventWorld1screen = new THREE.CircleGeometry(10, 50);
     const geoeventWorld1videoScreen = new THREE.Mesh(geoeventWorld1screen, geoeventWorld1Material);
     geoeventWorld1videoScreen.rotation.set(Math.PI / 2, 0, 0);
     geoeventWorld1videoScreen.scale.set(20, 20, 20);
@@ -4099,7 +4100,7 @@ function addGeoEventWorld3() {
     const geoeventWaterTexture3 = new THREE.VideoTexture(geoeventjiarey);
     const geoeventWaterMaterial3 = new THREE.MeshBasicMaterial({ map: geoeventWaterTexture3, side: THREE.FrontSide, toneMapped: false });
 
-    const geoeventWaterscreen3 = new THREE.CircleGeometry( 200, 50 );
+    const geoeventWaterscreen3 = new THREE.CircleGeometry(200, 50);
     const geoeventWatervideoScreen3 = new THREE.Mesh(geoeventWaterscreen3, geoeventWaterMaterial3);
     geoeventWatervideoScreen3.rotation.set(Math.PI / 2, 0, 0);
     geoeventWatervideoScreen3.position.set(-20, 100, -50);
@@ -4108,11 +4109,11 @@ function addGeoEventWorld3() {
 }
 
 //world4
-function addGeoEventWorld4(){
+function addGeoEventWorld4() {
     const geoeventWorld4Texture = new THREE.VideoTexture(geoeventmeggie);
-    const geoeventWorld4Material =  new THREE.MeshBasicMaterial( {map: geoeventWorld4Texture, side: THREE.FrontSide, toneMapped: false} );
+    const geoeventWorld4Material = new THREE.MeshBasicMaterial({ map: geoeventWorld4Texture, side: THREE.FrontSide, toneMapped: false });
 
-    const geoeventWorld4screen = new THREE.CircleGeometry( 10, 50 );
+    const geoeventWorld4screen = new THREE.CircleGeometry(10, 50);
     const geoeventWorld4videoScreen = new THREE.Mesh(geoeventWorld4screen, geoeventWorld4Material);
     geoeventWorld4videoScreen.rotation.set(-10, 0, 0);
     geoeventWorld4videoScreen.scale.set(5, 5, 5);
@@ -4399,8 +4400,8 @@ function clickedOnExitVideo() {
         if (worldId == 4) {
             addGeoEventWorld4();
         }
-        addGeoEventWorld();
-        //main image in middle
+        //addGeoEventWorld();
+        //main image in middle - combined
         var foundAll = document.getElementById("found" + worldId + "all");
         foundAll.style.visibility = "visible";
         foundAll.style.display = "block";
