@@ -4356,15 +4356,24 @@ function clickedOnExitVideo() {
             addGeoEventWorld4();
         }
         addGeoEventWorld();
+        //main image in middle
         var foundAll = document.getElementById("found" + worldId + "all");
         foundAll.style.visibility = "visible";
         foundAll.style.display = "block";
         foundAll.classList.add("foundall");
+        //side UI
         document.getElementById("geoevent" + worldId).style.visibility = "visible";
         document.getElementById("geoevent" + worldId).style.display = "block";
-        var geoEventUi = document.getElementsByClassName("world" + worldId + "critterEvent");
-        geoEventUi.style.visibility = "visible";
-        geoEventUi.style.display = "block";
+        setTimeout(refreshPage, 222000);
+
+        function refreshPage() {
+            var endUI = document.getElementById("loadingScreenBlock");
+            endUI.src = "Images/endscreen.png";
+            endUI.visibility = "visible";
+            endUI.zIndex = "2";
+            endUI.display = "block";
+        }
+
     }
 
     // randomNumber(0, critterToFindArray.length - 1);
@@ -4377,31 +4386,8 @@ function clickedOnExitVideo() {
 }
 // geo test
 
-if (worldId == 1) {
-    addGeoEventWorld1();
-}
-if (worldId == 2) {
-    addGeoEventWorld2();
-}
-if (worldId == 3) {
-    addGeoEventWorld3();
-}
-if (worldId == 4) {
-    addGeoEventWorld4();
-}
-addGeoEventWorld();
-//main image in middle
-var foundAll = document.getElementById("found" + worldId + "all");
-foundAll.style.visibility = "visible";
-foundAll.style.display = "block";
-foundAll.classList.add("foundall");
-//side UI
-document.getElementById("geoevent" + worldId).style.visibility = "visible";
-document.getElementById("geoevent" + worldId).style.display = "block";
 
-// var geoEventUi = document.getElementsById("world" + worldId + "critterEvent");
-// geoEventUi.style.visibility = "visible";
-// geoEventUi.style.display = "block";
+
 
 //
 function showFilm(critterId, critterPosX, critterPosY, critterPosZ, critterFilmLink) {
