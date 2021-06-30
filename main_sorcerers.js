@@ -12,8 +12,8 @@ import { RGBELoader } from './customPackage/loader/RGBELoader.js';
 import { VideoTexture } from './node_modules/three/src/textures/VideoTexture.js';
 var debug = false;
 var checkObjId = true;
-var worldId = 4; //1= socerers 2=lighthouse 3=forest 4= cave
-// var worldId = (getRandomInt(4) + 1);
+//var worldId = 2; //1= socerers 2=lighthouse 3=forest 4= cave
+var worldId = (getRandomInt(4) + 1);
 
 //console.log("checkRandom = "+checkRandom);
 
@@ -66,9 +66,9 @@ var fadeSpeed = 0.007;
 //geotextures
 const geoeventjiarey = document.getElementById('geoeventjiarey');
 const geoeventisabella = document.getElementById('geoeventisabella');
-const geoeventjoachim = document.getElementById('geoeventjoachim');
+const geoeventjoachim = document.getElementById('geoeventjoachim'); // all worlds
 const geoeventmeggie = document.getElementById('geoeventmeggie');
-const geoeventannikay = document.getElementById('geoeventannika');
+const geoeventannika = document.getElementById('geoeventannika');
 
 
 //var imgHeightWorld = new Array();
@@ -1357,6 +1357,19 @@ function objectLoader() {
     // }
 
 }
+var promise = document.getElementById('geoeventjoachim').play();
+
+if (promise !== undefined) {
+    promise.catch(error => {
+        console.log("undefined" + error);
+        // Auto-play was prevented
+        // Show a UI element to let the user manually start playback
+    }).then(() => {
+        console.log("autostarted");
+        // Auto-play started
+    });
+}
+
 
 function modelLoader() {
 
@@ -1397,7 +1410,7 @@ function modelLoader() {
 
 
         const loader = new GLTFLoader()
-        //optimised for world1
+            //optimised for world1
         const geoeventWaterTexture = new THREE.VideoTexture(geoeventjoachim);
         const geoeventWaterMaterial = new THREE.MeshBasicMaterial({ map: geoeventWaterTexture, side: THREE.FrontSide, toneMapped: false });
 
@@ -1925,14 +1938,14 @@ function modelLoader() {
         const loader = new GLTFLoader()
 
         //optimised for world3
-            const geoeventWaterTexture3 = new THREE.VideoTexture(geoeventjoachim);
-            const geoeventWaterMaterial3 = new THREE.MeshBasicMaterial({ map: geoeventWaterTexture3, side: THREE.FrontSide, toneMapped: false });
+        const geoeventWaterTexture3 = new THREE.VideoTexture(geoeventjoachim);
+        const geoeventWaterMaterial3 = new THREE.MeshBasicMaterial({ map: geoeventWaterTexture3, side: THREE.FrontSide, toneMapped: false });
 
-            const geoeventWaterscreen3 = new THREE.CircleGeometry(130, 50);
-            const geoeventWatervideoScreen3 = new THREE.Mesh(geoeventWaterscreen3, geoeventWaterMaterial3);
-            geoeventWatervideoScreen3.rotation.set(-Math.PI / 2, 0, 0);
-            geoeventWatervideoScreen3.position.set(-20, 4, -50);
-            scene.add(geoeventWatervideoScreen3);
+        const geoeventWaterscreen3 = new THREE.CircleGeometry(130, 50);
+        const geoeventWatervideoScreen3 = new THREE.Mesh(geoeventWaterscreen3, geoeventWaterMaterial3);
+        geoeventWatervideoScreen3.rotation.set(-Math.PI / 2, 0, 0);
+        geoeventWatervideoScreen3.position.set(-20, 4, -50);
+        scene.add(geoeventWatervideoScreen3);
 
         // // alondra tree
         // loader.load('models/critters/world3/alondra.glb', (gltf) => {
@@ -4063,10 +4076,11 @@ function loadCharacter(characterName) {
 
 //world1
 function addGeoEventWorld1() {
+    document.getElementById('geoeventannika').play();
     const geoeventWorld1Texture = new THREE.VideoTexture(geoeventannika);
     const geoeventWorld1Material = new THREE.MeshBasicMaterial({ map: geoeventWorld1Texture, side: THREE.FrontSide, toneMapped: false });
 
-    const geoeventWorld1screen = new THREE.CircleGeometry( 10, 50 );
+    const geoeventWorld1screen = new THREE.CircleGeometry(10, 50);
     const geoeventWorld1videoScreen = new THREE.Mesh(geoeventWorld1screen, geoeventWorld1Material);
     geoeventWorld1videoScreen.rotation.set(Math.PI / 2, 0, 0);
     geoeventWorld1videoScreen.scale.set(20, 20, 20);
@@ -4079,6 +4093,7 @@ function addGeoEventWorld1() {
 
 //world2
 function addGeoEventWorld2() {
+    document.getElementById('geoeventisabella').play();
     const geoeventWorld2Texture = new THREE.VideoTexture(geoeventisabella);
     const geoeventWorld2Material = new THREE.MeshBasicMaterial({ map: geoeventWorld2Texture, side: THREE.FrontSide, toneMapped: false });
 
@@ -4096,10 +4111,11 @@ function addGeoEventWorld2() {
 
 //world3
 function addGeoEventWorld3() {
+    document.getElementById('geoeventjiarey').play();
     const geoeventWaterTexture3 = new THREE.VideoTexture(geoeventjiarey);
     const geoeventWaterMaterial3 = new THREE.MeshBasicMaterial({ map: geoeventWaterTexture3, side: THREE.FrontSide, toneMapped: false });
 
-    const geoeventWaterscreen3 = new THREE.CircleGeometry( 200, 50 );
+    const geoeventWaterscreen3 = new THREE.CircleGeometry(200, 50);
     const geoeventWatervideoScreen3 = new THREE.Mesh(geoeventWaterscreen3, geoeventWaterMaterial3);
     geoeventWatervideoScreen3.rotation.set(Math.PI / 2, 0, 0);
     geoeventWatervideoScreen3.position.set(-20, 100, -50);
@@ -4108,11 +4124,12 @@ function addGeoEventWorld3() {
 }
 
 //world4
-function addGeoEventWorld4(){
+function addGeoEventWorld4() {
+    document.getElementById('geoeventmeggie').play();
     const geoeventWorld4Texture = new THREE.VideoTexture(geoeventmeggie);
-    const geoeventWorld4Material =  new THREE.MeshBasicMaterial( {map: geoeventWorld4Texture, side: THREE.FrontSide, toneMapped: false} );
+    const geoeventWorld4Material = new THREE.MeshBasicMaterial({ map: geoeventWorld4Texture, side: THREE.FrontSide, toneMapped: false });
 
-    const geoeventWorld4screen = new THREE.CircleGeometry( 10, 50 );
+    const geoeventWorld4screen = new THREE.CircleGeometry(10, 50);
     const geoeventWorld4videoScreen = new THREE.Mesh(geoeventWorld4screen, geoeventWorld4Material);
     geoeventWorld4videoScreen.rotation.set(-10, 0, 0);
     geoeventWorld4videoScreen.scale.set(5, 5, 5);
@@ -4193,7 +4210,7 @@ function cursorCheck() {
 
                         //if( boolMouseOn == true){
                         window.addEventListener("click", clickedOnCritter, false);
-                        setTimeout(removePerimeter, 500);
+                        setTimeout(removePerimeter, 1300);
 
                         function removePerimeter() {
                             window.addEventListener("mousemove", mouseMovesFromCritter, false);
@@ -4239,10 +4256,10 @@ function cursorCheck() {
                 }
                 if (foundConstructorGet.style.display == "none") {
                     window.removeEventListener("click", clickedOnCritter, false);
-                    console.log("After 3 seconds!");
+                    //console.log("After 3 seconds!");
                 }
-                console.log('intersect!' + userD);
-                console.log('intersected!' + INTERSECTED);
+                //console.log('intersect!' + userD);
+                //console.log('intersected!' + INTERSECTED);
                 // console.log("id" + id);
 
             }
@@ -4334,7 +4351,7 @@ function clickedOnCritter() {
     }
 
     if (filmIsPlaying == false) {
-        console.log("wuu clicked");
+        //console.log("wuu clicked");
         critterId = currentScene.id;
         critterPosX = currentScene.posX;
         critterPosY = currentScene.posY;
@@ -4515,10 +4532,10 @@ function critterArray() {
     randomNextCritterInArray();
 
     var firstCritterId = critterToFindArray[0];
-    console.log(firstCritterId);
+    // console.log(firstCritterId);
     if (critterHtmlId == 0) {
         document.getElementById(firstCritterId).style.visibility = "visible";
-        console.log("yes");
+        //console.log("yes");
     } else {
         //firstCritterId = critterHtmlId;
         document.getElementById(firstCritterId).style.visibility = "hidden";
