@@ -20,14 +20,17 @@ var worldId = (getRandomInt(4) + 1);
 // var objectName = 'spider-anim2.glb';
 var adjustHeigth = -20;
 
-var soundGoGo = false;
 // var distanceWorld1 = 50.0;
 // var distanceWorld2 = 40.0;
 // var distanceWorld3 = 70.0;
 // var distanceWorld4 = 40.0;
 // var distance2Click = "distanceWorld" + worldId;
 
+const listener = new THREE.AudioListener();
+
 var soundGoGo = true;
+var soundRunOnce = 1;
+
 if (worldId == 1) {
     var distance2Click = 50.0;
 }
@@ -47,15 +50,7 @@ if (worldId == 4) {
 // var distance2Click = "distanceWorld" + worldId;
 
 //if (soundGoGo==true) {
-const listener = new THREE.AudioListener();
-const sound = new THREE.PositionalAudio(listener);
-const soundLayer2 = new THREE.PositionalAudio(listener);
-const soundLayer3 = new THREE.PositionalAudio(listener);
-const soundLayer4 = new THREE.PositionalAudio(listener);
-const soundLayer5 = new THREE.PositionalAudio(listener);
-const soundLayer6 = new THREE.PositionalAudio(listener);
-const soundBase = new THREE.Audio(listener);
-const audioLoader = new THREE.AudioLoader();
+
 
 var muteSound = false;
 var startVideo = true;
@@ -129,8 +124,7 @@ manager.onLoad = function() {
     console.log('Loading complete!');
     allIsLoaded = true;
     //if (worldId == 2) {
-    soundGo(worldId);
-    soundLoad = true;
+
 
     // videoPlayer.style.display = "hide";
 
@@ -2683,6 +2677,16 @@ function addCharacters() {
 
 function soundGo(functionNumber) {
 
+    //const listener = new THREE.AudioListener();
+    const sound = new THREE.PositionalAudio(listener);
+    const soundLayer2 = new THREE.PositionalAudio(listener);
+    const soundLayer3 = new THREE.PositionalAudio(listener);
+    const soundLayer4 = new THREE.PositionalAudio(listener);
+    const soundLayer5 = new THREE.PositionalAudio(listener);
+    const soundLayer6 = new THREE.PositionalAudio(listener);
+    const soundBase = new THREE.Audio(listener);
+    const audioLoader = new THREE.AudioLoader();
+
     if (functionNumber == 1) {
         //const sound = new THREE.Audio( listener );
 
@@ -4884,6 +4888,15 @@ function pointerLock() {
             ) {
                 controls.enabled = true
                 blocker.style.display = 'none'
+                //ymer sound blocker stuff here:
+                if (soundGoGo == true) {
+                  if (soundRunOnce==1) {
+                    soundGo(worldId);
+                    soundLoad = true;
+                    soundRunOnce++;
+                  }
+                }
+
             } else {
                 controls.enabled = false
                 blocker.style.display = '-webkit-box'
